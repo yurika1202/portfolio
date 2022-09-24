@@ -1,0 +1,5 @@
+{
+  "extends": ["stylelint-config-standard-scss", "stylelint-config-property-sort-order-smacss", "stylelint-config-prettier"],
+  "rules": {},
+  "ignoreFiles": ["dist/**/**/*.css", "**/*.js"]
+}
