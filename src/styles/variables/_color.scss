@@ -1,0 +1,89 @@
+@use 'sass:color';
+@use '../functions/color' as *;
+
+// palettes
+// --------------------------------------------------------------------------
+$black: #0d0c11;
+$deepBlack: #1d1c21;
+$white: #fdfdff;
+
+$gray-50: #fefeff;
+$gray-100: #e4e4e6;
+$gray-200: #cacacc;
+$gray-300: #b1b1b3;
+$gray-400: #989899;
+$gray-500: #7f7f80;
+$gray-600: #656566;
+$gray-700: #4c4c4c;
+$gray-800: #333;
+$gray-900: #191919;
+
+$murex-50: #e9e8f1;
+$murex-100: #c7c6dc;
+$murex-200: #a4a1c5;
+$murex-300: #827dad;
+$murex-400: #6a619c;
+$murex-500: #54458f;
+$murex-600: #4e3e86;
+$murex-700: #46347b;
+$murex-800: #3e2a70;
+$murex-900: #30195c;
+
+$beauBlue-50: #f8fafd;
+$beauBlue-100: #b7c9e9;
+$beauBlue-200: #86a7d9;
+$beauBlue-300: #5085c9;
+$beauBlue-400: #006bbf;
+$beauBlue-500: #0053b5;
+$beauBlue-600: #004bac;
+$beauBlue-700: #0042a0;
+$beauBlue-800: #003895;
+$beauBlue-900: #002880;
+
+$piggyPink-50: #f3e0ec;
+$piggyPink-100: #e2b1d1;
+$piggyPink-200: #ce7cb4;
+$piggyPink-300: #b94597;
+$piggyPink-400: #a90384;
+$piggyPink-500: #970072;
+$piggyPink-600: #8c006e;
+$piggyPink-700: #7c0069;
+$piggyPink-800: #6d0063;
+$piggyPink-900: #520058;
+
+$wineRed: #af4256;
+$englishRed: #a03e50;
+$bananaYellow: #ffe18f;
+$flaxYellow: #ecd085;
+$mediumGreen: #79caad;
+$sheenGreen: #71bba0;
+
+// color map
+// --------------------------------------------------------------------------
+$default-theme: (
+  'black': $black,
+  'white': $white,
+  bg: $white,
+  bg-line: $gray-100,
+  bg-deepLine: $gray-200,
+  bg-toc: $murex-50,
+  text: $black,
+  primary: $murex-300,
+  primary-accent: $murex-200,
+  secondary: $beauBlue-100,
+  secondary-accent: $beauBlue-200,
+  tertiary: $piggyPink-50,
+  tertiary-sober: $piggyPink-100,
+  tertiary-accent: $piggyPink-200,
+  error: $wineRed,
+  warning: $bananaYellow,
+  success: $mediumGreen,
+);
+
+// color root
+// --------------------------------------------------------------------------
+:root {
+  @each $key, $color in $default-theme {
+    --c-#{$key}: #{hexToRGB($color)};
+  }
+}

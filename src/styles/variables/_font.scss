@@ -1,0 +1,32 @@
+@font-face {
+  font-family: 'Noto Sans JP';
+  src: url('/font/NotoSansJP-medium.woff2') format('woff2');
+  font-weight: medium;
+}
+@font-face {
+  font-family: 'Noto Sans JP';
+  src: url('/font/NotoSansJP-bold.woff2') format('woff2');
+  font-weight: bold;
+}
+@font-face {
+  font-family: 'Work Sans';
+  src: url('/font/WorkSans-BoldItalic.woff2') format('woff2');
+  font-weight: bold;
+}
+@font-face {
+  font-family: 'Work Sans';
+  src: url('/font/WorkSans-MediumItalic.woff2') format('woff2');
+  font-weight: medium;
+}
+
+$fallback: 'Helvetica Neue', arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', meiryo, sans-serif;
+$noto: 'Noto Sans JP';
+$zenMaru: 'Zen Maru Gothic';
+$workSuns: 'Work Sans';
+
+$font: (
+  font-fallback: $fallback,
+  font-jp: $noto,
+  font-jp-accent: $zenMaru,
+  font-en: $workSuns,
+);
