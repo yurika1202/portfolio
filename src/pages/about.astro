@@ -1,0 +1,147 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import { SITE } from '../config';
+---
+
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <BaseHead title={SITE.title} description={SITE.description} />
+  </head>
+  <body>
+    <header class="ly_header">
+      <div class="ly_header_inner">
+        <div class="bl_header_logo">
+          <img src="/img/logo.png" alt="Yurika's Portfolio" width="111" height="40" />
+        </div><!-- /.bl_header_logo -->
+        <progress class="bl_progressbar" max="100" value=""></progress><!-- /.bl_progressbar -->
+        <a href="/contact" class="el_btn el_circleBtn el_circleBtn_pink" aria-label="お問い合わせ">
+          <img src="/img/empty.gif" alt="" width="20" height="20" data-src="/icon/mail.svg" loading="lazy" />
+        </a>
+      </div><!-- /.ly_header_inner -->
+    </header><!-- /.ly_header -->
+
+    <main class="ly_main">
+      <div class="ly_main_inner">
+        <div class="bl_common_pageTitle bl_common_pageTitle__bubble">
+          <p>はじめまして、ゆりかです</p>
+        </div><!-- /.bl_common_pageTitle -->
+
+        <div class="bl_prof">
+          <div class="bl_prof_img">
+            <img src="/img/empty.gif" alt="ゆりかの似顔絵イラスト" data-src="/img/prof.webp" width="165" height="165" loading="lazy" />
+          </div><!-- /.bl_prof_img -->
+          <ul class="bl_prof_outline">
+            <li>1993年生まれ</li>
+            <li>広島在住</li>
+          </ul><!-- /.bl_prof_outline -->
+          <ul class="bl_prof_link">
+            <li>
+              <a href="https://yurika122.com" class="el_btn el_circleBtn el_circleBtn_blue" aria-label="ブログ" target="_blank" rel="nofollow noopener noreferrer">
+                <img src="/img/empty.gif" alt="" width="20" height="20" data-src="/icon/pen.svg" loading="lazy" />
+              </a>
+            </li>
+            <li>
+              <a href="https://github.com/yurika1202" class="el_btn el_circleBtn el_circleBtn_blue" aria-label="GitHub" target="_blank" rel="nofollow noopener noreferrer">
+                <img src="/img/empty.gif" alt="" width="20" height="20" data-src="/icon/github.svg" loading="lazy" />
+              </a>
+            </li>
+            <li>
+              <a href="https://codepen.io/yurika1202" class="el_btn el_circleBtn el_circleBtn_blue" aria-label="CodePen" target="_blank" rel="nofollow noopener noreferrer">
+                <img src="/img/empty.gif" alt="" width="20" height="20" data-src="/icon/pen.svg" loading="lazy" />
+              </a>
+            </li>
+          </ul><!-- /.bl_prof_link -->
+          <p class="bl_prof_text">
+            2021年のはじめにWeb制作と出会い、そこから一気にコーディングの楽しさに沼りました。 主に書籍やUdemyなどを使い、独学で勉強をしています。<br />
+            セマンティックなマークアップ、設計に基づく保守性を高めたCSS（DartSass）が得意です。 Webアプリ開発にも興味があるので、少しづつ勉強中です。
+          </p><!-- /.bl_prof_text -->
+        </div><!-- /.bl_prof -->
+
+        <section class="ly_section">
+          <div class="el_title el_title_dash">
+            <p>強い意志を持ってチャレンジします</p>
+          </div><!-- /.el_title -->
+          <div class="bl_section_text">
+            <p>
+              好奇心が旺盛なので、いろんなことに挑戦したい人です。<br />
+              一方で完璧主義で慎重派な一面もあり、目標までの道筋を明確にしてから、一つ一つのタスクに確実に向き合っていきます。<br />
+              そしてやると決めたからには納得するまで諦めない、粘り強さもあります。
+            </p>
+          </div><!-- /.bl_section_text -->
+        </section><!-- /.ly_section -->
+
+        <section class="ly_section">
+          <div class="el_title_dash">
+            <p>やさしいWebづくりを追求しています</p>
+          </div><!-- /.el_title_dash -->
+          <div class="bl_section_text">
+            <p>
+              サイトへ訪れたユーザーに優しく寄り添い、サイト寿命を長くすることを心がけてコーディングをしています。<br />
+              アクセシビリティの知見を更に深めていくこと、CSS・JavaScript・SVG・Canvas（WebGL）を用いた心地よいアニメーション表現ができるようになることが目標です。<br />
+              そしていずれは実装だけでなくデザイン側からもプロジェクトへ関わっていきたいと思っています。
+            </p>
+          </div><!-- /.bl_section_text -->
+        </section><!-- /.ly_section -->
+      </div><!-- /.ly_main_inner -->
+    </main><!-- /.ly_main -->
+
+    <footer class="ly_footer">
+      <nav class="bl_footer_pagination" aria-label="pagination">
+        <ul>
+          <li>
+            <a href="/" class="el_btn el_circleBtn el_circleBtn_blue el_arrowBtn_prev" aria-label="トップページへもどる">
+              <img src="/icon/arrow.svg" alt="" width="12" height="12" />
+            </a>
+          </li>
+          <li>
+            <button type="button" class="el_btn el_tocBtn js_drawerNav_btn" aria-label="もくじメニューを開く" aria-haspopup="true" aria-controls="drawerNav" aria-expanded="false">もくじ</button>
+          </li>
+          <li>
+            <a href="/works" class="el_btn el_circleBtn el_circleBtn_blue el_arrowBtn_next" aria-label="実績ページへ進む">
+              <img src="/icon/arrow.svg" alt="" width="12" height="12" />
+            </a>
+          </li>
+        </ul>
+      </nav><!-- /.bl_footer_pagination -->
+
+      <div class="bl_drawerNav" aria-label="drawer" id="drawerNav" aria-hidden="true">
+        <nav class="bl_drawerNav__section">
+          <div class="bl_sectionNav">
+            <p class="bl_drawerNav_title">実績</p>
+            <ul class="bl_sectionNav_list" role="menubar">
+              <li class="bl_sectionNav_item"><a href="#crowdworks" role="menuitem">クラウドワークスでの受注</a></li><!-- /.bl_sectionNav_item -->
+              <li class="bl_sectionNav_item"><a href="#comunity" role="menuitem">オンラインコミュニティでの受注</a></li><!-- /.bl_sectionNav_item -->
+            </ul><!-- /.bl_sectionNav_list -->
+          </div><!-- /.bl_sectionNav -->
+          <div class="bl_sectionNav">
+            <p class="bl_drawerNav_title">自主制作</p>
+            <ul class="bl_sectionNav_list" role="menubar">
+              <li class="bl_sectionNav_item"><a href="#directlinkgenerator" role="menuitem">ImageURL for direct link Generator</a></li><!-- /.bl_sectionNav_item -->
+              <li class="bl_sectionNav_item"><a href="#yurilog" role="menuitem">yurilog.</a></li><!-- /.bl_sectionNav_item -->
+              <li class="bl_sectionNav_item"><a href="#portfolio" role="menuitem">Yurika's Portfolio</a></li><!-- /.bl_sectionNav_item -->
+            </ul><!-- /.bl_sectionNav_list -->
+          </div><!-- /.bl_sectionNav -->
+        </nav><!-- /.bl_drawerNav__section -->
+
+        <nav class="bl_drawerNav__page">
+          <p class="bl_drawerNav_title">Page</p>
+          <ul class="bl_pageNav_list" role="menubar">
+            <li class="bl_pageNav_item"><a href="/about" role="menuitem">はじめまして</a></li><!-- /.bl_pageNav_item -->
+            <li class="bl_pageNav_item"><a href="/works" role="menuitem">実績と自主制作</a></li><!-- /.bl_pageNav_item -->
+            <li class="bl_pageNav_item"><a href="/contact" role="menuitem">お問い合わせ</a></li><!-- /.bl_pageNav_item -->
+            <li class="bl_pageNav_item"><a href="/end" role="menuitem">さいごに</a></li><!-- /.bl_pageNav_item -->
+          </ul><!-- /.bl_pageNav_list -->
+        </nav><!-- /.bl_drawerNav__page -->
+      </div><!-- /.bl_drawerNav -->
+
+      <div class="bl_footer_copyWrap">
+        <small class="el_copy">&copy; Yurika's Portfolio</small><!-- /.el_copy__top -->
+      </div><!-- /.bl_footer_copyWrap -->
+
+      <div class="bl_toTop">
+        <button type="button" class="el_btn el_circleBtn el_circleBtn__deepPink js_toTop_btn">Top</button>
+      </div><!-- /.bl_toTop -->
+    </footer><!-- /.ly_footer -->
+  </body>
+</html>
