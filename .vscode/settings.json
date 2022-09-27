@@ -10,7 +10,7 @@
   "css.validate": false,
   "less.validate": false,
   "scss.validate": false,
-  "stylelint.validate": ["css", "postcss"],
+  "stylelint.validate": ["css", "scss"],
   "markuplint.enable": true,
   "markuplint.debug": true
 }
