@@ -1,10 +1,22 @@
+@use '../mixin/' as mix;
+
 .bl_prof {
   margin-top: -40px;
 }
 
 .bl_prof_img {
   width: 165px;
-  margin: 0 auto;
+  margin: 0 auto -10px;
+
+  img {
+    object-fit: cover;
+    width: 100%;
+  }
+
+  @include mix.mq(md) {
+    width: 265px;
+    margin: 0 auto -24px;
+  }
 }
 
 .bl_prof_outline {
@@ -40,5 +52,5 @@
 
 .bl_prof_link,
 .bl_prof_text {
-  margin-top: var(--size-space-lg);
+  margin-top: var(--size-space-md);
 }

@@ -42,5 +42,10 @@
       border-radius: 0 0 3px;
       background: color(--c-primary);
     }
+
+    @include mix.mq(md) {
+      width: 320px;
+      height: 128px;
+    }
   }
 }

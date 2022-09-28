@@ -17,16 +17,32 @@
     stroke-linejoin: round;
     paint-order: stroke;
 
-    @include mix.mq(lg) {
-      font-size: rem(20px);
+    &:nth-of-type(1) {
+      transform: translateY(-14px);
+
+      @include mix.mq(md) {
+        transform: translateY(-20px);
+      }
+    }
+
+    &:nth-of-type(2) {
+      transform: translateY(14px);
+
+      @include mix.mq(md) {
+        transform: translateY(20px);
+      }
+    }
+
+    @include mix.mq(md) {
+      font-size: rem(32px);
     }
   }
 }
 
 .el_title_dash {
   position: relative;
-  right: calc(var(--size-width-inner) + 8px);
-  width: calc(100% + (var(--size-width-inner) * 2) + 8px);
+  right: calc(var(--size-width-inner) + 12px);
+  width: calc(100% + (var(--size-width-inner) * 2) + 12px);
 
   p {
     position: relative;
@@ -40,6 +56,10 @@
     font-size: rem(16px);
     font-weight: bold;
     letter-spacing: 2px;
+
+    @include mix.mq(lg) {
+      font-size: rem(20px);
+    }
   }
 
   &::after {

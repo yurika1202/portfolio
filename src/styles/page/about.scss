@@ -1,1 +1,42 @@
+@use '../mixin/' as mix;
 @use '../block/prof';
+
+.un_about_gridWrap {
+  @include mix.mq(md) {
+    display: grid;
+    grid-template:
+      'item1 item4'
+      'item2 item4'
+      'item3 item4';
+    align-items: end;
+    width: 90%;
+    margin: -40px auto 0;
+    column-gap: var(--size-space-sm);
+  }
+}
+
+.un_about_grid {
+  &__img {
+    grid-area: item1;
+  }
+
+  &__outline {
+    grid-area: item2;
+  }
+
+  &__link {
+    grid-area: item3;
+
+    @include mix.mq(md) {
+      margin-top: var(--size-space-sm);
+    }
+  }
+
+  &__text {
+    grid-area: item4;
+
+    @include mix.mq(md) {
+      margin: 0 0 5%;
+    }
+  }
+}
