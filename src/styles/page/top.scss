@@ -1,0 +1,77 @@
+@use '../mixin/' as mix;
+@use '../functions/' as *;
+
+.un_top_particle {
+  width: calc(104 / 343 * 100%);
+  max-width: 104px;
+}
+
+.un_top_startBtn {
+  margin-top: var(--size-space-2xl);
+  text-align: center;
+
+  @include mix.mq(lg) {
+    margin-top: var(--size-space-4xl);
+  }
+}
+
+.un_topNav {
+  position: relative;
+  max-width: 376px;
+  margin: var(--size-space-2xl) auto 0;
+  padding-top: var(--size-space-xl);
+
+  @include mix.mq(lg) {
+    margin-top: var(--size-space-4xl);
+    padding-top: calc(var(--size-space-xl) + 8px);
+  }
+}
+
+.un_topNav_title {
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  left: 50%;
+  width: 100px;
+  height: 70px;
+  padding-top: 12px;
+  transform: translateX(-50%);
+  border: 2px solid color(--c-black);
+  border-radius: 50%;
+  background: color(--c-primary);
+
+  svg {
+    width: 55px;
+    height: 23px;
+    margin: 0 auto;
+    overflow: visible;
+  }
+
+  text {
+    stroke-width: 3;
+    stroke: color(--c-black);
+    fill: color(--c-white);
+    font-family: var(--font-jp-accent);
+    font-size: rem(16px);
+    font-weight: bold;
+    letter-spacing: 0.188em;
+    stroke-linejoin: round;
+    paint-order: stroke;
+
+    @include mix.mq(lg) {
+      font-size: rem(20px);
+    }
+  }
+
+  @include mix.mq(lg) {
+    width: 123px;
+    height: 84px;
+    padding-top: 16px;
+  }
+}
+
+.un_topNav_contents {
+  position: relative;
+  padding: var(--size-space-lg) var(--size-space-md);
+  background: color(--c-bg-toc);
+}

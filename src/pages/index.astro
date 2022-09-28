@@ -1,6 +1,10 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
 import { SITE } from '../config';
+import BaseHead from '../components/BaseHead.astro';
+import BoxGrid from '../layout/BoxGrid.astro';
+import MainView from '../components/MainView.astro';
+import FooterMinimal from '../components/FooterMinimal.astro';
+import '../styles/page/top.scss';
 ---
 
 <!DOCTYPE html>
@@ -8,45 +12,36 @@ import { SITE } from '../config';
   <head>
     <BaseHead title={SITE.title} description={SITE.description} />
   </head>
-  <body>
-    <div class="ly_top">
-      <div class="ly_top_inner">
-        <div class="bl_mv">
-          <div class="bl_mv_particle">
-            <img src="/img/particle.png" alt="" width="104" height="70" />
-          </div><!-- /.bl_mv_particle -->
-          <div class="bl_mv_logoBox bl_common_boxShadow">
-            <img src="/img/logo.png" alt="Yurika's Portfolio" width="284" height="96" />
-          </div><!-- /.bl_mv_logoBox -->
-          <div class="bl_mv_btnWrap">
-            <a href="/contact" class="el_btn el_circleBtn el_circleBtn_pink" aria-label="お問い合わせ">
-              <img src="/icon/mail.svg" alt="" width="20" height="20" />
-            </a>
-          </div><!-- /.bl_mv_btnWrap -->
-        </div><!-- /.bl_mv -->
+  <body class="ly_bg_gradation">
+    <BoxGrid>
+      <MainView>
+        <div class="un_top_particle">
+          <img src="/img/particle.svg" alt="" width="104" height="70" />
+        </div><!-- /.un_top_particle -->
+      </MainView>
 
-        <main>
-          <div class="bl_top_startBtn">
-            <a class="el_btn el_basicBtn" href="/about">はじめからみる</a>
-          </div><!-- /.bl_top_startBtn -->
+      <main>
+        <div class="un_top_startBtn">
+          <a class="el_btn el_basicBtn" href="/about">はじめからみる<img src="/icon/arrow-lg.svg" alt="" width="56" height="8" loading="lazy" /></a>
+        </div><!-- /.un_top_startBtn -->
 
-          <nav class="bl_topNav bl_common_boxShadow">
-            <div class="bl_topNav_title">
-              <p>もくじ</p>
-            </div><!-- /.bl_topNav_title -->
-            <ul class="bl_pageNav_list" role="menubar">
+        <nav class="un_topNav">
+          <div class="un_topNav_title">
+            <svg>
+              <text x="50%" y="50%" text-anchor="middle" dominant-baseline="central">もくじ</text>
+            </svg>
+          </div><!-- /.un_topNav_title -->
+          <div class="un_topNav_contents bl_common_box bl_common_shadow">
+            <ol class="bl_pageNav_list" role="menubar">
               <li class="bl_pageNav_item"><a href="/about" role="menuitem">はじめまして</a></li><!-- /.bl_pageNav_item -->
               <li class="bl_pageNav_item"><a href="/works" role="menuitem">実績と自主制作</a></li><!-- /.bl_pageNav_item -->
               <li class="bl_pageNav_item"><a href="/contact" role="menuitem">お問い合わせ</a></li><!-- /.bl_pageNav_item -->
               <li class="bl_pageNav_item"><a href="/end" role="menuitem">さいごに</a></li><!-- /.bl_pageNav_item -->
-            </ul><!-- /.bl_pageNav_list -->
-          </nav><!-- /.bl_topNav -->
-        </main>
-
-        <footer class="ly_footer__top">
-          <small class="el_copy__horizon">&copy; Yurika's Portfolio</small><!-- /.el_copy__top -->
-        </footer><!-- /.ly_footer__top -->
-      </div><!-- /.ly_top_inner -->
-    </div><!-- /.ly_top -->
+            </ol><!-- /.bl_pageNav_list -->
+          </div><!-- /.un_topNav_contents -->
+        </nav><!-- /.un_topNav -->
+      </main>
+      <FooterMinimal />
+    </BoxGrid>
   </body>
 </html>

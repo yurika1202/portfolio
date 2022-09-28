@@ -1,0 +1,51 @@
+@use '../mixin/' as mix;
+@use '../functions/' as *;
+
+.bl_pageNav_list {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: var(--size-space-md);
+  list-style-type: none;
+  counter-reset: num;
+}
+
+.bl_pageNav_item {
+  position: relative;
+  padding-left: 32px;
+
+  &::before {
+    content: counter(num);
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 24px;
+    height: 23px;
+    transform: translateY(-50%);
+    border: 1.5px solid color(--c-black);
+    border-radius: 5px;
+    box-shadow: 1px 1px 0 color(--c-black);
+    font-family: var(--font-en);
+    font-size: rem(12px);
+    font-weight: bold;
+    line-height: 20px;
+    text-align: center;
+    counter-increment: num;
+  }
+
+  &:nth-of-type(odd) {
+    &::before {
+      background: color(--c-tertiary);
+    }
+  }
+
+  &:nth-of-type(even) {
+    &::before {
+      background: color(--c-tertiary-accent);
+    }
+  }
+
+  a {
+    line-height: 24px;
+  }
+}

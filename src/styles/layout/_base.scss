@@ -1,0 +1,23 @@
+@use '../mixin/' as mix;
+@use '../functions/' as *;
+
+$width-max-layoutBox: 584px;
+
+// .ly_base__arch {
+// }
+
+.ly_base__box {
+  max-width: $width-max-layoutBox;
+  margin: 0 auto;
+
+  @media print, screen and (min-width: $width-max-layoutBox) {
+    margin: var(--size-space-xl) auto;
+    border: 2px solid color(--c-black);
+    border-radius: 20px;
+    box-shadow: 6px 6px 0 color(--c-black);
+  }
+}
+
+.ly_base_inner {
+  padding: 32px var(--size-width-inner-sm);
+}
