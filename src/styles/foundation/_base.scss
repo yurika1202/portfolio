@@ -15,9 +15,9 @@ body {
   overflow-x: hidden;
   background: color(--c-bg);
   color: color(--c-text);
-  font-family: font-family(font-ja), font-family(font-fallback);
-  font-weight: medium;
+  font-family: var(--font-jp);
   font-size: rem(14px);
+  font-weight: 500;
   line-height: 0.875;
   font-feature-settings: 'pkna' 1;
   text-size-adjust: 100%;
@@ -40,6 +40,10 @@ a {
 
 a {
   text-decoration: none;
+
+  &:visited {
+    color: inherit;
+  }
 }
 
 li {

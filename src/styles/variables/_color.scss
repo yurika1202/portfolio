@@ -6,7 +6,6 @@
 $black: #0d0c11;
 $deepBlack: #1d1c21;
 $white: #fdfdff;
-
 $gray-50: #fefeff;
 $gray-100: #e4e4e6;
 $gray-200: #cacacc;
@@ -17,7 +16,6 @@ $gray-600: #656566;
 $gray-700: #4c4c4c;
 $gray-800: #333;
 $gray-900: #191919;
-
 $murex-50: #e9e8f1;
 $murex-100: #c7c6dc;
 $murex-200: #a4a1c5;
@@ -28,7 +26,6 @@ $murex-600: #4e3e86;
 $murex-700: #46347b;
 $murex-800: #3e2a70;
 $murex-900: #30195c;
-
 $beauBlue-50: #f8fafd;
 $beauBlue-100: #b7c9e9;
 $beauBlue-200: #86a7d9;
@@ -39,7 +36,6 @@ $beauBlue-600: #004bac;
 $beauBlue-700: #0042a0;
 $beauBlue-800: #003895;
 $beauBlue-900: #002880;
-
 $piggyPink-50: #f3e0ec;
 $piggyPink-100: #e2b1d1;
 $piggyPink-200: #ce7cb4;
@@ -50,7 +46,6 @@ $piggyPink-600: #8c006e;
 $piggyPink-700: #7c0069;
 $piggyPink-800: #6d0063;
 $piggyPink-900: #520058;
-
 $wineRed: #af4256;
 $englishRed: #a03e50;
 $bananaYellow: #ffe18f;
@@ -84,6 +79,6 @@ $default-theme: (
 // --------------------------------------------------------------------------
 :root {
   @each $key, $color in $default-theme {
-    --c-#{$key}: #{hexToRGB($color)};
+    --c-#{$key}: #{hex-to-rgb($color)};
   }
 }

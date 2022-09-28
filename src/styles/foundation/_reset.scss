@@ -3,14 +3,12 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-weight: normal;
-
   &::before,
   &::after {
     box-sizing: border-box;
   }
 }
-*:where(:not(fieldset, progress, meter)) {
+:where(:not(fieldset, progress, meter)) {
   border-width: 0;
   border-style: solid;
   background-repeat: no-repeat;
@@ -32,7 +30,6 @@ body {
 }
 :where(img, svg, video, canvas, audio, iframe, embed, object) {
   display: block;
-  border: 0;
 }
 :where(img, svg, video) {
   max-inline-size: 100%;
@@ -61,6 +58,11 @@ body {
 :where(textarea) {
   resize: vertical;
 }
+@supports (resize: block) {
+  :where(textarea) {
+    resize: block;
+  }
+}
 :where(p, h1, h2, h3, h4, h5, h6) {
   overflow-wrap: break-word;
 }
@@ -69,11 +71,6 @@ body {
 }
 a:not([class]) {
   text-decoration-skip-ink: auto;
-}
-@supports (resize: block) {
-  :where(textarea) {
-    resize: block;
-  }
 }
 :where(a[href], area, button, input, label[for], select, summary, textarea, [tabindex]:not([tabindex*='-'])) {
   cursor: pointer;
