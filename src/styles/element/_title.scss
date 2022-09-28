@@ -1,0 +1,59 @@
+@use '../mixin/' as mix;
+@use '../functions/' as *;
+
+.el_title_border {
+  width: 100%;
+  height: 100%;
+
+  text {
+    stroke-width: 3;
+    stroke: color(--c-black);
+    fill: color(--c-white);
+    font-family: var(--font-jp-accent);
+    font-size: rem(18px);
+    font-weight: bold;
+    letter-spacing: 0.2em;
+    line-height: 1.4;
+    stroke-linejoin: round;
+    paint-order: stroke;
+
+    @include mix.mq(lg) {
+      font-size: rem(20px);
+    }
+  }
+}
+
+.el_title_dash {
+  position: relative;
+  right: calc(var(--size-width-inner-sm) + 8px);
+  width: calc(100% + (var(--size-width-inner-sm) * 2) + 8px);
+
+  p {
+    position: relative;
+    z-index: 1;
+    width: fit-content;
+    max-width: calc(100% - var(--size-width-inner-sm));
+    padding: 0.5em 1em;
+    border: 2px solid color(--c-black);
+    border-radius: 10px;
+    background: color(--c-primary);
+    font-size: rem(16px);
+    font-weight: bold;
+    letter-spacing: 2px;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    z-index: 0;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    transform: translateY(-50%);
+    background: linear-gradient(to right, color(--c-black) 8px, transparent 8px);
+    background-repeat: repeat-x;
+    background-position: left bottom;
+    background-size: 16px 2px;
+  }
+}

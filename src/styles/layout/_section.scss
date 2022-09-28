@@ -1,0 +1,11 @@
+.ly_section {
+  margin-top: var(--size-space-lg);
+
+  &:first-of-type {
+    margin-top: var(--size-space-xl);
+  }
+}
+
+.ly_section_text {
+  margin-top: var(--size-space-sm);
+}

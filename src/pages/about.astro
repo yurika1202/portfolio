@@ -1,6 +1,9 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
 import { SITE } from '../config';
+import ArchGrid from '../layout/ArchGrid.astro';
+import BaseHead from '../components/BaseHead.astro';
+
+import '../styles/page/about.scss';
 ---
 
 <!DOCTYPE html>
@@ -8,7 +11,7 @@ import { SITE } from '../config';
   <head>
     <BaseHead title={SITE.title} description={SITE.description} />
   </head>
-  <body>
+  <body class="ly_bg_gradation">
     <header class="ly_header">
       <div class="ly_header_inner">
         <div class="bl_header_logo">
@@ -22,14 +25,17 @@ import { SITE } from '../config';
     </header><!-- /.ly_header -->
 
     <main class="ly_main">
-      <div class="ly_main_inner">
+      <ArchGrid>
         <div class="bl_common_pageTitle bl_common_pageTitle__bubble">
-          <p>はじめまして、ゆりかです</p>
+          <svg class="el_title_border">
+            <text x="50%" y="25%" text-anchor="middle" dominant-baseline="central">はじめまして、</text>
+            <text x="50%" y="70%" text-anchor="middle" dominant-baseline="central">ゆりかです</text>
+          </svg>
         </div><!-- /.bl_common_pageTitle -->
 
         <div class="bl_prof">
           <div class="bl_prof_img">
-            <img src="/img/empty.gif" alt="ゆりかの似顔絵イラスト" data-src="/img/prof.webp" width="165" height="165" loading="lazy" />
+            <img src="/img/empty.gif" alt="ゆりかの似顔絵イラスト" data-src="/img/prof.png" width="165" height="165" loading="lazy" />
           </div><!-- /.bl_prof_img -->
           <ul class="bl_prof_outline">
             <li>1993年生まれ</li>
@@ -37,24 +43,25 @@ import { SITE } from '../config';
           </ul><!-- /.bl_prof_outline -->
           <ul class="bl_prof_link">
             <li>
-              <a href="https://yurika122.com" class="el_btn el_circleBtn el_circleBtn_blue" aria-label="ブログ" target="_blank" rel="nofollow noopener noreferrer">
+              <a href="https://yurika122.com" class="el_btn el_circleBtn el_circleBtn__blue" aria-label="ブログ" target="_blank" rel="nofollow noopener noreferrer">
                 <img src="/img/empty.gif" alt="" width="20" height="20" data-src="/icon/pen.svg" loading="lazy" />
               </a>
             </li>
             <li>
-              <a href="https://github.com/yurika1202" class="el_btn el_circleBtn el_circleBtn_blue" aria-label="GitHub" target="_blank" rel="nofollow noopener noreferrer">
+              <a href="https://github.com/yurika1202" class="el_btn el_circleBtn el_circleBtn__blue" aria-label="GitHub" target="_blank" rel="nofollow noopener noreferrer">
                 <img src="/img/empty.gif" alt="" width="20" height="20" data-src="/icon/github.svg" loading="lazy" />
               </a>
             </li>
             <li>
-              <a href="https://codepen.io/yurika1202" class="el_btn el_circleBtn el_circleBtn_blue" aria-label="CodePen" target="_blank" rel="nofollow noopener noreferrer">
-                <img src="/img/empty.gif" alt="" width="20" height="20" data-src="/icon/pen.svg" loading="lazy" />
+              <a href="https://codepen.io/yurika1202" class="el_btn el_circleBtn el_circleBtn__blue" aria-label="CodePen" target="_blank" rel="nofollow noopener noreferrer">
+                <img src="/img/empty.gif" alt="" width="20" height="20" data-src="/icon/codepen.svg" loading="lazy" />
               </a>
             </li>
           </ul><!-- /.bl_prof_link -->
           <p class="bl_prof_text">
             2021年のはじめにWeb制作と出会い、そこから一気にコーディングの楽しさに沼りました。 主に書籍やUdemyなどを使い、独学で勉強をしています。<br />
-            セマンティックなマークアップ、設計に基づく保守性を高めたCSS（DartSass）が得意です。 Webアプリ開発にも興味があるので、少しづつ勉強中です。
+            セマンティックなマークアップ、設計に基づく保守性を高めたCSS（DartSass）を考えることが好きです。<br />
+            Webアプリ開発にも興味があるので、少しづつ勉強中です。
           </p><!-- /.bl_prof_text -->
         </div><!-- /.bl_prof -->
 
@@ -62,35 +69,35 @@ import { SITE } from '../config';
           <div class="el_title el_title_dash">
             <p>強い意志を持ってチャレンジします</p>
           </div><!-- /.el_title -->
-          <div class="bl_section_text">
+          <div class="ly_section_text">
             <p>
               好奇心が旺盛なので、いろんなことに挑戦したい人です。<br />
               一方で完璧主義で慎重派な一面もあり、目標までの道筋を明確にしてから、一つ一つのタスクに確実に向き合っていきます。<br />
               そしてやると決めたからには納得するまで諦めない、粘り強さもあります。
             </p>
-          </div><!-- /.bl_section_text -->
+          </div><!-- /.ly_section_text -->
         </section><!-- /.ly_section -->
 
         <section class="ly_section">
           <div class="el_title_dash">
             <p>やさしいWebづくりを追求しています</p>
           </div><!-- /.el_title_dash -->
-          <div class="bl_section_text">
+          <div class="ly_section_text">
             <p>
               サイトへ訪れたユーザーに優しく寄り添い、サイト寿命を長くすることを心がけてコーディングをしています。<br />
               アクセシビリティの知見を更に深めていくこと、CSS・JavaScript・SVG・Canvas（WebGL）を用いた心地よいアニメーション表現ができるようになることが目標です。<br />
               そしていずれは実装だけでなくデザイン側からもプロジェクトへ関わっていきたいと思っています。
             </p>
-          </div><!-- /.bl_section_text -->
+          </div><!-- /.ly_section_text -->
         </section><!-- /.ly_section -->
-      </div><!-- /.ly_main_inner -->
-    </main><!-- /.ly_main -->
+      </ArchGrid>
+    </main><!-- /.ly_base -->
 
     <footer class="ly_footer">
       <nav class="bl_footer_pagination" aria-label="pagination">
         <ul>
           <li>
-            <a href="/" class="el_btn el_circleBtn el_circleBtn_blue el_arrowBtn_prev" aria-label="トップページへもどる">
+            <a href="/" class="el_btn el_circleBtn el_circleBtn__blue el_arrowBtn_prev" aria-label="トップページへもどる">
               <img src="/icon/arrow.svg" alt="" width="12" height="12" />
             </a>
           </li>
@@ -98,7 +105,7 @@ import { SITE } from '../config';
             <button type="button" class="el_btn el_tocBtn js_drawerNav_btn" aria-label="もくじメニューを開く" aria-haspopup="true" aria-controls="drawerNav" aria-expanded="false">もくじ</button>
           </li>
           <li>
-            <a href="/works" class="el_btn el_circleBtn el_circleBtn_blue el_arrowBtn_next" aria-label="実績ページへ進む">
+            <a href="/works" class="el_btn el_circleBtn el_circleBtn__blue el_arrowBtn_next" aria-label="実績ページへ進む">
               <img src="/icon/arrow.svg" alt="" width="12" height="12" />
             </a>
           </li>
