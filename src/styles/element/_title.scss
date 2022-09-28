@@ -25,14 +25,14 @@
 
 .el_title_dash {
   position: relative;
-  right: calc(var(--size-width-inner-sm) + 8px);
-  width: calc(100% + (var(--size-width-inner-sm) * 2) + 8px);
+  right: calc(var(--size-width-inner) + 8px);
+  width: calc(100% + (var(--size-width-inner) * 2) + 8px);
 
   p {
     position: relative;
     z-index: 1;
     width: fit-content;
-    max-width: calc(100% - var(--size-width-inner-sm));
+    max-width: calc(100% - var(--size-width-inner));
     padding: 0.5em 1em;
     border: 2px solid color(--c-black);
     border-radius: 10px;

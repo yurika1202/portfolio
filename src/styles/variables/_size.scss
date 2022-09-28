@@ -1,34 +1,35 @@
-@use 'sass:math';
-
-/* inner-width */
-$width-inner: (
-  width-inner-sm: calc(16 / 375 * 100vw),
-  width-inner-lg: calc(223 / 1440 * 100vw),
-);
-
-/* space */
-$spaces: (
-  space-sm: 16px,
-  space-md: 24px,
-  space-lg: 32px,
-  space-xl: 40px,
-  space-2xl: 56px,
-  space-3xl: 64px,
-  space-4xl: 80px,
-  space-5xl: 120px,
-);
-
-/* component */
-$components: ();
+@use '../mixin/media' as mix;
 
 :root {
-  @each $key, $width in $width-inner {
-    --size-#{$key}: #{$width};
-  }
-  @each $key, $space in $spaces {
-    --size-#{$key}: #{$space};
-  }
-  @each $key, $component in $components {
-    --size-#{$key}: #{$component};
+  /* inner-width */
+  --size-width-inner: calc(16 / 375 * 100vw);
+
+  /* space */
+  --size-space-xsm: 8px;
+  --size-space-sm: 16px;
+  --size-space-md: 24px;
+  --size-space-lg: 32px;
+  --size-space-xl: 48px;
+  --size-space-2xl: 64px;
+  --size-space-3xl: 80px;
+  --size-space-4xl: 96px;
+  --size-space-5xl: 128px;
+}
+
+@include mix.mq(lg) {
+  :root {
+    /* inner-width */
+    --size-width-inner: calc(102 / 1440 * 100vw);
+
+    /* space */
+    --size-space-xsm: 16px;
+    --size-space-sm: 24px;
+    --size-space-md: 32px;
+    --size-space-lg: 48px;
+    --size-space-xl: 64px;
+    --size-space-2xl: 80px;
+    --size-space-3xl: 96px;
+    --size-space-4xl: 128px;
+    --size-space-5xl: 160px;
   }
 }

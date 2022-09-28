@@ -5,7 +5,7 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  gap: var(--size-space-md);
+  gap: var(--size-space-sm);
   list-style-type: none;
   counter-reset: num;
 }
