@@ -9,21 +9,16 @@
 .un_top_startBtn {
   margin-top: var(--size-space-2xl);
   text-align: center;
-
-  @include mix.mq(lg) {
-    margin-top: var(--size-space-4xl);
-  }
 }
 
 .un_topNav {
   position: relative;
   max-width: 376px;
   margin: var(--size-space-2xl) auto 0;
-  padding-top: var(--size-space-xl);
+  padding-top: 40px;
 
   @include mix.mq(lg) {
-    margin-top: var(--size-space-4xl);
-    padding-top: calc(var(--size-space-xl) + 8px);
+    padding-top: 48px;
   }
 }
 

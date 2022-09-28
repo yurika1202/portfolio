@@ -61,13 +61,11 @@
 }
 
 .ly_bg_grid {
-  width: 100%;
   background: repeating-linear-gradient(90deg, color(--c-bg-line), color(--c-bg-line) 1px, transparent 1px, transparent 24px),
     repeating-linear-gradient(0deg, color(--c-bg-line), color(--c-bg-line) 1px, color(--c-bg) 1px, color(--c-bg) 24px);
 }
 
 .ly_bg_grid__deep {
-  width: 100%;
   background: repeating-linear-gradient(90deg, color(--c-bg-deepLine), color(--c-bg-deepLine) 1px, transparent 1px, transparent 24px),
     repeating-linear-gradient(0deg, color(--c-bg-deepLine), color(--c-bg-deepLine) 1px, color(--c-bg) 1px, color(--c-bg) 24px);
 }
