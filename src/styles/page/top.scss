@@ -41,22 +41,13 @@
   background: color(--c-primary);
 
   svg {
-    width: 55px;
     height: 23px;
     margin: 0 auto;
-    overflow: visible;
   }
 
   text {
-    stroke-width: 3;
-    stroke: color(--c-black);
-    fill: color(--c-white);
-    font-family: var(--font-jp-accent);
     font-size: rem(16px);
-    font-weight: bold;
     letter-spacing: 0.188em;
-    stroke-linejoin: round;
-    paint-order: stroke;
 
     @include mix.mq(lg) {
       font-size: rem(20px);
