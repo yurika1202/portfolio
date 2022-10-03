@@ -1,7 +1,8 @@
 ---
 import { SITE } from '../config';
-import ArchGrid from '../layout/ArchGrid.astro';
 import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import ArchGrid from '../layout/ArchGrid.astro';
 
 import '../styles/page/about.scss';
 ---
@@ -12,19 +13,8 @@ import '../styles/page/about.scss';
     <BaseHead title={SITE.title} description={SITE.description} />
   </head>
   <body class="ly_bg_gradation">
-    <header class="ly_header">
-      <div class="ly_header_inner">
-        <div class="bl_header_logo">
-          <img src="/img/logo.png" alt="Yurika's Portfolio" width="111" height="40" />
-        </div><!-- /.bl_header_logo -->
-        <progress class="bl_progressbar" max="100" value=""></progress><!-- /.bl_progressbar -->
-        <a href="/contact" class="el_btn el_circleBtn el_circleBtn_pink" aria-label="お問い合わせ">
-          <img src="/img/empty.gif" alt="" width="20" height="20" data-src="/icon/mail.svg" loading="lazy" />
-        </a>
-      </div><!-- /.ly_header_inner -->
-    </header><!-- /.ly_header -->
-
-    <main>
+    <Header />
+    <main class="ly_main">
       <ArchGrid>
         <div class="bl_common_pageTitle bl_common_pageTitle__bubble">
           <svg class="el_title_border">
@@ -91,7 +81,7 @@ import '../styles/page/about.scss';
           </div><!-- /.ly_section_text -->
         </section><!-- /.ly_section -->
       </ArchGrid>
-    </main><!-- /.ly_base -->
+    </main>
 
     <footer class="ly_footer">
       <nav class="bl_footer_pagination" aria-label="pagination">

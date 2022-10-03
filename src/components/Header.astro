@@ -1,0 +1,17 @@
+---
+import '../styles/layout/_header.scss';
+import '../styles/block/_header.scss';
+import '../styles/block/_progressbar.scss';
+---
+
+<header class="ly_header">
+  <div class="ly_header_inner">
+    <div class="bl_header_logo">
+      <img src="/img/logo.png" alt="Yurika's Portfolio" width="111" height="40" />
+    </div><!-- /.bl_header_logo -->
+    <progress class="bl_progressbar" max="100" value="40"></progress><!-- /.bl_progressbar -->
+    <a href="/contact" class="el_btn el_circleBtn el_circleBtn__pink bl_header_link" aria-label="お問い合わせ">
+      <img src="/img/empty.gif" alt="" width="20" height="20" data-src="/icon/mail.svg" loading="lazy" />
+    </a>
+  </div><!-- /.ly_header_inner -->
+</header><!-- /.ly_header -->

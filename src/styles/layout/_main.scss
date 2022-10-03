@@ -1,0 +1,11 @@
+@use '../mixin/' as mix;
+@use '../functions/' as *;
+
+.ly_main {
+  margin-top: var(--header-height);
+  padding-top: 32px;
+
+  @include mix.mq(lg) {
+    padding-top: var(--size-space-xsm);
+  }
+}

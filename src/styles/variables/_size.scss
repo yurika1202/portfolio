@@ -3,6 +3,7 @@
 :root {
   /* inner-width */
   --size-width-inner: calc(16 / 375 * 100vw);
+  --size-width-inner-header: calc(24 / 375 * 100vw);
 
   /* space */
   --size-space-xsm: 8px;
@@ -14,12 +15,16 @@
   --size-space-3xl: 80px;
   --size-space-4xl: 96px;
   --size-space-5xl: 128px;
+
+  /* component */
+  --header-height: 72px;
 }
 
 @include mix.mq(lg) {
   :root {
     /* inner-width */
     --size-width-inner: calc(102 / 1440 * 100vw);
+    --size-width-inner-header: calc(120 / 1440 * 100vw);
 
     /* space */
     --size-space-xsm: 16px;
@@ -31,5 +36,8 @@
     --size-space-3xl: 96px;
     --size-space-4xl: 128px;
     --size-space-5xl: 160px;
+
+    /* component */
+    --header-height: 144px;
   }
 }

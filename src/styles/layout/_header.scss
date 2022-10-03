@@ -1,0 +1,18 @@
+@use '../mixin/' as mix;
+@use '../functions/' as *;
+
+.ly_header {
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  width: 100%;
+  height: var(--header-height);
+}
+
+.ly_header_inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px var(--size-width-inner-header);
+  gap: var(--size-space-md);
+}

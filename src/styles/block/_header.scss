@@ -1,0 +1,11 @@
+@use '../mixin/' as mix;
+@use '../functions/' as *;
+
+.bl_header_logo {
+  width: 111px;
+}
+
+.bl_header_logo,
+.bl_header_link {
+  flex-shrink: 0;
+}
