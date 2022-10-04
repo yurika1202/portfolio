@@ -1,6 +1,11 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
 import { SITE } from '../config';
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import ArchGrid from '../layout/ArchGrid.astro';
+import Footer from '../components/Footer.astro';
+
+import '../styles/page/works.scss';
 ---
 
 <!DOCTYPE html>
@@ -8,42 +13,40 @@ import { SITE } from '../config';
   <head>
     <BaseHead title={SITE.title} description={SITE.description} />
   </head>
-  <body>
-    <header class="ly_header">
-      <div class="ly_header_inner">
-        <div class="bl_header_logo">
-          <img src="/img/logo.png" alt="Yurika's Portfolio" width="111" height="40" />
-        </div><!-- /.bl_header_logo -->
-        <progress class="bl_progressbar" max="100" value=""></progress><!-- /.bl_progressbar -->
-        <a href="/contact" class="el_btn el_circleBtn el_circleBtn_pink" aria-label="お問い合わせ">
-          <img src="/img/empty.gif" alt="" width="20" height="20" data-src="/icon/mail.svg" loading="lazy" />
-        </a>
-      </div><!-- /.ly_header_inner -->
-    </header><!-- /.ly_header -->
-
+  <body class="ly_bg_gradation">
+    <Header />
     <main class="ly_main">
-      <div class="ly_main_inner">
-        <div class="bl_common_pageTitle bl_common_pageTitle__icon">
-          <p>実績と制作</p>
-        </div><!-- /.bl_common_pageTitle -->
+      <ArchGrid>
+        <div class="bl_pageTitle bl_pageTitle_icon bl_pageTitle_icon__web">
+          <svg class="el_title_border el_title_border__pageTitle">
+            <text x="50%" y="50%" text-anchor="middle" dominant-baseline="central">実績と制作</text>
+          </svg>
+        </div><!-- /.bl_pageTitle -->
 
-        <section class="ly_section">
-          <div class="bl_works" id="crowdworks">
-            <div class="el_label_circle el_label_circle__lg">
+        <section class="ly_section__lg">
+          <div class="bl_works">
+            <div class="ly_section_title__works el_label_circle el_label_circle__lg">
               <p>実績</p>
-            </div><!-- /.el_label_circle -->
-            <div class="bl_works_selectItem">
-              <div class="bl_works_thmbnails">
-                <img src="/img/empty.gif" alt="hogeのサムネイル画像" width="255" height="240" />
-              </div><!-- /.bl_works_thmbnails -->
-              <div class="el_title el_title__blue">
-                <p>クラウドワークスでの受注</p>
-              </div><!-- /.el_title -->
+            </div><!-- /.ly_section_title__works -->
+            <div class="bl_works_selectItem" id="crowdworks">
               <div class="bl_works_info">
+                <div class="bl_works_thumbnails bl_works_thumbnails__icon">
+                  <img src="/img/empty.gif" alt="" data-src="/works/crowdworks/tmb.png" width="255" height="240" loading="lazy" />
+                </div><!-- /.bl_works_thumbnails -->
+                <div class="bl_works_title bl_common_box">
+                  <p>クラウドワークスでの受注</p>
+                </div><!-- /.bl_works_title -->
+                <div class="bl_works_btnWrap">
+                  <a href="/" aria-label="詳細をみる" class="el_btn el_circleBtn el_circleBtn__lightPink bl_works_moreBtn">
+                    <img src="/img/empty.gif" alt="" data-src="/icon/arrow.svg" width="20" height="20" loading="lazy" />
+                  </a>
+                </div><!-- /.bl_works_btnWrap -->
+              </div><!-- /.bl_works_info -->
+              <div class="bl_works_summary">
                 <table>
                   <tr>
                     <th>URL</th>
-                    <td>実績公開不可</td>
+                    <td><a href="http://" target="_blank" rel="noopener noreferrer">https://yurika1202.github.io/imgurl-direct/</a></td>
                   </tr>
                   <tr>
                     <th>担当</th>
@@ -70,145 +73,61 @@ import { SITE } from '../config';
                   </tr>
                 </table>
                 <div class="bl_works_linkWrap">
-                  <a href="https://crowdworks.jp/public/employees/2210160" class="el_btn el_basicBtn" target="_blank" rel="nofollow noopener noreferrer">CrowdWorksのページへ</a>
+                  <a href="https://crowdworks.jp/public/employees/2210160" class="el_btn el_basicBtn el_basicBtn__blank" target="_blank" rel="nofollow noopener noreferrer">CrowdWorksのページへ</a>
                 </div><!-- /.bl_works_linkWrap -->
-              </div><!-- /.bl_works_info -->
-              <div class="bl_works_btnWrap">
-                <a href="/" aria-label="詳細をみる">
-                  <img src="/img/empty.gif" alt="" date-src="/icon/arrow.svg" width="20" height="20" loading="lazy" />
-                </a>
-                <img src="/img/empty.gif" alt="" date-src="/img/more.svg" width="76" height="36" loading="lazy" />
-              </div><!-- /.bl_works_btnWrap -->
+              </div><!-- /.bl_works_summary -->
             </div><!-- /.bl_works_selectItem -->
 
             <div class="bl_works_slide">
               <ul class="bl_works_list">
-                <li>
-                  <div class="bl_works" id="crowdworks">
-                    <div class="el_label_circle el_label_circle__sm">
-                      <p>実績</p>
-                    </div><!-- /.el_label_circle -->
-                    <div class="bl_works_sliderItem">
-                      <div class="bl_works_thmbnails">
-                        <img src="/img/empty.gif" alt="hogeのサムネイル画像" width="255" height="240" />
-                      </div><!-- /.bl_works_thmbnails -->
-                      <div class="el_title el_title__blue">
-                        <p>クラウドワークスでの受注</p>
-                      </div><!-- /.el_title -->
-                    </div>
+                <li id="crowdworks">
+                  <div class="bl_works_itemLabel el_label_circle el_label_circle__sm">
+                    <p>実績</p>
+                  </div><!-- /.bl_works_itemLabel -->
+                  <div class="bl_works_info__list">
+                    <div class="bl_works_thumbnails bl_works_thumbnails__icon bl_works_thumbnails__list">
+                      <img src="/img/empty.gif" alt="" data-src="/works/crowdworks/tmb.png" width="192" height="192" loading="lazy" />
+                    </div><!-- /.bl_works_thumbnails -->
+                    <div class="bl_works_title bl_works_title__list bl_common_box">
+                      <p>クラウドワークスでの受注</p>
+                    </div><!-- /.bl_works_title -->
                   </div>
                 </li>
-                <li>
-                  <div class="bl_works" id="crowdworks">
-                    <div class="el_label_circle el_label_circle__sm">
-                      <p>実績</p>
-                    </div><!-- /.el_label_circle -->
-                    <div class="bl_works_sliderItem">
-                      <div class="bl_works_thmbnails">
-                        <img src="/img/empty.gif" alt="hogeのサムネイル画像" width="255" height="240" />
-                      </div><!-- /.bl_works_thmbnails -->
-                      <div class="el_title el_title__blue">
-                        <p>クラウドワークスでの受注</p>
-                      </div><!-- /.el_title -->
-                    </div>
+                <li id="community">
+                  <div class="bl_works_itemLabel el_label_circle el_label_circle__sm">
+                    <p>実績</p>
+                  </div><!-- /.bl_works_itemLabel -->
+                  <div class="bl_works_info__list">
+                    <div class="bl_works_thumbnails bl_works_thumbnails__noImg bl_works_thumbnails__list">
+                      <img src="/img/empty.gif" alt="" data-src="/works/noImg.png" width="158" height="40" loading="lazy" />
+                    </div><!-- /.bl_works_thumbnails -->
+                    <div class="bl_works_title bl_works_title__list bl_common_box">
+                      <p>オンラインコミュニティでの受注</p>
+                    </div><!-- /.bl_works_title -->
                   </div>
                 </li>
-                <li>
-                  <div class="bl_works" id="crowdworks">
-                    <div class="el_label_circle el_label_circle__sm">
-                      <p>実績</p>
-                    </div><!-- /.el_label_circle -->
-                    <div class="bl_works_sliderItem">
-                      <div class="bl_works_thmbnails">
-                        <img src="/img/empty.gif" alt="hogeのサムネイル画像" width="255" height="240" />
-                      </div><!-- /.bl_works_thmbnails -->
-                      <div class="el_title el_title__blue">
-                        <p>クラウドワークスでの受注</p>
-                      </div><!-- /.el_title -->
-                    </div>
+                <li id="directLink">
+                  <div class="bl_works_itemLabel el_label_circle el_label_circle__sm">
+                    <p>制作</p>
+                  </div><!-- /.bl_works_itemLabel -->
+                  <div class="bl_works_info__list">
+                    <div class="bl_works_thumbnails bl_works_thumbnails__list">
+                      <img src="/img/empty.gif" alt="" data-src="/works/directLink/tmb.png" width="192" height="192" loading="lazy" />
+                    </div><!-- /.bl_works_thumbnails -->
+                    <div class="bl_works_title bl_works_title__list bl_common_box">
+                      <p>ImageURL for direct link Generator</p>
+                    </div><!-- /.bl_works_title -->
                   </div>
                 </li>
-                <li>
-                  <div class="bl_works" id="crowdworks">
-                    <div class="el_label_circle el_label_circle__sm">
-                      <p>実績</p>
-                    </div><!-- /.el_label_circle -->
-                    <div class="bl_works_sliderItem">
-                      <div class="bl_works_thmbnails">
-                        <img src="/img/empty.gif" alt="hogeのサムネイル画像" width="255" height="240" />
-                      </div><!-- /.bl_works_thmbnails -->
-                      <div class="el_title el_title__blue">
-                        <p>クラウドワークスでの受注</p>
-                      </div><!-- /.el_title -->
-                    </div>
-                  </div>
-                </li>
-              </ul><!-- /.bl_works_list -->
-              <button type="button" class="el_btn el_circleBtn el_circleBtn_pink el_arrowBtn_next" aria-label="スライドを進める">
+              </ul>
+              <button type="button" class="bl_works_slideBtn el_btn el_circleBtn el_circleBtn__pink" aria-label="スライドを進める">
                 <img src="/img/empty.gif" data-src="/icon/arrow-s.svg" alt="" width="24" height="24" loading="lazy" />
               </button>
             </div><!-- /.bl_works_slide -->
           </div><!-- /.bl_works -->
         </section><!-- /.ly_section -->
-      </div><!-- /.ly_main_inner -->
+      </ArchGrid>
     </main><!-- /.ly_main -->
-
-    <footer class="ly_footer">
-      <nav class="bl_footer_pagination" aria-label="pagination">
-        <ul>
-          <li>
-            <a href="/" class="el_btn el_circleBtn el_circleBtn_blue el_arrowBtn_prev" aria-label="トップページへもどる">
-              <img src="/icon/arrow.svg" alt="" width="12" height="12" />
-            </a>
-          </li>
-          <li>
-            <button type="button" class="el_btn el_tocBtn js_drawerNav_btn" aria-label="もくじメニューを開く" aria-haspopup="true" aria-controls="drawerNav" aria-expanded="false">もくじ</button>
-          </li>
-          <li>
-            <a href="/works" class="el_btn el_circleBtn el_circleBtn_blue el_arrowBtn_next" aria-label="実績ページへ進む">
-              <img src="/icon/arrow.svg" alt="" width="12" height="12" />
-            </a>
-          </li>
-        </ul>
-      </nav><!-- /.bl_footer_pagination -->
-
-      <div class="bl_drawerNav" aria-label="drawer" id="drawerNav" aria-hidden="true">
-        <nav class="bl_drawerNav__section">
-          <div class="bl_sectionNav">
-            <p class="bl_drawerNav_title">実績</p>
-            <ul class="bl_sectionNav_list" role="menubar">
-              <li class="bl_sectionNav_item"><a href="#crowdworks" role="menuitem">クラウドワークスでの受注</a></li><!-- /.bl_sectionNav_item -->
-              <li class="bl_sectionNav_item"><a href="#comunity" role="menuitem">オンラインコミュニティでの受注</a></li><!-- /.bl_sectionNav_item -->
-            </ul><!-- /.bl_sectionNav_list -->
-          </div><!-- /.bl_sectionNav -->
-          <div class="bl_sectionNav">
-            <p class="bl_drawerNav_title">自主制作</p>
-            <ul class="bl_sectionNav_list" role="menubar">
-              <li class="bl_sectionNav_item"><a href="#directlinkgenerator" role="menuitem">ImageURL for direct link Generator</a></li><!-- /.bl_sectionNav_item -->
-              <li class="bl_sectionNav_item"><a href="#yurilog" role="menuitem">yurilog.</a></li><!-- /.bl_sectionNav_item -->
-              <li class="bl_sectionNav_item"><a href="#portfolio" role="menuitem">Yurika's Portfolio</a></li><!-- /.bl_sectionNav_item -->
-            </ul><!-- /.bl_sectionNav_list -->
-          </div><!-- /.bl_sectionNav -->
-        </nav><!-- /.bl_drawerNav__section -->
-
-        <nav class="bl_drawerNav__page">
-          <p class="bl_drawerNav_title">Page</p>
-          <ul class="bl_pageNav_list" role="menubar">
-            <li class="bl_pageNav_item"><a href="/about" role="menuitem">はじめまして</a></li><!-- /.bl_pageNav_item -->
-            <li class="bl_pageNav_item"><a href="/works" role="menuitem">実績と自主制作</a></li><!-- /.bl_pageNav_item -->
-            <li class="bl_pageNav_item"><a href="/contact" role="menuitem">お問い合わせ</a></li><!-- /.bl_pageNav_item -->
-            <li class="bl_pageNav_item"><a href="/end" role="menuitem">さいごに</a></li><!-- /.bl_pageNav_item -->
-          </ul><!-- /.bl_pageNav_list -->
-        </nav><!-- /.bl_drawerNav__page -->
-      </div><!-- /.bl_drawerNav -->
-
-      <div class="bl_footer_copyWrap">
-        <small class="el_copy">&copy; Yurika's Portfolio</small><!-- /.el_copy__top -->
-      </div><!-- /.bl_footer_copyWrap -->
-
-      <div class="bl_toTop">
-        <button type="button" class="el_btn el_circleBtn el_circleBtn__deepPink js_toTop_btn">Top</button>
-      </div><!-- /.bl_toTop -->
-    </footer><!-- /.ly_footer -->
+    <Footer />
   </body>
 </html>

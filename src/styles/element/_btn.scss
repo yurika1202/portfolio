@@ -1,5 +1,6 @@
 @use '../mixin/' as mix;
 @use '../functions/' as *;
+@use '../variables/other' as *;
 
 .el_btn {
   display: inline-block;
@@ -28,6 +29,10 @@
     background: color(--c-tertiary-accent);
   }
 
+  &__lightPink {
+    background: color(--c-tertiary-sober);
+  }
+
   img {
     display: inline;
     width: 20px;
@@ -54,12 +59,28 @@
   border: 2px solid color(--c-black);
   border-radius: 10px 50px 50px 10px;
   background: color(--c-secondary);
+  box-shadow: 3px 3px 0 color(--c-black);
   font-size: rem(16px);
   font-weight: bold;
   gap: 1em;
 
   @include mix.mq(lg) {
     font-size: rem(20px);
+  }
+
+  &__blank {
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      right: 16px;
+      width: 14px;
+      height: 14px;
+      transform: translateY(-50%);
+      background: url(#{$icon-path}/link.svg) no-repeat center center / contain;
+    }
   }
 }
 
