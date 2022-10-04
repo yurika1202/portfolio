@@ -9,7 +9,7 @@
   border: 3px solid color(--c-black);
   border-radius: 999px 999px 0 0;
 
-  @media print, screen and (min-width: $width-max-layoutBox) {
+  @media print, screen and (min-width: 1160px) {
     margin: 0 auto;
   }
 }
@@ -29,5 +29,5 @@
 
 .ly_base_inner {
   position: relative;
-  padding: 32px var(--size-width-inner);
+  padding: 32px var(--size-width-inner) var(--size-space-5xl);
 }
