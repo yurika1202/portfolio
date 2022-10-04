@@ -21,6 +21,10 @@
   &__pagination {
     text {
       font-size: rem(16px);
+
+      @include mix.mq(lg) {
+        font-size: rem(20px);
+      }
     }
   }
 

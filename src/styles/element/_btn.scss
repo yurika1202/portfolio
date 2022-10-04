@@ -33,6 +33,16 @@
     width: 20px;
     height: 20px;
   }
+
+  @include mix.mq(lg) {
+    width: 56px;
+    height: 56px;
+
+    img {
+      width: 28px;
+      height: 28px;
+    }
+  }
 }
 
 .el_basicBtn {
@@ -56,6 +66,10 @@
 .el_tocBtn {
   width: 54px;
   height: 24px;
+
+  @include mix.mq(lg) {
+    width: 72px;
+  }
 }
 
 .el_arrowBtn_prev,
@@ -66,6 +80,16 @@
   img {
     width: 12px;
     height: 12px;
+  }
+
+  @include mix.mq(lg) {
+    width: 40px;
+    height: 40px;
+
+    img {
+      width: 16px;
+      height: 16px;
+    }
   }
 }
 

@@ -3,15 +3,22 @@
 
 .bl_toTop {
   position: absolute;
-  top: -48px;
-  right: 0;
+  top: -24px;
+  right: -10px;
+
+  @include mix.mq(lg) {
+    top: -40px;
+    right: -20px;
+  }
 
   > button {
-    width: 32px;
-    height: 32px;
     font-family: var(--font-en);
     font-size: rem(10px);
     font-weight: bold;
     text-transform: uppercase;
+
+    @include mix.mq(lg) {
+      font-size: rem(18px);
+    }
   }
 }
