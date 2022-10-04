@@ -1,9 +1,15 @@
 @use '../mixin/' as mix;
 @use '../functions/' as *;
 
-.el_copy__horizon {
+.el_copy {
   font-family: var(--font-en);
-  font-size: rem(12px);
-  font-weight: bold;
+  font-size: rem(10px);
+  font-weight: 500;
   letter-spacing: 1px;
+  line-height: 1;
+
+  &__horizon {
+    font-size: rem(12px);
+    font-weight: bold;
+  }
 }

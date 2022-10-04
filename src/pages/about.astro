@@ -3,6 +3,7 @@ import { SITE } from '../config';
 import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import ArchGrid from '../layout/ArchGrid.astro';
+import Footer from '../components/Footer.astro';
 
 import '../styles/page/about.scss';
 ---
@@ -17,7 +18,7 @@ import '../styles/page/about.scss';
     <main class="ly_main">
       <ArchGrid>
         <div class="bl_common_pageTitle bl_common_pageTitle__bubble">
-          <svg class="el_title_border">
+          <svg class="el_title_border el_title_border__pageTitle">
             <text x="50%" y="50%" text-anchor="middle" dominant-baseline="central">はじめまして、</text>
             <text x="50%" y="50%" text-anchor="middle" dominant-baseline="central">ゆりかです</text>
           </svg>
@@ -82,63 +83,6 @@ import '../styles/page/about.scss';
         </section><!-- /.ly_section -->
       </ArchGrid>
     </main>
-
-    <footer class="ly_footer">
-      <nav class="bl_footer_pagination" aria-label="pagination">
-        <ul>
-          <li>
-            <a href="/" class="el_btn el_circleBtn el_circleBtn__blue el_arrowBtn_prev" aria-label="トップページへもどる">
-              <img src="/icon/arrow.svg" alt="" width="12" height="12" />
-            </a>
-          </li>
-          <li>
-            <button type="button" class="el_btn el_tocBtn js_drawerNav_btn" aria-label="もくじメニューを開く" aria-haspopup="true" aria-controls="drawerNav" aria-expanded="false">もくじ</button>
-          </li>
-          <li>
-            <a href="/works" class="el_btn el_circleBtn el_circleBtn__blue el_arrowBtn_next" aria-label="実績ページへ進む">
-              <img src="/icon/arrow.svg" alt="" width="12" height="12" />
-            </a>
-          </li>
-        </ul>
-      </nav><!-- /.bl_footer_pagination -->
-
-      <div class="bl_drawerNav" aria-label="drawer" id="drawerNav" aria-hidden="true">
-        <nav class="bl_drawerNav__section">
-          <div class="bl_sectionNav">
-            <p class="bl_drawerNav_title">実績</p>
-            <ul class="bl_sectionNav_list" role="menubar">
-              <li class="bl_sectionNav_item"><a href="#crowdworks" role="menuitem">クラウドワークスでの受注</a></li><!-- /.bl_sectionNav_item -->
-              <li class="bl_sectionNav_item"><a href="#comunity" role="menuitem">オンラインコミュニティでの受注</a></li><!-- /.bl_sectionNav_item -->
-            </ul><!-- /.bl_sectionNav_list -->
-          </div><!-- /.bl_sectionNav -->
-          <div class="bl_sectionNav">
-            <p class="bl_drawerNav_title">自主制作</p>
-            <ul class="bl_sectionNav_list" role="menubar">
-              <li class="bl_sectionNav_item"><a href="#directlinkgenerator" role="menuitem">ImageURL for direct link Generator</a></li><!-- /.bl_sectionNav_item -->
-              <li class="bl_sectionNav_item"><a href="#yurilog" role="menuitem">yurilog.</a></li><!-- /.bl_sectionNav_item -->
-              <li class="bl_sectionNav_item"><a href="#portfolio" role="menuitem">Yurika's Portfolio</a></li><!-- /.bl_sectionNav_item -->
-            </ul><!-- /.bl_sectionNav_list -->
-          </div><!-- /.bl_sectionNav -->
-        </nav><!-- /.bl_drawerNav__section -->
-
-        <nav class="bl_drawerNav__page">
-          <p class="bl_drawerNav_title">Page</p>
-          <ul class="bl_pageNav_list" role="menubar">
-            <li class="bl_pageNav_item"><a href="/about" role="menuitem">はじめまして</a></li><!-- /.bl_pageNav_item -->
-            <li class="bl_pageNav_item"><a href="/works" role="menuitem">実績と自主制作</a></li><!-- /.bl_pageNav_item -->
-            <li class="bl_pageNav_item"><a href="/contact" role="menuitem">お問い合わせ</a></li><!-- /.bl_pageNav_item -->
-            <li class="bl_pageNav_item"><a href="/end" role="menuitem">さいごに</a></li><!-- /.bl_pageNav_item -->
-          </ul><!-- /.bl_pageNav_list -->
-        </nav><!-- /.bl_drawerNav__page -->
-      </div><!-- /.bl_drawerNav -->
-
-      <div class="bl_footer_copyWrap">
-        <small class="el_copy">&copy; Yurika's Portfolio</small><!-- /.el_copy__top -->
-      </div><!-- /.bl_footer_copyWrap -->
-
-      <div class="bl_toTop">
-        <button type="button" class="el_btn el_circleBtn el_circleBtn__deepPink js_toTop_btn">Top</button>
-      </div><!-- /.bl_toTop -->
-    </footer><!-- /.ly_footer -->
+    <Footer />
   </body>
 </html>

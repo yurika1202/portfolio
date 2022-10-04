@@ -24,6 +24,10 @@
     background: color(--c-secondary);
   }
 
+  &__deepPink {
+    background: color(--c-tertiary-accent);
+  }
+
   img {
     display: inline;
     width: 20px;
@@ -46,5 +50,27 @@
 
   @include mix.mq(lg) {
     font-size: rem(20px);
+  }
+}
+
+.el_tocBtn {
+  width: 54px;
+  height: 24px;
+}
+
+.el_arrowBtn_prev,
+.el_arrowBtn_next {
+  width: 32px;
+  height: 32px;
+
+  img {
+    width: 12px;
+    height: 12px;
+  }
+}
+
+.el_arrowBtn_prev {
+  img {
+    transform: rotate(-180deg);
   }
 }

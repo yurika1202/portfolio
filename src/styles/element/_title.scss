@@ -16,25 +16,35 @@
     line-height: 1.4;
     stroke-linejoin: round;
     paint-order: stroke;
+  }
 
-    &:nth-of-type(1) {
-      transform: translateY(-14px);
+  &__pagination {
+    text {
+      font-size: rem(16px);
+    }
+  }
+
+  &__pageTitle {
+    text {
+      &:nth-of-type(1) {
+        transform: translateY(-14px);
+
+        @include mix.mq(md) {
+          transform: translateY(-20px);
+        }
+      }
+
+      &:nth-of-type(2) {
+        transform: translateY(14px);
+
+        @include mix.mq(md) {
+          transform: translateY(20px);
+        }
+      }
 
       @include mix.mq(md) {
-        transform: translateY(-20px);
+        font-size: rem(32px);
       }
-    }
-
-    &:nth-of-type(2) {
-      transform: translateY(14px);
-
-      @include mix.mq(md) {
-        transform: translateY(20px);
-      }
-    }
-
-    @include mix.mq(md) {
-      font-size: rem(32px);
     }
   }
 }

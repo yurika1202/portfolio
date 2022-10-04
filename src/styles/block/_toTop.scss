@@ -1,0 +1,17 @@
+@use '../mixin/' as mix;
+@use '../functions/' as *;
+
+.bl_toTop {
+  position: absolute;
+  top: -48px;
+  right: 0;
+
+  > button {
+    width: 32px;
+    height: 32px;
+    font-family: var(--font-en);
+    font-size: rem(10px);
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+}

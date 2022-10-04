@@ -1,0 +1,7 @@
+@use '../mixin/' as mix;
+@use '../functions/' as *;
+
+.bl_drawerNav {
+  visibility: hidden;
+  opacity: 0;
+}
