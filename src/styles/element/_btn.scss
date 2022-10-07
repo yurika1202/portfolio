@@ -52,6 +52,7 @@
 
 .el_basicBtn {
   display: inline-flex;
+  position: relative;
   align-items: center;
   justify-content: space-between;
   max-width: calc(343 / 375 * 100%);
@@ -64,13 +65,15 @@
   font-weight: bold;
   gap: 1em;
 
+  img {
+    width: 35%;
+  }
+
   @include mix.mq(lg) {
     font-size: rem(20px);
   }
 
   &__blank {
-    position: relative;
-
     &::after {
       content: '';
       position: absolute;

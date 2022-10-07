@@ -91,5 +91,11 @@
         background: url(#{$icon-path}web.svg) no-repeat center center / contain;
       }
     }
+
+    &__mail {
+      &::before {
+        background: url(#{$icon-path}mail.svg) no-repeat center center / contain;
+      }
+    }
   }
 }
