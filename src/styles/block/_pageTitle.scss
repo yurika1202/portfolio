@@ -97,5 +97,11 @@
         background: url(#{$icon-path}mail.svg) no-repeat center center / contain;
       }
     }
+
+    &__smile {
+      &::before {
+        background: url(#{$icon-path}smile.svg) no-repeat center center / contain;
+      }
+    }
   }
 }
