@@ -5,6 +5,7 @@
   $width-max-layoutBox: 994px;
 
   max-width: $width-max-layoutBox;
+  min-height: calc(100vh - 104px);
   margin: 0 var(--size-width-inner);
   border: 3px solid color(--c-black);
   border-radius: 999px 999px 0 0;
