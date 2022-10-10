@@ -6,7 +6,7 @@ import '../styles/block/_toTop.scss';
 import '../styles/element/_copy.scss';
 ---
 
-<footer class="ly_footer">
+<footer id="footer" class="ly_footer">
   <div class="ly_footer_inner">
     <nav class="bl_footer_pagination" aria-label="pagination">
       <ul>
@@ -16,7 +16,7 @@ import '../styles/element/_copy.scss';
           </a>
         </li>
         <li>
-          <button type="button" class="el_btn el_tocBtn js_drawerNav_btn" aria-label="もくじメニューを開く" aria-haspopup="true" aria-controls="drawerNav" aria-expanded="false">
+          <button type="button" id="js_drawerNav_btn" class="el_btn el_tocBtn" aria-label="メニューを開く" aria-haspopup="true" aria-controls="drawerNav" aria-expanded="false">
             <svg class="el_title_border el_title_border__pagination">
               <text x="50%" y="50%" text-anchor="middle" dominant-baseline="central">もくじ</text>
             </svg>
@@ -30,7 +30,7 @@ import '../styles/element/_copy.scss';
       </ul>
     </nav><!-- /.bl_footer_pagination -->
 
-    <div class="ly_drawerNav bl_footer_nav" aria-label="drawer" id="drawerNav" aria-hidden="true">
+    <div id="js_drawerNav" class="ly_drawerNav bl_footer_nav" aria-label="drawer" id="drawerNav" aria-hidden="true">
       <div class="ly_drawerNav__inner">
         <nav class="bl_drawerNav__section">
           <div class="bl_sectionNav">
@@ -79,3 +79,13 @@ import '../styles/element/_copy.scss';
     </div><!-- /.bl_footer_copyWrap -->
   </div><!-- /.ly_footer_inner -->
 </footer><!-- /.ly_footer -->
+
+<script>
+  import drawerToggle from '../js/drawer';
+
+  const toggleBtn = document.getElementById('js_drawerNav_btn') as HTMLButtonElement;
+  const drawerNav = document.getElementById('js_drawerNav');
+  if (drawerNav != null) {
+    drawerToggle(toggleBtn, drawerNav);
+  }
+</script>

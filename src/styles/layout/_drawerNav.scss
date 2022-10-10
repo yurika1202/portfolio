@@ -2,13 +2,18 @@
 @use '../functions/' as *;
 
 .ly_drawerNav {
-  // visibility: hidden;
-  // opacity: 0;
-
+  visibility: hidden;
+  height: 0;
+  transition: visibility 0.4s ease-in-out, height 0.4s ease;
   border-right: 2px solid color(--c-black);
   border-bottom: 2px solid color(--c-black);
   border-left: 2px solid color(--c-black);
   background: color(--c-bg-toc);
+
+  &[aria-hidden='false'] {
+    visibility: visible;
+    height: 60vh;
+  }
 }
 
 .ly_drawerNav__inner {
