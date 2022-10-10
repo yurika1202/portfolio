@@ -1,0 +1,31 @@
+@use '../mixin/' as mix;
+@use '../functions/' as *;
+
+.ly_drawerNav {
+  // visibility: hidden;
+  // opacity: 0;
+
+  border-right: 2px solid color(--c-black);
+  border-bottom: 2px solid color(--c-black);
+  border-left: 2px solid color(--c-black);
+  background: color(--c-bg-toc);
+}
+
+.ly_drawerNav__inner {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+  padding: 0 var(--size-space-sm);
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  @include mix.mq(md) {
+    overflow-x: hidden;
+  }
+}
