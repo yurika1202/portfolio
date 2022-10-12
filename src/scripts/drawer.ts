@@ -3,7 +3,7 @@
  */
 
 import { scrollLock } from './logics/scrollLock';
-import { drawerFocus } from './logics/focusControl';
+import { focusElement, focusFirstElement, focusBackContents } from './logics/focusControl';
 
 const btn = document.getElementById('js_drawerNav_btn') as HTMLButtonElement;
 const nav = document.getElementById('js_drawerNav') as HTMLDivElement;
@@ -15,6 +15,8 @@ const openContents = () => {
   btn.setAttribute('aria-expanded', 'true');
   btn.setAttribute('aria-label', 'メニューを閉じる');
   nav.setAttribute('aria-hidden', 'false');
+  focusElement(nav);
+  focusBackContents();
 };
 
 /** コンテンツ非表示処理 */
@@ -24,6 +26,8 @@ const closeContents = () => {
   btn.setAttribute('aria-expanded', 'false');
   btn.setAttribute('aria-label', 'メニューを開く');
   nav.setAttribute('aria-hidden', 'true');
+  focusElement(nav);
+  focusBackContents();
 };
 
 /** ドロワー開閉ボタンクリック時の挙動 */
@@ -33,6 +37,7 @@ btn.addEventListener('click', event => {
   if (!isShow) {
     openContents();
     document.addEventListener('touchmove', scrollLock, { passive: false });
+    focusFirstElement(nav);
   } else {
     closeContents();
     document.removeEventListener('touchmove', scrollLock);
@@ -43,5 +48,14 @@ btn.addEventListener('click', event => {
 document.addEventListener('click', event => {
   if (event.target instanceof HTMLElement && !event.target.closest('#js_drawerNav')) {
     closeContents();
+  }
+});
+
+/** Escapeキー選択時の挙動 */
+const footer = document.querySelector('footer');
+footer!.addEventListener('keydown', event => {
+  if (event.code === 'Escape') {
+    closeContents();
+    btn.focus();
   }
 });

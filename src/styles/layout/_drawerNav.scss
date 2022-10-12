@@ -2,16 +2,14 @@
 @use '../functions/' as *;
 
 .ly_drawerNav {
-  visibility: hidden;
   height: 0;
-  transition: visibility 0.4s ease-in-out, height 0.4s ease;
+  transition: height 0.4s ease-in-out;
   border-right: 2px solid color(--c-black);
   border-bottom: 2px solid color(--c-black);
   border-left: 2px solid color(--c-black);
   background: color(--c-bg-toc);
 
   &.is_show {
-    visibility: visible;
     height: 60vh;
   }
 }
