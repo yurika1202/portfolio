@@ -1,1 +1,2 @@
+import './imgLoad';
 import './drawer';
