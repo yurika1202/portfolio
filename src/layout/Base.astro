@@ -1,0 +1,14 @@
+---
+import { SITE } from '../config';
+import BaseHead from '../components/BaseHead.astro';
+---
+
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <BaseHead title={SITE.title} description={SITE.description} />
+  </head>
+  <body class="ly_bg_gradation">
+    <slot />
+  </body>
+</html>

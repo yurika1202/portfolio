@@ -6,7 +6,7 @@ import '../styles/block/_toTop.scss';
 import '../styles/element/_copy.scss';
 ---
 
-<footer class="ly_footer">
+<footer id="footer" class="ly_footer">
   <div class="ly_footer_inner">
     <nav class="bl_footer_pagination" aria-label="pagination">
       <ul>
@@ -16,7 +16,7 @@ import '../styles/element/_copy.scss';
           </a>
         </li>
         <li>
-          <button type="button" class="el_btn el_tocBtn js_drawerNav_btn" aria-label="もくじメニューを開く" aria-haspopup="true" aria-controls="drawerNav" aria-expanded="false">
+          <button type="button" id="js_drawerNav_btn" class="el_btn el_tocBtn" aria-label="メニューを開く" aria-haspopup="true" aria-controls="drawerNav" aria-expanded="false">
             <svg class="el_title_border el_title_border__pagination">
               <text x="50%" y="50%" text-anchor="middle" dominant-baseline="central">もくじ</text>
             </svg>
@@ -30,34 +30,44 @@ import '../styles/element/_copy.scss';
       </ul>
     </nav><!-- /.bl_footer_pagination -->
 
-    <div class="bl_drawerNav bl_footer_nav" aria-label="drawer" id="drawerNav" aria-hidden="true">
-      <nav class="bl_drawerNav__section">
-        <div class="bl_sectionNav">
-          <p class="bl_drawerNav_title">実績</p>
-          <ul class="bl_sectionNav_list" role="menubar">
-            <li class="bl_sectionNav_item"><a href="#crowdworks" role="menuitem">クラウドワークスでの受注</a></li><!-- /.bl_sectionNav_item -->
-            <li class="bl_sectionNav_item"><a href="#comunity" role="menuitem">オンラインコミュニティでの受注</a></li><!-- /.bl_sectionNav_item -->
-          </ul><!-- /.bl_sectionNav_list -->
-        </div><!-- /.bl_sectionNav -->
-        <div class="bl_sectionNav">
-          <p class="bl_drawerNav_title">自主制作</p>
-          <ul class="bl_sectionNav_list" role="menubar">
-            <li class="bl_sectionNav_item"><a href="#directlinkgenerator" role="menuitem">ImageURL for direct link Generator</a></li><!-- /.bl_sectionNav_item -->
-            <li class="bl_sectionNav_item"><a href="#yurilog" role="menuitem">yurilog.</a></li><!-- /.bl_sectionNav_item -->
-            <li class="bl_sectionNav_item"><a href="#portfolio" role="menuitem">Yurika's Portfolio</a></li><!-- /.bl_sectionNav_item -->
-          </ul><!-- /.bl_sectionNav_list -->
-        </div><!-- /.bl_sectionNav -->
-      </nav><!-- /.bl_drawerNav__section -->
+    <div id="js_drawerNav" class="ly_drawerNav bl_footer_nav" aria-label="drawer" id="drawerNav" aria-hidden="true">
+      <div class="ly_drawerNav__inner">
+        <nav class="bl_drawerNav__section is_canScroll">
+          <div class="bl_sectionNav">
+            <svg class="el_title_border el_title_border__blue">
+              <text x="50%" y="50%" text-anchor="start" dominant-baseline="central">実績</text>
+            </svg>
+            <ul class="bl_sectionNav_list" role="menubar">
+              <li class="bl_sectionNav_item"><a href="#crowdworks" role="menuitem" tabindex="-1">クラウドワークスでの受注</a></li><!-- /.bl_sectionNav_item -->
+              <li class="bl_sectionNav_item"><a href="#comunity" role="menuitem" tabindex="-1">オンラインコミュニティでの受注</a></li><!-- /.bl_sectionNav_item -->
+            </ul><!-- /.bl_sectionNav_list -->
+          </div><!-- /.bl_sectionNav -->
+          <div class="bl_sectionNav">
+            <svg class="el_title_border el_title_border__blue">
+              <text x="50%" y="50%" text-anchor="middle" dominant-baseline="central">自主制作</text>
+            </svg>
+            <ul class="bl_sectionNav_list" role="menubar">
+              <li class="bl_sectionNav_item"><a href="#directlinkgenerator" role="menuitem" tabindex="-1">ImageURL for direct link Generator</a></li><!-- /.bl_sectionNav_item -->
+              <li class="bl_sectionNav_item"><a href="#yurilog" role="menuitem" tabindex="-1">yurilog.</a></li><!-- /.bl_sectionNav_item -->
+              <li class="bl_sectionNav_item"><a href="#portfolio" role="menuitem" tabindex="-1">Yurika's Portfolio</a></li><!-- /.bl_sectionNav_item -->
+            </ul><!-- /.bl_sectionNav_list -->
+          </div><!-- /.bl_sectionNav -->
+        </nav><!-- /.bl_drawerNav__section -->
 
-      <nav class="bl_drawerNav__page">
-        <p class="bl_drawerNav_title">Page</p>
-        <ul class="bl_pageNav_list" role="menubar">
-          <li class="bl_pageNav_item"><a href="/about" role="menuitem">はじめまして</a></li><!-- /.bl_pageNav_item -->
-          <li class="bl_pageNav_item"><a href="/works" role="menuitem">実績と自主制作</a></li><!-- /.bl_pageNav_item -->
-          <li class="bl_pageNav_item"><a href="/contact" role="menuitem">お問い合わせ</a></li><!-- /.bl_pageNav_item -->
-          <li class="bl_pageNav_item"><a href="/end" role="menuitem">さいごに</a></li><!-- /.bl_pageNav_item -->
-        </ul><!-- /.bl_pageNav_list -->
-      </nav><!-- /.bl_drawerNav__page -->
+        <nav class="bl_drawerNav__page">
+          <svg class="el_title_border el_title_border__blue">
+            <text x="50%" y="50%" text-anchor="middle" dominant-baseline="central">Page</text>
+          </svg>
+          <div class="bl_drawerNav_pageNavWrap">
+            <ul class="bl_pageNav_list" role="menubar">
+              <li class="bl_pageNav_item"><a href="/about" role="menuitem" tabindex="-1">はじめまして</a></li><!-- /.bl_pageNav_item -->
+              <li class="bl_pageNav_item"><a href="/works" role="menuitem" tabindex="-1">実績と自主制作</a></li><!-- /.bl_pageNav_item -->
+              <li class="bl_pageNav_item"><a href="/contact" role="menuitem" tabindex="-1">お問い合わせ</a></li><!-- /.bl_pageNav_item -->
+              <li class="bl_pageNav_item"><a href="/end" role="menuitem" tabindex="-1">さいごに</a></li><!-- /.bl_pageNav_item -->
+            </ul><!-- /.bl_pageNav_list -->
+          </div><!-- /.bl_drawerNav_pageNavWrap -->
+        </nav><!-- /.bl_drawerNav__page -->
+      </div><!-- /.bl_drawerNav__inner -->
     </div><!-- /.bl_drawerNav -->
 
     <div class="bl_toTop">

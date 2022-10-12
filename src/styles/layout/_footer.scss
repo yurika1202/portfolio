@@ -4,7 +4,7 @@
 .ly_footer {
   position: fixed;
   z-index: 100;
-  bottom: -2px;
+  bottom: -4px;
   left: 50%;
   width: 100%;
   transform: translateX(-50%);
@@ -15,7 +15,6 @@
 
   position: relative;
   max-width: $width-max-footer;
-  height: var(--footer-height);
   margin: 0 calc(var(--size-width-inner) - 8px);
 
   @media print, screen and (min-width: 1178px) {

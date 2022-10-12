@@ -26,6 +26,10 @@ body {
   @include mix.mq(lg) {
     font-size: rem(16px);
   }
+
+  &.is_scrollLock {
+    overflow: hidden;
+  }
 }
 
 @supports (min-height: 100dvh) {
