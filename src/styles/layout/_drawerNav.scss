@@ -10,7 +10,7 @@
   border-left: 2px solid color(--c-black);
   background: color(--c-bg-toc);
 
-  &[aria-hidden='false'] {
+  &.is_show {
     visibility: visible;
     height: 60vh;
   }
