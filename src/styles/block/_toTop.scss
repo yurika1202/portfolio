@@ -12,10 +12,21 @@
   }
 
   > button {
+    visibility: hidden;
+    transition: visibility 0.3s ease-in-out, opacity 0.3s ease-in-out, scale 0.3s ease-in-out;
+    opacity: 0;
     font-family: var(--font-en);
     font-size: rem(10px);
     font-weight: bold;
     text-transform: uppercase;
+    scale: 0;
+
+    &.is_display {
+      visibility: visible;
+      transition: visibility 0.3s ease-in-out, opacity 0.3s ease-in-out, scale 0.3s ease-in-out;
+      opacity: 1;
+      scale: 1;
+    }
 
     @include mix.mq(lg) {
       font-size: rem(18px);

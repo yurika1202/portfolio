@@ -71,11 +71,35 @@ import '../styles/element/_copy.scss';
     </div><!-- /.bl_drawerNav -->
 
     <div class="bl_toTop">
-      <button type="button" class="el_btn el_circleBtn el_circleBtn__deepPink js_toTop_btn">Top</button>
+      <button type="button" class="el_btn el_circleBtn el_circleBtn__deepPink" id="js_toTop_btn">Top</button>
     </div><!-- /.bl_toTop -->
 
-    <div class="bl_footer_copyWrap">
+    <div class="bl_footer_copyWrap" id="js_copy">
       <small class="el_copy">&copy; Yurika's Portfolio</small><!-- /.el_copy__top -->
     </div><!-- /.bl_footer_copyWrap -->
   </div><!-- /.ly_footer_inner -->
 </footer><!-- /.ly_footer -->
+
+<script>
+  // toTopボタンの表示・非表示
+  const toTopBtn = document.getElementById('js_toTop_btn') as HTMLButtonElement;
+  const toTopBtnPositionRate = 0.3;
+  const toTopBtnDisplayPosition = document.body.clientHeight * toTopBtnPositionRate;
+
+  window.addEventListener('scroll', () => {
+    let scrollY = window.scrollY;
+    if (scrollY > toTopBtnDisplayPosition) {
+      toTopBtn.classList.add('is_display');
+    } else {
+      toTopBtn.classList.remove('is_display');
+    }
+  });
+
+  // ページトップ移動
+  toTopBtn.addEventListener('click', () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  });
+</script>
