@@ -24,13 +24,9 @@ import '../styles/block/_progressbar.scss';
     const scrollY = document.documentElement.scrollTop;
 
     if (setPosition < scrollY) {
-      console.log('down');
       header.classList.add('is_hide');
-      header.classList.remove('is_display');
     } else {
-      console.log('up');
       header.classList.remove('is_hide');
-      header.classList.add('is_display');
     }
 
     setPosition = scrollY;
