@@ -9,7 +9,7 @@ import '../styles/block/_progressbar.scss';
     <div class="bl_header_logo">
       <img src="/img/logo.png" alt="Yurika's Portfolio" width="111" height="40" />
     </div><!-- /.bl_header_logo -->
-    <progress class="bl_progressbar" max="100" value="40"></progress><!-- /.bl_progressbar -->
+    <progress class="bl_progressbar" id="js_progressbar" max="100" value=""></progress><!-- /.bl_progressbar -->
     <a href="/contact" class="el_btn el_circleBtn el_circleBtn__pink bl_header_link" aria-label="お問い合わせ">
       <img src="/img/empty.gif" alt="" width="20" height="20" data-src="/icon/mail.svg" loading="lazy" />
     </a>
@@ -18,17 +18,28 @@ import '../styles/block/_progressbar.scss';
 
 <script>
   const header = document.getElementById('js_header') as HTMLElement;
+  const progressbar = document.getElementById('js_progressbar') as HTMLProgressElement;
+  const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
   let setPosition = 0;
 
   window.addEventListener('scroll', () => {
     const scrollY = document.documentElement.scrollTop;
 
+    // headerの表示・非表示
     if (setPosition < scrollY) {
       header.classList.add('is_hide');
     } else {
       header.classList.remove('is_hide');
     }
-
     setPosition = scrollY;
+
+    // progressbarのvalue更新
+    const progressValue = (scrollY / height) * 100;
+    progressbar.value = progressValue;
+    if (progressValue > 0) {
+      progressbar.classList.add('is_scrolling');
+    } else {
+      progressbar.classList.remove('is_scrolling');
+    }
   });
 </script>
