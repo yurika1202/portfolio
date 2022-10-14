@@ -7,6 +7,11 @@
   top: 0;
   width: 100%;
   height: var(--header-height);
+  transition: transform 0.3s ease;
+
+  &.is_hide {
+    transform: translateY(calc(var(--header-height) * -1));
+  }
 }
 
 .ly_header_inner {

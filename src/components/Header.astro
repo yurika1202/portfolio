@@ -4,7 +4,7 @@ import '../styles/block/_header.scss';
 import '../styles/block/_progressbar.scss';
 ---
 
-<header class="ly_header">
+<header class="ly_header" id="js_header">
   <div class="ly_header_inner">
     <div class="bl_header_logo">
       <img src="/img/logo.png" alt="Yurika's Portfolio" width="111" height="40" />
@@ -15,3 +15,20 @@ import '../styles/block/_progressbar.scss';
     </a>
   </div><!-- /.ly_header_inner -->
 </header><!-- /.ly_header -->
+
+<script>
+  const header = document.getElementById('js_header') as HTMLElement;
+  let setPosition = 0;
+
+  window.addEventListener('scroll', () => {
+    const scrollY = document.documentElement.scrollTop;
+
+    if (setPosition < scrollY) {
+      header.classList.add('is_hide');
+    } else {
+      header.classList.remove('is_hide');
+    }
+
+    setPosition = scrollY;
+  });
+</script>
