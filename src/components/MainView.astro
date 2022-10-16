@@ -9,10 +9,12 @@ export interface Props {
 const { src = '/img/logo-wh.png', alt = "Yurika's Portfolio", style = 'background-color: #827dad' } = Astro.props;
 ---
 
-<div class="bl_mv js_notFocus">
-  <slot />
-  <div class="bl_mv_textBox bl_common_box" style={style}>
-    <img src={src} alt={alt} width="284" height="96" />
-  </div><!-- /.bl_mv_textBox -->
-  <!-- /.bl_mv -->
-</div>
+<>
+  <div class="bl_mv js_notFocus">
+    <slot />
+    <div class="bl_mv_textBox bl_common_box" style={style}>
+      <img src={src} alt={alt} width="284" height="96" />
+    </div><!-- /.bl_mv_textBox -->
+    <!-- /.bl_mv -->
+  </div>
+</>
