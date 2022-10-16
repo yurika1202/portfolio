@@ -2,6 +2,7 @@
 import Base from '../layout/Base.astro';
 import Header from '../components/Header.astro';
 import ArchGrid from '../layout/grid/ArchGrid.astro';
+import WorksCard from '../components/WorksCard.astro';
 import Footer from '../components/Footer.astro';
 
 import '../styles/page/works.scss';
@@ -13,113 +14,66 @@ import '../styles/page/works.scss';
     <ArchGrid>
       <div class="bl_pageTitle bl_pageTitle_icon bl_pageTitle_icon__web">
         <svg class="el_title_border el_title_border__pageTitle">
-          <text x="50%" y="50%" text-anchor="middle" dominant-baseline="central">実績と制作</text>
+          <text x="50%" y="50%" text-anchor="middle" dominant-baseline="central"
+            >実績と自主制作</text
+          >
         </svg>
       </div><!-- /.bl_pageTitle -->
 
       <section class="ly_section__lg">
-        <div class="bl_works">
-          <div class="ly_section_title__works el_label_circle el_label_circle__lg">
-            <p>実績</p>
-          </div><!-- /.ly_section_title__works -->
-          <div class="bl_works_selectItem" id="crowdworks">
-            <div class="bl_works_info">
-              <div class="bl_works_thumbnails bl_works_thumbnails__icon">
-                <img src="/img/empty.gif" alt="" data-src="/works/crowdworks/tmb.png" width="255" height="240" loading="lazy" />
-              </div><!-- /.bl_works_thumbnails -->
-              <div class="bl_works_title bl_common_box">
-                <p>クラウドワークスでの受注</p>
-              </div><!-- /.bl_works_title -->
-              <div class="bl_works_btnWrap">
-                <a href="/" aria-label="詳細をみる" class="el_btn el_circleBtn el_circleBtn__lightPink bl_works_moreBtn">
-                  <img src="/img/empty.gif" alt="" data-src="/icon/arrow.svg" width="20" height="20" loading="lazy" />
-                </a>
-              </div><!-- /.bl_works_btnWrap -->
-            </div><!-- /.bl_works_info -->
-            <div class="bl_works_summary">
-              <table>
-                <tr>
-                  <th>URL</th>
-                  <td><a href="http://" target="_blank" rel="noopener noreferrer">https://yurika1202.github.io/imgurl-direct/</a></td>
-                </tr>
-                <tr>
-                  <th>担当</th>
-                  <td>コーディング</td>
-                </tr>
-                <tr>
-                  <th>使用技術</th>
-                  <td>HTML/CSS(DartSass)/TypeScript</td>
-                </tr>
-                <tr>
-                  <th>デザインツール</th>
-                  <td>Adobe Illustrator</td>
-                </tr>
-                <tr>
-                  <th>実装機能</th>
-                  <td>
-                    スクロールアニメーション<br />
-                    スライダータブ切り替え<br />
-                    Googleフォーム連携
-                  </td>
-                </tr>
-                <tr>
-                  <td>2サイトのコーディング</td>
-                </tr>
-              </table>
-              <div class="bl_works_linkWrap">
-                <a href="https://crowdworks.jp/public/employees/2210160" class="el_btn el_basicBtn el_basicBtn__blank" target="_blank" rel="nofollow noopener noreferrer">CrowdWorksのページへ</a>
-              </div><!-- /.bl_works_linkWrap -->
-            </div><!-- /.bl_works_summary -->
-          </div><!-- /.bl_works_selectItem -->
+        <div class="el_title">
+          <p>実績</p>
+        </div><!-- /.bl_works_sectionTitle -->
+        <ul class="bl_works_list">
+          <li id="crowdworks">
+            <WorksCard
+              link={'/crowdworks'}
+              tmb={'/works/crowdworks/tmb.png'}
+              tmbType={'icon'}
+              title={'こども園のサイトと採用サイトのコーディング'}
+              comment={'【実績詳細公開不可】JavaScriptでのアニメーションなど、動きのある静的サイトのコーディングをさせていただきました。'}
+              skill={'HTML/CSS(DartSass)/JavaScript'}
+            />
+          </li>
+        </ul><!-- /.bl_works_list -->
+      </section><!-- /.ly_section__lg -->
 
-          <div class="bl_works_slide">
-            <ul class="bl_works_list">
-              <li id="crowdworks">
-                <div class="bl_works_itemLabel el_label_circle el_label_circle__sm">
-                  <p>実績</p>
-                </div><!-- /.bl_works_itemLabel -->
-                <div class="bl_works_info__list">
-                  <div class="bl_works_thumbnails bl_works_thumbnails__icon bl_works_thumbnails__list">
-                    <img src="/img/empty.gif" alt="" data-src="/works/crowdworks/tmb.png" width="192" height="192" loading="lazy" />
-                  </div><!-- /.bl_works_thumbnails -->
-                  <div class="bl_works_title bl_works_title__list bl_common_box">
-                    <p>クラウドワークスでの受注</p>
-                  </div><!-- /.bl_works_title -->
-                </div>
-              </li>
-              <li id="community">
-                <div class="bl_works_itemLabel el_label_circle el_label_circle__sm">
-                  <p>実績</p>
-                </div><!-- /.bl_works_itemLabel -->
-                <div class="bl_works_info__list">
-                  <div class="bl_works_thumbnails bl_works_thumbnails__noImg bl_works_thumbnails__list">
-                    <img src="/img/empty.gif" alt="" data-src="/works/noImg.png" width="158" height="40" loading="lazy" />
-                  </div><!-- /.bl_works_thumbnails -->
-                  <div class="bl_works_title bl_works_title__list bl_common_box">
-                    <p>オンラインコミュニティでの受注</p>
-                  </div><!-- /.bl_works_title -->
-                </div>
-              </li>
-              <li id="directLink">
-                <div class="bl_works_itemLabel el_label_circle el_label_circle__sm">
-                  <p>制作</p>
-                </div><!-- /.bl_works_itemLabel -->
-                <div class="bl_works_info__list">
-                  <div class="bl_works_thumbnails bl_works_thumbnails__list">
-                    <img src="/img/empty.gif" alt="" data-src="/works/directLink/tmb.png" width="192" height="192" loading="lazy" />
-                  </div><!-- /.bl_works_thumbnails -->
-                  <div class="bl_works_title bl_works_title__list bl_common_box">
-                    <p>ImageURL for direct link Generator</p>
-                  </div><!-- /.bl_works_title -->
-                </div>
-              </li>
-            </ul>
-            <button type="button" class="bl_works_slideBtn el_btn el_circleBtn el_circleBtn__pink" aria-label="スライドを進める">
-              <img src="/img/empty.gif" data-src="/icon/arrow-s.svg" alt="" width="24" height="24" loading="lazy" />
-            </button>
-          </div><!-- /.bl_works_slide -->
-        </div><!-- /.bl_works -->
-      </section><!-- /.ly_section -->
+      <section class="ly_section__lg">
+        <div class="el_title">
+          <p>自主制作</p>
+        </div><!-- /.bl_works_sectionTitle -->
+        <ul class="bl_works_list">
+          <li id="directLink">
+            <WorksCard
+              link={'/directLink'}
+              tmb={'/works/directLink/tmb.png'}
+              title={'ImageURL for direct link Generator'}
+              comment={'GoogleDriveとDropBoxから取得した共有リンクを、直リンク可能なURLに変換するアプリです。'}
+              skill={'HTML/CSS(DartSass)/TypeScript'}
+            />
+          </li>
+
+          <li id="yurilog">
+            <WorksCard
+              link={'/yurilog'}
+              tmb={'/works/yurilog/tmb.png'}
+              title={'yurilog.'}
+              comment={'自身のブログサイトをオリジナルテーマで作成しました。'}
+              skill={'HTML/CSS(DartSass)/JavaScript/WordPress'}
+            />
+          </li>
+
+          <li id="portfolio">
+            <WorksCard
+              link={'/portfolio'}
+              tmb={'/works/portfolio/tmb.png'}
+              title={"Yurika's Portfolio"}
+              comment={'実績と自主制作物をまとめた、自身のポートフォリオサイトです。'}
+              skill={'HTML/CSS(DartSass)/TypeScript/Astro'}
+            />
+          </li>
+        </ul><!-- /.bl_works_list -->
+      </section><!-- /.ly_section__lg -->
     </ArchGrid>
   </main><!-- /.ly_main -->
   <Footer />
