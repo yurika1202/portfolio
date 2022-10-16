@@ -8,4 +8,8 @@
   @include mix.mq(lg) {
     padding-top: var(--size-space-xsm);
   }
+
+  &__post {
+    margin-top: calc(32px + var(--header-height));
+  }
 }

@@ -55,7 +55,6 @@
   position: relative;
   align-items: center;
   justify-content: space-between;
-  max-width: calc(343 / 375 * 100%);
   padding: 1em 2em 1em 1.5em;
   border: 2px solid color(--c-black);
   border-radius: 10px 50px 50px 10px;
@@ -65,22 +64,20 @@
   font-weight: bold;
   gap: 1em;
 
-  img {
-    width: 35%;
-  }
-
   @include mix.mq(lg) {
     font-size: rem(20px);
   }
 
-  &__blank {
+  &[target='_blank'] {
+    padding-right: 3em;
+
     &::after {
       content: '';
       position: absolute;
       top: 50%;
-      right: 16px;
-      width: 14px;
-      height: 14px;
+      right: 1.5em;
+      width: 1em;
+      height: 1em;
       transform: translateY(-50%);
       background: url(#{$icon-path}/link.svg) no-repeat center center / contain;
     }

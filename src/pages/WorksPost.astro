@@ -1,0 +1,125 @@
+---
+import Base from '../layout/Base.astro';
+import Header from '../components/Header.astro';
+import ArchGrid from '../layout/grid/ArchGrid.astro';
+import Footer from '../components/Footer.astro';
+
+import '../styles/page/post.scss';
+---
+
+<Base>
+  <Header />
+  <main class="ly_main ly_main__post">
+    <ArchGrid>
+      <div class="bl_post_meta">
+        <div class="bl_post_thumbnails">
+          <img
+            src="/img/empty.gif"
+            alt=""
+            data-src="/works/directLink/tmb.png"
+            width="255"
+            height="240"
+            loading="lazy"
+          />
+        </div><!-- /.bl_post_thumbnails -->
+
+        <div class="bl_post_meta_titleWrap">
+          <div class="bl_post_title bl_common_box">
+            <p>ImageURL for direct link Generator</p>
+          </div><!-- /.bl_post_title -->
+
+          <div class="bl_post_github">
+            <a
+              href="https://github.com/yurika1202"
+              class="el_btn el_circleBtn el_circleBtn__blue"
+              aria-label="GitHub"
+              target="_blank"
+              rel="nofollow noopener noreferrer"
+            >
+              <img
+                src="/img/empty.gif"
+                alt=""
+                width="20"
+                height="20"
+                data-src="/icon/github.svg"
+                loading="lazy"
+              />
+            </a>
+          </div><!-- /.bl_post_github -->
+        </div><!-- /.bl_post_meta_titleWrap -->
+      </div><!-- /.bl_post_meta -->
+
+      <div class="bl_post_contents">
+        <div class="bl_post_comment">
+          <p>
+            GoogleDriveとDropBoxから取得した共有リンクを、直リンク可能なURLに変換するアプリです。<br
+            />
+            CodePenに画像をアップするときに手作業で書き直してましたが、自動で変換してくれたらなあと思い、JavaScriptの勉強も兼ねて作成しました。
+          </p>
+        </div><!-- /.bl_post_comment -->
+
+        <div class="bl_post_link">
+          <a
+            class="el_btn el_basicBtn"
+            href="https://yurika1202.github.io/imgurl-direct/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            サイトをみる
+          </a>
+        </div><!-- /.bl_post_link -->
+
+        <div class="bl_post_info">
+          <dl>
+            <dt>使用技術</dt>
+            <dd>HTML/CSS(DartSass)/JavaScript/TypeScript</dd>
+            <dd class="bl_post_info_subSkill">
+              <ul>
+                <li>ビルド<span>:</span>Vite</li>
+                <li>デザイン<span>:</span>Figma</li>
+              </ul>
+            </dd><!-- /.bl_post_info_subSkill -->
+          </dl>
+          <dl>
+            <dt>制作期間</dt>
+            <dd>約20日</dd>
+          </dl>
+          <dl class="bl_post_info_feature">
+            <dt>機能</dt>
+            <dd>
+              <ul>
+                <li>URL情報を取得・変換</li>
+                <li>クリップボードへのコピー</li>
+                <li>モーダル表示時に中身のコンテンツ生成</li>
+              </ul>
+            </dd>
+          </dl>
+        </div><!-- /.bl_post_info -->
+
+        <div class="bl_post_mockup">
+          <div class="bl_post_mockup_pc">
+            <img
+              src="/img/empty.gif"
+              alt="パソコンサイズのスクリーンショット"
+              data-src="/works/directLink/ss-pc.png"
+              width="311"
+              height="222"
+              loading="lazy"
+            />
+          </div><!-- /.bl_post_mockup_pc -->
+          <div class="bl_post_mockup_mobile">
+            <img
+              src="/img/empty.gif"
+              alt="スマホサイズのスクリーンショット"
+              data-src="/works/directLink/ss-mobile.png"
+              width="96"
+              height="190"
+              loading="lazy"
+            />
+          </div><!-- /.bl_post_mockup_mobile -->
+        </div><!-- /.bl_post_mockup -->
+      </div><!-- /.bl_post_contents -->
+    </ArchGrid>
+  </main><!-- /.ly_main -->
+  <Footer />
+</Base>
