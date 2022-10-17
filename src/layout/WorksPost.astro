@@ -1,10 +1,25 @@
 ---
-import Base from '../layout/Base.astro';
+import type { PostType } from '../types';
+import Base from './Base.astro';
 import Header from '../components/Header.astro';
-import ArchGrid from '../layout/grid/ArchGrid.astro';
+import ArchGrid from './grid/ArchGrid.astro';
 import Footer from '../components/Footer.astro';
 
 import '../styles/page/post.scss';
+
+interface Props {
+  content: PostType;
+}
+const { content } = Astro.props;
+
+const displayCheck = (key: string | {}) => {
+  if (key === null) {
+    return 'is_empty';
+  }
+  return;
+};
+
+import { thumbnailsClassType } from '../scripts/thumbnailsClassType';
 ---
 
 <Base>
@@ -12,11 +27,17 @@ import '../styles/page/post.scss';
   <main class="ly_main ly_main__post">
     <ArchGrid>
       <div class="bl_post_meta">
-        <div class="bl_post_thumbnails">
+        <div
+          class:list={[
+            'bl_post_thumbnails',
+            'el_thumbnails',
+            thumbnailsClassType(content.thumbnailType),
+          ]}
+        >
           <img
             src="/img/empty.gif"
             alt=""
-            data-src="/works/directLink/tmb.png"
+            data-src={content.thumbnail}
             width="255"
             height="240"
             loading="lazy"
@@ -25,12 +46,12 @@ import '../styles/page/post.scss';
 
         <div class="bl_post_meta_titleWrap">
           <div class="bl_post_title bl_common_box">
-            <p>ImageURL for direct link Generator</p>
+            <p>{content.title}</p>
           </div><!-- /.bl_post_title -->
 
-          <div class="bl_post_github">
+          <div class:list={['bl_post_github', displayCheck(content.github)]}>
             <a
-              href="https://github.com/yurika1202"
+              href={content.github}
               class="el_btn el_circleBtn el_circleBtn__blue"
               aria-label="GitHub"
               target="_blank"
@@ -51,17 +72,13 @@ import '../styles/page/post.scss';
 
       <div class="bl_post_contents">
         <div class="bl_post_comment">
-          <p>
-            GoogleDriveとDropBoxから取得した共有リンクを、直リンク可能なURLに変換するアプリです。<br
-            />
-            CodePenに画像をアップするときに手作業で書き直してましたが、自動で変換してくれたらなあと思い、JavaScriptの勉強も兼ねて作成しました。
-          </p>
+          <slot />
         </div><!-- /.bl_post_comment -->
 
-        <div class="bl_post_link">
+        <div class:list={['bl_post_link', displayCheck(content.link)]}>
           <a
             class="el_btn el_basicBtn"
-            href="https://yurika1202.github.io/imgurl-direct/"
+            href={content.link}
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -72,36 +89,47 @@ import '../styles/page/post.scss';
         <div class="bl_post_info">
           <dl>
             <dt>使用技術</dt>
-            <dd>HTML/CSS(DartSass)/JavaScript/TypeScript</dd>
-            <dd class="bl_post_info_subSkill">
+            <dd>{content.skill}</dd>
+            <dd
+              class:list={[
+                'bl_post_info_subSkill',
+                displayCheck(content.subSkills),
+              ]}
+            >
               <ul>
-                <li>ビルド<span>:</span>Vite</li>
-                <li>デザイン<span>:</span>Figma</li>
+                {
+                  content.subSkills !== null &&
+                    Object.entries(content.subSkills).map(([key, value]) => (
+                      <li>
+                        {key}
+                        <span>:</span>
+                        {value}
+                      </li>
+                    ))
+                }
               </ul>
             </dd><!-- /.bl_post_info_subSkill -->
           </dl>
           <dl>
             <dt>制作期間</dt>
-            <dd>約20日</dd>
+            <dd>{content.period}</dd>
           </dl>
           <dl class="bl_post_info_feature">
             <dt>機能</dt>
             <dd>
               <ul>
-                <li>URL情報を取得・変換</li>
-                <li>クリップボードへのコピー</li>
-                <li>モーダル表示時に中身のコンテンツ生成</li>
+                {content.feature.map(list => <li>{list}</li>)}
               </ul>
             </dd>
           </dl>
         </div><!-- /.bl_post_info -->
 
-        <div class="bl_post_mockup">
+        <div class:list={['bl_post_mockup', displayCheck(content.mockup)]}>
           <div class="bl_post_mockup_pc">
             <img
               src="/img/empty.gif"
               alt="パソコンサイズのスクリーンショット"
-              data-src="/works/directLink/ss-pc.png"
+              data-src={content.mockup !== null && content.mockup.pc}
               width="311"
               height="222"
               loading="lazy"
@@ -111,7 +139,7 @@ import '../styles/page/post.scss';
             <img
               src="/img/empty.gif"
               alt="スマホサイズのスクリーンショット"
-              data-src="/works/directLink/ss-mobile.png"
+              data-src={content.mockup !== null && content.mockup.mobile}
               width="96"
               height="190"
               loading="lazy"

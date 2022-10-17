@@ -1,0 +1,37 @@
+@use '../functions/' as *;
+
+.el_thumbnails {
+  width: calc(255 / 305 * 100%);
+  height: 240px;
+  overflow: hidden;
+  border: 2px solid color(--c-black);
+  background: color(--c-bg-works);
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__icon,
+  &__noImg {
+    display: grid;
+    place-items: center;
+  }
+
+  &__icon {
+    img {
+      width: 48%;
+      height: 48%;
+      object-fit: contain;
+    }
+  }
+
+  &__noImg {
+    img {
+      width: 70%;
+      height: auto;
+      object-fit: contain;
+    }
+  }
+}
