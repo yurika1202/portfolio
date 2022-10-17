@@ -118,7 +118,7 @@ import { thumbnailsClassType } from '../scripts/thumbnailsClassType';
             <dt>機能</dt>
             <dd>
               <ul>
-                {content.feature.map(list => <li>{list}</li>)}
+                {content.feature.map((list: string) => <li>{list}</li>)}
               </ul>
             </dd>
           </dl>
