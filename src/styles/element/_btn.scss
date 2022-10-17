@@ -119,3 +119,35 @@
     transform: rotate(-180deg);
   }
 }
+
+.el_postNavBtn {
+  width: 100%;
+  padding: 0.5em 0;
+  border: 2px solid color(--c-black);
+  box-shadow: 3px 3px 0 color(--c-black);
+  font-size: rem(16px);
+  font-weight: bold;
+  text-align: center;
+
+  &__prev,
+  &__next {
+    background: color(--c-secondary);
+  }
+
+  &__prev {
+    border-radius: 50px 10px 10px 50px;
+  }
+
+  &__next {
+    border-radius: 10px 50px 50px 10px;
+  }
+
+  &__list {
+    border-radius: 10px;
+    background: color(--c-tertiary);
+  }
+
+  @include mix.mq(lg) {
+    font-size: rem(18px);
+  }
+}

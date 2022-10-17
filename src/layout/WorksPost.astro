@@ -3,7 +3,7 @@ import type { PostType } from '../types';
 import Base from './Base.astro';
 import Header from '../components/Header.astro';
 import ArchGrid from './grid/ArchGrid.astro';
-import Footer from '../components/Footer.astro';
+import FooterPost from '../components/FooterPost.astro';
 
 import '../styles/page/post.scss';
 
@@ -149,5 +149,5 @@ import { thumbnailsClassType } from '../scripts/thumbnailsClassType';
       </div><!-- /.bl_post_contents -->
     </ArchGrid>
   </main><!-- /.ly_main -->
-  <Footer />
+  <FooterPost />
 </Base>
