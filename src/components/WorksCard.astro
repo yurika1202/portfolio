@@ -18,16 +18,7 @@ const {
   skill,
 } = Astro.props;
 
-const thumbnailsTypeClass = (type: string) => {
-  switch (type) {
-    case 'icon':
-      return 'bl_works_thumbnails__icon';
-    case 'noImg':
-      return 'bl_works_thumbnails__noImg';
-    default:
-      break;
-  }
-};
+import { thumbnailsClassType } from '../scripts/thumbnailsClassType';
 ---
 
 <>
@@ -35,7 +26,13 @@ const thumbnailsTypeClass = (type: string) => {
     <div class="bl_works_title bl_common_box">
       <p>{title}</p>
     </div><!-- /.bl_works_title -->
-    <div class:list={['bl_works_thumbnails', thumbnailsTypeClass(tmbType!)]}>
+    <div
+      class:list={[
+        'bl_works_thumbnails',
+        'el_thumbnails',
+        thumbnailsClassType(tmbType!),
+      ]}
+    >
       <img
         src="/img/empty.gif"
         alt=""
@@ -47,7 +44,7 @@ const thumbnailsTypeClass = (type: string) => {
     </div><!-- /.bl_works_thumbnails -->
     <div class="bl_works_btnWrap">
       <a
-        href="{link}"
+        href={link}
         aria-label="詳細をみる"
         class="el_btn el_circleBtn el_circleBtn__lightPink bl_works_moreBtn"
       >

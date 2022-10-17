@@ -1,22 +1,22 @@
 @use '../mixin/' as mix;
 @use '../functions/' as *;
 
-.bl_footer_pagination {
+.bl_footerNav {
   display: flex;
   align-content: center;
   justify-content: center;
   width: 100%;
-  height: var(--footer-height);
   border: 2px solid color(--c-black);
   border-radius: 20px 20px 0 0;
   background: color(--c-primary);
+}
 
-  ul {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: calc(var(--size-space-lg) * 2);
-  }
+.bl_footerNav_page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: var(--footer-height);
+  gap: calc(var(--size-space-lg) * 2);
 
   li {
     &:not(:first-of-type) {
@@ -34,6 +34,18 @@
         background: color(--c-black);
       }
     }
+  }
+}
+
+.bl_footerNav_post {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  width: 90%;
+  padding: var(--size-space-sm) 0;
+  gap: var(--size-space-sm);
+
+  @include mix.mq(md) {
+    width: 80%;
   }
 }
 

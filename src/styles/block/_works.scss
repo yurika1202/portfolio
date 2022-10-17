@@ -60,42 +60,8 @@
 }
 
 .bl_works_thumbnails {
-  width: calc(255 / 300 * 100%);
-  height: 240px;
   margin-top: -16px;
-  overflow: hidden;
-  border: 2px solid color(--c-black);
   border-radius: 20px;
-  background: color(--c-bg-works);
-
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  &__icon {
-    display: grid;
-    place-items: center;
-
-    img {
-      width: 48%;
-      height: 48%;
-      object-fit: contain;
-    }
-  }
-
-  &__noImg {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    object-fit: contain;
-
-    img {
-      width: 80%;
-      height: auto;
-    }
-  }
 }
 
 .bl_works_btnWrap {
