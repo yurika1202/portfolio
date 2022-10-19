@@ -7,6 +7,7 @@ import FooterPost from '../components/FooterPost.astro';
 
 import '../styles/page/post.scss';
 import '../styles/page/entry.scss';
+import { thumbnailsClassType } from '../scripts/thumbnailsClassType';
 
 interface Props {
   content: PostType;
@@ -19,8 +20,6 @@ const displayCheck = (key: string | {}) => {
   }
   return;
 };
-
-import { thumbnailsClassType } from '../scripts/thumbnailsClassType';
 ---
 
 <Base>

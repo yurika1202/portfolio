@@ -1,6 +1,9 @@
 export interface PostType {
+  draft: boolean;
+  id: string;
   title: string;
   publishDate: string;
+  tag: string;
   thumbnail: string;
   thumbnailType: string;
   link: string;
@@ -11,6 +14,7 @@ export interface PostType {
   period: string;
   feature: string[];
   mockup: Mockup;
+  comment: string;
 }
 
 interface Mockup {
