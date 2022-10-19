@@ -1,14 +1,67 @@
 ---
 import { SITE } from '../config';
-import BaseHead from '../components/BaseHead.astro';
+import '../styles/global.scss';
+
+export interface Props {
+  author?: string;
+  title?: string;
+  description?: string;
+  ogImg?: string;
+}
+
+const {
+  author = SITE.author,
+  title = SITE.title,
+  description = SITE.description,
+  ogImg = SITE.ogImg,
+} = Astro.props;
+
+const ogImgURL = new URL(ogImg, Astro.url.origin);
 ---
 
 <!DOCTYPE html>
 <html lang="ja">
   <head>
-    <BaseHead title={SITE.title} description={SITE.description} />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <meta name="format-detection" content="telephone=no,address=no" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="author" content={author} />
+    <!-- font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@700&display=swap&text=はじめましてゆりかですとるもく実績自主制作お問いあわせさごに"
+      rel="stylesheet"
+    />
+    <!-- favicon -->
+    <link rel="icon" type="image/png" href="/favicon.png" sizes="32x32" />
+    <link
+      rel="apple-touch-icon"
+      type="image/png"
+      href="/apple-touch-icon.png"
+      sizes="180x180"
+    />
+    <link rel="manifest" href="/manifest.json" />
+    <!-- OGP -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:site_name" content={title} />
+    <meta property="og:url" content={Astro.url} />
+    <meta property="og:image" content={ogImgURL} />
+    <meta property="og:locale" content="ja_JP" />
+    <meta property="og:type" content="website" />
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={Astro.url} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={ogImgURL} />
   </head>
   <body class="ly_bg_gradation">
     <slot />
+    <script>
+      import '../scripts/main';
+    </script>
   </body>
 </html>

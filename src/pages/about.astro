@@ -1,4 +1,5 @@
 ---
+import { SITE } from '../config';
 import Base from '../layout/Base.astro';
 import Header from '../components/Header.astro';
 import ArchGrid from '../layout/grid/ArchGrid.astro';
@@ -7,20 +8,31 @@ import Footer from '../components/Footer.astro';
 import '../styles/page/about.scss';
 ---
 
-<Base>
+<Base title={`ゆりかについて | ${SITE.title}`}>
   <Header />
   <main class="ly_main">
     <ArchGrid>
       <div class="bl_pageTitle bl_pageTitle_bubble">
         <svg class="el_title_border el_title_border__pageTitle">
-          <text x="50%" y="50%" text-anchor="middle" dominant-baseline="central">はじめまして、</text>
-          <text x="50%" y="50%" text-anchor="middle" dominant-baseline="central">ゆりかです</text>
+          <text x="50%" y="50%" text-anchor="middle" dominant-baseline="central"
+            >はじめまして、</text
+          >
+          <text x="50%" y="50%" text-anchor="middle" dominant-baseline="central"
+            >ゆりかです</text
+          >
         </svg>
       </div><!-- /.bl_pageTitle -->
 
       <div class="bl_prof un_about_gridWrap">
         <div class="bl_prof_img un_about_grid__img">
-          <img src="/img/empty.gif" alt="ゆりかの似顔絵イラスト" data-src="/img/prof.png" width="165" height="165" loading="lazy" />
+          <img
+            src="/img/empty.gif"
+            alt="ゆりかの似顔絵イラスト"
+            data-src="/img/prof.png"
+            width="165"
+            height="165"
+            loading="lazy"
+          />
         </div><!-- /.bl_prof_img -->
         <ul class="bl_prof_outline un_about_grid__outline">
           <li>1993年生まれ</li>
@@ -28,24 +40,65 @@ import '../styles/page/about.scss';
         </ul><!-- /.bl_prof_outline -->
         <ul class="bl_prof_link un_about_grid__link">
           <li>
-            <a href="https://yurika122.com" class="el_btn el_circleBtn el_circleBtn__blue" aria-label="ブログ" target="_blank" rel="nofollow noopener noreferrer">
-              <img src="/img/empty.gif" alt="" width="20" height="20" data-src="/icon/pen.svg" loading="lazy" />
+            <a
+              href="https://yurika122.com"
+              class="el_btn el_circleBtn el_circleBtn__blue"
+              aria-label="ブログ"
+              target="_blank"
+              rel="nofollow noopener noreferrer"
+            >
+              <img
+                src="/img/empty.gif"
+                alt=""
+                width="20"
+                height="20"
+                data-src="/icon/pen.svg"
+                loading="lazy"
+              />
             </a>
           </li>
           <li>
-            <a href="https://github.com/yurika1202" class="el_btn el_circleBtn el_circleBtn__blue" aria-label="GitHub" target="_blank" rel="nofollow noopener noreferrer">
-              <img src="/img/empty.gif" alt="" width="20" height="20" data-src="/icon/github.svg" loading="lazy" />
+            <a
+              href="https://github.com/yurika1202"
+              class="el_btn el_circleBtn el_circleBtn__blue"
+              aria-label="GitHub"
+              target="_blank"
+              rel="nofollow noopener noreferrer"
+            >
+              <img
+                src="/img/empty.gif"
+                alt=""
+                width="20"
+                height="20"
+                data-src="/icon/github.svg"
+                loading="lazy"
+              />
             </a>
           </li>
           <li>
-            <a href="https://codepen.io/yurika1202" class="el_btn el_circleBtn el_circleBtn__blue" aria-label="CodePen" target="_blank" rel="nofollow noopener noreferrer">
-              <img src="/img/empty.gif" alt="" width="20" height="20" data-src="/icon/codepen.svg" loading="lazy" />
+            <a
+              href="https://codepen.io/yurika1202"
+              class="el_btn el_circleBtn el_circleBtn__blue"
+              aria-label="CodePen"
+              target="_blank"
+              rel="nofollow noopener noreferrer"
+            >
+              <img
+                src="/img/empty.gif"
+                alt=""
+                width="20"
+                height="20"
+                data-src="/icon/codepen.svg"
+                loading="lazy"
+              />
             </a>
           </li>
         </ul><!-- /.bl_prof_link -->
         <p class="bl_prof_text un_about_grid__text">
-          2021年のはじめにWeb制作と出会い、そこから一気にコーディングの楽しさに沼りました。 主に書籍やUdemyなどを使い、独学で勉強をしています。<br />
-          セマンティックなマークアップ、設計に基づく保守性を高めたCSS（DartSass）を考えることが好きです。<br />
+          2021年のはじめにWeb制作と出会い、そこから一気にコーディングの楽しさに沼りました。
+          主に書籍やUdemyなどを使い、独学で勉強をしています。<br />
+          セマンティックなマークアップ、設計に基づく保守性を高めたCSS（DartSass）を考えることが好きです。<br
+          />
           Webアプリ開発にも興味があるので、少しづつ勉強中です。
         </p><!-- /.bl_prof_text -->
       </div><!-- /.bl_prof -->
@@ -57,7 +110,8 @@ import '../styles/page/about.scss';
         <div class="ly_section_text">
           <p>
             好奇心が旺盛なので、いろんなことに挑戦したい人です。<br />
-            一方で完璧主義で慎重派な一面もあり、目標までの道筋を明確にしてから、一つ一つのタスクに確実に向き合っていきます。<br />
+            一方で完璧主義で慎重派な一面もあり、目標までの道筋を明確にしてから、一つ一つのタスクに確実に向き合っていきます。<br
+            />
             そしてやると決めたからには納得するまで諦めない、粘り強さもあります。
           </p>
         </div><!-- /.ly_section_text -->
@@ -69,8 +123,10 @@ import '../styles/page/about.scss';
         </div><!-- /.el_title_dash -->
         <div class="ly_section_text">
           <p>
-            サイトへ訪れたユーザーに優しく寄り添い、サイト寿命を長くすることを心がけてコーディングをしています。<br />
-            アクセシビリティの知見を更に深めていくこと、CSS・JavaScript・SVG・Canvas（WebGL）を用いた心地よいアニメーション表現ができるようになることが目標です。<br />
+            サイトへ訪れたユーザーに優しく寄り添い、サイト寿命を長くすることを心がけてコーディングをしています。<br
+            />
+            アクセシビリティの知見を更に深めていくこと、CSS・JavaScript・SVG・Canvas（WebGL）を用いた心地よいアニメーション表現ができるようになることが目標です。<br
+            />
             そしていずれは実装だけでなくデザイン側からもプロジェクトへ関わっていきたいと思っています。
           </p>
         </div><!-- /.ly_section_text -->
