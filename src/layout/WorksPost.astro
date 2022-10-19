@@ -6,6 +6,7 @@ import ArchGrid from './grid/ArchGrid.astro';
 import FooterPost from '../components/FooterPost.astro';
 
 import '../styles/page/post.scss';
+import '../styles/page/entry.scss';
 
 interface Props {
   content: PostType;
@@ -71,7 +72,7 @@ import { thumbnailsClassType } from '../scripts/thumbnailsClassType';
       </div><!-- /.bl_post_meta -->
 
       <div class="bl_post_contents">
-        <div class="bl_post_comment">
+        <div class="bl_post_comment bl_entry">
           <slot />
         </div><!-- /.bl_post_comment -->
 
