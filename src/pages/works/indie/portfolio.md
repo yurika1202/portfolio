@@ -9,7 +9,11 @@ github: https://github.com/yurika1202/portfolio
 role:
   - デザイン
   - コーディング
-skill: HTML/CSS(DartSass)/JavaScript/TypeScript
+skill:
+  - HTML
+  - CSS(DartSass)
+  - JavaScript
+  - TypeScript
 subSkills: { SSG: Astro, デザイン: Figma }
 period: 約1か月
 feature:

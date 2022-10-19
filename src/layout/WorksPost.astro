@@ -101,7 +101,14 @@ import { thumbnailsClassType } from '../scripts/thumbnailsClassType';
           </dl>
           <dl>
             <dt>使用技術</dt>
-            <dd>{content.skill}</dd>
+            <dd class="bl_post_info_skill">
+              <ul>
+                {
+                  content.skill !== null &&
+                    content.skill.map(value => <li>{value}</li>)
+                }
+              </ul>
+            </dd>
             <dd
               class:list={[
                 'bl_post_info_subSkill',

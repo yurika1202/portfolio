@@ -9,7 +9,11 @@ github: https://github.com/yurika1202/yurilog
 role:
   - デザイン
   - コーディング
-skill: HTML/CSS(DartSass)/JavaScript/WordPress
+skill:
+  - HTML
+  - CSS(DartSass)
+  - JavaScript
+  - WordPress
 subSkills:
 period: 約1か月
 feature:

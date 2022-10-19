@@ -9,7 +9,11 @@ github: https://github.com/yurika1202/imgurl-direct
 role:
   - デザイン
   - コーディング
-skill: HTML/CSS(DartSass)/JavaScript/TypeScript
+skill:
+  - HTML
+  - CSS(DartSass)
+  - JavaScript
+  - TypeScript
 subSkills: { ビルド: Vite, デザイン: Figma }
 period: 約20日
 feature:
