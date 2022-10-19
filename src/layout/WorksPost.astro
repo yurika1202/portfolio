@@ -6,6 +6,7 @@ import ArchGrid from './grid/ArchGrid.astro';
 import FooterPost from '../components/FooterPost.astro';
 
 import '../styles/page/post.scss';
+import '../styles/page/entry.scss';
 
 interface Props {
   content: PostType;
@@ -71,7 +72,7 @@ import { thumbnailsClassType } from '../scripts/thumbnailsClassType';
       </div><!-- /.bl_post_meta -->
 
       <div class="bl_post_contents">
-        <div class="bl_post_comment">
+        <div class="bl_post_comment bl_entry">
           <slot />
         </div><!-- /.bl_post_comment -->
 
@@ -88,8 +89,26 @@ import { thumbnailsClassType } from '../scripts/thumbnailsClassType';
 
         <div class="bl_post_info">
           <dl>
+            <dt>担当領域</dt>
+            <dd class="bl_post_info_role">
+              <ul>
+                {
+                  content.role !== null &&
+                    content.role.map(value => <li>{value}</li>)
+                }
+              </ul>
+            </dd><!-- /.bl_post_info_subSkill -->
+          </dl>
+          <dl>
             <dt>使用技術</dt>
-            <dd>{content.skill}</dd>
+            <dd class="bl_post_info_skill">
+              <ul>
+                {
+                  content.skill !== null &&
+                    content.skill.map(value => <li>{value}</li>)
+                }
+              </ul>
+            </dd>
             <dd
               class:list={[
                 'bl_post_info_subSkill',

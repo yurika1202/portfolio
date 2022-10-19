@@ -5,7 +5,8 @@ export interface PostType {
   thumbnailType: string;
   link: string;
   github: string;
-  skill: string;
+  role: string[];
+  skill: string[];
   subSkills: {};
   period: string;
   feature: string[];
