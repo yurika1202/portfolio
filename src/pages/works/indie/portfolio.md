@@ -7,6 +7,7 @@ thumbnailType:
 link:
 github: https://github.com/yurika1202/portfolio
 role:
+  - デザイン
   - コーディング
 skill: HTML/CSS(DartSass)/JavaScript/TypeScript
 subSkills: { SSG: Astro, デザイン: Figma }

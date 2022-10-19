@@ -89,6 +89,17 @@ import { thumbnailsClassType } from '../scripts/thumbnailsClassType';
 
         <div class="bl_post_info">
           <dl>
+            <dt>担当領域</dt>
+            <dd class="bl_post_info_role">
+              <ul>
+                {
+                  content.role !== null &&
+                    content.role.map(value => <li>{value}</li>)
+                }
+              </ul>
+            </dd><!-- /.bl_post_info_subSkill -->
+          </dl>
+          <dl>
             <dt>使用技術</dt>
             <dd>{content.skill}</dd>
             <dd

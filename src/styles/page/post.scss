@@ -149,12 +149,6 @@
   dd {
     margin-top: 8px;
     word-break: break-all;
-
-    ul {
-      display: flex;
-      flex-direction: column;
-      gap: 0.2em;
-    }
   }
 
   @include mix.mq(lg) {
@@ -164,6 +158,12 @@
 }
 
 .bl_post_info_subSkill {
+  ul {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2em;
+  }
+
   span {
     display: inline-block;
     padding: 0 0.4em;
@@ -188,6 +188,31 @@
       height: 1px;
       transform: translateY(-50%);
       background: color(--c-black);
+    }
+  }
+}
+
+.bl_post_info_role {
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+
+    li {
+      display: inline-block;
+
+      &:not(:first-of-type) {
+        position: relative;
+        margin-left: 0.3em;
+        padding-left: 0.8em;
+
+        &::before {
+          content: '/';
+          position: absolute;
+          top: 50%;
+          left: 0;
+          transform: translateY(-50%);
+        }
+      }
     }
   }
 }

@@ -6,6 +6,8 @@ thumbnail: /works/preschool/tmb.png
 thumbnailType: icon
 link:
 github:
+role:
+  - コーディング
 skill: HTML/CSS(DartSass)/JavaScript
 subSkills: { デザイン: illustrator }
 period: 約1か月

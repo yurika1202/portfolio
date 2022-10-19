@@ -6,6 +6,9 @@ thumbnail: /works/directLink/tmb.png
 thumbnailType:
 link: https://yurika1202.github.io/imgurl-direct/
 github: https://github.com/yurika1202/imgurl-direct
+role:
+  - デザイン
+  - コーディング
 skill: HTML/CSS(DartSass)/JavaScript/TypeScript
 subSkills: { ビルド: Vite, デザイン: Figma }
 period: 約20日
