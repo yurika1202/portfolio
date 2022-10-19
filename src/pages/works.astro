@@ -1,4 +1,5 @@
 ---
+import type { PostType } from '../types';
 import Base from '../layout/Base.astro';
 import Header from '../components/Header.astro';
 import ArchGrid from '../layout/grid/ArchGrid.astro';
@@ -6,6 +7,10 @@ import WorksCard from '../components/WorksCard.astro';
 import Footer from '../components/Footer.astro';
 
 import '../styles/page/works.scss';
+// const posts = await Astro.glob('./works/**/*.md');
+
+const pracWorks = await Astro.glob<PostType>('./works/prac/**/*.md');
+const indieWorks = await Astro.glob<PostType>('./works/indie/**/*.md');
 ---
 
 <Base>
@@ -19,23 +24,12 @@ import '../styles/page/works.scss';
           >
         </svg>
       </div><!-- /.bl_pageTitle -->
-
       <section class="ly_section__lg">
         <div class="el_title">
           <p>実績</p>
         </div><!-- /.bl_works_sectionTitle -->
         <ul class="bl_works_list">
-          <li id="preschool">
-            <WorksCard
-              link={'/works/prac/preschool'}
-              tmb={'/works/preschool/tmb.png'}
-              tmbType={'icon'}
-              title={'こども園のサイトと採用サイト'}
-              role={'コーディング'}
-              comment={'【実績詳細公開不可】JavaScriptでのアニメーションなど、動きのある静的サイトのコーディングをさせていただきました。'}
-              skill={'HTML/CSS(DartSass)/JavaScript'}
-            />
-          </li>
+          {pracWorks.map(prac => <WorksCard works={prac} />)}
         </ul><!-- /.bl_works_list -->
       </section><!-- /.ly_section__lg -->
 
@@ -44,38 +38,7 @@ import '../styles/page/works.scss';
           <p>自主制作</p>
         </div><!-- /.bl_works_sectionTitle -->
         <ul class="bl_works_list">
-          <li id="directLink">
-            <WorksCard
-              link={'/directLink'}
-              tmb={'/works/directLink/tmb.png'}
-              title={'ImageURL for direct link Generator'}
-              role={'デザイン/コーディング'}
-              comment={'GoogleDriveとDropBoxから取得した共有リンクを、直リンク可能なURLに変換するアプリです。'}
-              skill={'HTML/CSS(DartSass)/TypeScript'}
-            />
-          </li>
-
-          <li id="yurilog">
-            <WorksCard
-              link={'/yurilog'}
-              tmb={'/works/yurilog/tmb.png'}
-              title={'yurilog.'}
-              role={'デザイン/コーディング'}
-              comment={'自身のブログサイトをオリジナルテーマで作成しました。'}
-              skill={'HTML/CSS(DartSass)/JavaScript/WordPress'}
-            />
-          </li>
-
-          <li id="portfolio">
-            <WorksCard
-              link={'/portfolio'}
-              tmb={'/works/portfolio/tmb.png'}
-              title={"Yurika's Portfolio"}
-              role={'デザイン/コーディング'}
-              comment={'実績と自主制作物をまとめた、自身のポートフォリオサイトです。'}
-              skill={'HTML/CSS(DartSass)/TypeScript/Astro'}
-            />
-          </li>
+          {indieWorks.map(indie => <WorksCard works={indie} />)}
         </ul><!-- /.bl_works_list -->
       </section><!-- /.ly_section__lg -->
     </ArchGrid>

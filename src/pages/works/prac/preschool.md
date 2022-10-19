@@ -1,7 +1,10 @@
 ---
 layout: ../../../layout/WorksPost.astro
+draft: false
+id: preschool
 title: こども園のサイトと採用サイトのコーディング
-publishDate: 2022-10-17
+publishDate: 2022-10-
+tag: practical
 thumbnail: /works/preschool/tmb.png
 thumbnailType: icon
 link:

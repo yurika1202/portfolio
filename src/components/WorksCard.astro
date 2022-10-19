@@ -1,75 +1,65 @@
 ---
+import type { MarkdownInstance } from 'astro';
+import type { PostType } from '../types';
+
 import '../styles/block/_works.scss';
-
-export interface Props {
-  link?: string;
-  tmb?: string;
-  tmbType?: string;
-  title?: string;
-  role?: string;
-  comment?: string;
-  skill?: string;
-}
-const {
-  link,
-  tmb = '/works/noImg.png',
-  tmbType,
-  title,
-  role,
-  comment,
-  skill,
-} = Astro.props;
-
 import { thumbnailsClassType } from '../scripts/thumbnailsClassType';
+
+interface Props {
+  works: MarkdownInstance<PostType>;
+}
+const { frontmatter, url } = Astro.props.works;
 ---
 
 <>
-  <div class="bl_works_meta">
-    <div class="bl_works_title bl_common_box">
-      <p>{title}</p>
-    </div><!-- /.bl_works_title -->
-    <div
-      class:list={[
-        'bl_works_thumbnails',
-        'el_thumbnails',
-        thumbnailsClassType(tmbType!),
-      ]}
-    >
-      <img
-        src="/img/empty.gif"
-        alt=""
-        data-src={tmb}
-        width="255"
-        height="240"
-        loading="lazy"
-      />
-    </div><!-- /.bl_works_thumbnails -->
-    <div class="bl_works_btnWrap">
-      <a
-        href={link}
-        aria-label="詳細をみる"
-        class="el_btn el_circleBtn el_circleBtn__lightPink bl_works_moreBtn"
+  <li id={frontmatter.id}>
+    <div class="bl_works_meta">
+      <div class="bl_works_title bl_common_box">
+        <p>{frontmatter.title}</p>
+      </div><!-- /.bl_works_title -->
+      <div
+        class:list={[
+          'bl_works_thumbnails',
+          'el_thumbnails',
+          thumbnailsClassType(frontmatter.thumbnailType!),
+        ]}
       >
         <img
           src="/img/empty.gif"
           alt=""
-          data-src="/icon/arrow.svg"
-          width="20"
-          height="20"
+          data-src={frontmatter.thumbnail}
+          width="255"
+          height="240"
           loading="lazy"
         />
-      </a>
-    </div><!-- /.bl_works_btnWrap -->
-  </div><!-- /.bl_works_meta -->
-  <div class="bl_works_summary">
-    <p>{comment}</p>
-    <dl>
-      <dt>担当領域</dt>
-      <dd>{role}</dd>
-    </dl>
-    <dl>
-      <dt>使用技術</dt>
-      <dd>{skill}</dd>
-    </dl>
-  </div><!-- /.bl_works_summary -->
+      </div><!-- /.bl_works_thumbnails -->
+      <div class="bl_works_btnWrap">
+        <a
+          href={url}
+          aria-label="詳細をみる"
+          class="el_btn el_circleBtn el_circleBtn__lightPink bl_works_moreBtn"
+        >
+          <img
+            src="/img/empty.gif"
+            alt=""
+            data-src="/icon/arrow.svg"
+            width="20"
+            height="20"
+            loading="lazy"
+          />
+        </a>
+      </div><!-- /.bl_works_btnWrap -->
+    </div><!-- /.bl_works_meta -->
+    <div class="bl_works_summary">
+      <p>{frontmatter.comment}</p>
+      <dl>
+        <dt>担当領域</dt>
+        <dd>{frontmatter.role}</dd>
+      </dl>
+      <dl>
+        <dt>使用技術</dt>
+        <dd>{frontmatter.skill}</dd>
+      </dl>
+    </div><!-- /.bl_works_summary -->
+  </li>
 </>

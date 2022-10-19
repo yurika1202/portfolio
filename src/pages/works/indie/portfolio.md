@@ -1,7 +1,10 @@
 ---
 layout: ../../../layout/WorksPost.astro
+draft: false
+id: portfolio
 title: Yurika's Portfolio
 publishDate: 2022-10-20
+tag: indie
 thumbnail: /works/portfolio/tmb.png
 thumbnailType:
 link:

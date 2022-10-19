@@ -1,7 +1,10 @@
 ---
 layout: ../../../layout/WorksPost.astro
+draft: false
+id: directLink
 title: ImageURL for direct link Generator
 publishDate: 2022-10-17
+tag: indie
 thumbnail: /works/directLink/tmb.png
 thumbnailType:
 link: https://yurika1202.github.io/imgurl-direct/

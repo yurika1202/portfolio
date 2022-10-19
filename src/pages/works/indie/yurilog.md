@@ -1,7 +1,10 @@
 ---
 layout: ../../../layout/WorksPost.astro
+draft: false
+id: yurilog
 title: yurilog.
 publishDate: 2022-10-19
+tag: indie
 thumbnail: /works/yurilog/tmb.png
 thumbnailType:
 link: https://yurika122.com/
