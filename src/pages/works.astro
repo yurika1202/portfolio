@@ -1,4 +1,5 @@
 ---
+import { SITE } from '../config';
 import type { PostType } from '../types';
 import Base from '../layout/Base.astro';
 import Header from '../components/Header.astro';
@@ -13,7 +14,7 @@ const pracWorks = await Astro.glob<PostType>('./works/prac/**/*.md');
 const indieWorks = await Astro.glob<PostType>('./works/indie/**/*.md');
 ---
 
-<Base>
+<Base title={`実績と自主制作 | ${SITE.title}`}>
   <Header />
   <main class="ly_main">
     <ArchGrid>

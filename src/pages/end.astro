@@ -1,4 +1,5 @@
 ---
+import { SITE } from '../config';
 import Base from '../layout/Base.astro';
 import Header from '../components/Header.astro';
 import ArchGrid from '../layout/grid/ArchGrid.astro';
@@ -7,20 +8,23 @@ import Footer from '../components/Footer.astro';
 import '../styles/page/end.scss';
 ---
 
-<Base>
+<Base title={`おわりに | ${SITE.title}`}>
   <Header />
   <main class="ly_main">
     <ArchGrid>
       <div class="bl_pageTitle bl_pageTitle_icon bl_pageTitle_icon__smile">
         <svg class="el_title_border el_title_border__pageTitle">
-          <text x="50%" y="50%" text-anchor="middle" dominant-baseline="central">さいごに</text>
+          <text x="50%" y="50%" text-anchor="middle" dominant-baseline="central"
+            >さいごに</text
+          >
         </svg>
       </div><!-- /.bl_pageTitle -->
 
       <div class="un_end">
         <p>
           最後までご覧いただき、ありがとうございます。<br />
-          少しでもわたしに興味を持っていただけていましたら、とてもうれしいです。<br />
+          少しでもわたしに興味を持っていただけていましたら、とてもうれしいです。<br
+          />
           もしもご縁がありましたときは、どうぞよろしくお願いいたします。 <br />
         </p>
         <p class="un_end_signature">2022.10 ゆりか</p>
