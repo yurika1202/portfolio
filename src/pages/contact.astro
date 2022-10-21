@@ -239,6 +239,7 @@ import '../styles/page/contact.scss';
   const emailExp =
     /^[a-zA-Z0-9_.+-]+@([a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9]*\.)+[a-zA-Z]{2,}$/;
 
+  /** 入力値を監視してエラーメッセージの表示を切り替える */
   checkItems.forEach((item, index) => {
     const errorMessage = errorMessages[index];
 
@@ -251,6 +252,7 @@ import '../styles/page/contact.scss';
         errorMessage?.classList.remove('is_display');
       }
 
+      // type="email"の場合は形式チェック
       if (item.type === 'email') {
         const itemValue = item.value;
         !emailExp.test(itemValue)
@@ -265,6 +267,7 @@ import '../styles/page/contact.scss';
   const submitBtn = document.getElementById('js_form_submitBtn');
   const agreementCheckBox = form?.querySelector('input[type="checkbox"]');
 
+  /** 送信ボタンの非活性制御 */
   const formCheck = () => {
     let flag = false;
 
