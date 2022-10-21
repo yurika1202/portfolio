@@ -191,7 +191,6 @@ import '../styles/page/contact.scss';
                 type="checkbox"
                 name="privacy"
                 value="プライバシーポリシーに同意する"
-                id="js_form_agreeBtn"
               /><span>プライバシーポリシーの内容を確認し同意します</span>
             </label>
           </div><!-- /.bl_form_privacy_checkBox -->
@@ -202,6 +201,7 @@ import '../styles/page/contact.scss';
             class="el_btn el_basicBtn"
             id="js_form_submitBtn"
             type="submit"
+            disabled
           >
             送信する
             <img
@@ -227,9 +227,9 @@ import '../styles/page/contact.scss';
 
   /** バリデーションチェック */
   const form = document.getElementById('js_form');
-  const inputs = form?.querySelectorAll('input[required]');
-  const textareas = form?.querySelectorAll('textarea[required]');
-  const checkItems = [...inputs!, ...textareas!];
+  const requiredInputs = form?.querySelectorAll('input[required]');
+  const requiredTextareas = form?.querySelectorAll('textarea[required]');
+  const checkItems = [...requiredInputs!, ...requiredTextareas!];
   const messages = form?.querySelectorAll('p.js_form_errorMessage');
   const errorMessages = [...messages!];
   const emailExpErrorMessage = form!.querySelector(
@@ -244,10 +244,12 @@ import '../styles/page/contact.scss';
 
     item.addEventListener('blur', () => {
       const itemValue = item.value;
-      !itemValue
-        ? errorMessage?.classList.add('is_display')
-        : errorMessage?.classList.remove('is_display');
-      // checkSuccess();
+
+      if (!itemValue) {
+        errorMessage?.classList.add('is_display');
+      } else {
+        errorMessage?.classList.remove('is_display');
+      }
 
       if (item.type === 'email') {
         const itemValue = item.value;
@@ -255,30 +257,23 @@ import '../styles/page/contact.scss';
           ? emailExpErrorMessage?.classList.add('is_display')
           : emailExpErrorMessage?.classList.remove('is_display');
       }
+
+      formCheck();
     });
   });
 
-  /* disabled制御
---------------------------------- */
-  const formBtn = document.getElementById('js_formBtn');
-  const agreeCheck = document.getElementById('js_agreeBtn');
+  const submitBtn = document.getElementById('js_form_submitBtn');
+  const agreementCheckBox = form?.querySelector('input[type="checkbox"]');
 
-  //初期状態設定
-  // formBtn.disabled = true;
+  const formCheck = () => {
+    let flag = false;
 
-  // agreeCheck.addEventListener('click', checkSuccess);
-
-  // function checkSuccess() {
-  //   if (
-  //     document.querySelector('input[name=name1]').value !== '' &&
-  //     document.querySelector('input[name=name2]').value !== '' &&
-  //     document.querySelector('input[name=email]').value !== '' &&
-  //     document.querySelector('textarea').value !== '' &&
-  //     agreeCheck.checked
-  //   ) {
-  //     formBtn.disabled = false;
-  //   } else {
-  //     formBtn.disabled = true;
-  //   }
-  // }
+    for (const item of checkItems) {
+      item.value ? (flag = true) : (flag = false);
+    }
+    agreementCheckBox?.checked && flag
+      ? submitBtn?.removeAttribute('disabled')
+      : submitBtn?.setAttribute('disabled', '');
+  };
+  agreementCheckBox?.addEventListener('click', formCheck);
 </script>

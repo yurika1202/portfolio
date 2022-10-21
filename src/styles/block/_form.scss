@@ -321,6 +321,12 @@
   button {
     width: 100%;
     max-width: 198px;
+    opacity: 1;
+
+    &:disabled {
+      transition: opacity 0.3s ease;
+      opacity: 0.5;
+    }
 
     @include mix.mq(lg) {
       max-width: 276px;
