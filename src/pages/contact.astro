@@ -45,7 +45,7 @@ import '../styles/page/contact.scss';
         </div>
       </section>
 
-      <form class="ly_form" action="" method="POST">
+      <form id="js_form" class="ly_form" action="" method="POST">
         <dl class="bl_form">
           <!-- お名前 -->
           <div class="bl_form_item">
@@ -57,7 +57,7 @@ import '../styles/page/contact.scss';
                 type="text"
                 name="name"
                 id="name"
-                class="bl_form_input js_form_textInput"
+                class="bl_form_input"
                 aria-labelledby="name"
                 autocomplete="name"
                 required
@@ -65,7 +65,7 @@ import '../styles/page/contact.scss';
               <p class="bl_form_exText">
                 山田<span class="hp_space_1char"></span>太郎
               </p><!-- /.bl_form_exText -->
-              <p class="bl_form_errorText js_form_textErrorMessage">
+              <p class="bl_form_errorText js_form_errorMessage">
                 <span></span>お名前を入力してください。
               </p>
             </dd><!-- /.bl_form_inputField -->
@@ -74,9 +74,9 @@ import '../styles/page/contact.scss';
           <!-- 企業名 -->
           <div class="bl_form_item">
             <dt class="bl_form_labelWrap">
-              <label id="company" for="company" class="bl_form_label"
-                >企業名</label
-              >
+              <label id="company" for="company" class="bl_form_label">
+                企業名
+              </label>
             </dt><!-- /.bl_form_labelWrap -->
             <dd class="bl_form_inputField">
               <input
@@ -112,7 +112,12 @@ import '../styles/page/contact.scss';
               <p class="bl_form_exText">
                 sample@sample.com
               </p><!-- /.bl_form_exText -->
-              <p class="bl_form_errorText js_form_emailErrorMessage">
+              <p class="bl_form_errorText js_form_errorMessage">
+                <span></span>メールアドレスを入力してください。
+              </p>
+              <p
+                class="bl_form_errorText__emailExp js_form_errorMessage_emailExp"
+              >
                 <span></span>正しいメールアドレスの形式ではありません。
               </p>
             </dd><!-- /.bl_form_inputField -->
@@ -121,19 +126,19 @@ import '../styles/page/contact.scss';
           <!-- お問い合わせ内容 -->
           <div class="bl_form_item">
             <dt class="bl_form_labelWrap">
-              <label id="text" for="contents" class="bl_form_label"
-                >お問い合わせ内容</label
-              >
+              <label id="text" for="contents" class="bl_form_label">
+                お問い合わせ内容
+              </label>
             </dt><!-- /.bl_form_labelWrap -->
             <dd class="bl_form_inputField bl_form_input__require">
               <textarea
                 name="text"
                 id="contents"
-                class="bl_form_input bl_form_input__textarea js_form_textInput"
+                class="bl_form_input bl_form_input__textarea"
                 aria-labelledby="text"
                 required
                 autocomplete="off"></textarea>
-              <p class="bl_form_errorText js_form_textErrorMessage">
+              <p class="bl_form_errorText js_form_errorMessage">
                 <span></span>お問合せ内容を入力してください。
               </p>
             </dd><!-- /.bl_form_inputField -->
@@ -175,8 +180,8 @@ import '../styles/page/contact.scss';
             </p>
             <p class="bl_form_privacy_subTitle">個人情報に関するお問い合わせ</p>
             <p class="bl_form_privacy_text">
-              本ポリシー関するお問い合わせは、下記までお願い致します。<br
-              />ゆりか<span></span>メールアドレス:info@yurika122.com
+              本ポリシー関するお問い合わせは、下記までお願い致します。<br />
+              ゆりか<span></span>メールアドレス:info@yurika122.com
             </p>
           </div><!-- /.bl_form_privacy_textWrap -->
 
@@ -197,7 +202,9 @@ import '../styles/page/contact.scss';
             class="el_btn el_basicBtn"
             id="js_form_submitBtn"
             type="submit"
-            >送信する<img
+          >
+            送信する
+            <img
               src="/img/empty.gif"
               data-src="/icon/arrow-lg.svg"
               alt=""
@@ -214,3 +221,64 @@ import '../styles/page/contact.scss';
 
   <Footer />
 </Base>
+
+<script>
+  import 'typed-query-selector';
+
+  /** バリデーションチェック */
+  const form = document.getElementById('js_form');
+  const inputs = form?.querySelectorAll('input[required]');
+  const textareas = form?.querySelectorAll('textarea[required]');
+  const checkItems = [...inputs!, ...textareas!];
+  const messages = form?.querySelectorAll('p.js_form_errorMessage');
+  const errorMessages = [...messages!];
+  const emailExpErrorMessage = form!.querySelector(
+    'p.js_form_errorMessage_emailExp'
+  );
+
+  const emailExp =
+    /^[a-zA-Z0-9_.+-]+@([a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9]*\.)+[a-zA-Z]{2,}$/;
+
+  checkItems.forEach((item, index) => {
+    const errorMessage = errorMessages[index];
+
+    item.addEventListener('blur', () => {
+      const itemValue = item.value;
+      !itemValue
+        ? errorMessage?.classList.add('is_display')
+        : errorMessage?.classList.remove('is_display');
+      // checkSuccess();
+
+      if (item.type === 'email') {
+        const itemValue = item.value;
+        !emailExp.test(itemValue)
+          ? emailExpErrorMessage?.classList.add('is_display')
+          : emailExpErrorMessage?.classList.remove('is_display');
+      }
+    });
+  });
+
+  /* disabled制御
+--------------------------------- */
+  const formBtn = document.getElementById('js_formBtn');
+  const agreeCheck = document.getElementById('js_agreeBtn');
+
+  //初期状態設定
+  // formBtn.disabled = true;
+
+  // agreeCheck.addEventListener('click', checkSuccess);
+
+  // function checkSuccess() {
+  //   if (
+  //     document.querySelector('input[name=name1]').value !== '' &&
+  //     document.querySelector('input[name=name2]').value !== '' &&
+  //     document.querySelector('input[name=email]').value !== '' &&
+  //     document.querySelector('textarea').value !== '' &&
+  //     agreeCheck.checked
+  //   ) {
+  //     formBtn.disabled = false;
+  //   } else {
+  //     formBtn.disabled = true;
+  //   }
+  // }
+</script>
