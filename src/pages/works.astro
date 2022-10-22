@@ -44,5 +44,10 @@ const indieWorks = await Astro.glob<PostType>('./works/indie/**/*.md');
       </section><!-- /.ly_section__lg -->
     </ArchGrid>
   </main><!-- /.ly_main -->
-  <Footer />
+  <Footer
+    prevPath="/about"
+    prevLabel="自己紹介ページへ戻る"
+    nextPath="/contact"
+    nextLabel="お問い合わせページへ進む"
+  />
 </Base>

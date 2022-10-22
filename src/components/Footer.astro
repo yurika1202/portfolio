@@ -1,6 +1,14 @@
 ---
 import Footer from '../layout/Footer.astro';
 import '../styles/block/_drawerNav.scss';
+
+export interface Props {
+  prevPath?: string;
+  prevLabel?: string;
+  nextPath?: string;
+  nextLabel?: string;
+}
+const { prevPath, prevLabel, nextPath, nextLabel } = Astro.props;
 ---
 
 <Footer>
@@ -8,9 +16,9 @@ import '../styles/block/_drawerNav.scss';
     <ul class="bl_footerNav_page">
       <li>
         <a
-          href="/"
+          href={prevPath}
           class="el_btn el_circleBtn el_circleBtn__blue el_arrowBtn_prev"
-          aria-label="トップページへもどる"
+          aria-label={prevLabel}
         >
           <img src="/icon/arrow.svg" alt="" width="12" height="12" />
         </a>
@@ -37,9 +45,9 @@ import '../styles/block/_drawerNav.scss';
       </li>
       <li>
         <a
-          href="/works"
+          href={nextPath}
           class="el_btn el_circleBtn el_circleBtn__blue el_arrowBtn_next"
-          aria-label="実績ページへ進む"
+          aria-label={nextLabel}
         >
           <img src="/icon/arrow.svg" alt="" width="12" height="12" />
         </a>

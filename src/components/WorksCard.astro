@@ -5,7 +5,7 @@ import type { PostType } from '../types';
 import '../styles/block/_works.scss';
 import { thumbnailsClassType } from '../scripts/thumbnailsClassType';
 
-interface Props {
+export interface Props {
   works: MarkdownInstance<PostType>;
 }
 const { frontmatter, url } = Astro.props.works;

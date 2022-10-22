@@ -1,4 +1,5 @@
 ---
+import type { MarkdownInstance } from 'astro';
 import type { PostType } from '../types';
 import Base from './Base.astro';
 import Header from '../components/Header.astro';
@@ -9,11 +10,40 @@ import '../styles/page/post.scss';
 import '../styles/page/entry.scss';
 import { thumbnailsClassType } from '../scripts/thumbnailsClassType';
 
-interface Props {
+// paginationの作成
+export interface Props {
   content: PostType;
 }
 const { content } = Astro.props;
+const currentPagePath = Astro.url.pathname;
+const allPosts = await Astro.glob<PostType>('../pages/works/**/*.md');
+const sortedAllPosts = allPosts.sort(
+  (a, b) =>
+    new Date(b.frontmatter.publishDate).valueOf() -
+    new Date(a.frontmatter.publishDate).valueOf()
+);
+const { prev, next } = getPrevAndNextPosts(currentPagePath, sortedAllPosts);
+function getPrevAndNextPosts(
+  currentSlug: string,
+  posts: MarkdownInstance<PostType>[]
+) {
+  const index = posts.findIndex(({ url }) => url === currentSlug);
+  return {
+    // 指定indexのpostがなければnullを返す
+    prev: posts[index + 1] ?? null,
+    next: posts[index - 1] ?? null,
+  };
+}
+const paginationProps = {
+  ...(prev && {
+    prevUrl: prev.url,
+  }),
+  ...(next && {
+    nextUrl: next.url,
+  }),
+};
 
+// contentのプロパティが未設定の場合はクラスを付与
 const displayCheck = (key: string | {}) => {
   if (key === null) {
     return 'is_empty';
@@ -91,10 +121,7 @@ const displayCheck = (key: string | {}) => {
             <dt>担当領域</dt>
             <dd class="bl_post_info_role">
               <ul>
-                {
-                  content.role !== null &&
-                    content.role.map(value => <li>{value}</li>)
-                }
+                {content.role && content.role.map(value => <li>{value}</li>)}
               </ul>
             </dd><!-- /.bl_post_info_subSkill -->
           </dl>
@@ -102,10 +129,7 @@ const displayCheck = (key: string | {}) => {
             <dt>使用技術</dt>
             <dd class="bl_post_info_skill">
               <ul>
-                {
-                  content.skill !== null &&
-                    content.skill.map(value => <li>{value}</li>)
-                }
+                {content.skill && content.skill.map(value => <li>{value}</li>)}
               </ul>
             </dd>
             <dd
@@ -116,7 +140,7 @@ const displayCheck = (key: string | {}) => {
             >
               <ul>
                 {
-                  content.subSkills !== null &&
+                  content.subSkills &&
                     Object.entries(content.subSkills).map(([key, value]) => (
                       <li>
                         {key}
@@ -147,7 +171,7 @@ const displayCheck = (key: string | {}) => {
             <img
               src="/img/empty.gif"
               alt="パソコンサイズのスクリーンショット"
-              data-src={content.mockup !== null && content.mockup.pc}
+              data-src={content.mockup && content.mockup.pc}
               width="311"
               height="222"
               loading="lazy"
@@ -157,7 +181,7 @@ const displayCheck = (key: string | {}) => {
             <img
               src="/img/empty.gif"
               alt="スマホサイズのスクリーンショット"
-              data-src={content.mockup !== null && content.mockup.mobile}
+              data-src={content.mockup && content.mockup.mobile}
               width="96"
               height="190"
               loading="lazy"
@@ -167,5 +191,5 @@ const displayCheck = (key: string | {}) => {
       </div><!-- /.bl_post_contents -->
     </ArchGrid>
   </main><!-- /.ly_main -->
-  <FooterPost />
+  <FooterPost {...paginationProps} />
 </Base>
