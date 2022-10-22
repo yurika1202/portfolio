@@ -1,12 +1,24 @@
 ---
 import Footer from '../layout/Footer.astro';
+
+export interface Props {
+  prevUrl?: string;
+  nextUrl?: string;
+}
+const { prevUrl, nextUrl } = Astro.props;
 ---
 
 <Footer>
   <nav class="bl_footerNav" aria-label="post">
     <ul class="bl_footerNav_post">
       <li>
-        <a href="/" class="el_btn el_postNavBtn el_postNavBtn__prev"> まえへ</a>
+        {
+          prevUrl && (
+            <a href={prevUrl} class="el_btn el_postNavBtn el_postNavBtn__prev">
+              まえへ
+            </a>
+          )
+        }
       </li>
       <li>
         <a href="/works" class="el_btn el_postNavBtn el_postNavBtn__list">
@@ -14,7 +26,13 @@ import Footer from '../layout/Footer.astro';
         </a>
       </li>
       <li>
-        <a href="/" class="el_btn el_postNavBtn el_postNavBtn__next"> つぎへ</a>
+        {
+          nextUrl && (
+            <a href={nextUrl} class="el_btn el_postNavBtn el_postNavBtn__next">
+              つぎへ
+            </a>
+          )
+        }
       </li>
     </ul>
   </nav><!-- /.bl_footer_pagination -->
