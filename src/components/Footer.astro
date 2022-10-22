@@ -1,6 +1,7 @@
 ---
 import type { PostType } from '../types';
 import Footer from '../layout/Footer.astro';
+import PageNav from './PageNav.astro';
 import '../styles/block/_drawerNav.scss';
 
 export interface Props {
@@ -139,20 +140,7 @@ const sortedIndiePosts = indieWorks.sort(
           </text>
         </svg>
         <div class="bl_drawerNav_pageNavWrap">
-          <ul class="bl_pageNav_list" role="menubar">
-            <li class="bl_pageNav_item">
-              <a href="/about" role="menuitem" tabindex="-1">はじめまして</a>
-            </li><!-- /.bl_pageNav_item -->
-            <li class="bl_pageNav_item">
-              <a href="/works" role="menuitem" tabindex="-1">実績と自主制作</a>
-            </li><!-- /.bl_pageNav_item -->
-            <li class="bl_pageNav_item">
-              <a href="/contact" role="menuitem" tabindex="-1">お問い合わせ</a>
-            </li><!-- /.bl_pageNav_item -->
-            <li class="bl_pageNav_item">
-              <a href="/end" role="menuitem" tabindex="-1">さいごに</a>
-            </li><!-- /.bl_pageNav_item -->
-          </ul><!-- /.bl_pageNav_list -->
+          <PageNav />
         </div><!-- /.bl_drawerNav_pageNavWrap -->
       </nav><!-- /.bl_drawerNav__page -->
     </div><!-- /.bl_drawerNav__inner -->
