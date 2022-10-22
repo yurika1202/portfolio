@@ -1,4 +1,5 @@
 ---
+import type { PostType } from '../types';
 import Footer from '../layout/Footer.astro';
 import '../styles/block/_drawerNav.scss';
 
@@ -9,6 +10,20 @@ export interface Props {
   nextLabel?: string;
 }
 const { prevPath, prevLabel, nextPath, nextLabel } = Astro.props;
+
+// drawerNav
+const pracWorks = await Astro.glob<PostType>('../pages/works/prac/**/*.md');
+const indieWorks = await Astro.glob<PostType>('../pages/works/indie/**/*.md');
+const sortedPracPosts = pracWorks.sort(
+  (a, b) =>
+    new Date(b.frontmatter.publishDate).valueOf() -
+    new Date(a.frontmatter.publishDate).valueOf()
+);
+const sortedIndiePosts = indieWorks.sort(
+  (a, b) =>
+    new Date(b.frontmatter.publishDate).valueOf() -
+    new Date(a.frontmatter.publishDate).valueOf()
+);
 ---
 
 <Footer>
@@ -70,20 +85,21 @@ const { prevPath, prevLabel, nextPath, nextLabel } = Astro.props;
               x="50%"
               y="50%"
               text-anchor="start"
-              dominant-baseline="central">実績</text
+              dominant-baseline="central"
             >
+              実績
+            </text>
           </svg>
           <ul class="bl_sectionNav_list" role="menubar">
-            <li class="bl_sectionNav_item">
-              <a href="#crowdworks" role="menuitem" tabindex="-1"
-                >クラウドワークスでの受注</a
-              >
-            </li><!-- /.bl_sectionNav_item -->
-            <li class="bl_sectionNav_item">
-              <a href="#comunity" role="menuitem" tabindex="-1"
-                >オンラインコミュニティでの受注</a
-              >
-            </li><!-- /.bl_sectionNav_item -->
+            {
+              sortedPracPosts.map(prac => (
+                <li class="bl_sectionNav_item">
+                  <a href={prac.url} role="menuitem" tabindex="-1">
+                    {prac.frontmatter.title}
+                  </a>
+                </li>
+              ))
+            }
           </ul><!-- /.bl_sectionNav_list -->
         </div><!-- /.bl_sectionNav -->
         <div class="bl_sectionNav">
@@ -92,32 +108,35 @@ const { prevPath, prevLabel, nextPath, nextLabel } = Astro.props;
               x="50%"
               y="50%"
               text-anchor="middle"
-              dominant-baseline="central">自主制作</text
+              dominant-baseline="central"
             >
+              自主制作
+            </text>
           </svg>
           <ul class="bl_sectionNav_list" role="menubar">
-            <li class="bl_sectionNav_item">
-              <a href="#directlinkgenerator" role="menuitem" tabindex="-1"
-                >ImageURL for direct link Generator</a
-              >
-            </li><!-- /.bl_sectionNav_item -->
-            <li class="bl_sectionNav_item">
-              <a href="#yurilog" role="menuitem" tabindex="-1">yurilog.</a>
-            </li><!-- /.bl_sectionNav_item -->
-            <li class="bl_sectionNav_item">
-              <a href="#portfolio" role="menuitem" tabindex="-1"
-                >Yurika's Portfolio</a
-              >
-            </li><!-- /.bl_sectionNav_item -->
+            {
+              sortedIndiePosts.map(indie => (
+                <li class="bl_sectionNav_item">
+                  <a href={indie.url} role="menuitem" tabindex="-1">
+                    {indie.frontmatter.title}
+                  </a>
+                </li>
+              ))
+            }
           </ul><!-- /.bl_sectionNav_list -->
         </div><!-- /.bl_sectionNav -->
       </nav><!-- /.bl_drawerNav__section -->
 
       <nav class="bl_drawerNav__page" aria-label="pageList">
         <svg class="el_title_border el_title_border__blue">
-          <text x="50%" y="50%" text-anchor="middle" dominant-baseline="central"
-            >Page</text
+          <text
+            x="50%"
+            y="50%"
+            text-anchor="middle"
+            dominant-baseline="central"
           >
+            Page
+          </text>
         </svg>
         <div class="bl_drawerNav_pageNavWrap">
           <ul class="bl_pageNav_list" role="menubar">
