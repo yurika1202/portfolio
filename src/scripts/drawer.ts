@@ -3,7 +3,11 @@
  */
 
 import { scrollLock } from './logics/scrollLock';
-import { focusElement, focusFirstElement, focusBackContents } from './logics/focusControl';
+import {
+  focusElement,
+  focusFirstElement,
+  focusBackContents,
+} from './logics/focusControl';
 
 const btn = document.getElementById('js_drawerNav_btn') as HTMLButtonElement;
 const nav = document.getElementById('js_drawerNav') as HTMLDivElement;
@@ -46,7 +50,10 @@ btn.addEventListener('click', event => {
 
 /** ドロワーメニュー外クリック時の挙動 */
 document.addEventListener('click', event => {
-  if (event.target instanceof HTMLElement && !event.target.closest('#js_drawerNav')) {
+  if (
+    event.target instanceof HTMLElement &&
+    !event.target.closest('#js_drawerNav')
+  ) {
     closeContents();
   }
 });
