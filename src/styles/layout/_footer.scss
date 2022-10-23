@@ -5,9 +5,7 @@
   position: fixed;
   z-index: 100;
   bottom: -4px;
-  left: 50%;
-  width: 100%;
-  transform: translateX(-50%);
+  min-width: 100vw;
 }
 
 .ly_footer_inner {

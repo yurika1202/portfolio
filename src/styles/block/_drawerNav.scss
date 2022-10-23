@@ -10,36 +10,14 @@
   align-items: flex-end;
   width: 100%;
   max-width: 480px;
-  max-height: 60vh;
-  padding: var(--size-space-lg) var(--size-space-3xl) var(--size-space-lg) var(--size-space-lg);
+  height: inherit;
+  padding: var(--size-space-lg) var(--size-space-xl) var(--size-space-lg)
+    var(--size-space-lg);
   overflow-y: scroll;
   text-align: left;
   scroll-snap-align: center;
   gap: var(--size-space-lg);
   direction: rtl;
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    right: 40px;
-    width: 2px;
-    height: 100vh;
-    transform: translateY(-50%);
-    background: linear-gradient(to bottom, color(--c-black) 8px, transparent 8px) repeat-y left bottom / 2px 16px;
-  }
-
-  &::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    right: 26px;
-    width: 32px;
-    height: 32px;
-    transform: translateY(-50%);
-    animation: swipeIconAnime 3s ease-in-out infinite;
-    background: color(--c-bg-toc) url(#{$icon-path}/swipe.svg) no-repeat center center / contain;
-  }
 
   &::-webkit-scrollbar {
     width: 10px;
@@ -64,8 +42,44 @@
   @include mix.mq(md) {
     width: 70%;
     max-width: none;
+  }
+}
 
-    &::after {
+.bl_drawerNav_dashLine {
+  position: relative;
+  flex-shrink: 0;
+  width: 32px;
+  height: 100%;
+  margin-left: -32px;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 50%;
+    width: 2px;
+    height: 100%;
+    transform: translateX(-50%);
+    background: linear-gradient(
+        to bottom,
+        color(--c-black) 8px,
+        transparent 8px
+      )
+      repeat-y left bottom / 2px 16px;
+  }
+
+  img {
+    position: absolute;
+    top: 50%;
+    width: 32px;
+    height: 32px;
+    transform: translateY(-50%);
+    animation: swipeIconAnime 3s ease-in-out infinite;
+    background: color(--c-bg-toc);
+  }
+
+  @include mix.mq(md) {
+    img {
       display: none;
     }
   }
