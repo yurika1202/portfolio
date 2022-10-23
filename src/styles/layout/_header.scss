@@ -6,6 +6,7 @@
   z-index: 100;
   top: 0;
   width: 100%;
+  min-width: 100vw;
   height: var(--header-height);
   transition: transform 0.3s ease;
 

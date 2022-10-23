@@ -2,6 +2,7 @@
 @use '../functions/' as *;
 
 .ly_main {
+  min-width: 100vw;
   margin-top: var(--header-height);
   padding-top: 32px;
 
