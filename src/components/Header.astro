@@ -3,15 +3,33 @@ import '../styles/layout/_header.scss';
 import '../styles/block/_header.scss';
 import '../styles/block/_progressbar.scss';
 ---
+
 <>
   <header class="ly_header" id="js_header">
     <div class="ly_header_inner">
       <div class="bl_header_logo">
-        <img src="/img/logo.png" alt="Yurika's Portfolio" width="111" height="40" />
+        <img
+          src="/img/logo.png"
+          alt="Yurika's Portfolio"
+          width="111"
+          height="40"
+        />
       </div><!-- /.bl_header_logo -->
-      <progress class="bl_progressbar" id="js_progressbar" max="100" value=""></progress><!-- /.bl_progressbar -->
-      <a href="/contact" class="el_btn el_circleBtn el_circleBtn__pink bl_header_link" aria-label="お問い合わせ">
-        <img src="/img/empty.gif" alt="" width="20" height="20" data-src="/icon/mail.svg" loading="lazy" />
+      <progress class="bl_progressbar" id="js_progressbar" max="100" value=""
+      ></progress><!-- /.bl_progressbar -->
+      <a
+        href="/contact"
+        class="el_btn el_circleBtn el_circleBtn__pink bl_header_link"
+        aria-label="お問い合わせ"
+      >
+        <img
+          src="/img/empty.gif"
+          alt=""
+          width="20"
+          height="20"
+          data-src="/icon/mail.svg"
+          loading="lazy"
+        />
       </a>
     </div><!-- /.ly_header_inner -->
   </header><!-- /.ly_header -->
@@ -19,22 +37,29 @@ import '../styles/block/_progressbar.scss';
 
 <script>
   const header = document.getElementById('js_header') as HTMLElement;
-  const progressbar = document.getElementById('js_progressbar') as HTMLProgressElement;
-  const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  const progressbar = document.getElementById(
+    'js_progressbar'
+  ) as HTMLProgressElement;
+  const height =
+    document.documentElement.scrollHeight -
+    document.documentElement.clientHeight;
   let setPosition = 0;
+  let scrollFlag = false;
 
-  window.addEventListener('scroll', () => {
+  /** headerの表示制御 */
+  const headerDisplay = () => {
     const scrollY = document.documentElement.scrollTop;
-
-    // headerの表示・非表示
     if (setPosition < scrollY) {
       header.classList.add('is_hide');
     } else {
       header.classList.remove('is_hide');
     }
     setPosition = scrollY;
+  };
 
-    // progressbarのvalue更新
+  /** スクロール量に応じてprogressbarのvalue変更 */
+  const progressValueControl = () => {
+    const scrollY = document.documentElement.scrollTop;
     const progressValue = (scrollY / height) * 100;
     progressbar.value = progressValue;
     if (progressValue > 0) {
@@ -42,5 +67,19 @@ import '../styles/block/_progressbar.scss';
     } else {
       progressbar.classList.remove('is_scrolling');
     }
-  });
+  };
+
+  const headerScrollEvent = () => {
+    if (!scrollFlag) {
+      requestAnimationFrame(() => {
+        scrollFlag = false;
+        progressValueControl();
+        headerDisplay();
+      });
+      scrollFlag = true;
+    }
+  };
+
+  /** イベント登録 */
+  window.addEventListener('scroll', headerScrollEvent, { passive: true });
 </script>
