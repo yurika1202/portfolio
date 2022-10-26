@@ -6,10 +6,13 @@
   display: flex;
   gap: var(--size-space-sm);
   justify-content: center;
-  width: 80%;
   margin: var(--size-space-2xl) auto 0;
   font-weight: bold;
   text-align: center;
+
+  @include mix.mq(sm) {
+    width: 80%;
+  }
 }
 
 .bl_works_tabpanel {
@@ -65,7 +68,7 @@
   z-index: 1;
   top: 0;
   left: -24px;
-  max-width: 85%;
+  max-width: 75%;
   padding: 0.5em 1em;
   background: color(--c-secondary);
 
