@@ -51,7 +51,7 @@ import '../styles/element/_copy.scss';
           toTopBtn.classList.remove('is_display');
         }
         // copyの表示・非表示
-        if (scrollY >= bottomPosition) {
+        if (Math.ceil(scrollY) >= bottomPosition) {
           copy.classList.add('is_display');
         } else {
           copy.classList.remove('is_display');

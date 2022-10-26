@@ -10,7 +10,6 @@
     stroke: color(--c-black);
     fill: color(--c-white);
     font-family: var(--font-jp-accent);
-    font-size: rem(18px);
     font-weight: bold;
     letter-spacing: 0.2em;
     line-height: 1.4;
@@ -30,9 +29,7 @@
 
   &__pageTitle {
     text {
-      @include mix.mq(md) {
-        font-size: rem(32px);
-      }
+      font-size: clamp(rem(20px), 3.5vw, rem(32px));
     }
   }
 }
@@ -43,6 +40,7 @@
   text {
     fill: color(--c-secondary-accent);
     font-family: var(--font-en);
+    font-size: rem(18px);
     letter-spacing: 8px;
     text-shadow: 2px 1.5px 0 color(--c-black);
     text-transform: uppercase;

@@ -4,7 +4,7 @@
 .bl_toTop {
   position: absolute;
   top: -24px;
-  right: -10px;
+  right: -4px;
 
   @include mix.mq(lg) {
     top: -40px;
@@ -13,7 +13,8 @@
 
   > button {
     visibility: hidden;
-    transition: visibility 0.3s ease-in-out, opacity 0.3s ease-in-out, scale 0.3s ease-in-out;
+    transition: visibility 0.3s ease-in-out, opacity 0.3s ease-in-out,
+      scale 0.3s ease-in-out;
     opacity: 0;
     font-family: var(--font-en);
     font-size: rem(10px);
@@ -23,7 +24,8 @@
 
     &.is_display {
       visibility: visible;
-      transition: visibility 0.3s ease-in-out, opacity 0.3s ease-in-out, scale 0.3s ease-in-out;
+      transition: visibility 0.3s ease-in-out, opacity 0.3s ease-in-out,
+        scale 0.3s ease-in-out;
       opacity: 1;
       scale: 1;
     }

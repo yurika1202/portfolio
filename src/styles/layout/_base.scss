@@ -31,4 +31,12 @@
 .ly_base_inner {
   position: relative;
   padding: var(--size-space-lg) var(--size-width-inner) var(--size-space-5xl);
+
+  &__box {
+    padding: var(--size-space-lg) var(--size-width-inner);
+  }
+
+  @include mix.mq(lg) {
+    padding: var(--size-space-sm) var(--size-width-inner) var(--size-space-5xl);
+  }
 }
