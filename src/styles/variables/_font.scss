@@ -2,31 +2,42 @@
   font-family: 'Noto Sans JP';
   font-weight: 500;
   src: url('/font/NotoSansJP-medium.woff2') format('woff2');
+  font-display: swap;
 }
 @font-face {
   font-family: 'Noto Sans JP';
   font-weight: bold;
   src: url('/font/NotoSansJP-bold.woff2') format('woff2');
+  font-display: swap;
 }
 @font-face {
   font-family: 'Work Sans';
   font-weight: bold;
   src: url('/font/WorkSans-BoldItalic.woff2') format('woff2');
+  font-display: swap;
 }
 @font-face {
   font-family: 'Work Sans';
   font-weight: medium;
   src: url('/font/WorkSans-MediumItalic.woff2') format('woff2');
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Zen Maru Gothic';
+  font-weight: bold;
+  src: url('/font/ZenMaruGothic-Bold-subset.woff2') format('woff2');
+  font-display: swap;
 }
 
-$fallback: 'Helvetica Neue', arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', meiryo, sans-serif;
+$fallback: 'Helvetica Neue', arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans',
+  meiryo, sans-serif;
 $noto: 'Noto Sans JP', $fallback;
-$zenMaru: 'Zen Maru Gothic', $fallback;
+$zenmaru: 'Zen Maru Gothic', $fallback;
 $workSuns: 'Work Sans', $fallback;
 $font: (
   fallback: $fallback,
   jp: $noto,
-  jp-accent: $zenMaru,
+  jp-accent: $zenmaru,
   en: $workSuns,
 );
 
