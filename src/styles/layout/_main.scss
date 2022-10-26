@@ -4,11 +4,6 @@
 .ly_main {
   min-width: 100vw;
   margin-top: var(--header-height);
-  padding-top: 32px;
-
-  @include mix.mq(lg) {
-    padding-top: var(--size-space-xsm);
-  }
 
   &__post {
     margin-top: calc(32px + var(--header-height));
