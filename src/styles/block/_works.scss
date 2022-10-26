@@ -83,7 +83,7 @@
     width: 75px;
     rotate: 20deg;
     height: 75px;
-    background: url(#{$img-path}/more.svg) no-repeat center center / contain;
+    background: url(#{$img-path}more.svg) no-repeat center center / contain;
   }
 
   @include mix.mq(lg) {
