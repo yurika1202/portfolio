@@ -8,8 +8,8 @@ import WorksCard from '../components/WorksCard.astro';
 import Footer from '../components/Footer.astro';
 
 import '../styles/page/works.scss';
-// const posts = await Astro.glob('./works/**/*.md');
 
+const posts = await Astro.glob<PostType>('./works/**/*.md');
 const pracWorks = await Astro.glob<PostType>('./works/prac/**/*.md');
 const indieWorks = await Astro.glob<PostType>('./works/indie/**/*.md');
 ---
@@ -20,34 +20,188 @@ const indieWorks = await Astro.glob<PostType>('./works/indie/**/*.md');
     <ArchGrid>
       <div class="bl_pageTitle bl_pageTitle_icon bl_pageTitle_icon__web">
         <svg class="el_title_border el_title_border__pageTitle">
-          <text x="50%" y="50%" text-anchor="middle" dominant-baseline="central"
-            >実績と自主制作</text
+          <text
+            x="50%"
+            y="50%"
+            text-anchor="middle"
+            dominant-baseline="central"
           >
+            実績と自主制作
+          </text>
         </svg>
       </div><!-- /.bl_pageTitle -->
-      <section class="ly_section__lg">
-        <div class="el_title">
-          <p>実績</p>
-        </div><!-- /.bl_works_sectionTitle -->
+      <div class="bl_works_tabs" role="tablist" aria-labelledby="tablist-tag">
+        <button
+          class="el_btn el_rectBtn"
+          type="button"
+          id="tab-all"
+          role="tab"
+          aria-selected="true"
+          aria-controls="tabpanel-all"
+        >
+          すべて
+        </button>
+        <button
+          class="el_btn el_rectBtn"
+          type="button"
+          id="tab-prac"
+          role="tab"
+          aria-selected="false"
+          aria-controls="tabpanel-prac"
+          tabindex="-1"
+        >
+          実績
+        </button>
+        <button
+          class="el_btn el_rectBtn"
+          type="button"
+          id="tab-indie"
+          role="tab"
+          aria-selected="false"
+          aria-controls="tabpanel-indie"
+          tabindex="-1"
+        >
+          自主制作
+        </button>
+      </div>
+
+      <section
+        class="ly_section__lg bl_works_tabpanel"
+        id="tabpanel-all"
+        role="tabpanel"
+        aria-labelledby="tab-all"
+      >
+        <ul class="bl_works_list">
+          {posts.map(post => <WorksCard works={post} />)}
+        </ul><!-- /.bl_works_list -->
+      </section><!-- /.ly_section__lg -->
+
+      <section
+        class="ly_section__lg bl_works_tabpanel is_hidden"
+        id="tabpanel-prac"
+        role="tabpanel"
+        aria-labelledby="tab-prac"
+      >
         <ul class="bl_works_list">
           {pracWorks.map(prac => <WorksCard works={prac} />)}
         </ul><!-- /.bl_works_list -->
       </section><!-- /.ly_section__lg -->
 
       <section class="ly_section__lg">
-        <div class="el_title">
-          <p>自主制作</p>
-        </div><!-- /.bl_works_sectionTitle -->
-        <ul class="bl_works_list">
-          {indieWorks.map(indie => <WorksCard works={indie} />)}
-        </ul><!-- /.bl_works_list -->
-      </section><!-- /.ly_section__lg -->
+        <section
+          class="ly_section__lg bl_works_tabpanel is_hidden"
+          id="tabpanel-indie"
+          role="tabpanel"
+          aria-labelledby="tab-indie"
+        >
+          <ul class="bl_works_list">
+            {indieWorks.map(indie => <WorksCard works={indie} />)}
+          </ul><!-- /.bl_works_list -->
+        </section><!-- /.ly_section__lg -->
+      </section>
     </ArchGrid>
   </main><!-- /.ly_main -->
-  <Footer
-    prevPath="/about"
-    prevLabel="自己紹介ページへ戻る"
-    nextPath="/contact"
-    nextLabel="お問い合わせページへ進む"
-  />
+  <Footer />
 </Base>
+
+<script>
+  import 'typed-query-selector';
+  /** タブ制御 */
+  const tabList = document.querySelector('div[role="tablist"]');
+  const tabs: HTMLButtonElement[] | null = [
+    ...tabList!.querySelectorAll('button[role="tab"]'),
+  ];
+  let firstTab: null | HTMLButtonElement = null;
+  let lastTab: null | HTMLButtonElement = null;
+  let tabPanels: HTMLElement[] = [];
+  /** タブクリック時のイベント */
+  const onClick = (event: Event) => {
+    if (event.target instanceof HTMLButtonElement) {
+      setSelectedTab(event.target, true);
+    }
+  };
+  /** タブ内でのキーボード操作イベント */
+  const onKeyDown = (event: KeyboardEvent) => {
+    if (event.currentTarget instanceof HTMLButtonElement) {
+      const target = event.currentTarget;
+      let flag = false;
+      switch (event.key) {
+        case 'ArrowLeft':
+          setSelectedToPreviousTab(target);
+          flag = true;
+          break;
+        case 'ArrowRight':
+          setSelectedToNextTab(target);
+          flag = true;
+          break;
+        case 'Home':
+          setSelectedTab(firstTab!);
+          flag = true;
+          break;
+        case 'End':
+          setSelectedTab(lastTab!);
+          flag = true;
+          break;
+        default:
+          break;
+      }
+      if (flag) {
+        event.stopPropagation();
+        event.preventDefault();
+      }
+    }
+  };
+  /** タブ選択時 */
+  const setSelectedTab = (
+    currentTab: HTMLButtonElement,
+    setFocus: boolean = true
+  ) => {
+    tabs.forEach((tab, index) => {
+      if (currentTab === tab) {
+        tab.setAttribute('aria-selected', 'true');
+        tab.removeAttribute('tabindex');
+        tabPanels[index].classList.remove('is_hidden');
+        // setFocus値がtrueならフォーカスをあてる
+        setFocus && tab.focus();
+      } else {
+        tab.setAttribute('aria-selected', 'false');
+        tab.tabIndex = -1;
+        tabPanels[index].classList.add('is_hidden');
+      }
+    });
+  };
+  /** 選択タブのひとつ前のタブにフォーカスをあてる */
+  const setSelectedToPreviousTab = (currentTab: HTMLButtonElement) => {
+    let index: number;
+    if (currentTab === firstTab) {
+      setSelectedTab(lastTab!);
+    } else {
+      index = tabs.indexOf(currentTab);
+      setSelectedTab(tabs[index - 1]);
+    }
+  };
+  /** 選択タブのひとつ次のタブにフォーカスをあてる */
+  const setSelectedToNextTab = (currentTab: HTMLButtonElement) => {
+    let index;
+    if (currentTab === lastTab) {
+      setSelectedTab(firstTab!);
+    } else {
+      index = tabs.indexOf(currentTab);
+      setSelectedTab(tabs[index + 1]);
+    }
+  };
+  /** 各タブにイベント登録 */
+  for (const tab of tabs) {
+    const tabPanel = document.getElementById(
+      tab.getAttribute('aria-controls')!
+    );
+    if (tabPanels) tabPanels.push(tabPanel!);
+    tab.tabIndex = -1;
+    tab.setAttribute('aria-selected', 'false');
+    tab.addEventListener('click', onClick);
+    tab.addEventListener('keydown', { handleEvent: onKeyDown });
+    firstTab = firstTab ?? tab;
+    lastTab = tab;
+  }
+  setSelectedTab(firstTab!, false);
+</script>

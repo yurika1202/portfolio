@@ -20,7 +20,6 @@ const openContents = () => {
   btn.setAttribute('aria-label', 'メニューを閉じる');
   nav.setAttribute('aria-hidden', 'false');
   focusElement(nav);
-  focusBackContents();
 };
 
 /** コンテンツ非表示処理 */
@@ -31,7 +30,6 @@ const closeContents = () => {
   btn.setAttribute('aria-label', 'メニューを開く');
   nav.setAttribute('aria-hidden', 'true');
   focusElement(nav);
-  focusBackContents();
 };
 
 /** ドロワー開閉ボタンクリック時の挙動 */
@@ -46,6 +44,7 @@ btn.addEventListener('click', event => {
     closeContents();
     document.removeEventListener('touchmove', scrollLock);
   }
+  focusBackContents();
 });
 
 /** ドロワーメニュー外クリック時の挙動 */

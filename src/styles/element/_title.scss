@@ -49,35 +49,18 @@
   }
 }
 
-.el_title {
+.el_title_dash {
   position: relative;
   right: calc(var(--size-width-inner) + 12px);
-
-  p {
-    width: fit-content;
-    max-width: calc(100% - var(--size-width-inner));
-    padding: 0.5em 1em;
-    border: 2px solid color(--c-black);
-    border-radius: 10px;
-    background: color(--c-primary);
-    font-size: rem(16px);
-    font-weight: bold;
-    letter-spacing: 2px;
-
-    @include mix.mq(lg) {
-      font-size: rem(20px);
-    }
-  }
-}
-
-.el_title_dash {
-  @extend .el_title;
-
   width: calc(100% + (var(--size-width-inner) * 2) + 12px);
 
   p {
     position: relative;
     z-index: 1;
+    width: fit-content;
+    max-width: calc(100% - var(--size-width-inner));
+    padding: 0.5em 1em;
+    font-size: rem(20px);
   }
 
   &::after {

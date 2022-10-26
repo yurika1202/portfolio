@@ -151,3 +151,16 @@
     font-size: rem(18px);
   }
 }
+
+.el_rectBtn {
+  width: 100%;
+  padding: 0.75em 0;
+  border: 2px solid color(--c-black);
+  border-radius: 10px;
+  background: color(--c-bg-works);
+  box-shadow: 3px 3px 0 color(--c-black);
+
+  &[aria-selected='true'] {
+    background: color(--c-primary-accent);
+  }
+}

@@ -2,6 +2,23 @@
 @use '../functions/' as *;
 @use '../variables/other' as *;
 
+.bl_works_tabs {
+  display: flex;
+  gap: var(--size-space-sm);
+  justify-content: center;
+  width: 80%;
+  margin: var(--size-space-2xl) auto 0;
+  font-weight: bold;
+  text-align: center;
+}
+
+.bl_works_tabpanel {
+  &.is_hidden {
+    display: none;
+    opacity: 0;
+  }
+}
+
 .bl_works_sectionTitle {
   position: relative;
   top: 0;
