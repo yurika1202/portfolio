@@ -8,8 +8,12 @@
     width: 100%;
   }
 
+  @include mix.mq(sm) {
+    width: 128px;
+  }
+
   @include mix.mq(lg) {
-    width: 240px;
+    width: 170px;
   }
 }
 

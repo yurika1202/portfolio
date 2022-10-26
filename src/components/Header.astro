@@ -1,22 +1,21 @@
 ---
 import '../styles/layout/_header.scss';
 import '../styles/block/_header.scss';
-import '../styles/block/_progressbar.scss';
 ---
 
 <>
   <header class="ly_header" id="js_header">
     <div class="ly_header_inner">
       <div class="bl_header_logo">
-        <img
-          src="/image/logo.png"
-          alt="Yurika's Portfolio"
-          width="111"
-          height="40"
-        />
+        <a href="/" aria-label="トップページ">
+          <img
+            src="/image/logo.png"
+            alt="Yurika's Portfolio"
+            width="111"
+            height="40"
+          />
+        </a>
       </div><!-- /.bl_header_logo -->
-      <progress class="bl_progressbar" id="js_progressbar" max="100" value=""
-      ></progress><!-- /.bl_progressbar -->
       <a
         href="/contact"
         class="el_btn el_circleBtn el_circleBtn__pink bl_header_link"
@@ -37,12 +36,6 @@ import '../styles/block/_progressbar.scss';
 
 <script>
   const header = document.getElementById('js_header') as HTMLElement;
-  const progressbar = document.getElementById(
-    'js_progressbar'
-  ) as HTMLProgressElement;
-  const height =
-    document.documentElement.scrollHeight -
-    document.documentElement.clientHeight;
   let setPosition = 0;
   let scrollFlag = false;
 
@@ -57,23 +50,10 @@ import '../styles/block/_progressbar.scss';
     setPosition = scrollY;
   };
 
-  /** スクロール量に応じてprogressbarのvalue変更 */
-  const progressValueControl = () => {
-    const scrollY = document.documentElement.scrollTop;
-    const progressValue = (scrollY / height) * 100;
-    progressbar.value = progressValue;
-    if (progressValue > 0) {
-      progressbar.classList.add('is_scrolling');
-    } else {
-      progressbar.classList.remove('is_scrolling');
-    }
-  };
-
   const headerScrollEvent = () => {
     if (!scrollFlag) {
       requestAnimationFrame(() => {
         scrollFlag = false;
-        progressValueControl();
         headerDisplay();
       });
       scrollFlag = true;
