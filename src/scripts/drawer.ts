@@ -54,6 +54,7 @@ document.addEventListener('click', event => {
     !event.target.closest('#js_drawerNav')
   ) {
     closeContents();
+    focusBackContents();
   }
 });
 
