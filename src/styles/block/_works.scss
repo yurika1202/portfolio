@@ -46,14 +46,57 @@
   li {
     width: 100%;
     max-width: 400px;
-  }
 
-  a {
-    color: inherit;
+    @include mix.hover {
+      .bl_works_moreBtn {
+        transform: translate(3px, 3px);
+        box-shadow: none;
+
+        img {
+          animation: arrowFrameInOut 1s;
+        }
+      }
+
+      .bl_works_thumbnails {
+        img {
+          scale: 1.05 1.05;
+        }
+      }
+    }
   }
 
   @include mix.mq(lg) {
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  }
+}
+
+@keyframes arrowFrameInOut {
+  0% {
+    transform: translateX(0);
+  }
+
+  40% {
+    transform: translateX(100%);
+    opacity: 1;
+  }
+
+  45% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+
+  50% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+
+  60% {
+    transform: translateX(-100%);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateX(0);
   }
 }
 
@@ -82,6 +125,10 @@
 .bl_works_thumbnails {
   margin-top: -16px;
   border-radius: 20px;
+
+  img {
+    transition: scale 0.3s cubic-bezier(0.27, 0.66, 0.49, 0.82);
+  }
 }
 
 .bl_works_btnWrap {
@@ -92,18 +139,29 @@
 
 .bl_works_moreBtn {
   position: relative;
-  width: 55px;
-  height: 55px;
+  width: 56px;
+  height: 56px;
+  transition: box-shadow 0.15s cubic-bezier(0.09, 0.56, 0.62, 0.73),
+    transform 0.2s cubic-bezier(0.15, 0.62, 0.43, 0.8);
 
   &::before {
     content: '';
     position: absolute;
-    top: -25px;
-    right: -31px;
-    width: 75px;
-    rotate: 20deg;
-    height: 75px;
+    top: 50%;
+    left: calc(50% + 2px);
+    width: 86px;
+    height: 86px;
+    transform: translate(-50%, -50%);
+    transform-origin: top left;
+    animation: infiniteRotation linear 10s infinite;
     background: url(#{$img-path}more.svg) no-repeat center center / contain;
+  }
+
+  span {
+    width: 20px;
+    height: 20px;
+    overflow: hidden;
+    border-radius: 50%;
   }
 
   @include mix.mq(lg) {
@@ -111,6 +169,16 @@
       width: 20px;
       height: 20px;
     }
+  }
+}
+
+@keyframes infiniteRotation {
+  0% {
+    rotate: 0deg;
+  }
+
+  100% {
+    rotate: 360deg;
   }
 }
 

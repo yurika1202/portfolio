@@ -74,6 +74,12 @@
   border: 2px solid color(--c-black);
   border-radius: 10px;
   background: color(--c-primary-accent);
+
+  @include mix.hover {
+    .bl_form_input {
+      background: color(--c-bg-inputFocus);
+    }
+  }
 }
 
 .bl_form_inputField {
@@ -88,6 +94,7 @@
   height: 64px;
   margin-right: auto;
   padding: 1.714em 1.714em 1.143em;
+  transition: background 0.3s cubic-bezier(0.15, 0.62, 0.43, 0.8);
   border: 2px solid color(--c-black);
   border-radius: 10px;
   background: color(--c-white);
@@ -123,6 +130,10 @@
 
   &__textarea {
     height: 160px;
+  }
+
+  @include mix.hover {
+    background: color(--c-bg-inputFocus);
   }
 }
 
