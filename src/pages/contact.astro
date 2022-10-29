@@ -260,8 +260,10 @@ import '../styles/page/contact.scss';
 
       if (!itemValue) {
         errorMessage?.classList.add('is_display');
+        item.classList.add('is_error');
       } else {
         errorMessage?.classList.remove('is_display');
+        item.classList.remove('is_error');
       }
 
       // type="email"の場合は形式チェック
