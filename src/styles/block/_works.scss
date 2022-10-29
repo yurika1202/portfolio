@@ -110,6 +110,17 @@
 .bl_works_meta {
   position: relative;
   margin-left: 24px;
+
+  &::before {
+    content: '';
+    position: absolute;
+    bottom: -40px;
+    left: 50%;
+    width: 2px;
+    height: 40px;
+    transform: translateX(-50%);
+    background: color(--c-black);
+  }
 }
 
 .bl_works_title {
@@ -215,17 +226,6 @@
     margin-top: 0.5em;
     overflow-wrap: break-word;
     letter-spacing: 1px;
-  }
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: -42px;
-    left: 50%;
-    width: 2px;
-    height: 40px;
-    transform: translateX(-50%);
-    background: color(--c-black);
   }
 }
 
