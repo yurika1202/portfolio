@@ -74,6 +74,12 @@
   border: 2px solid color(--c-black);
   border-radius: 10px;
   background: color(--c-primary-accent);
+
+  @include mix.hover {
+    .bl_form_input {
+      background: color(--c-bg-inputFocus);
+    }
+  }
 }
 
 .bl_form_inputField {
@@ -88,6 +94,7 @@
   height: 64px;
   margin-right: auto;
   padding: 1.714em 1.714em 1.143em;
+  transition: background 0.3s cubic-bezier(0.15, 0.62, 0.43, 0.8);
   border: 2px solid color(--c-black);
   border-radius: 10px;
   background: color(--c-white);
@@ -121,8 +128,20 @@
     }
   }
 
+  &.is_error {
+    border: 2px solid color(--c-error);
+  }
+
   &__textarea {
     height: 160px;
+  }
+
+  @include mix.hover {
+    background: color(--c-bg-inputFocus);
+  }
+
+  &:focus {
+    outline: 2px solid color(--c-primary);
   }
 }
 
@@ -280,6 +299,7 @@
         width: 25px;
         height: 25px;
         transform: translateY(-50%);
+        transition: background 0.3s cubic-bezier(0.15, 0.62, 0.43, 0.8);
         border: 2px solid color(--c-black);
         border-radius: 5px;
         background: color(--c-white);
@@ -303,6 +323,22 @@
       @media print, screen and (min-width: 480px) {
         &::after {
           top: 6px;
+        }
+      }
+    }
+
+    @include mix.hover {
+      + span {
+        &::before {
+          background: color(--c-bg-inputFocus);
+        }
+      }
+    }
+
+    &:focus {
+      + span {
+        &::before {
+          outline: 2px solid color(--c-primary);
         }
       }
     }

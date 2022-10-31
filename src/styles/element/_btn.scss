@@ -48,6 +48,27 @@
       height: 28px;
     }
   }
+
+  @include mix.hover {
+    transform: translate(3px, 3px);
+    box-shadow: none;
+  }
+}
+
+.el_circleBtn,
+.el_basicBtn,
+.el_rectBtn,
+.el_postNavBtn {
+  transition: box-shadow 0.15s cubic-bezier(0.09, 0.56, 0.62, 0.73),
+    transform 0.2s cubic-bezier(0.15, 0.62, 0.43, 0.8);
+}
+
+.el_rectBtn,
+.el_postNavBtn {
+  @include mix.hover {
+    transform: translate(4px, 4px);
+    box-shadow: none;
+  }
 }
 
 .el_basicBtn {
@@ -80,6 +101,13 @@
       height: 1em;
       transform: translateY(-50%);
       background: url(#{$icon-path}/link.svg) no-repeat center center / contain;
+    }
+  }
+
+  &:not(:disabled) {
+    @include mix.hover {
+      transform: translate(4px, 4px);
+      box-shadow: none;
     }
   }
 }

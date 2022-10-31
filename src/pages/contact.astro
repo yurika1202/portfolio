@@ -55,13 +55,15 @@ import '../styles/page/contact.scss';
           <!-- お名前 -->
           <div class="bl_form_item">
             <dt class="bl_form_labelWrap">
-              <label id="name" for="name" class="bl_form_label">お名前</label>
+              <label id="name" for="fullname" class="bl_form_label"
+                >お名前</label
+              >
             </dt><!-- /.bl_form_labelWrap -->
             <dd class="bl_form_inputField bl_form_input__require">
               <input
                 type="text"
                 name="name"
-                id="name"
+                id="fullname"
                 class="bl_form_input"
                 aria-labelledby="name"
                 autocomplete="name"
@@ -79,7 +81,7 @@ import '../styles/page/contact.scss';
           <!-- 企業名 -->
           <div class="bl_form_item">
             <dt class="bl_form_labelWrap">
-              <label id="company" for="company" class="bl_form_label">
+              <label id="company" for="companyName" class="bl_form_label">
                 企業名
               </label>
             </dt><!-- /.bl_form_labelWrap -->
@@ -87,7 +89,7 @@ import '../styles/page/contact.scss';
               <input
                 type="text"
                 name="company"
-                id="company"
+                id="companyName"
                 class="bl_form_input"
                 aria-labelledby="company"
                 autocomplete="organization"
@@ -258,8 +260,10 @@ import '../styles/page/contact.scss';
 
       if (!itemValue) {
         errorMessage?.classList.add('is_display');
+        item.classList.add('is_error');
       } else {
         errorMessage?.classList.remove('is_display');
+        item.classList.remove('is_error');
       }
 
       // type="email"の場合は形式チェック

@@ -25,13 +25,20 @@
     &.is_display {
       visibility: visible;
       transition: visibility 0.3s ease-in-out, opacity 0.3s ease-in-out,
-        scale 0.3s ease-in-out;
+        scale 0.3s ease-in-out,
+        box-shadow 0.15s cubic-bezier(0.09, 0.56, 0.62, 0.73),
+        transform 0.2s cubic-bezier(0.15, 0.62, 0.43, 0.8);
       opacity: 1;
       scale: 1;
     }
 
     @include mix.mq(lg) {
       font-size: rem(18px);
+    }
+
+    @include mix.hover {
+      transform: translate(4px, 4px);
+      box-shadow: none;
     }
   }
 }
