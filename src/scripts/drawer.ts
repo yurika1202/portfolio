@@ -48,7 +48,7 @@ btn?.addEventListener('click', event => {
 
 /** ドロワーメニュー外クリック時の挙動 */
 document.addEventListener('click', event => {
-  if (event.target instanceof HTMLElement && event.target.closest('#js_drawerNav')) {
+  if (event.target instanceof HTMLElement && !event.target.closest('#js_drawerNav')) {
     closeContents();
     focusBackContents();
   }
