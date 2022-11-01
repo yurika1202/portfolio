@@ -7,13 +7,17 @@ window.addEventListener('load', () => {
         img.src = img.dataset.src;
       }
     });
-    const imageSrcset = document.querySelectorAll('img[data-srcset]') as NodeListOf<HTMLImageElement>;
+    const imageSrcset = document.querySelectorAll(
+      'img[data-srcset]'
+    ) as NodeListOf<HTMLImageElement>;
     imageSrcset.forEach(img => {
       if (img.dataset.srcset != null) {
         img.srcset = img.dataset.srcset;
       }
     });
-    const sources = document.querySelectorAll('source[data-srcset]') as NodeListOf<HTMLSourceElement>;
+    const sources = document.querySelectorAll(
+      'source[data-srcset]'
+    ) as NodeListOf<HTMLSourceElement>;
     sources.forEach(source => {
       if (source.dataset.srcset != null) {
         source.srcset = source.dataset.srcset;

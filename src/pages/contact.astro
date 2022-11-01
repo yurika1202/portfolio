@@ -14,18 +14,16 @@ import '../styles/page/contact.scss';
     <ArchGrid>
       <div class="bl_pageTitle bl_pageTitle_icon bl_pageTitle_icon__mail">
         <svg class="el_title_border el_title_border__pageTitle">
-          <text x="50%" y="50%" text-anchor="middle" dominant-baseline="central"
-            >お問い合わせ</text
-          >
+          <text x="50%" y="50%" text-anchor="middle" dominant-baseline="central">お問い合わせ</text>
         </svg>
       </div><!-- /.bl_pageTitle -->
 
       <section class="ly_section__lg">
         <div class="bl_form_lead">
           <p>
-            <span class="hp_display_ib__sm"
-              >もし少しでもご興味を持っていただけましたら、</span
-            ><span class="hp_display_ib__sm">ぜひお気軽にご連絡ください。</span>
+            <span class="hp_display_ib__sm">もし少しでもご興味を持っていただけましたら、</span><span
+              class="hp_display_ib__sm">ぜひお気軽にご連絡ください。</span
+            >
           </p>
           <div class="bl_form_successMessage">
             <p class="bl_form_successMessage_title">
@@ -55,9 +53,7 @@ import '../styles/page/contact.scss';
           <!-- お名前 -->
           <div class="bl_form_item">
             <dt class="bl_form_labelWrap">
-              <label id="name" for="fullname" class="bl_form_label"
-                >お名前</label
-              >
+              <label id="name" for="fullname" class="bl_form_label">お名前</label>
             </dt><!-- /.bl_form_labelWrap -->
             <dd class="bl_form_inputField bl_form_input__require">
               <input
@@ -81,9 +77,7 @@ import '../styles/page/contact.scss';
           <!-- 企業名 -->
           <div class="bl_form_item">
             <dt class="bl_form_labelWrap">
-              <label id="company" for="companyName" class="bl_form_label">
-                企業名
-              </label>
+              <label id="company" for="companyName" class="bl_form_label"> 企業名</label>
             </dt><!-- /.bl_form_labelWrap -->
             <dd class="bl_form_inputField">
               <input
@@ -94,17 +88,14 @@ import '../styles/page/contact.scss';
                 aria-labelledby="company"
                 autocomplete="organization"
               />
-              <p class="bl_form_exText">
-                hoge株式会社
-              </p><!-- /.bl_form_exText -->
+              <p class="bl_form_exText">hoge株式会社</p><!-- /.bl_form_exText -->
             </dd><!-- /.bl_form_inputField -->
           </div><!-- /.bl_form_item -->
 
           <!-- ご連絡先 -->
           <div class="bl_form_item">
             <dt class="bl_form_labelWrap">
-              <label id="email" for="mail" class="bl_form_label">ご連絡先</label
-              >
+              <label id="email" for="mail" class="bl_form_label">ご連絡先</label>
             </dt><!-- /.bl_form_labelWrap -->
             <dd class="bl_form_inputField bl_form_input__require">
               <input
@@ -116,15 +107,11 @@ import '../styles/page/contact.scss';
                 required
                 autocomplete="email"
               />
-              <p class="bl_form_exText">
-                sample@sample.com
-              </p><!-- /.bl_form_exText -->
+              <p class="bl_form_exText">sample@sample.com</p><!-- /.bl_form_exText -->
               <p class="bl_form_errorText js_form_errorMessage">
                 <span></span>メールアドレスを入力してください。
               </p>
-              <p
-                class="bl_form_errorText__emailExp js_form_errorMessage_emailExp"
-              >
+              <p class="bl_form_errorText__emailExp js_form_errorMessage_emailExp">
                 <span></span>正しいメールアドレスの形式ではありません。
               </p>
             </dd><!-- /.bl_form_inputField -->
@@ -133,9 +120,7 @@ import '../styles/page/contact.scss';
           <!-- お問い合わせ内容 -->
           <div class="bl_form_item">
             <dt class="bl_form_labelWrap">
-              <label id="text" for="contents" class="bl_form_label">
-                お問い合わせ内容
-              </label>
+              <label id="text" for="contents" class="bl_form_label"> お問い合わせ内容</label>
             </dt><!-- /.bl_form_labelWrap -->
             <dd class="bl_form_inputField bl_form_input__require">
               <textarea
@@ -168,17 +153,13 @@ import '../styles/page/contact.scss';
             <p class="bl_form_privacy_text">
               当サイトではお客様よりお預かりした個人情報を適切に管理し、次のいずれかに該当する場合を除き、個人情報を第三者に開示いたしません。
             </p>
-            <p class="bl_form_privacy_subTitle">
-              個人情報の第三者への開示・提供
-            </p>
+            <p class="bl_form_privacy_subTitle">個人情報の第三者への開示・提供</p>
             <p class="bl_form_privacy_text">
               当サイトは次に掲げる場合を除いて、同意を得ることなく第三者に個人情報を提供することはありません。<br
               />ただし、個人情報保護法その他の法令で認められる場合を除きます。
             </p>
             <ul>
-              <li>
-                法律上照会権限を有する者から書面による正式な協力要請、照会があった場合
-              </li>
+              <li>法律上照会権限を有する者から書面による正式な協力要請、照会があった場合</li>
               <li>お客様の同意があった場合</li>
             </ul><!-- /.bl_form_privacy_ist -->
             <p class="bl_form_privacy_subTitle">プライバシーポリシーの変更</p>
@@ -194,22 +175,15 @@ import '../styles/page/contact.scss';
 
           <div class="bl_form_privacy_checkBox">
             <label>
-              <input
-                type="checkbox"
-                name="privacy"
-                value="プライバシーポリシーに同意する"
-              /><span>プライバシーポリシーの内容を確認し同意します</span>
+              <input type="checkbox" name="privacy" value="プライバシーポリシーに同意する" /><span
+                >プライバシーポリシーの内容を確認し同意します</span
+              >
             </label>
           </div><!-- /.bl_form_privacy_checkBox -->
         </div><!-- /.bl_form_privacy -->
 
         <div class="bl_form_btn">
-          <button
-            class="el_btn el_basicBtn"
-            id="js_form_submitBtn"
-            type="submit"
-            disabled
-          >
+          <button class="el_btn el_basicBtn" id="js_form_submitBtn" type="submit" disabled>
             送信する
             <img
               src="/image/empty.gif"
@@ -244,12 +218,9 @@ import '../styles/page/contact.scss';
   const checkItems = [...requiredInputs!, ...requiredTextareas!];
   const messages = form?.querySelectorAll('p.js_form_errorMessage');
   const errorMessages = [...messages!];
-  const emailExpErrorMessage = form!.querySelector(
-    'p.js_form_errorMessage_emailExp'
-  );
+  const emailExpErrorMessage = form!.querySelector('p.js_form_errorMessage_emailExp');
 
-  const emailExp =
-    /^[a-zA-Z0-9_.+-]+@([a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9]*\.)+[a-zA-Z]{2,}$/;
+  const emailExp = /^[a-zA-Z0-9_.+-]+@([a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9]*\.)+[a-zA-Z]{2,}$/;
 
   /** 入力値を監視してエラーメッセージの表示を切り替える */
   checkItems.forEach((item, index) => {

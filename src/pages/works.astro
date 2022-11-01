@@ -20,14 +20,9 @@ const indieWorks = await Astro.glob<PostType>('./works/indie/**/*.md');
     <ArchGrid>
       <div class="bl_pageTitle bl_pageTitle_icon bl_pageTitle_icon__web">
         <svg class="el_title_border el_title_border__pageTitle">
-          <text
-            x="50%"
-            y="50%"
-            text-anchor="middle"
-            dominant-baseline="central"
+          <text x="50%" y="50%" text-anchor="middle" dominant-baseline="central">
+            実績と自主制作</text
           >
-            実績と自主制作
-          </text>
         </svg>
       </div><!-- /.bl_pageTitle -->
       <div class="bl_works_tabs" role="tablist" aria-labelledby="tablist-tag">
@@ -113,9 +108,7 @@ const indieWorks = await Astro.glob<PostType>('./works/indie/**/*.md');
   import 'typed-query-selector';
   /** タブ制御 */
   const tabList = document.querySelector('div[role="tablist"]');
-  const tabs: HTMLButtonElement[] | null = [
-    ...tabList!.querySelectorAll('button[role="tab"]'),
-  ];
+  const tabs: HTMLButtonElement[] | null = [...tabList!.querySelectorAll('button[role="tab"]')];
   let firstTab: null | HTMLButtonElement = null;
   let lastTab: null | HTMLButtonElement = null;
   let tabPanels: HTMLElement[] = [];
@@ -157,10 +150,7 @@ const indieWorks = await Astro.glob<PostType>('./works/indie/**/*.md');
     }
   };
   /** タブ選択時 */
-  const setSelectedTab = (
-    currentTab: HTMLButtonElement,
-    setFocus: boolean = true
-  ) => {
+  const setSelectedTab = (currentTab: HTMLButtonElement, setFocus: boolean = true) => {
     tabs.forEach((tab, index) => {
       if (currentTab === tab) {
         tab.setAttribute('aria-selected', 'true');
@@ -197,9 +187,7 @@ const indieWorks = await Astro.glob<PostType>('./works/indie/**/*.md');
   };
   /** 各タブにイベント登録 */
   for (const tab of tabs) {
-    const tabPanel = document.getElementById(
-      tab.getAttribute('aria-controls')!
-    );
+    const tabPanel = document.getElementById(tab.getAttribute('aria-controls')!);
     if (tabPanels) tabPanels.push(tabPanel!);
     tab.tabIndex = -1;
     tab.setAttribute('aria-selected', 'false');

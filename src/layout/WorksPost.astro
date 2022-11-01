@@ -19,14 +19,10 @@ const currentPagePath = Astro.url.pathname;
 const allPosts = await Astro.glob<PostType>('../pages/works/**/*.md');
 const sortedAllPosts = allPosts.sort(
   (a, b) =>
-    new Date(b.frontmatter.publishDate).valueOf() -
-    new Date(a.frontmatter.publishDate).valueOf()
+    new Date(b.frontmatter.publishDate).valueOf() - new Date(a.frontmatter.publishDate).valueOf()
 );
 const { prev, next } = getPrevAndNextPosts(currentPagePath, sortedAllPosts);
-function getPrevAndNextPosts(
-  currentSlug: string,
-  posts: MarkdownInstance<PostType>[]
-) {
+function getPrevAndNextPosts(currentSlug: string, posts: MarkdownInstance<PostType>[]) {
   const index = posts.findIndex(({ url }) => url === currentSlug);
   return {
     // 指定indexのpostがなければnullを返す
@@ -132,12 +128,7 @@ const displayCheck = (key: string | {}) => {
                 {content.skill && content.skill.map(value => <li>{value}</li>)}
               </ul>
             </dd>
-            <dd
-              class:list={[
-                'bl_post_info_subSkill',
-                displayCheck(content.subSkills),
-              ]}
-            >
+            <dd class:list={['bl_post_info_subSkill', displayCheck(content.subSkills)]}>
               <ul>
                 {
                   content.subSkills &&

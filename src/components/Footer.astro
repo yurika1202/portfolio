@@ -17,13 +17,11 @@ const pracWorks = await Astro.glob<PostType>('../pages/works/prac/**/*.md');
 const indieWorks = await Astro.glob<PostType>('../pages/works/indie/**/*.md');
 const sortedPracPosts = pracWorks.sort(
   (a, b) =>
-    new Date(b.frontmatter.publishDate).valueOf() -
-    new Date(a.frontmatter.publishDate).valueOf()
+    new Date(b.frontmatter.publishDate).valueOf() - new Date(a.frontmatter.publishDate).valueOf()
 );
 const sortedIndiePosts = indieWorks.sort(
   (a, b) =>
-    new Date(b.frontmatter.publishDate).valueOf() -
-    new Date(a.frontmatter.publishDate).valueOf()
+    new Date(b.frontmatter.publishDate).valueOf() - new Date(a.frontmatter.publishDate).valueOf()
 );
 ---
 
@@ -50,12 +48,7 @@ const sortedIndiePosts = indieWorks.sort(
           aria-expanded="false"
         >
           <svg class="el_title_border el_title_border__pagination">
-            <text
-              x="50%"
-              y="50%"
-              text-anchor="middle"
-              dominant-baseline="central">もくじ</text
-            >
+            <text x="50%" y="50%" text-anchor="middle" dominant-baseline="central">もくじ</text>
           </svg>
         </button>
       </li>
@@ -82,14 +75,7 @@ const sortedIndiePosts = indieWorks.sort(
       <nav class="bl_drawerNav__section is_canScroll" aria-label="works">
         <div class="bl_sectionNav">
           <svg class="el_title_border el_title_border__blue">
-            <text
-              x="50%"
-              y="50%"
-              text-anchor="start"
-              dominant-baseline="central"
-            >
-              実績
-            </text>
+            <text x="50%" y="50%" text-anchor="start" dominant-baseline="central"> 実績</text>
           </svg>
           <ul class="bl_sectionNav_list" role="menubar">
             {
@@ -105,14 +91,7 @@ const sortedIndiePosts = indieWorks.sort(
         </div><!-- /.bl_sectionNav -->
         <div class="bl_sectionNav">
           <svg class="el_title_border el_title_border__blue">
-            <text
-              x="50%"
-              y="50%"
-              text-anchor="middle"
-              dominant-baseline="central"
-            >
-              自主制作
-            </text>
+            <text x="50%" y="50%" text-anchor="middle" dominant-baseline="central"> 自主制作</text>
           </svg>
           <ul class="bl_sectionNav_list" role="menubar">
             {
@@ -141,14 +120,7 @@ const sortedIndiePosts = indieWorks.sort(
 
       <nav class="bl_drawerNav__page" aria-label="pageList">
         <svg class="el_title_border el_title_border__blue">
-          <text
-            x="50%"
-            y="50%"
-            text-anchor="middle"
-            dominant-baseline="central"
-          >
-            Page
-          </text>
+          <text x="50%" y="50%" text-anchor="middle" dominant-baseline="central"> Page</text>
         </svg>
         <div class="bl_drawerNav_pageNavWrap">
           <PageNav />

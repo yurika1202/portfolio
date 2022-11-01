@@ -100,8 +100,7 @@
 
     &__smile {
       &::before {
-        background: url(#{$icon-path}smile.svg) no-repeat center center /
-          contain;
+        background: url(#{$icon-path}smile.svg) no-repeat center center / contain;
       }
     }
   }

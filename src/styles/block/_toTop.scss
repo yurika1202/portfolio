@@ -13,8 +13,7 @@
 
   > button {
     visibility: hidden;
-    transition: visibility 0.3s ease-in-out, opacity 0.3s ease-in-out,
-      scale 0.3s ease-in-out;
+    transition: visibility 0.3s ease-in-out, opacity 0.3s ease-in-out, scale 0.3s ease-in-out;
     opacity: 0;
     font-family: var(--font-en);
     font-size: rem(10px);
@@ -24,8 +23,7 @@
 
     &.is_display {
       visibility: visible;
-      transition: visibility 0.3s ease-in-out, opacity 0.3s ease-in-out,
-        scale 0.3s ease-in-out,
+      transition: visibility 0.3s ease-in-out, opacity 0.3s ease-in-out, scale 0.3s ease-in-out,
         box-shadow 0.15s cubic-bezier(0.09, 0.56, 0.62, 0.73),
         transform 0.2s cubic-bezier(0.15, 0.62, 0.43, 0.8);
       opacity: 1;

@@ -3,9 +3,9 @@
  * @param parentElement フォーカス要素の親
  */
 export const focusFirstElement = (parentElement: HTMLElement) => {
-  const focusElements = parentElement.querySelectorAll(
-    'a, button'
-  ) as NodeListOf<HTMLAnchorElement | HTMLButtonElement>;
+  const focusElements = parentElement.querySelectorAll('a, button') as NodeListOf<
+    HTMLAnchorElement | HTMLButtonElement
+  >;
   focusElements[0].focus();
 };
 
@@ -14,9 +14,9 @@ export const focusFirstElement = (parentElement: HTMLElement) => {
  * @param parentElement フォーカス要素の親
  */
 export const focusElement = (parentElement: HTMLElement) => {
-  const focusElements = parentElement.querySelectorAll(
-    'a, button'
-  ) as NodeListOf<HTMLAnchorElement | HTMLButtonElement>;
+  const focusElements = parentElement.querySelectorAll('a, button') as NodeListOf<
+    HTMLAnchorElement | HTMLButtonElement
+  >;
   focusElements.forEach(element => {
     if (element.getAttribute('tabindex') === '-1') {
       element.setAttribute('tabindex', '0');
@@ -30,12 +30,8 @@ export const focusElement = (parentElement: HTMLElement) => {
  * ドロワー外のフォーカス制御
  */
 export const focusBackContents = () => {
-  const header = document.querySelectorAll(
-    'header a, header button'
-  ) as NodeListOf<HTMLElement>;
-  const main = document.querySelectorAll(
-    'main a, main button'
-  ) as NodeListOf<HTMLElement>;
+  const header = document.querySelectorAll('header a, header button') as NodeListOf<HTMLElement>;
+  const main = document.querySelectorAll('main a, main button') as NodeListOf<HTMLElement>;
   const notFocusElements = document.querySelectorAll(
     '.js_notFocus a, .js_notFocus button'
   ) as NodeListOf<HTMLElement>;

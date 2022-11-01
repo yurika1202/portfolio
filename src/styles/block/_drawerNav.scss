@@ -11,8 +11,7 @@
   width: 100%;
   max-width: 480px;
   height: inherit;
-  padding: var(--size-space-lg) var(--size-space-xl) var(--size-space-lg)
-    var(--size-space-lg);
+  padding: var(--size-space-lg) var(--size-space-xl) var(--size-space-lg) var(--size-space-lg);
   overflow-y: scroll;
   text-align: left;
   scroll-snap-align: center;
@@ -60,12 +59,8 @@
     width: 2px;
     height: 100%;
     transform: translateX(-50%);
-    background: linear-gradient(
-        to bottom,
-        color(--c-black) 8px,
-        transparent 8px
-      )
-      repeat-y left bottom / 2px 16px;
+    background: linear-gradient(to bottom, color(--c-black) 8px, transparent 8px) repeat-y left
+      bottom / 2px 16px;
   }
 
   img {
