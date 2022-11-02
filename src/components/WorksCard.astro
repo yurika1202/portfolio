@@ -27,7 +27,7 @@ const { frontmatter, url } = Astro.props.works;
         >
           <img
             src="/image/empty.gif"
-            alt=""
+            alt={frontmatter.title + 'のサムネイル画像'}
             data-src={frontmatter.thumbnail}
             width="255"
             height="240"
@@ -39,7 +39,7 @@ const { frontmatter, url } = Astro.props.works;
             <span>
               <img
                 src="/image/empty.gif"
-                alt=""
+                alt="詳しく見る"
                 data-src="/icon/arrow.svg"
                 width="20"
                 height="20"
