@@ -10,23 +10,6 @@ export const focusFirstElement = (parentElement: HTMLElement) => {
 };
 
 /**
- * ドロワーコンテンツのフォーカス制御
- * @param parentElement フォーカス要素の親
- */
-export const focusElement = (parentElement: HTMLElement) => {
-  const focusElements = parentElement.querySelectorAll('a, button') as NodeListOf<
-    HTMLAnchorElement | HTMLButtonElement
-  >;
-  focusElements.forEach(element => {
-    if (element.getAttribute('tabindex') === '-1') {
-      element.setAttribute('tabindex', '0');
-    } else {
-      element.setAttribute('tabindex', '-1');
-    }
-  });
-};
-
-/**
  * ドロワー外のフォーカス制御
  */
 export const focusBackContents = () => {

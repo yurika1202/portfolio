@@ -3,7 +3,7 @@
  */
 
 import { scrollLock } from './logics/scrollLock';
-import { focusElement, focusFirstElement, focusBackContents } from './logics/focusControl';
+import { focusFirstElement, focusBackContents } from './logics/focusControl';
 
 const btn = document.getElementById('js_drawerNav_btn') as HTMLButtonElement | null;
 const nav = document.getElementById('js_drawerNav') as HTMLDivElement | null;
@@ -16,7 +16,6 @@ const openContents = () => {
   btn?.setAttribute('aria-expanded', 'true');
   btn?.setAttribute('aria-label', 'メニューを閉じる');
   nav?.setAttribute('aria-hidden', 'false');
-  focusElement(nav!);
   btnTitle!.textContent = 'とじる';
 };
 
@@ -27,7 +26,6 @@ const closeContents = () => {
   btn?.setAttribute('aria-expanded', 'false');
   btn?.setAttribute('aria-label', 'メニューを開く');
   nav?.setAttribute('aria-hidden', 'true');
-  focusElement(nav!);
   btnTitle!.textContent = 'もくじ';
 };
 
