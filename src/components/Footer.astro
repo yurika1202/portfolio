@@ -34,7 +34,7 @@ const sortedIndiePosts = indieWorks.sort(
           class="el_btn el_circleBtn el_circleBtn__blue el_arrowBtn_prev"
           aria-label={prevLabel}
         >
-          <img src="/icon/arrow.svg" alt="" width="12" height="12" />
+          <img src="/icon/arrow.svg" alt={prevLabel} width="12" height="12" />
         </a>
       </li>
       <li>
@@ -58,7 +58,7 @@ const sortedIndiePosts = indieWorks.sort(
           class="el_btn el_circleBtn el_circleBtn__blue el_arrowBtn_next"
           aria-label={nextLabel}
         >
-          <img src="/icon/arrow.svg" alt="" width="12" height="12" />
+          <img src="/icon/arrow.svg" alt={nextLabel} width="12" height="12" />
         </a>
       </li>
     </ul>
@@ -111,7 +111,7 @@ const sortedIndiePosts = indieWorks.sort(
         <img
           src="/image/empty.gif"
           data-src="/icon/swipe.svg"
-          alt="横スクロールでページメニューが表示されます"
+          alt="横スクロール"
           width="32"
           height="32"
           loading="lazy"
