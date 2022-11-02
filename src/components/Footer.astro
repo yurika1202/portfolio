@@ -81,7 +81,7 @@ const sortedIndiePosts = indieWorks.sort(
             {
               sortedPracPosts.map(prac => (
                 <li class="bl_sectionNav_item">
-                  <a href={prac.url} role="menuitem" tabindex="-1">
+                  <a href={prac.url} role="menuitem">
                     {prac.frontmatter.title}
                   </a>
                 </li>
@@ -97,7 +97,7 @@ const sortedIndiePosts = indieWorks.sort(
             {
               sortedIndiePosts.map(indie => (
                 <li class="bl_sectionNav_item">
-                  <a href={indie.url} role="menuitem" tabindex="-1">
+                  <a href={indie.url} role="menuitem">
                     {indie.frontmatter.title}
                   </a>
                 </li>
