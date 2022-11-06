@@ -1,19 +1,13 @@
 ---
 import Base from '../layout/Base.astro';
-import BoxGrid from '../layout/grid/BoxGrid.astro';
-import Top from '../layout/Top.astro';
+import Grid from '../layout/Grid.astro';
+import MainNav from '../components/MainNav.astro';
 import MainView from '../components/MainView.astro';
-import '../styles/page/top.scss';
 ---
 
 <Base>
-  <BoxGrid>
-    <MainView>
-      <div class="un_top_particle">
-        <img src="/image/particle.svg" alt="" width="104" height="70" />
-      </div><!-- /.un_top_particle -->
-    </MainView>
-
-    <Top />
-  </BoxGrid>
+  <Grid type={'box'}>
+    <MainView />
+    <MainNav />
+  </Grid>
 </Base>

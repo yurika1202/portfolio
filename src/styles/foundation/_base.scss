@@ -56,3 +56,25 @@ a {
 li {
   list-style: none;
 }
+
+main {
+  min-width: 100vw;
+  margin-top: var(--header-height);
+}
+
+section {
+  margin-top: var(--size-space-lg);
+}
+
+// 共通ボックススタイル
+// -----------------------------------------
+.bl_common_shadow {
+  box-shadow: 4px 4px 0 color(--c-black);
+}
+
+.bl_common_box {
+  @extend .bl_common_shadow;
+
+  border: 2px solid color(--c-black);
+  border-radius: 10px;
+}

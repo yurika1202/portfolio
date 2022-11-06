@@ -1,8 +1,0 @@
-@use '../mixin/' as mix;
-@use '../functions/' as *;
-
-.hp_display_ib__sm {
-  @include mix.mq(sm) {
-    display: inline-block;
-  }
-}

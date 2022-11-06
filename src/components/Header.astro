@@ -1,8 +1,3 @@
----
-import '../styles/layout/_header.scss';
-import '../styles/block/_header.scss';
----
-
 <>
   <header class="ly_header" id="js_header">
     <div class="ly_header_inner">
@@ -28,6 +23,63 @@ import '../styles/block/_header.scss';
     </div><!-- /.ly_header_inner -->
   </header><!-- /.ly_header -->
 </>
+
+<style lang="scss">
+  @use '../styles/mixin/' as mix;
+  @use '../styles/functions/' as *;
+
+  .ly_header {
+    position: fixed;
+    z-index: 100;
+    top: 0;
+    width: 100%;
+    min-width: 100vw;
+    height: var(--header-height);
+    transition: transform 0.3s ease;
+
+    &.is_hide {
+      transform: translateY(calc(var(--header-height) * -1));
+    }
+  }
+
+  .ly_header_inner {
+    $width-max-header: 1027px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: $width-max-header;
+    height: 100%;
+    margin: 0 calc(var(--size-width-inner) - 8px);
+    padding: 16px 0;
+    gap: var(--size-space-md);
+
+    @media print, screen and (min-width: 1178px) {
+      margin: 0 auto;
+    }
+  }
+
+  .bl_header_logo {
+    width: 111px;
+
+    img {
+      width: 100%;
+    }
+
+    @include mix.mq(sm) {
+      width: 128px;
+    }
+
+    @include mix.mq(lg) {
+      width: 170px;
+    }
+  }
+
+  .bl_header_logo,
+  .bl_header_link {
+    flex-shrink: 0;
+  }
+</style>
 
 <script>
   const header = document.getElementById('js_header') as HTMLElement;

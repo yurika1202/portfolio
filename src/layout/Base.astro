@@ -53,3 +53,77 @@ const ogImgURL = new URL(ogImg, Astro.url.origin);
     </script>
   </body>
 </html>
+
+<style lang="scss">
+  @use '../styles/variables/other' as *;
+
+  .ly_bg_gradation {
+    position: relative;
+    animation: GradationBg 10s ease infinite;
+    background: linear-gradient(
+      45deg,
+      #827dad,
+      #8e8dba,
+      #999ec7,
+      #a5afd5,
+      #b1c0e2,
+      #becce9,
+      #ccd1ea,
+      #d9d6eb,
+      #e6dbeb,
+      #f3e0ec
+    );
+    background-size: 800% 800%;
+
+    &::after {
+      content: '';
+      position: fixed;
+      z-index: -1;
+      top: -10rem;
+      left: -10rem;
+      width: calc(100% + 20rem);
+      height: calc(100% + 20rem);
+      animation: noise 1s steps(2) infinite;
+      background: url(#{$img-path}noise.png);
+    }
+  }
+  @keyframes GradationBg {
+    0% {
+      background-position: 0% 50%;
+    }
+
+    50% {
+      background-position: 100% 50%;
+    }
+
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  @keyframes noise {
+    0% {
+      transform: translate3d(0, 9rem, 0);
+    }
+
+    20% {
+      transform: translate3d(-8rem, 2rem, 0);
+    }
+
+    40% {
+      transform: translate3d(-2rem, 7rem, 0);
+    }
+
+    60% {
+      transform: translate3d(2rem, 6rem, 0);
+    }
+
+    80% {
+      transform: translate3d(-9rem, 1rem, 0);
+    }
+
+    to {
+      transform: translate3d(-7rem, 0, 0);
+    }
+  }
+</style>

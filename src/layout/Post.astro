@@ -3,11 +3,11 @@ import type { MarkdownInstance } from 'astro';
 import type { PostType } from '../types';
 import Base from './Base.astro';
 import Header from '../components/Header.astro';
-import ArchGrid from './grid/ArchGrid.astro';
-import FooterPost from '../components/FooterPost.astro';
+import Grid from '../layout/Grid.astro';
+import Footer from '../components/Footer.astro';
 
-import '../styles/page/post.scss';
-import '../styles/page/entry.scss';
+import '../styles/entry.scss';
+import '../styles/element/_thumbnails.scss';
 import { thumbnailsClassType } from '../scripts/thumbnailsClassType';
 
 // paginationの作成
@@ -16,7 +16,7 @@ export interface Props {
 }
 const { content } = Astro.props;
 const currentPagePath = Astro.url.pathname;
-const allPosts = await Astro.glob<PostType>('../pages/works/**/*.md');
+const allPosts = await Astro.glob<PostType>('../pages/posts/**/*.md');
 const sortedAllPosts = allPosts.sort(
   (a, b) =>
     new Date(b.frontmatter.publishDate).valueOf() - new Date(a.frontmatter.publishDate).valueOf()
@@ -32,10 +32,10 @@ function getPrevAndNextPosts(currentSlug: string, posts: MarkdownInstance<PostTy
 }
 const paginationProps = {
   ...(prev && {
-    prevUrl: prev.url,
+    prevPath: prev.url,
   }),
   ...(next && {
-    nextUrl: next.url,
+    nextPath: next.url,
   }),
 };
 
@@ -50,8 +50,8 @@ const displayCheck = (key: string | {}) => {
 
 <Base>
   <Header />
-  <main class="ly_main ly_main__post">
-    <ArchGrid>
+  <main class="ly_post">
+    <Grid type={'arch'}>
       <div class="bl_post_meta">
         <div
           class:list={[
@@ -180,7 +180,277 @@ const displayCheck = (key: string | {}) => {
           </div><!-- /.bl_post_mockup_mobile -->
         </div><!-- /.bl_post_mockup -->
       </div><!-- /.bl_post_contents -->
-    </ArchGrid>
+    </Grid>
   </main><!-- /.ly_main -->
-  <FooterPost {...paginationProps} />
+
+  <Footer {paginationProps} />
 </Base>
+
+<style lang="scss">
+  @use '../styles/mixin/' as mix;
+  @use '../styles/functions/' as *;
+  @use '../styles/variables/other' as *;
+
+  .ly_post {
+    margin-top: calc(56px + var(--header-height));
+  }
+
+  .bl_post_meta {
+    margin-top: -64px;
+  }
+
+  .bl_post_thumbnails {
+    max-width: 400px;
+    margin: 0 auto;
+    border-radius: 10px;
+  }
+
+  .bl_post_meta_titleWrap {
+    position: relative;
+    width: fit-content;
+    margin: 0 auto;
+  }
+
+  .bl_post_title {
+    position: relative;
+    bottom: 16px;
+    width: fit-content;
+    min-width: 240px;
+    max-width: 300px;
+    margin: 0 auto;
+    padding: 0.5em 1em;
+    background: color(--c-primary-accent);
+
+    p {
+      font-size: rem(16px);
+      font-weight: bold;
+      letter-spacing: 1px;
+      text-align: center;
+    }
+
+    @include mix.mq(md) {
+      min-width: 320px;
+      max-width: 375px;
+
+      p {
+        font-size: rem(24px);
+      }
+    }
+  }
+
+  .bl_post_github {
+    position: absolute;
+    right: -8px;
+    bottom: -4px;
+
+    &.is_empty {
+      display: none;
+    }
+
+    @include mix.mq(lg) {
+      a {
+        width: 40px;
+        height: 40px;
+      }
+
+      img {
+        width: 20px !important;
+        height: 20px !important;
+      }
+    }
+  }
+
+  .bl_post_link {
+    text-align: center;
+
+    a {
+      justify-content: center;
+      width: 50%;
+      min-width: fit-content;
+      max-width: 240px;
+    }
+
+    &.is_empty {
+      display: none;
+    }
+
+    @include mix.mq(lg) {
+      grid-column: 2 / 3;
+      grid-row: 2 / 3;
+
+      a {
+        font-size: rem(16px);
+      }
+    }
+  }
+
+  .bl_post_contents {
+    display: grid;
+    margin: var(--size-space-xl) auto 0;
+    gap: var(--size-space-xl);
+
+    @include mix.mq(sm) {
+      width: 90%;
+    }
+
+    @include mix.mq(md) {
+      width: 80%;
+    }
+
+    @include mix.mq(lg) {
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(3, auto);
+      width: auto;
+      column-gap: var(--size-space-md);
+      row-gap: var(--size-space-lg);
+    }
+  }
+
+  .bl_post_comment {
+    @include mix.mq(lg) {
+      grid-column: 2 / 3;
+      grid-row: 1 / 2;
+    }
+  }
+
+  .bl_post_info {
+    display: flex;
+    gap: var(--size-space-sm);
+    flex-direction: column;
+
+    dt {
+      position: relative;
+      padding-left: 1.5em;
+      font-size: rem(16px);
+      font-weight: bold;
+
+      &::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 0;
+        width: 1em;
+        height: 1em;
+        transform: translateY(-50%);
+        background: color(--c-post-hash);
+        mask: url(#{$icon-path}/hash.svg) no-repeat center center / contain;
+      }
+    }
+
+    dd {
+      margin-top: 8px;
+      word-break: break-all;
+    }
+
+    @include mix.mq(lg) {
+      grid-column: 1 / 2;
+      grid-row: 1 / 3;
+    }
+  }
+
+  .bl_post_info_subSkill {
+    ul {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2em;
+    }
+
+    span {
+      display: inline-block;
+      padding: 0 0.4em;
+    }
+
+    &.is_empty {
+      display: none;
+    }
+  }
+
+  .bl_post_info_feature {
+    li {
+      position: relative;
+      padding-left: 1em;
+
+      &::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 0;
+        width: 4px;
+        height: 1px;
+        transform: translateY(-50%);
+        background: color(--c-black);
+      }
+    }
+  }
+
+  .bl_post_info_role,
+  .bl_post_info_skill {
+    ul {
+      display: flex;
+      flex-wrap: wrap;
+
+      li {
+        display: inline-block;
+
+        &:not(:first-of-type) {
+          position: relative;
+          margin-left: 0.3em;
+          padding-left: 0.8em;
+
+          &::before {
+            content: '/';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+          }
+        }
+      }
+    }
+  }
+
+  .bl_post_mockup {
+    position: relative;
+
+    &.is_empty {
+      display: none;
+    }
+
+    @include mix.mq(lg) {
+      grid-column: 1 / 3;
+      grid-row: 3 / 4;
+    }
+  }
+
+  .bl_post_mockup_pc {
+    aspect-ratio: 16/10;
+    width: 100%;
+    max-width: 584px;
+    margin: 0 auto;
+    overflow: hidden;
+    border: 2px solid color(--c-black);
+    border-radius: 10px;
+    background: color(--c-bg-works);
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top;
+    }
+  }
+
+  .bl_post_mockup_mobile {
+    position: absolute;
+    right: 8px;
+    bottom: -40px;
+    width: calc(96 / 305 * 100%);
+    max-width: 180px;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+  }
+</style>

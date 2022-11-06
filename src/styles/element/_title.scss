@@ -51,7 +51,7 @@
   position: relative;
   right: calc(var(--size-width-inner) + 12px);
 
-  p {
+  h2 {
     width: fit-content;
     max-width: calc(100% - var(--size-width-inner));
     padding: 0.5em 1em;
@@ -73,7 +73,7 @@
 
   width: calc(100% + (var(--size-width-inner) * 2) + 12px);
 
-  p {
+  h2 {
     position: relative;
     z-index: 1;
   }
@@ -91,5 +91,9 @@
     background-repeat: repeat-x;
     background-position: left bottom;
     background-size: 16px 2px;
+  }
+
+  + div {
+    margin-top: var(--size-space-sm);
   }
 }

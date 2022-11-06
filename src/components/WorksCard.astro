@@ -2,7 +2,7 @@
 import type { MarkdownInstance } from 'astro';
 import type { PostType } from '../types';
 
-import '../styles/block/_works.scss';
+import '../styles/element/_thumbnails.scss';
 import { thumbnailsClassType } from '../scripts/thumbnailsClassType';
 
 export interface Props {
@@ -16,7 +16,7 @@ const { frontmatter, url } = Astro.props.works;
     <a href={url}>
       <div class="bl_works_meta">
         <div class="bl_works_title bl_common_box">
-          <p>{frontmatter.title}</p>
+          <h2>{frontmatter.title}</h2>
         </div><!-- /.bl_works_title -->
         <div
           class:list={[
@@ -36,16 +36,14 @@ const { frontmatter, url } = Astro.props.works;
         </div><!-- /.bl_works_thumbnails -->
         <div class="bl_works_btnWrap">
           <div class="el_btn el_circleBtn el_circleBtn__lightPink bl_works_moreBtn">
-            <span>
-              <img
-                src="/image/empty.gif"
-                alt="詳しく見る"
-                data-src="/icon/arrow.svg"
-                width="20"
-                height="20"
-                loading="lazy"
-              />
-            </span>
+            <img
+              src="/image/empty.gif"
+              alt="詳しく見る"
+              data-src="/icon/arrow.svg"
+              width="20"
+              height="20"
+              loading="lazy"
+            />
           </div>
         </div><!-- /.bl_works_btnWrap -->
       </div><!-- /.bl_works_meta -->
@@ -72,3 +70,234 @@ const { frontmatter, url } = Astro.props.works;
     </a>
   </li>
 </>
+
+<style lang="scss">
+  @use '../styles/mixin/' as mix;
+  @use '../styles/functions/' as *;
+  @use '../styles/variables/other' as *;
+
+  li {
+    width: 100%;
+    max-width: 400px;
+
+    @include mix.hover {
+      .bl_works_moreBtn {
+        transform: translate(3px, 3px);
+        box-shadow: none;
+
+        img {
+          animation: arrowFrameInOut 1.5s infinite;
+        }
+      }
+
+      .bl_works_thumbnails {
+        img {
+          scale: 1.1 1.1;
+        }
+      }
+
+      .bl_works_summary_hover {
+        transform: translateY(0);
+        transition: transform 0.5s cubic-bezier(0.4, 0.4, 0.57, 0.83),
+          opacity 0.3s cubic-bezier(0.4, 0.4, 0.57, 0.83);
+        opacity: 1;
+      }
+    }
+  }
+
+  @keyframes arrowFrameInOut {
+    0% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+
+    40% {
+      transform: translateX(100%);
+      opacity: 1;
+    }
+
+    45% {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+
+    50% {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+
+    60% {
+      transform: translateX(-100%);
+      opacity: 1;
+    }
+
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
+  .bl_works_meta {
+    position: relative;
+    margin-left: 24px;
+
+    &::before {
+      content: '';
+      position: absolute;
+      bottom: -40px;
+      left: 50%;
+      width: 2px;
+      height: 40px;
+      transform: translateX(-50%);
+      background: color(--c-black);
+    }
+  }
+
+  .bl_works_title {
+    display: inline-block;
+    position: relative;
+    z-index: 1;
+    top: 0;
+    left: -24px;
+    max-width: 75%;
+    padding: 0.5em 1em;
+    background: color(--c-secondary);
+
+    h2 {
+      font-weight: bold;
+      letter-spacing: 2px;
+      line-height: 1.5;
+      font-size: rem(18px);
+    }
+  }
+
+  .bl_works_btnWrap {
+    position: absolute;
+    right: 6%;
+    bottom: -24px;
+  }
+
+  .bl_works_moreBtn {
+    position: relative;
+    width: 56px;
+    height: 56px;
+    transition: box-shadow 0.15s cubic-bezier(0.09, 0.56, 0.62, 0.73),
+      transform 0.2s cubic-bezier(0.15, 0.62, 0.43, 0.8);
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: calc(50% + 2px);
+      width: 86px;
+      height: 86px;
+      transform: translate(-50%, -50%);
+      transform-origin: top left;
+      animation: infiniteRotation linear 10s infinite;
+      background: url(#{$img-path}more.svg) no-repeat center center / contain;
+    }
+
+    img {
+      width: 20px;
+      height: 20px;
+      overflow: hidden;
+      border-radius: 50%;
+    }
+  }
+
+  @keyframes infiniteRotation {
+    0% {
+      rotate: 0deg;
+    }
+
+    100% {
+      rotate: 360deg;
+    }
+  }
+
+  .bl_works_summary {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 40px;
+    padding: var(--size-space-sm);
+    overflow: hidden;
+    border: 2px solid color(--c-black);
+    border-radius: 10px;
+    background: color(--c-white);
+    gap: var(--size-space-sm);
+
+    dt {
+      display: inline-block;
+      padding: 0.25em 0.5em;
+      border: 2px solid color(--c-black);
+      border-radius: 10px;
+      background: color(--c-primary-sober);
+      font-weight: bold;
+    }
+
+    dd {
+      margin-top: 0.5em;
+      overflow-wrap: break-word;
+      letter-spacing: 1px;
+
+      ul {
+        display: flex;
+        flex-wrap: wrap;
+
+        li {
+          display: inline-block;
+          width: fit-content;
+
+          &:not(:first-of-type) {
+            position: relative;
+            margin-left: 0.3em;
+            padding-left: 0.8em;
+
+            &::before {
+              content: '/';
+              position: absolute;
+              top: 50%;
+              left: 0;
+              transform: translateY(-50%);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .bl_works_summary_hover {
+    display: flex;
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+    transform: translateY(-100%);
+    transition: transform 0.3s cubic-bezier(0.4, 0.4, 0.57, 0.83),
+      opacity 0.1s cubic-bezier(0.4, 0.4, 0.57, 0.83) 0.2s;
+    border-radius: 10px;
+    opacity: 0;
+    background: color(--c-bg-worksCard, 0.5);
+    color: color(--c-white);
+    inset: 0;
+
+    &::after {
+      content: '詳細ページをみる';
+      padding: 0.5em 1em;
+      border: 2px solid color(--c-black);
+      border-radius: 20px;
+      background: color(--c-bg-worksCard);
+      font-size: rem(18px);
+    }
+  }
+
+  .bl_works_thumbnails {
+    margin-top: -16px;
+    border-radius: 20px;
+
+    img {
+      transition: scale 0.3s cubic-bezier(0.27, 0.66, 0.49, 0.82);
+    }
+  }
+</style>

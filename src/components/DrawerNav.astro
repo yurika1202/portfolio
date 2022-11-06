@@ -1,0 +1,297 @@
+---
+import type { PostType } from '../types';
+import PageNav from './PageNav.astro';
+
+const pracWorks = await Astro.glob<PostType>('../pages/posts/prac/**/*.md');
+const indieWorks = await Astro.glob<PostType>('../pages/posts/indie/**/*.md');
+const sortedPracPosts = pracWorks.sort(
+  (a, b) =>
+    new Date(b.frontmatter.publishDate).valueOf() - new Date(a.frontmatter.publishDate).valueOf()
+);
+const sortedIndiePosts = indieWorks.sort(
+  (a, b) =>
+    new Date(b.frontmatter.publishDate).valueOf() - new Date(a.frontmatter.publishDate).valueOf()
+);
+---
+
+<>
+  <div
+    id="js_drawerNav"
+    class="ly_drawerNav bl_footer_drawerNav"
+    aria-label="drawer"
+    id="drawerNav"
+    aria-hidden="true"
+  >
+    <div class="ly_drawerNav__inner">
+      <nav class="bl_drawerNav__section is_canScroll" aria-label="works">
+        <div class="bl_sectionNav">
+          <svg class="el_title_border el_title_border__blue">
+            <text x="50%" y="50%" text-anchor="start" dominant-baseline="central"> 実績</text>
+          </svg>
+          <ul class="bl_sectionNav_list" role="menubar">
+            {
+              sortedPracPosts.map(prac => (
+                <li class="bl_sectionNav_item">
+                  <a href={prac.url} role="menuitem">
+                    {prac.frontmatter.title}
+                  </a>
+                </li>
+              ))
+            }
+          </ul><!-- /.bl_sectionNav_list -->
+        </div><!-- /.bl_sectionNav -->
+        <div class="bl_sectionNav">
+          <svg class="el_title_border el_title_border__blue">
+            <text x="50%" y="50%" text-anchor="middle" dominant-baseline="central"> 自主制作</text>
+          </svg>
+          <ul class="bl_sectionNav_list" role="menubar">
+            {
+              sortedIndiePosts.map(indie => (
+                <li class="bl_sectionNav_item">
+                  <a href={indie.url} role="menuitem">
+                    {indie.frontmatter.title}
+                  </a>
+                </li>
+              ))
+            }
+          </ul><!-- /.bl_sectionNav_list -->
+        </div><!-- /.bl_sectionNav -->
+      </nav><!-- /.bl_drawerNav__section -->
+
+      <div class="bl_drawerNav_dashLine">
+        <img
+          src="/image/empty.gif"
+          data-src="/icon/swipe.svg"
+          alt="横スクロール"
+          width="32"
+          height="32"
+          loading="lazy"
+        />
+      </div><!-- /.bl_drawerNav_dashLine -->
+
+      <nav class="bl_drawerNav__page" aria-label="pageList">
+        <svg class="el_title_border el_title_border__blue">
+          <text x="50%" y="50%" text-anchor="middle" dominant-baseline="central"> Page</text>
+        </svg>
+        <div class="bl_drawerNav_pageNavWrap">
+          <PageNav />
+        </div><!-- /.bl_drawerNav_pageNavWrap -->
+      </nav><!-- /.bl_drawerNav__page -->
+    </div><!-- /.bl_drawerNav__inner -->
+  </div><!-- /.bl_drawerNav -->
+</>
+
+<style lang="scss">
+  @use '../styles/mixin/' as mix;
+  @use '../styles/functions/' as *;
+  @use '../styles/variables/other' as *;
+
+  .ly_drawerNav {
+    visibility: hidden;
+    height: 0;
+    transition: height 0.4s ease-in-out, visibility 0.4s ease-in-out;
+    border-top: 2px solid color(--c-black);
+    background: color(--c-bg-toc);
+
+    &.is_show {
+      visibility: visible;
+      height: 40vh;
+    }
+  }
+
+  .ly_drawerNav__inner {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+    height: 100%;
+    padding: 0 var(--size-space-sm);
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    @include mix.mq(md) {
+      overflow-x: hidden;
+    }
+  }
+
+  .bl_drawerNav__section {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    flex-shrink: 0;
+    align-items: flex-end;
+    width: 100%;
+    max-width: 480px;
+    height: inherit;
+    padding: var(--size-space-lg) var(--size-space-xl) var(--size-space-lg) var(--size-space-lg);
+    overflow-y: scroll;
+    text-align: left;
+    scroll-snap-align: center;
+    gap: var(--size-space-lg);
+    direction: rtl;
+
+    &::-webkit-scrollbar {
+      width: 10px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      border: 2px solid color(--c-black);
+      border-radius: 20px;
+      background: color(--c-secondary);
+    }
+
+    &::-webkit-scrollbar-track {
+      margin-top: 16px;
+      margin-bottom: 16px;
+    }
+
+    svg {
+      width: 105px;
+      margin-right: auto;
+    }
+
+    @include mix.mq(md) {
+      width: 70%;
+      max-width: none;
+    }
+  }
+
+  .bl_drawerNav_dashLine {
+    position: relative;
+    flex-shrink: 0;
+    width: 32px;
+    height: 100%;
+    margin-left: -32px;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 50%;
+      width: 2px;
+      height: 100%;
+      transform: translateX(-50%);
+      background: linear-gradient(to bottom, color(--c-black) 8px, transparent 8px) repeat-y left
+        bottom / 2px 16px;
+    }
+
+    img {
+      position: absolute;
+      top: 50%;
+      width: 32px;
+      height: 32px;
+      transform: translateY(-50%);
+      animation: swipeIconAnime 3s ease-in-out infinite;
+      background: color(--c-bg-toc);
+    }
+
+    @include mix.mq(md) {
+      img {
+        display: none;
+      }
+    }
+  }
+
+  @keyframes swipeIconAnime {
+    0% {
+      rotate: 0deg;
+    }
+
+    30% {
+      rotate: -20deg;
+    }
+
+    50% {
+      rotate: 20deg;
+    }
+
+    100% {
+      rotate: 0deg;
+    }
+  }
+
+  .bl_drawerNav_pageNavWrap {
+    margin-top: var(--size-space-md);
+  }
+
+  .bl_drawerNav__page {
+    flex-shrink: 0;
+    scroll-snap-align: center;
+    width: fit-content;
+    padding: var(--size-space-lg) var(--size-space-lg) 0;
+
+    svg {
+      width: 78px;
+    }
+
+    text {
+      font-size: rem(20px);
+      letter-spacing: 6px;
+    }
+
+    a {
+      font-size: rem(16px);
+      font-weight: bold;
+    }
+  }
+
+  // sectionNav
+  // -----------------------------------------
+  .bl_sectionNav_list {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-start;
+    margin-top: var(--size-space-sm);
+    gap: 1em;
+  }
+
+  .bl_sectionNav_item {
+    position: relative;
+    z-index: 0;
+    padding: 0.3em 0.3em 0.3em calc(0.5em + 1.25em);
+    overflow: hidden;
+    font-size: rem(16px);
+    font-weight: bold;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 0.3em;
+      width: 1.25em;
+      height: 1.25em;
+      transform: translateY(-50%);
+      background: url(#{$icon-path}/hash.svg) no-repeat center center / contain;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      z-index: -1;
+      bottom: -100%;
+      left: 50%;
+      width: 100%;
+      height: 100%;
+      transform: translateX(-50%);
+      transition: bottom 0.3s cubic-bezier(0.27, 0.66, 0.49, 0.82);
+      border-radius: 10px;
+      background: color(--c-primary-sober);
+    }
+
+    a {
+      color: color(--c-black);
+    }
+
+    @include mix.hover {
+      &::after {
+        bottom: 0;
+      }
+    }
+  }
+</style>

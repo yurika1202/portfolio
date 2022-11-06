@@ -1,0 +1,122 @@
+---
+export interface Props {
+  type?: string;
+}
+const { type } = Astro.props;
+---
+
+<>
+  <div class={type === 'arch' ? 'ly_base__arch ly_bg_grid' : 'ly_base__box ly_bg_grid__deep'}>
+    <div class={type === 'arch' ? 'ly_base_inner' : 'ly_base_inner ly_base_inner__' + type}>
+      <slot />
+
+      {
+        type === 'box' ? (
+          <footer>
+            <small>&copy; 2022 Yurika's Portfolio</small>
+          </footer>
+        ) : (
+          ''
+        )
+      }
+    </div>
+  </div>
+</>
+
+<style lang="scss">
+  @use '../styles/mixin/' as mix;
+  @use '../styles/functions/' as *;
+
+  .ly_base__arch {
+    $width-max-layoutBox: 994px;
+
+    max-width: $width-max-layoutBox;
+    min-height: calc(100vh - 104px);
+    margin: 0 var(--size-width-inner);
+    border: 3px solid color(--c-black);
+    border-radius: 999px 999px 0 0;
+
+    @media print, screen and (min-width: 1160px) {
+      margin: 0 auto;
+    }
+  }
+
+  .ly_base__box {
+    $width-max-layoutBox: 584px;
+
+    max-width: $width-max-layoutBox;
+    height: 100vh;
+
+    @media print, screen and (min-width: $width-max-layoutBox) {
+      margin: var(--size-space-xl) auto;
+      border: 2px solid color(--c-black);
+      border-radius: 20px;
+      box-shadow: 6px 6px 0 color(--c-black);
+      height: 100%;
+    }
+  }
+
+  .ly_base_inner {
+    position: relative;
+    padding: var(--size-space-lg) var(--size-width-inner) var(--size-space-5xl);
+
+    &__box {
+      padding: var(--size-space-lg) var(--size-width-inner);
+    }
+
+    @include mix.mq(lg) {
+      padding: var(--size-space-sm) var(--size-width-inner) var(--size-space-5xl);
+
+      &__box {
+        padding: var(--size-space-lg) var(--size-width-inner);
+      }
+    }
+  }
+
+  .ly_bg_grid {
+    background: repeating-linear-gradient(
+        90deg,
+        color(--c-bg-line),
+        color(--c-bg-line) 1px,
+        transparent 1px,
+        transparent 24px
+      ),
+      repeating-linear-gradient(
+        0deg,
+        color(--c-bg-line),
+        color(--c-bg-line) 1px,
+        color(--c-bg) 1px,
+        color(--c-bg) 24px
+      );
+  }
+
+  .ly_bg_grid__deep {
+    background: repeating-linear-gradient(
+        90deg,
+        color(--c-bg-deepLine),
+        color(--c-bg-deepLine) 1px,
+        transparent 1px,
+        transparent 24px
+      ),
+      repeating-linear-gradient(
+        0deg,
+        color(--c-bg-deepLine),
+        color(--c-bg-deepLine) 1px,
+        color(--c-bg) 1px,
+        color(--c-bg) 24px
+      );
+  }
+
+  footer {
+    margin-top: var(--size-space-3xl);
+    text-align: right;
+  }
+
+  small {
+    font-family: var(--font-en);
+    letter-spacing: 1px;
+    line-height: 1;
+    font-size: rem(12px);
+    font-weight: bold;
+  }
+</style>

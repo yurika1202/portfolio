@@ -1,24 +1,85 @@
 ---
-import '../styles/block/_mv.scss';
+const currentPagePath = Astro.url.pathname;
+let src, alt, style, deco;
 
-export interface Props {
-  src?: string;
-  alt?: string;
-  style?: string;
+if (currentPagePath.includes('404')) {
+  src = '/image/error.png';
+  alt = 'ページが見つかりません';
+  style = 'background-color: #af4256';
+  deco = '/icon/question.svg';
+} else {
+  src = '/image/logo-wh.png';
+  alt = "Yurika's Portfolio";
+  style = 'background-color: #827dad';
+  deco = '/image/particle.svg';
 }
-const {
-  src = '/image/logo-wh.png',
-  alt = "Yurika's Portfolio",
-  style = 'background-color: #827dad',
-} = Astro.props;
 ---
 
 <>
   <div class="bl_mv js_notFocus">
-    <slot />
+    <div
+      class:list={[
+        'bl_mv_decoration',
+        currentPagePath.includes('404') ? 'bl_mv_decoration__error' : '',
+      ]}
+    >
+      <img src={deco} alt="" width="104" height="70" />
+    </div><!-- /.bl_mv_decoration -->
+
     <div class="bl_mv_textBox bl_common_box" style={style}>
       <img src={src} alt={alt} width="284" height="96" />
     </div><!-- /.bl_mv_textBox -->
     <!-- /.bl_mv -->
   </div>
 </>
+
+<style lang="scss">
+  @use '../styles/functions/' as *;
+
+  .bl_mv {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--size-space-md);
+  }
+
+  .bl_mv_decoration {
+    width: calc(104 / 343 * 100%);
+    max-width: 104px;
+
+    &__error {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 72px;
+      height: 72px;
+      border: 2px solid color(--c-black);
+      border-radius: 50%;
+      background: color(--c-warning);
+
+      img {
+        width: 56px;
+        height: 56px;
+      }
+    }
+  }
+
+  .bl_mv_textBox {
+    position: relative;
+    width: calc(327 / 343 * 100%);
+    max-width: 376px;
+    padding: 24px 0 16px;
+
+    > img {
+      width: calc(248 / 311 * 100%);
+      margin: 0 auto;
+    }
+  }
+
+  .bl_mv_btnWrap {
+    position: absolute;
+    top: -24px;
+    left: -18px;
+  }
+</style>

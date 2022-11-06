@@ -1,26 +1,14 @@
 ---
 import { SITE } from '../config';
 import Base from '../layout/Base.astro';
-import BoxGrid from '../layout/grid/BoxGrid.astro';
-import Top from '../layout/Top.astro';
+import Grid from '../layout/Grid.astro';
 import MainView from '../components/MainView.astro';
-
-import '../styles/page/top.scss';
-import '../styles/page/404.scss';
+import MainNav from '../components/MainNav.astro';
 ---
 
 <Base title={`404 Not Found | ${SITE.title}`}>
-  <BoxGrid>
-    <MainView
-      src={'/image/error.png'}
-      alt={'ページが見つかりません'}
-      style="background-color: #af4256"
-    >
-      <div class="un_404_img">
-        <img src="/icon/question.svg" alt="" width="56" height="56" />
-      </div><!-- /.un_top_particle -->
-    </MainView>
-
-    <Top />
-  </BoxGrid>
+  <Grid type={'box'}>
+    <MainView />
+    <MainNav />
+  </Grid>
 </Base>
