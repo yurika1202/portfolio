@@ -8,18 +8,7 @@ import Footer from '../components/Footer.astro';
 
 import '../styles/entry.scss';
 import '../styles/element/_thumbnails.scss';
-
-// サムネイルタイプ
-const thumbnailsClassType = (type: string) => {
-  switch (type) {
-    case 'icon':
-      return 'el_thumbnails__icon';
-    case 'noImg':
-      return 'el_thumbnails__noImg';
-    default:
-      break;
-  }
-};
+import { thumbnailsClassType } from '../util';
 
 // paginationの作成
 export interface Props {

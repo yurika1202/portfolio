@@ -3,17 +3,7 @@ import type { MarkdownInstance } from 'astro';
 import type { PostType } from '../types';
 
 import '../styles/element/_thumbnails.scss';
-
-const thumbnailsClassType = (type: string) => {
-  switch (type) {
-    case 'icon':
-      return 'el_thumbnails__icon';
-    case 'noImg':
-      return 'el_thumbnails__noImg';
-    default:
-      break;
-  }
-};
+import { thumbnailsClassType } from '../util';
 
 export interface Props {
   works: MarkdownInstance<PostType>;
