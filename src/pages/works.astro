@@ -1,103 +1,93 @@
 ---
-import { SITE } from '../config';
-import type { PostType } from '../types';
-import Base from '../layout/Base.astro';
-import Header from '../components/Header.astro';
-import Grid from '../layout/Grid.astro';
-import PageTitle from '../components/PageTitle.astro';
-import WorksCard from '../components/WorksCard.astro';
-import Footer from '../components/Footer.astro';
+import type { PostType } from '@/types';
+import Base from '@/layouts/Base';
+import PageTitle from '@/components/PageTitle';
+import WorksCard from '@/components/WorksCard';
+import Footer from '@/components/Footer';
+
+const meta = {
+  title: '実績と自主制作',
+  description: '実績と自主制作のリストです。',
+};
 
 const posts = await Astro.glob<PostType>('./posts/**/*.md');
 const pracWorks = await Astro.glob<PostType>('./posts/prac/**/*.md');
 const indieWorks = await Astro.glob<PostType>('./posts/indie/**/*.md');
 ---
 
-<Base title={`実績と自主制作 | ${SITE.title}`}>
-  <Header />
-  <main>
-    <Grid type={'arch'}>
-      <PageTitle type={'icon'} />
+<Base meta={meta} gridType={'arch'}>
+  <PageTitle type={'icon'} />
 
-      <div class="bl_works_tabs" role="tablist" aria-labelledby="tablist-tag">
-        <button
-          class="el_btn el_rectBtn"
-          type="button"
-          id="tab-all"
-          role="tab"
-          aria-selected="true"
-          aria-controls="tabpanel-all"
-        >
-          すべて
-        </button>
-        <button
-          class="el_btn el_rectBtn"
-          type="button"
-          id="tab-prac"
-          role="tab"
-          aria-selected="false"
-          aria-controls="tabpanel-prac"
-          tabindex="-1"
-        >
-          実績
-        </button>
-        <button
-          class="el_btn el_rectBtn"
-          type="button"
-          id="tab-indie"
-          role="tab"
-          aria-selected="false"
-          aria-controls="tabpanel-indie"
-          tabindex="-1"
-        >
-          自主制作
-        </button>
-      </div>
+  <div class="bl_works_tabs" role="tablist" aria-labelledby="tablist-tag">
+    <button
+      class="el_btn el_rectBtn"
+      type="button"
+      id="tab-all"
+      role="tab"
+      aria-selected="true"
+      aria-controls="tabpanel-all"
+    >
+      すべて
+    </button>
+    <button
+      class="el_btn el_rectBtn"
+      type="button"
+      id="tab-prac"
+      role="tab"
+      aria-selected="false"
+      aria-controls="tabpanel-prac"
+      tabindex="-1"
+    >
+      実績
+    </button>
+    <button
+      class="el_btn el_rectBtn"
+      type="button"
+      id="tab-indie"
+      role="tab"
+      aria-selected="false"
+      aria-controls="tabpanel-indie"
+      tabindex="-1"
+    >
+      自主制作
+    </button>
+  </div>
 
-      <section
-        class="bl_works_tabpanel"
-        id="tabpanel-all"
-        role="tabpanel"
-        aria-labelledby="tab-all"
-      >
-        <ul class="bl_works_list">
-          {posts.map(post => <WorksCard works={post} />)}
-        </ul><!-- /.bl_works_list -->
-      </section><!-- /.bl_works_list -->
+  <section class="bl_works_tabpanel" id="tabpanel-all" role="tabpanel" aria-labelledby="tab-all">
+    <ul class="bl_works_list">
+      {posts.map(post => <WorksCard works={post} />)}
+    </ul><!-- /.bl_works_list -->
+  </section><!-- /.bl_works_list -->
 
-      <section
-        class="bl_works_tabpanel is_hidden"
-        id="tabpanel-prac"
-        role="tabpanel"
-        aria-labelledby="tab-prac"
-      >
-        <ul class="bl_works_list">
-          {pracWorks.map(prac => <WorksCard works={prac} />)}
-        </ul><!-- /.bl_works_list -->
-      </section><!-- /.bl_works_list -->
+  <section
+    class="bl_works_tabpanel is_hidden"
+    id="tabpanel-prac"
+    role="tabpanel"
+    aria-labelledby="tab-prac"
+  >
+    <ul class="bl_works_list">
+      {pracWorks.map(prac => <WorksCard works={prac} />)}
+    </ul><!-- /.bl_works_list -->
+  </section><!-- /.bl_works_list -->
 
-      <section class="">
-        <section
-          class="bl_works_tabpanel is_hidden"
-          id="tabpanel-indie"
-          role="tabpanel"
-          aria-labelledby="tab-indie"
-        >
-          <ul class="bl_works_list">
-            {indieWorks.map(indie => <WorksCard works={indie} />)}
-          </ul><!-- /.bl_works_list -->
-        </section><!-- /.bl_works_list -->
-      </section>
-    </Grid>
-  </main><!-- /.ly_main -->
-
-  <Footer
-    prevPath="/about"
-    prevLabel="自己紹介ページへ戻る"
-    nextPath="/contact"
-    nextLabel="お問い合わせページへ進む"
-  />
+  <section
+    class="bl_works_tabpanel is_hidden"
+    id="tabpanel-indie"
+    role="tabpanel"
+    aria-labelledby="tab-indie"
+  >
+    <ul class="bl_works_list">
+      {indieWorks.map(indie => <WorksCard works={indie} />)}
+    </ul><!-- /.bl_works_list -->
+  </section><!-- /.bl_works_list -->
 </Base>
+
+<Footer
+  prevPath="/about"
+  prevLabel="自己紹介ページへ戻る"
+  nextPath="/contact"
+  nextLabel="お問い合わせページへ進む"
+/>
 
 <style lang="scss">
   @use '../styles/mixin/' as mix;

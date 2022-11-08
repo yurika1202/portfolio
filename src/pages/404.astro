@@ -1,14 +1,15 @@
 ---
-import { SITE } from '../config';
-import Base from '../layout/Base.astro';
-import Grid from '../layout/Grid.astro';
-import MainView from '../components/MainView.astro';
-import MainNav from '../components/MainNav.astro';
+import Base from '@/layouts/Base';
+import MainNav from '@/components/MainNav';
+import MainView from '@/components/MainView';
+
+const meta = {
+  title: '404 Not Found',
+  description: 'ご指定のページが見つかりませんでした。',
+};
 ---
 
-<Base title={`404 Not Found | ${SITE.title}`}>
-  <Grid type={'box'}>
-    <MainView />
-    <MainNav />
-  </Grid>
+<Base meta={meta} gridType={'box'}>
+  <MainView />
+  <MainNav />
 </Base>

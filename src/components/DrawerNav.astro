@@ -1,17 +1,12 @@
 ---
-import type { PostType } from '../types';
-import PageNav from './PageNav.astro';
+import type { PostType } from '@/types';
+import { sortedPosts } from '@/util';
+import PageNav from '@/components/PageNav';
 
 const pracWorks = await Astro.glob<PostType>('../pages/posts/prac/**/*.md');
 const indieWorks = await Astro.glob<PostType>('../pages/posts/indie/**/*.md');
-const sortedPracPosts = pracWorks.sort(
-  (a, b) =>
-    new Date(b.frontmatter.publishDate).valueOf() - new Date(a.frontmatter.publishDate).valueOf()
-);
-const sortedIndiePosts = indieWorks.sort(
-  (a, b) =>
-    new Date(b.frontmatter.publishDate).valueOf() - new Date(a.frontmatter.publishDate).valueOf()
-);
+const sortedPracPosts = sortedPosts(pracWorks);
+const sortedIndiePosts = sortedPosts(indieWorks);
 ---
 
 <>
@@ -297,12 +292,13 @@ const sortedIndiePosts = indieWorks.sort(
 </style>
 
 <script>
-  /**
+  /** **********************
    * ドロワーの開閉制御
-   */
+   ************************* */
   const btn = document.getElementById('js_drawerNav_btn') as HTMLButtonElement | null;
   const nav = document.getElementById('js_drawerNav') as HTMLDivElement | null;
   const btnTitle = btn?.querySelector('text');
+  const footer = document.querySelector('footer');
 
   /** コンテンツ表示処理 */
   const openContents = () => {
@@ -352,7 +348,6 @@ const sortedIndiePosts = indieWorks.sort(
   });
 
   /** Escapeキー選択時の挙動 */
-  const footer = document.querySelector('footer');
   footer?.addEventListener('keydown', event => {
     if (event.code === 'Escape') {
       closeContents();
@@ -361,10 +356,12 @@ const sortedIndiePosts = indieWorks.sort(
   });
 
   /**
-   * スクロール制御
+   * スクロール可不可チェック
    * @param element スクロール可能対象要素
    */
   const isScrollable = (element: Element) => element.clientHeight < element.scrollHeight;
+
+  /** スクロールロック制御 */
   const scrollLock = (event: TouchEvent) => {
     const canScrollElement = (event.target as HTMLElement)?.closest('.is_canScroll');
     if (canScrollElement === null) {
@@ -383,17 +380,15 @@ const sortedIndiePosts = indieWorks.sort(
    * 最初の要素にフォーカス移動
    * @param parentElement フォーカス要素の親
    */
-  export const focusFirstElement = (parentElement: HTMLElement) => {
+  const focusFirstElement = (parentElement: HTMLElement) => {
     const focusElements = parentElement.querySelectorAll('a, button') as NodeListOf<
       HTMLAnchorElement | HTMLButtonElement
     >;
     focusElements[0].focus();
   };
 
-  /**
-   * ドロワー外のフォーカス制御
-   */
-  export const focusBackContents = () => {
+  /** ドロワー外のフォーカス制御 */
+  const focusBackContents = () => {
     const header = document.querySelectorAll('header a, header button') as NodeListOf<HTMLElement>;
     const main = document.querySelectorAll(
       'main a, main button, main input, main textarea'

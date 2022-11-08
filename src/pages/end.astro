@@ -1,36 +1,33 @@
 ---
-import { SITE } from '../config';
-import Base from '../layout/Base.astro';
-import Header from '../components/Header.astro';
-import Grid from '../layout/Grid.astro';
-import PageTitle from '../components/PageTitle.astro';
-import Footer from '../components/Footer.astro';
+import Base from '@/layouts/Base';
+import PageTitle from '@/components/PageTitle';
+import Footer from '@/components/Footer';
+
+const meta = {
+  title: 'おわりに',
+  description: 'ゆりかのポートフォリオサイトを最後まで見てくださり、ありがとうございました。',
+};
 ---
 
-<Base title={`おわりに | ${SITE.title}`}>
-  <Header />
-  <main>
-    <Grid type={'arch'}>
-      <PageTitle type={'icon'} />
+<Base meta={meta} gridType={'arch'}>
+  <PageTitle type={'icon'} />
 
-      <div class="ly_end">
-        <p class="js_anime js_anime__softIn">
-          最後までご覧いただき、ありがとうございます。<br />
-          少しでもわたしに興味を持っていただけていましたら、とてもうれしいです。<br />
-          もしもご縁がありましたときは、どうぞよろしくお願いいたします。 <br />
-        </p>
-        <p class="bl_end_signature js_anime js_anime__softIn">2022.10 ゆりか</p>
-      </div>
-    </Grid>
-  </main>
-
-  <Footer
-    prevPath="/contact"
-    prevLabel="お問い合わせページへ戻る"
-    nextPath="/"
-    nextLabel="ホーム画面へ戻る"
-  />
+  <div class="ly_end">
+    <p class="js_anime js_anime__softIn">
+      最後までご覧いただき、ありがとうございます。<br />
+      少しでもわたしに興味を持っていただけていましたら、とてもうれしいです。<br />
+      もしもご縁がありましたときは、どうぞよろしくお願いいたします。 <br />
+    </p>
+    <p class="bl_end_signature js_anime js_anime__softIn">2022.10 ゆりか</p>
+  </div>
 </Base>
+
+<Footer
+  prevPath="/contact"
+  prevLabel="お問い合わせページへ戻る"
+  nextPath="/"
+  nextLabel="ホーム画面へ戻る"
+/>
 
 <style lang="scss">
   @use '../styles/mixin/' as mix;

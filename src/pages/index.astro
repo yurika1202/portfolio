@@ -1,13 +1,14 @@
 ---
-import Base from '../layout/Base.astro';
-import Grid from '../layout/Grid.astro';
-import MainNav from '../components/MainNav.astro';
-import MainView from '../components/MainView.astro';
+import Base from '@/layouts/Base';
+import MainNav from '@/components/MainNav';
+import MainView from '@/components/MainView';
+
+const meta = {
+  title: 'ようこそ！',
+};
 ---
 
-<Base>
-  <Grid type={'box'}>
-    <MainView />
-    <MainNav />
-  </Grid>
+<Base meta={meta} gridType={'box'}>
+  <MainView />
+  <MainNav />
 </Base>
