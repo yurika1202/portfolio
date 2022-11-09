@@ -7,6 +7,10 @@ const meta = {
   title: 'おわりに',
   description: 'ゆりかのポートフォリオサイトを最後まで見てくださり、ありがとうございました。',
 };
+const pageLink = {
+  prevPath: '/contact',
+  prevLabel: 'お問い合わせページへ戻る',
+};
 ---
 
 <Base meta={meta} gridType={'arch'}>
@@ -22,12 +26,7 @@ const meta = {
   </div>
 </Base>
 
-<Footer
-  prevPath="/contact"
-  prevLabel="お問い合わせページへ戻る"
-  nextPath="/"
-  nextLabel="ホーム画面へ戻る"
-/>
+<Footer {...pageLink} />
 
 <style lang="scss">
   @use '../styles/mixin/' as mix;

@@ -8,6 +8,12 @@ const meta = {
   description:
     '制作に関することだけでなく、ご質問やご指摘等々、お気軽にご連絡くださると嬉しいです。',
 };
+const pageLink = {
+  prevPath: '/works',
+  prevLabel: '実績と自主制作ページへ戻る',
+  nextPath: '/end',
+  nextLabel: '最後のメッセージページへ進む',
+};
 ---
 
 <Base meta={meta} gridType={'arch'}>
@@ -169,12 +175,7 @@ const meta = {
   </form>
 </Base>
 
-<Footer
-  prevPath="/works"
-  prevLabel="実績と自主制作ページへ戻る"
-  nextPath="/end"
-  nextLabel="最後のメッセージページへ進む"
-/>
+<Footer {...pageLink} />
 
 <style lang="scss">
   @use '../styles/mixin/' as mix;

@@ -8,7 +8,15 @@ export interface Props {
   nextPath?: string;
   nextLabel?: string;
 }
-const { prevPath, prevLabel, nextPath, nextLabel, paginationProps } = Astro.props;
+
+const {
+  prevPath = '/',
+  prevLabel = 'ホーム画面へもどる',
+  nextPath = '/',
+  nextLabel = 'ホーム画面へもどる',
+  paginationProps,
+} = Astro.props;
+
 const currentPagePath = Astro.url.pathname;
 ---
 
@@ -24,10 +32,20 @@ const currentPagePath = Astro.url.pathname;
               <li>
                 <a
                   href={prevPath}
-                  class="el_btn el_circleBtn el_circleBtn__blue el_arrowBtn_prev"
+                  class:list={[
+                    'el_btn',
+                    'el_circleBtn',
+                    'el_circleBtn__blue',
+                    prevPath === '/' ? 'el_arrowBtn_home' : 'el_arrowBtn_prev',
+                  ]}
                   aria-label={prevLabel}
                 >
-                  <img src="/icon/arrow.svg" alt={prevLabel} width="12" height="12" />
+                  <img
+                    src={prevPath === '/' ? '/icon/home.svg' : '/icon/arrow.svg'}
+                    alt={prevLabel}
+                    width="12"
+                    height="12"
+                  />
                 </a>
               </li>
               <li>
@@ -50,10 +68,20 @@ const currentPagePath = Astro.url.pathname;
               <li>
                 <a
                   href={nextPath}
-                  class="el_btn el_circleBtn el_circleBtn__blue el_arrowBtn_next"
+                  class:list={[
+                    'el_btn',
+                    'el_circleBtn',
+                    'el_circleBtn__blue',
+                    nextPath === '/' ? 'el_arrowBtn_home' : 'el_arrowBtn_next',
+                  ]}
                   aria-label={nextLabel}
                 >
-                  <img src="/icon/arrow.svg" alt={nextLabel} width="12" height="12" />
+                  <img
+                    src={nextPath === '/' ? '/icon/home.svg' : '/icon/arrow.svg'}
+                    alt={nextLabel}
+                    width="12"
+                    height="12"
+                  />
                 </a>
               </li>
             </ul>
@@ -189,8 +217,8 @@ const currentPagePath = Astro.url.pathname;
   }
 
   .el_tocBtn {
-  width: 54px;
-  height: 24px;
+    width: 54px;
+    height: 24px;
 
     @include mix.mq(lg) {
       width: 72px;
@@ -221,6 +249,15 @@ const currentPagePath = Astro.url.pathname;
   .el_arrowBtn_prev {
     img {
       transform: rotate(-180deg);
+    }
+  }
+
+  .el_arrowBtn_home {
+    @extend .el_arrowBtn_next;
+
+    img {
+      width: 18px;
+      height: 16px;
     }
   }
 

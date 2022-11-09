@@ -9,6 +9,12 @@ const meta = {
   title: '実績と自主制作',
   description: '実績と自主制作のリストです。',
 };
+const pageLink = {
+  prevPath: '/about',
+  prevLabel: '自己紹介ページへ戻る',
+  nextPath: '/contact',
+  nextLabel: 'お問い合わせページへ進む',
+};
 
 const posts = await Astro.glob<PostType>('./posts/**/*.md');
 const pracWorks = await Astro.glob<PostType>('./posts/prac/**/*.md');
@@ -84,12 +90,7 @@ const indieWorks = await Astro.glob<PostType>('./posts/indie/**/*.md');
   </section><!-- /.bl_works_list -->
 </Base>
 
-<Footer
-  prevPath="/about"
-  prevLabel="自己紹介ページへ戻る"
-  nextPath="/contact"
-  nextLabel="お問い合わせページへ進む"
-/>
+<Footer {...pageLink} />
 
 <style lang="scss">
   @use '../styles/mixin/' as mix;
