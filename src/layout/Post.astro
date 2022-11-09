@@ -160,28 +160,28 @@ const displayCheck = (key: string | {}) => {
         </dl>
       </div><!-- /.bl_post_info -->
 
-      <div class:list={['bl_post_mockup', displayCheck(content.mockup)]}>
-        <div class="bl_post_mockup_pc">
+      <div class:list={['bl_post_screenShot', displayCheck(content.screenShot)]}>
+        <div class="bl_post_screenShot_pc">
           <img
             src="/image/empty.gif"
             alt="パソコンサイズのスクリーンショット"
-            data-src={content.mockup && content.mockup.pc}
+            data-src={content.screenShot && content.screenShot.pc}
             width="311"
             height="222"
             loading="lazy"
           />
-        </div><!-- /.bl_post_mockup_pc -->
-        <div class="bl_post_mockup_mobile">
+        </div><!-- /.bl_post_screenShot_pc -->
+        <div class="bl_post_screenShot_mobile">
           <img
             src="/image/empty.gif"
             alt="スマホサイズのスクリーンショット"
-            data-src={content.mockup && content.mockup.mobile}
+            data-src={content.screenShot && content.screenShot.mobile}
             width="96"
             height="190"
             loading="lazy"
           />
-        </div><!-- /.bl_post_mockup_mobile -->
-      </div><!-- /.bl_post_mockup -->
+        </div><!-- /.bl_post_screenShot_mobile -->
+      </div><!-- /.bl_post_screenShot -->
     </div><!-- /.bl_post_contents -->
   </div>
 </Base>
@@ -410,11 +410,23 @@ const displayCheck = (key: string | {}) => {
     }
   }
 
-  .bl_post_mockup {
-    position: relative;
+  .bl_post_screenShot {
+    display: flex;
+    flex-direction: column;
+    gap: var(--size-space-md);
 
     &.is_empty {
       display: none;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    @include mix.mq(md) {
+      flex-direction: row;
     }
 
     @include mix.mq(lg) {
@@ -423,35 +435,12 @@ const displayCheck = (key: string | {}) => {
     }
   }
 
-  .bl_post_mockup_pc {
-    aspect-ratio: 16/10;
-    width: 100%;
-    max-width: 584px;
-    margin: 0 auto;
+  .bl_post_screenShot_pc,
+  .bl_post_screenShot_mobile {
+    height: fit-content;
     overflow: hidden;
     border: 2px solid color(--c-black);
     border-radius: 10px;
     background: color(--c-bg-works);
-
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: top;
-    }
-  }
-
-  .bl_post_mockup_mobile {
-    position: absolute;
-    right: 8px;
-    bottom: -40px;
-    width: calc(96 / 305 * 100%);
-    max-width: 180px;
-
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-    }
   }
 </style>

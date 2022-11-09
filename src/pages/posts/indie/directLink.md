@@ -24,7 +24,7 @@ feature:
   - バリデーションチェック
   - クリップボードへのコピー
   - モーダル表示時に中身のコンテンツ生成
-mockup: { pc: /works/directLink/ss-pc.png, mobile: /works/directLink/ss-mobile.png }
+screenShot: { pc: /works/directLink/ss-pc.png, mobile: /works/directLink/ss-mobile.png }
 comment: GoogleDrive と DropBox から取得した共有リンクを、直リンク可能な URL に変換する Web アプリです。
 ---
 
