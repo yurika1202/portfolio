@@ -16,6 +16,8 @@ const indieWorks = await Astro.glob<PostType>('./posts/indie/**/*.md');
 ---
 
 <Base meta={meta} gridType={'arch'}>
+  <div class="bl_cursor" id="js_cursor"></div>
+
   <PageTitle type={'icon'} />
 
   <div class="bl_works_tabs" role="tablist" aria-labelledby="tablist-tag">
@@ -91,6 +93,7 @@ const indieWorks = await Astro.glob<PostType>('./posts/indie/**/*.md');
 
 <style lang="scss">
   @use '../styles/mixin/' as mix;
+  @use '../styles/functions' as *;
 
   .bl_works_tabs {
     display: flex;
@@ -140,22 +143,62 @@ const indieWorks = await Astro.glob<PostType>('./posts/indie/**/*.md');
       grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     }
   }
+
+  .bl_cursor {
+    transform: translate(0, 0);
+    pointer-events: none;
+    position: fixed;
+    top: -30px;
+    left: -100px;
+    width: 8em;
+    z-index: 1;
+
+    &::before {
+      content: '詳細をみる';
+      transition: scale 0.3s cubic-bezier(0.12, 0.44, 0.38, 0.73), visibility 0.1s ease;
+      visibility: hidden;
+      border: 2px solid color(--c-black);
+      border-radius: 20px;
+      background: color(--c-bg-cursor);
+      width: fit-content;
+      height: fit-content;
+      position: absolute;
+      top: 0;
+      left: 0;
+      color: color(--c-white);
+      display: block;
+      padding: 0.5em 1em;
+      scale: 0;
+    }
+
+    &.is_hoverDisplay {
+      &::before {
+        visibility: visible;
+        scale: 1;
+      }
+    }
+  }
 </style>
 
 <script>
   import 'typed-query-selector';
-  /** タブ制御 */
+
+  /** ****************
+   * タブ制御
+   * *****************/
   const tabList = document.querySelector('div[role="tablist"]');
   const tabs: HTMLButtonElement[] | null = [...tabList!.querySelectorAll('button[role="tab"]')];
   let firstTab: null | HTMLButtonElement = null;
   let lastTab: null | HTMLButtonElement = null;
   let tabPanels: HTMLElement[] = [];
+
   /** タブクリック時のイベント */
   const onClick = (event: Event) => {
     if (event.target instanceof HTMLButtonElement) {
       setSelectedTab(event.target, true);
     }
   };
+
   /** タブ内でのキーボード操作イベント */
   const onKeyDown = (event: KeyboardEvent) => {
     if (event.currentTarget instanceof HTMLButtonElement) {
@@ -187,6 +230,7 @@ const indieWorks = await Astro.glob<PostType>('./posts/indie/**/*.md');
       }
     }
   };
+
   /** タブ選択時 */
   const setSelectedTab = (currentTab: HTMLButtonElement, setFocus: boolean = true) => {
     tabs.forEach((tab, index) => {
@@ -203,6 +247,7 @@ const indieWorks = await Astro.glob<PostType>('./posts/indie/**/*.md');
       }
     });
   };
+
   /** 選択タブのひとつ前のタブにフォーカスをあてる */
   const setSelectedToPreviousTab = (currentTab: HTMLButtonElement) => {
     let index: number;
@@ -213,6 +258,7 @@ const indieWorks = await Astro.glob<PostType>('./posts/indie/**/*.md');
       setSelectedTab(tabs[index - 1]);
     }
   };
+
   /** 選択タブのひとつ次のタブにフォーカスをあてる */
   const setSelectedToNextTab = (currentTab: HTMLButtonElement) => {
     let index;
@@ -223,6 +269,7 @@ const indieWorks = await Astro.glob<PostType>('./posts/indie/**/*.md');
       setSelectedTab(tabs[index + 1]);
     }
   };
+
   /** 各タブにイベント登録 */
   for (const tab of tabs) {
     const tabPanel = document.getElementById(tab.getAttribute('aria-controls')!);
@@ -235,4 +282,47 @@ const indieWorks = await Astro.glob<PostType>('./posts/indie/**/*.md');
     lastTab = tab;
   }
   setSelectedTab(firstTab!, false);
+
+  /** *******************
+   * 追従カーソル
+   ******************** */
+  /** マウスに合わせて追従 */
+  const mouseTracking = (target: HTMLElement) => {
+    document.addEventListener(
+      'mousemove',
+      (event: MouseEventInit) => {
+        target.style.transform = `translate(${event.clientX}px, ${event.clientY}px)`;
+      },
+      { passive: true }
+    );
+  };
+
+  /** オリジナルカーソルの表示/非表示 */
+  const cursorDisplay = (target: HTMLElement) => {
+    const hoverDisplayElements = document.querySelectorAll('.js_cursor_displayElement');
+    hoverDisplayElements.forEach(element => {
+      element.addEventListener(
+        'mouseover',
+        () => {
+          target.classList.add('is_hoverDisplay');
+        },
+        { passive: true }
+      );
+      element.addEventListener(
+        'mouseleave',
+        () => {
+          target.classList.remove('is_hoverDisplay');
+        },
+        { passive: true }
+      );
+    });
+  };
+
+  if (!/iPhone|iPad|Android|Mobile/.test(navigator.userAgent)) {
+    const cursor = document.getElementById('js_cursor');
+    if (cursor) {
+      mouseTracking(cursor);
+      cursorDisplay(cursor);
+    }
+  }
 </script>
