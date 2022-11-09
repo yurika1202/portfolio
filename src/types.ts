@@ -20,7 +20,7 @@ export interface PostType {
   subSkills: {};
   period: string;
   feature: string[];
-  mockup: {
+  screenShot: {
     pc: string;
     mobile: string;
   };

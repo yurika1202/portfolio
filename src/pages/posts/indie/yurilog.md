@@ -25,7 +25,7 @@ feature:
   - ショートコード作成
   - Prism.jsの導入
   - ブロックスタイルの追加
-mockup: { pc: /works/yurilog/ss-pc.png, mobile: /works/yurilog/ss-mobile.png }
+screenShot: { pc: /works/yurilog/ss-pc.png, mobile: /works/yurilog/ss-mobile.png }
 ---
 
 ここに説明文

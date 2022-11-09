@@ -21,7 +21,7 @@ subSkills: { SSG: Astro, デザイン: Figma }
 period: 約1か月
 feature:
   -
-mockup: { pc: /works/portfolio/ss-pc.png, mobile: /works/yurilog/ss-mobile.png }
+screenShot: { pc: /works/portfolio/ss-pc.png, mobile: /works/yurilog/ss-mobile.png }
 ---
 
 ここに説明文

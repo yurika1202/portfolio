@@ -23,7 +23,7 @@ feature:
   - アコーディオン
   - モーダル
   - Googleフォームの非同期通信
-mockup:
+screenShot:
 ---
 
 **【実績詳細公開不可】**  
