@@ -8,6 +8,10 @@ const meta = {
   description:
     'もくもくとコーディングをしている時間が幸せです。これから重点的に取り組んでいきたいのはアクセシビリティ！',
 };
+const pageLink = {
+  nextPath: '/works',
+  nextLabel: '実績と自主制作ページへ進む',
+};
 ---
 
 <Base meta={meta} gridType={'arch'}>
@@ -123,12 +127,7 @@ const meta = {
   </section>
 </Base>
 
-<Footer
-  prevPath="/"
-  prevLabel="ホーム画面へ戻る"
-  nextPath="/works"
-  nextLabel="実績と自主制作ページへ進む"
-/>
+<Footer {...pageLink} />
 
 <style lang="scss">
   @use '../styles/mixin/' as mix;
