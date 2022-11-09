@@ -1,55 +1,130 @@
 ---
-import { SITE } from '../config';
-import '../styles/global.scss';
+import type { SiteMeta } from '@/types';
+import BaseHead from '@/components/BaseHead';
+import Header from '@/components/Header';
 
-export interface Props {
-  author?: string;
-  title?: string;
-  description?: string;
-  ogImg?: string;
-}
-
+export type Props = {
+  meta: SiteMeta;
+  gridType: string;
+};
 const {
-  author = SITE.author,
-  title = SITE.title,
-  description = SITE.description,
-  ogImg = SITE.ogImg,
-} = Astro.props;
-
-const ogImgURL = new URL(ogImg, Astro.url.origin);
+  meta: { title, description, author, ogImg },
+  gridType,
+} = Astro.props as Props;
 ---
 
 <!DOCTYPE html>
 <html lang="ja">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-    <meta name="format-detection" content="telephone=no,address=no" />
-    <title>{title}</title>
-    <meta name="description" content={description} />
-    <meta name="author" content={author} />
-    <!-- favicon -->
-    <link rel="icon" type="image/png" href="/favicon.png" sizes="32x32" />
-    <link rel="apple-touch-icon" type="image/png" href="/apple-touch-icon.png" sizes="180x180" />
-    <link rel="manifest" href="/manifest.json" />
-    <!-- OGP -->
-    <meta property="og:title" content={title} />
-    <meta property="og:description" content={description} />
-    <meta property="og:site_name" content={title} />
-    <meta property="og:url" content={Astro.url} />
-    <meta property="og:image" content={ogImgURL} />
-    <meta property="og:locale" content="ja_JP" />
-    <meta property="og:type" content="website" />
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content={Astro.url} />
-    <meta property="twitter:title" content={title} />
-    <meta property="twitter:description" content={description} />
-    <meta property="twitter:image" content={ogImgURL} />
+    <BaseHead title={title} description={description} author={author} ogImg={ogImg} />
+    <script>
+      /**
+       * 画像遅延読み込み
+       */
+      window.addEventListener('load', () => {
+        if ('loading' in HTMLImageElement.prototype) {
+          const images = document.querySelectorAll(
+            'img[loading="lazy"]'
+          ) as NodeListOf<HTMLImageElement>;
+          images.forEach(img => {
+            if (img.dataset.src != null) {
+              img.src = img.dataset.src;
+            }
+          });
+          const imageSrcset = document.querySelectorAll(
+            'img[data-srcset]'
+          ) as NodeListOf<HTMLImageElement>;
+          imageSrcset.forEach(img => {
+            if (img.dataset.srcset != null) {
+              img.srcset = img.dataset.srcset;
+            }
+          });
+          const sources = document.querySelectorAll(
+            'source[data-srcset]'
+          ) as NodeListOf<HTMLSourceElement>;
+          sources.forEach(source => {
+            if (source.dataset.srcset != null) {
+              source.srcset = source.dataset.srcset;
+            }
+          });
+        } else {
+          const script = document.createElement('script');
+          script.src = 'https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.3.2/lazysizes.min.js';
+          document.body.appendChild(script);
+        }
+      });
+
+      /**
+       * アニメーション
+       */
+      import 'typed-query-selector';
+
+      const animationTargets = document.querySelectorAll('.js_anime');
+
+      const options = {
+        root: null,
+        rootMargin: '20px 0px -70px',
+        threshold: 0,
+      };
+      const observer = new IntersectionObserver(scrollInAnime, options);
+      animationTargets.forEach(animationTarget => {
+        observer.observe(animationTarget);
+      });
+
+      // rootと交差時にふわっと表示させる
+      function scrollInAnime(entries: IntersectionObserverEntry[]) {
+        entries.forEach((entry: IntersectionObserverEntry, index) => {
+          const delay = index * 300;
+          if (entry.isIntersecting) {
+            setTimeout(() => {
+              entry.target.classList.add('is_active');
+            }, delay);
+            observer.unobserve(entry.target);
+          }
+        });
+      }
+    </script>
   </head>
   <body class="ly_bg_gradation">
-    <slot />
-    <script>
-      import '../scripts/main';
-    </script>
+    {gridType === 'arch' ? <Header /> : ''}
+    <div
+      class:list={gridType === 'box'
+        ? ['ly_base__box', 'ly_bg_grid__deep']
+        : ['ly_base__arch', 'ly_bg_grid']}
+    >
+      <div
+        class:list={gridType === 'arch'
+          ? 'ly_base_inner'
+          : 'ly_base_inner ly_base_inner__' + gridType}
+      >
+        <main>
+          <slot />
+        </main>
+
+        {
+          gridType === 'box' ? (
+            <footer>
+              <small>&copy; 2022 Yurika's Portfolio</small>
+            </footer>
+          ) : (
+            ''
+          )
+        }
+      </div>
+    </div>
+    <style lang="scss">
+      footer {
+        margin-top: var(--size-space-3xl);
+        text-align: right;
+      }
+
+      small {
+        font-family: var(--font-en);
+        letter-spacing: 1px;
+        line-height: 1;
+        font-size: rem(12px);
+        font-weight: bold;
+      }
+    </style>
   </body>
 </html>

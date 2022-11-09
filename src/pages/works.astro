@@ -1,108 +1,146 @@
 ---
-import { SITE } from '../config';
-import type { PostType } from '../types';
-import Base from '../layout/Base.astro';
-import Header from '../components/Header.astro';
-import ArchGrid from '../layout/grid/ArchGrid.astro';
-import WorksCard from '../components/WorksCard.astro';
-import Footer from '../components/Footer.astro';
+import type { PostType } from '@/types';
+import Base from '@/layouts/Base';
+import PageTitle from '@/components/PageTitle';
+import WorksCard from '@/components/WorksCard';
+import Footer from '@/components/Footer';
 
-import '../styles/page/works.scss';
+const meta = {
+  title: '実績と自主制作',
+  description: '実績と自主制作のリストです。',
+};
 
-const posts = await Astro.glob<PostType>('./works/**/*.md');
-const pracWorks = await Astro.glob<PostType>('./works/prac/**/*.md');
-const indieWorks = await Astro.glob<PostType>('./works/indie/**/*.md');
+const posts = await Astro.glob<PostType>('./posts/**/*.md');
+const pracWorks = await Astro.glob<PostType>('./posts/prac/**/*.md');
+const indieWorks = await Astro.glob<PostType>('./posts/indie/**/*.md');
 ---
 
-<Base title={`実績と自主制作 | ${SITE.title}`}>
-  <Header />
-  <main class="ly_main">
-    <ArchGrid>
-      <div class="bl_pageTitle bl_pageTitle_icon bl_pageTitle_icon__web">
-        <svg class="el_title_border el_title_border__pageTitle">
-          <text x="50%" y="50%" text-anchor="middle" dominant-baseline="central">
-            実績と自主制作</text
-          >
-        </svg>
-      </div><!-- /.bl_pageTitle -->
-      <div class="bl_works_tabs" role="tablist" aria-labelledby="tablist-tag">
-        <button
-          class="el_btn el_rectBtn"
-          type="button"
-          id="tab-all"
-          role="tab"
-          aria-selected="true"
-          aria-controls="tabpanel-all"
-        >
-          すべて
-        </button>
-        <button
-          class="el_btn el_rectBtn"
-          type="button"
-          id="tab-prac"
-          role="tab"
-          aria-selected="false"
-          aria-controls="tabpanel-prac"
-          tabindex="-1"
-        >
-          実績
-        </button>
-        <button
-          class="el_btn el_rectBtn"
-          type="button"
-          id="tab-indie"
-          role="tab"
-          aria-selected="false"
-          aria-controls="tabpanel-indie"
-          tabindex="-1"
-        >
-          自主制作
-        </button>
-      </div>
+<Base meta={meta} gridType={'arch'}>
+  <PageTitle type={'icon'} />
 
-      <section
-        class="ly_section__lg bl_works_tabpanel"
-        id="tabpanel-all"
-        role="tabpanel"
-        aria-labelledby="tab-all"
-      >
-        <ul class="bl_works_list">
-          {posts.map(post => <WorksCard works={post} />)}
-        </ul><!-- /.bl_works_list -->
-      </section><!-- /.ly_section__lg -->
+  <div class="bl_works_tabs" role="tablist" aria-labelledby="tablist-tag">
+    <button
+      class="el_btn el_rectBtn"
+      type="button"
+      id="tab-all"
+      role="tab"
+      aria-selected="true"
+      aria-controls="tabpanel-all"
+    >
+      すべて
+    </button>
+    <button
+      class="el_btn el_rectBtn"
+      type="button"
+      id="tab-prac"
+      role="tab"
+      aria-selected="false"
+      aria-controls="tabpanel-prac"
+      tabindex="-1"
+    >
+      実績
+    </button>
+    <button
+      class="el_btn el_rectBtn"
+      type="button"
+      id="tab-indie"
+      role="tab"
+      aria-selected="false"
+      aria-controls="tabpanel-indie"
+      tabindex="-1"
+    >
+      自主制作
+    </button>
+  </div>
 
-      <section
-        class="ly_section__lg bl_works_tabpanel is_hidden"
-        id="tabpanel-prac"
-        role="tabpanel"
-        aria-labelledby="tab-prac"
-      >
-        <ul class="bl_works_list">
-          {pracWorks.map(prac => <WorksCard works={prac} />)}
-        </ul><!-- /.bl_works_list -->
-      </section><!-- /.ly_section__lg -->
+  <section class="bl_works_tabpanel" id="tabpanel-all" role="tabpanel" aria-labelledby="tab-all">
+    <ul class="bl_works_list">
+      {posts.map(post => <WorksCard works={post} />)}
+    </ul><!-- /.bl_works_list -->
+  </section><!-- /.bl_works_list -->
 
-      <section class="ly_section__lg">
-        <section
-          class="ly_section__lg bl_works_tabpanel is_hidden"
-          id="tabpanel-indie"
-          role="tabpanel"
-          aria-labelledby="tab-indie"
-        >
-          <ul class="bl_works_list">
-            {indieWorks.map(indie => <WorksCard works={indie} />)}
-          </ul><!-- /.bl_works_list -->
-        </section><!-- /.ly_section__lg -->
-      </section>
-    </ArchGrid>
-  </main><!-- /.ly_main -->
-  <Footer
-    prevPath="/about"
-    prevLabel="自己紹介ページへ戻る"
-    nextPath="/contact"
-    nextLabel="お問い合わせページへ進む"
-  />
+  <section
+    class="bl_works_tabpanel is_hidden"
+    id="tabpanel-prac"
+    role="tabpanel"
+    aria-labelledby="tab-prac"
+  >
+    <ul class="bl_works_list">
+      {pracWorks.map(prac => <WorksCard works={prac} />)}
+    </ul><!-- /.bl_works_list -->
+  </section><!-- /.bl_works_list -->
+
+  <section
+    class="bl_works_tabpanel is_hidden"
+    id="tabpanel-indie"
+    role="tabpanel"
+    aria-labelledby="tab-indie"
+  >
+    <ul class="bl_works_list">
+      {indieWorks.map(indie => <WorksCard works={indie} />)}
+    </ul><!-- /.bl_works_list -->
+  </section><!-- /.bl_works_list -->
 </Base>
+
+<Footer
+  prevPath="/about"
+  prevLabel="自己紹介ページへ戻る"
+  nextPath="/contact"
+  nextLabel="お問い合わせページへ進む"
+/>
+
+<style lang="scss">
+  @use '../styles/mixin/' as mix;
+
+  .bl_works_tabs {
+    display: flex;
+    gap: var(--size-space-sm);
+    justify-content: center;
+    margin: var(--size-space-2xl) auto 0;
+    font-weight: bold;
+    text-align: center;
+
+    @include mix.mq(sm) {
+      width: 80%;
+    }
+  }
+
+  .bl_works_tabpanel {
+    position: relative;
+    margin-top: var(--size-space-2xl);
+
+    &.is_hidden {
+      display: none;
+      opacity: 0;
+    }
+  }
+
+  .bl_works_sectionTitle {
+    position: relative;
+    top: 0;
+    left: -24px;
+    padding: 1.429em;
+
+    p {
+      line-height: 1.3;
+    }
+  }
+
+  .bl_works_list {
+    display: grid;
+    grid-auto-columns: 100%;
+    grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
+    width: 100%;
+    margin-top: var(--size-space-lg);
+    column-gap: var(--size-space-lg);
+    justify-items: center;
+    row-gap: var(--size-space-2xl);
+
+    @include mix.mq(lg) {
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    }
+  }
+</style>
 
 <script>
   import 'typed-query-selector';

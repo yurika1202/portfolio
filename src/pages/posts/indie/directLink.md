@@ -1,5 +1,5 @@
 ---
-layout: ../../../layout/WorksPost.astro
+layout: ../../../layout/Post.astro
 draft: false
 id: directLink
 title: ImageURL for direct link Generator

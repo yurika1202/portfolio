@@ -1,6 +1,6 @@
-@use '../mixin/' as mix;
-@use '../functions/' as *;
-@use '../variables/other' as *;
+@use './mixin/' as mix;
+@use './functions/' as *;
+@use './variables/other' as *;
 
 .bl_entry_blankLink {
   display: inline-block;

@@ -1,140 +1,209 @@
 ---
-import { SITE } from '../config';
-import Base from '../layout/Base.astro';
-import Header from '../components/Header.astro';
-import ArchGrid from '../layout/grid/ArchGrid.astro';
-import Footer from '../components/Footer.astro';
+import Base from '@/layouts/Base';
+import PageTitle from '@/components/PageTitle';
+import Footer from '@/components/Footer';
 
-import '../styles/page/about.scss';
+const meta = {
+  title: 'ゆりかについて',
+  description:
+    'もくもくとコーディングをしている時間が幸せです。これから重点的に取り組んでいきたいのはアクセシビリティ！',
+};
 ---
 
-<Base title={`ゆりかについて | ${SITE.title}`}>
-  <Header />
-  <main class="ly_main">
-    <ArchGrid>
-      <div class="bl_pageTitle bl_pageTitle_bubble">
-        <svg class="el_title_border el_title_border__pageTitle">
-          <text x="50%" y="50%" text-anchor="middle" dominant-baseline="central">
-            はじめまして、
-          </text>
-          <text x="50%" y="50%" text-anchor="middle" dominant-baseline="central">ゆりかです</text>
-        </svg>
-      </div><!-- /.bl_pageTitle -->
+<Base meta={meta} gridType={'arch'}>
+  <PageTitle type={'bubble'} />
 
-      <div class="bl_prof un_about_gridWrap">
-        <div class="bl_prof_img un_about_grid__img">
+  <div class="bl_prof">
+    <div class="bl_prof_img">
+      <img
+        src="/image/empty.gif"
+        alt="ゆりかの似顔絵"
+        data-src="/image/prof.png"
+        width="165"
+        height="165"
+        loading="lazy"
+      />
+    </div><!-- /.bl_prof_img -->
+    <ul class="bl_prof_outline">
+      <li>1993年生まれ</li>
+      <li>広島在住</li>
+    </ul><!-- /.bl_prof_outline -->
+    <ul class="bl_prof_link">
+      <li>
+        <a
+          href="https://yurika122.com"
+          class="el_btn el_circleBtn el_circleBtn__blue"
+          aria-label="ブログ"
+          target="_blank"
+          rel="nofollow noopener noreferrer"
+        >
           <img
             src="/image/empty.gif"
-            alt="ゆりかの似顔絵"
-            data-src="/image/prof.png"
-            width="165"
-            height="165"
+            alt="ブログ"
+            width="20"
+            height="20"
+            data-src="/icon/pen.svg"
             loading="lazy"
           />
-        </div><!-- /.bl_prof_img -->
-        <ul class="bl_prof_outline un_about_grid__outline">
-          <li>1993年生まれ</li>
-          <li>広島在住</li>
-        </ul><!-- /.bl_prof_outline -->
-        <ul class="bl_prof_link un_about_grid__link">
-          <li>
-            <a
-              href="https://yurika122.com"
-              class="el_btn el_circleBtn el_circleBtn__blue"
-              aria-label="ブログ"
-              target="_blank"
-              rel="nofollow noopener noreferrer"
-            >
-              <img
-                src="/image/empty.gif"
-                alt="ブログ"
-                width="20"
-                height="20"
-                data-src="/icon/pen.svg"
-                loading="lazy"
-              />
-            </a>
-          </li>
-          <li>
-            <a
-              href="https://github.com/yurika1202"
-              class="el_btn el_circleBtn el_circleBtn__blue"
-              aria-label="GitHub"
-              target="_blank"
-              rel="nofollow noopener noreferrer"
-            >
-              <img
-                src="/image/empty.gif"
-                alt="GitHub"
-                width="20"
-                height="20"
-                data-src="/icon/github.svg"
-                loading="lazy"
-              />
-            </a>
-          </li>
-          <li>
-            <a
-              href="https://codepen.io/yurika1202"
-              class="el_btn el_circleBtn el_circleBtn__blue"
-              aria-label="CodePen"
-              target="_blank"
-              rel="nofollow noopener noreferrer"
-            >
-              <img
-                src="/image/empty.gif"
-                alt="CodePen"
-                width="20"
-                height="20"
-                data-src="/icon/codepen.svg"
-                loading="lazy"
-              />
-            </a>
-          </li>
-        </ul><!-- /.bl_prof_link -->
-        <p class="bl_prof_text un_about_grid__text">
-          2021年のはじめにWeb制作と出会い、そこから一気にコーディングの楽しさに沼りました。
-          主に書籍やUdemyなどを使い、独学で勉強をしています。<br />
-          セマンティックなマークアップ、 設計に基づく保守性を高めたCSS（DartSass）を考えることが好きです。<br
+        </a>
+      </li>
+      <li>
+        <a
+          href="https://github.com/yurika1202"
+          class="el_btn el_circleBtn el_circleBtn__blue"
+          aria-label="GitHub"
+          target="_blank"
+          rel="nofollow noopener noreferrer"
+        >
+          <img
+            src="/image/empty.gif"
+            alt="GitHub"
+            width="20"
+            height="20"
+            data-src="/icon/github.svg"
+            loading="lazy"
           />
-          Webアプリ開発にも興味があるので、少しづつ勉強中です。
-        </p><!-- /.bl_prof_text -->
-      </div><!-- /.bl_prof -->
+        </a>
+      </li>
+      <li>
+        <a
+          href="https://codepen.io/yurika1202"
+          class="el_btn el_circleBtn el_circleBtn__blue"
+          aria-label="CodePen"
+          target="_blank"
+          rel="nofollow noopener noreferrer"
+        >
+          <img
+            src="/image/empty.gif"
+            alt="CodePen"
+            width="20"
+            height="20"
+            data-src="/icon/codepen.svg"
+            loading="lazy"
+          />
+        </a>
+      </li>
+    </ul><!-- /.bl_prof_link -->
+    <p class="bl_prof_text">
+      2021年のはじめにWeb制作と出会い、そこから一気にコーディングの楽しさに沼りました。
+      主に書籍やUdemyなどを使い、独学で勉強をしています。<br />
+      セマンティックなマークアップ、 設計に基づく保守性を高めたCSS（DartSass）を考えることが好きです。<br
+      />
+      Webアプリ開発にも興味があるので、少しづつ勉強中です。
+    </p><!-- /.bl_prof_text -->
+  </div><!-- /.bl_prof -->
 
-      <section class="ly_section">
-        <div class="el_title_dash">
-          <p class="js_anime js_anime__boundIn">強い意志を持ってチャレンジします</p>
-        </div><!-- /.el_title_dash -->
-        <div class="ly_section_text js_anime js_anime__softIn">
-          <p>
-            好奇心が旺盛なので、いろんなことに挑戦したい人です。<br />
-            一方で完璧主義で慎重派な一面もあり、目標までの道筋を明確にしてから、一つ一つのタスクに確実に向き合っていきます。<br
-            />
-            そしてやると決めたからには納得するまで諦めない、粘り強さもあります。
-          </p>
-        </div><!-- /.ly_section_text -->
-      </section><!-- /.ly_section -->
+  <section>
+    <div class="el_title_dash">
+      <h2 class="js_anime js_anime__boundIn">強い意志を持ってチャレンジします</h2>
+    </div><!-- /.el_title_dash -->
+    <div class="js_anime js_anime__softIn">
+      <p>
+        好奇心が旺盛なので、いろんなことに挑戦したい人です。<br />
+        一方で完璧主義で慎重派な一面もあり、目標までの道筋を明確にしてから、一つ一つのタスクに確実に向き合っていきます。<br
+        />
+        そしてやると決めたからには納得するまで諦めない、粘り強さもあります。
+      </p>
+    </div>
+  </section>
 
-      <section class="ly_section">
-        <div class="el_title_dash">
-          <p class="js_anime js_anime__boundIn">やさしいWebづくりを追求しています</p>
-        </div><!-- /.el_title_dash -->
-        <div class="ly_section_text js_anime js_anime__softIn">
-          <p>
-            サイトへ訪れたユーザーに優しく寄り添い、サイト寿命を長くすることを心がけてコーディングをしています。<br
-            />
-            アクセシビリティの知見を更に深めていくこと、CSS・JavaScript・SVG・Canvas（WebGL）を用いた心地よいアニメーション表現ができるようになることが目標です。<br
-            />
-            そしていずれは実装だけでなくデザイン側からもプロジェクトへ関わっていきたいと思っています。
-          </p>
-        </div><!-- /.ly_section_text -->
-      </section><!-- /.ly_section -->
-    </ArchGrid>
-  </main>
-  <Footer
-    prevPath="/"
-    prevLabel="ホーム画面へ戻る"
-    nextPath="/works"
-    nextLabel="実績と自主制作ページへ進む"
-  />
+  <section>
+    <div class="el_title_dash">
+      <h2 class="js_anime js_anime__boundIn">やさしいWebづくりを追求しています</h2>
+    </div><!-- /.el_title_dash -->
+    <div class="js_anime js_anime__softIn">
+      <p>
+        サイトへ訪れたユーザーに優しく寄り添い、サイト寿命を長くすることを心がけてコーディングをしています。<br
+        />
+        アクセシビリティの知見を更に深めていくこと、CSS・JavaScript・SVG・Canvas（WebGL）を用いた心地よいアニメーション表現ができるようになることが目標です。<br
+        />
+        そしていずれは実装だけでなくデザイン側からもプロジェクトへ関わっていきたいと思っています。
+      </p>
+    </div>
+  </section>
 </Base>
+
+<Footer
+  prevPath="/"
+  prevLabel="ホーム画面へ戻る"
+  nextPath="/works"
+  nextLabel="実績と自主制作ページへ進む"
+/>
+
+<style lang="scss">
+  @use '../styles/mixin/' as mix;
+
+  .bl_prof {
+    margin-top: -40px;
+
+    @include mix.mq(md) {
+      display: grid;
+      grid-template:
+        'item1 item4'
+        'item2 item4'
+        'item3 item4';
+      width: 90%;
+      margin: -40px auto 0;
+      column-gap: var(--size-space-sm);
+    }
+  }
+
+  .bl_prof_img {
+    grid-area: item1;
+    width: 165px;
+    margin: 0 auto -10px;
+
+    img {
+      object-fit: cover;
+      width: 100%;
+    }
+
+    @include mix.mq(md) {
+      width: 265px;
+      margin: 0 auto -24px;
+    }
+  }
+
+  .bl_prof_outline {
+    grid-area: item2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: -0.5em;
+
+    li {
+      margin-right: 0.5em;
+
+      &:not(:first-of-type) {
+        position: relative;
+        padding-left: 1em;
+
+        &::before {
+          content: '/';
+          position: absolute;
+          top: 50%;
+          left: 0;
+          transform: translateY(-50%);
+        }
+      }
+    }
+  }
+
+  .bl_prof_link {
+    grid-area: item3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--size-space-md);
+    margin-top: var(--size-space-sm);
+  }
+
+  .bl_prof_text {
+    grid-area: item4;
+    margin-top: var(--size-space-md);
+
+    @include mix.mq(md) {
+      margin-top: 25%;
+    }
+  }
+</style>

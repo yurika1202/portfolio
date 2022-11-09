@@ -1,212 +1,529 @@
 ---
-import { SITE } from '../config';
-import Base from '../layout/Base.astro';
-import Header from '../components/Header.astro';
-import ArchGrid from '../layout/grid/ArchGrid.astro';
-import Footer from '../components/Footer.astro';
+import Base from '@/layouts/Base';
+import PageTitle from '@/components/PageTitle';
+import Footer from '@/components/Footer';
 
-import '../styles/page/contact.scss';
+const meta = {
+  title: 'お問い合わせ',
+  description:
+    '制作に関することだけでなく、ご質問やご指摘等々、お気軽にご連絡くださると嬉しいです。',
+};
 ---
 
-<Base title={`お問い合わせ | ${SITE.title}`}>
-  <Header />
-  <main class="ly_main">
-    <ArchGrid>
-      <div class="bl_pageTitle bl_pageTitle_icon bl_pageTitle_icon__mail">
-        <svg class="el_title_border el_title_border__pageTitle">
-          <text x="50%" y="50%" text-anchor="middle" dominant-baseline="central">お問い合わせ</text>
-        </svg>
-      </div><!-- /.bl_pageTitle -->
+<Base meta={meta} gridType={'arch'}>
+  <PageTitle type={'icon'} />
 
-      <section class="ly_section__lg">
-        <div class="bl_form_lead">
-          <p>
-            <span class="hp_display_ib__sm">もし少しでもご興味を持っていただけましたら、</span><span
-              class="hp_display_ib__sm">ぜひお気軽にご連絡ください。</span
-            >
+  <div class="bl_form_lead">
+    <p>
+      <span>もし少しでもご興味を持っていただけましたら、</span>
+      <span>ぜひお気軽にご連絡ください。</span>
+    </p>
+  </div>
+
+  <form
+    id="js_form"
+    class="ly_form formrun"
+    action="https://form.run/api/v1/r/zxv20ruqkegurl4nlksun52r"
+    method="POST"
+  >
+    <dl class="bl_form">
+      <!-- お名前 -->
+      <div class="bl_form_item">
+        <dt class="bl_form_labelWrap">
+          <label id="name" for="fullname" class="bl_form_label">お名前</label>
+        </dt><!-- /.bl_form_labelWrap -->
+        <dd class="bl_form_inputField bl_form_input__require">
+          <input
+            type="text"
+            name="name"
+            id="fullname"
+            class="bl_form_input"
+            aria-labelledby="name"
+            autocomplete="name"
+            required
+          />
+          <p class="bl_form_exText">
+            山田<span></span>太郎
+          </p><!-- /.bl_form_exText -->
+          <p class="bl_form_errorText js_form_errorMessage">お名前を入力してください。</p>
+        </dd><!-- /.bl_form_inputField -->
+      </div><!-- /.bl_form_item -->
+
+      <!-- 企業名 -->
+      <div class="bl_form_item">
+        <dt class="bl_form_labelWrap">
+          <label id="company" for="companyName" class="bl_form_label"> 企業名</label>
+        </dt><!-- /.bl_form_labelWrap -->
+        <dd class="bl_form_inputField">
+          <input
+            type="text"
+            name="company"
+            id="companyName"
+            class="bl_form_input"
+            aria-labelledby="company"
+            autocomplete="organization"
+          />
+          <p class="bl_form_exText">hoge株式会社</p><!-- /.bl_form_exText -->
+        </dd><!-- /.bl_form_inputField -->
+      </div><!-- /.bl_form_item -->
+
+      <!-- ご連絡先 -->
+      <div class="bl_form_item">
+        <dt class="bl_form_labelWrap">
+          <label id="email" for="mail" class="bl_form_label">ご連絡先</label>
+        </dt><!-- /.bl_form_labelWrap -->
+        <dd class="bl_form_inputField bl_form_input__require">
+          <input
+            type="email"
+            name="email"
+            id="mail"
+            class="bl_form_input js_form_emailInput"
+            aria-labelledby="email"
+            required
+            autocomplete="email"
+          />
+          <p class="bl_form_exText">sample@sample.com</p><!-- /.bl_form_exText -->
+          <p class="bl_form_errorText js_form_errorMessage">メールアドレスを入力してください。</p>
+          <p class="bl_form_errorText__emailExp js_form_errorMessage_emailExp">
+            正しいメールアドレスの形式ではありません。
           </p>
-          <div class="bl_form_successMessage">
-            <p class="bl_form_successMessage_title">
-              お問い合わせいただき、<br />ありがとうございます。
-            </p>
-            <p class="bl_form_successMessage_text">
-              24時間以内に返信いたします。<br />
-              もしも24時間を過ぎても返信がない場合、上手くメールが届いていない可能性がございます。<br
-              />
-              お手数ですが<a
-                href="https://twitter.com/bnku212"
-                target="_blank"
-                rel="nofollow noopener noreferrer">TwitterのDM</a
-              >より、再度ご連絡いただけますと幸いです。
-            </p>
-          </div><!-- /.bl_form_sccessMessage -->
-        </div>
-      </section>
+        </dd><!-- /.bl_form_inputField -->
+      </div><!-- /.bl_form_item -->
 
-      <form
-        id="js_form"
-        class="ly_form formrun"
-        action="https://form.run/api/v1/r/zxv20ruqkegurl4nlksun52r"
-        method="POST"
-      >
-        <dl class="bl_form">
-          <!-- お名前 -->
-          <div class="bl_form_item">
-            <dt class="bl_form_labelWrap">
-              <label id="name" for="fullname" class="bl_form_label">お名前</label>
-            </dt><!-- /.bl_form_labelWrap -->
-            <dd class="bl_form_inputField bl_form_input__require">
-              <input
-                type="text"
-                name="name"
-                id="fullname"
-                class="bl_form_input"
-                aria-labelledby="name"
-                autocomplete="name"
-                required
-              />
-              <p class="bl_form_exText">
-                山田<span class="hp_space_1char"></span>太郎
-              </p><!-- /.bl_form_exText -->
-              <p class="bl_form_errorText js_form_errorMessage">
-                <span></span>お名前を入力してください。
-              </p>
-            </dd><!-- /.bl_form_inputField -->
-          </div><!-- /.bl_form_item -->
+      <!-- お問い合わせ内容 -->
+      <div class="bl_form_item">
+        <dt class="bl_form_labelWrap">
+          <label id="text" for="contents" class="bl_form_label"> お問い合わせ内容</label>
+        </dt><!-- /.bl_form_labelWrap -->
+        <dd class="bl_form_inputField bl_form_input__require">
+          <textarea
+            name="text"
+            id="contents"
+            class="bl_form_input bl_form_input__textarea"
+            aria-labelledby="text"
+            required
+            autocomplete="off"></textarea>
+          <p class="bl_form_errorText js_form_errorMessage">お問合せ内容を入力してください。</p>
+        </dd><!-- /.bl_form_inputField -->
+      </div><!-- /.bl_form_item -->
+    </dl>
 
-          <!-- 企業名 -->
-          <div class="bl_form_item">
-            <dt class="bl_form_labelWrap">
-              <label id="company" for="companyName" class="bl_form_label"> 企業名</label>
-            </dt><!-- /.bl_form_labelWrap -->
-            <dd class="bl_form_inputField">
-              <input
-                type="text"
-                name="company"
-                id="companyName"
-                class="bl_form_input"
-                aria-labelledby="company"
-                autocomplete="organization"
-              />
-              <p class="bl_form_exText">hoge株式会社</p><!-- /.bl_form_exText -->
-            </dd><!-- /.bl_form_inputField -->
-          </div><!-- /.bl_form_item -->
+    <!-- プライバシーポリシー -->
+    <div class="bl_form_privacy">
+      <div class="bl_form_privacy_contents js_notFocus" tabindex="0">
+        <h2>プライバシーポリシー</h2>
+        <p class="bl_form_privacy_lead">
+          Yurika's
+          Portfolio（以下、「当サイト」）は、ユーザーの個人情報の取扱いについて以下のとおりプライバシーポリシー（以下、「本ポリシー」）を定めます。
+        </p>
+        <h3>個人情報の利用目的</h3>
+        <p>
+          当サイトでは、名前やメールアドレス等の個人情報を取得させていただく場合がございます。取得した個人情報は、お問い合わせに対する回答や必要な情報を電子メールなどでご連絡する場合に利用させていただくものであり、これらの目的以外では利用いたしません。
+        </p>
+        <h3>個人情報の安全管理</h3>
+        <p>
+          当サイトではお客様よりお預かりした個人情報を適切に管理し、次のいずれかに該当する場合を除き、個人情報を第三者に開示いたしません。
+        </p>
+        <h3>個人情報の第三者への開示・提供</h3>
+        <p>
+          当サイトは次に掲げる場合を除いて、同意を得ることなく第三者に個人情報を提供することはありません。<br
+          />ただし、個人情報保護法その他の法令で認められる場合を除きます。
+        </p>
+        <ul>
+          <li>法律上照会権限を有する者から書面による正式な協力要請、照会があった場合</li>
+          <li>お客様の同意があった場合</li>
+        </ul>
+        <h3>プライバシーポリシーの変更</h3>
+        <p>
+          本ポリシーの内容は、法令変更などを受けて、ユーザーに通知することなく随時変更することができるものとします。変更後のプライバシーポリシーは、本サイトに掲載したときから効力を生じるものとします。
+        </p>
+        <h3>個人情報に関するお問い合わせ</h3>
+        <p>
+          本ポリシー関するお問い合わせは、下記までお願い致します。<br />
+          ゆりかメールアドレス:info@yurika122.com
+        </p>
+      </div><!-- /.bl_form_privacy_contents -->
 
-          <!-- ご連絡先 -->
-          <div class="bl_form_item">
-            <dt class="bl_form_labelWrap">
-              <label id="email" for="mail" class="bl_form_label">ご連絡先</label>
-            </dt><!-- /.bl_form_labelWrap -->
-            <dd class="bl_form_inputField bl_form_input__require">
-              <input
-                type="email"
-                name="email"
-                id="mail"
-                class="bl_form_input js_form_emailInput"
-                aria-labelledby="email"
-                required
-                autocomplete="email"
-              />
-              <p class="bl_form_exText">sample@sample.com</p><!-- /.bl_form_exText -->
-              <p class="bl_form_errorText js_form_errorMessage">
-                <span></span>メールアドレスを入力してください。
-              </p>
-              <p class="bl_form_errorText__emailExp js_form_errorMessage_emailExp">
-                <span></span>正しいメールアドレスの形式ではありません。
-              </p>
-            </dd><!-- /.bl_form_inputField -->
-          </div><!-- /.bl_form_item -->
+      <div class="bl_form_privacy_checkBox">
+        <label>
+          <input type="checkbox" name="privacy" value="プライバシーポリシーに同意する" /><span
+            >プライバシーポリシーの内容を確認し同意します</span
+          >
+        </label>
+      </div><!-- /.bl_form_privacy_checkBox -->
+    </div><!-- /.bl_form_privacy -->
 
-          <!-- お問い合わせ内容 -->
-          <div class="bl_form_item">
-            <dt class="bl_form_labelWrap">
-              <label id="text" for="contents" class="bl_form_label"> お問い合わせ内容</label>
-            </dt><!-- /.bl_form_labelWrap -->
-            <dd class="bl_form_inputField bl_form_input__require">
-              <textarea
-                name="text"
-                id="contents"
-                class="bl_form_input bl_form_input__textarea"
-                aria-labelledby="text"
-                required
-                autocomplete="off"></textarea>
-              <p class="bl_form_errorText js_form_errorMessage">
-                <span></span>お問合せ内容を入力してください。
-              </p>
-            </dd><!-- /.bl_form_inputField -->
-          </div><!-- /.bl_form_item -->
-        </dl>
-
-        <!-- プライバシーポリシー -->
-        <div class="bl_form_privacy">
-          <div class="bl_form_privacy_textWrap js_notFocus" tabindex="0">
-            <p class="bl_form_privacy_title">プライバシーポリシー</p>
-            <p class="bl_form_privacy_lead">
-              Yurika's
-              Portfolio（以下、「当サイト」）は、ユーザーの個人情報の取扱いについて以下のとおりプライバシーポリシー（以下、「本ポリシー」）を定めます。
-            </p>
-            <p class="bl_form_privacy_subTitle">個人情報の利用目的</p>
-            <p class="bl_form_privacy_text">
-              当サイトでは、名前やメールアドレス等の個人情報を取得させていただく場合がございます。取得した個人情報は、お問い合わせに対する回答や必要な情報を電子メールなどでご連絡する場合に利用させていただくものであり、これらの目的以外では利用いたしません。
-            </p>
-            <p class="bl_form_privacy_subTitle">個人情報の安全管理</p>
-            <p class="bl_form_privacy_text">
-              当サイトではお客様よりお預かりした個人情報を適切に管理し、次のいずれかに該当する場合を除き、個人情報を第三者に開示いたしません。
-            </p>
-            <p class="bl_form_privacy_subTitle">個人情報の第三者への開示・提供</p>
-            <p class="bl_form_privacy_text">
-              当サイトは次に掲げる場合を除いて、同意を得ることなく第三者に個人情報を提供することはありません。<br
-              />ただし、個人情報保護法その他の法令で認められる場合を除きます。
-            </p>
-            <ul>
-              <li>法律上照会権限を有する者から書面による正式な協力要請、照会があった場合</li>
-              <li>お客様の同意があった場合</li>
-            </ul><!-- /.bl_form_privacy_ist -->
-            <p class="bl_form_privacy_subTitle">プライバシーポリシーの変更</p>
-            <p class="bl_form_privacy_text">
-              本ポリシーの内容は、法令変更などを受けて、ユーザーに通知することなく随時変更することができるものとします。変更後のプライバシーポリシーは、本サイトに掲載したときから効力を生じるものとします。
-            </p>
-            <p class="bl_form_privacy_subTitle">個人情報に関するお問い合わせ</p>
-            <p class="bl_form_privacy_text">
-              本ポリシー関するお問い合わせは、下記までお願い致します。<br />
-              ゆりか<span></span>メールアドレス:info@yurika122.com
-            </p>
-          </div><!-- /.bl_form_privacy_textWrap -->
-
-          <div class="bl_form_privacy_checkBox">
-            <label>
-              <input type="checkbox" name="privacy" value="プライバシーポリシーに同意する" /><span
-                >プライバシーポリシーの内容を確認し同意します</span
-              >
-            </label>
-          </div><!-- /.bl_form_privacy_checkBox -->
-        </div><!-- /.bl_form_privacy -->
-
-        <div class="bl_form_btn">
-          <button class="el_btn el_basicBtn" id="js_form_submitBtn" type="submit" disabled>
-            送信する
-            <img
-              src="/image/empty.gif"
-              data-src="/icon/arrow-lg.svg"
-              alt=""
-              width="56"
-              height="8"
-              loading="lazy"
-            />
-          </button>
-        </div>
-      </form>
-      <!-- /.ly_main_inner -->
-    </ArchGrid>
-  </main><!-- /.ly_main -->
-
-  <Footer
-    prevPath="/works"
-    prevLabel="実績と自主制作ページへ戻る"
-    nextPath="/end"
-    nextLabel="最後のメッセージページへ進む"
-  />
+    <div class="bl_form_btn">
+      <button class="el_btn el_basicBtn" id="js_form_submitBtn" type="submit" disabled>
+        送信する
+        <img
+          src="/image/empty.gif"
+          data-src="/icon/arrow-lg.svg"
+          alt=""
+          width="56"
+          height="8"
+          loading="lazy"
+        />
+      </button>
+    </div>
+  </form>
 </Base>
+
+<Footer
+  prevPath="/works"
+  prevLabel="実績と自主制作ページへ戻る"
+  nextPath="/end"
+  nextLabel="最後のメッセージページへ進む"
+/>
+
+<style lang="scss">
+  @use '../styles/mixin/' as mix;
+  @use '../styles/functions/' as *;
+  @use '../styles/variables/other' as *;
+
+  .bl_form_lead {
+    margin-top: var(--size-space-2xl);
+
+    p {
+      max-width: 400px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    span {
+      @include mix.mq(sm) {
+        display: inline-block;
+      }
+    }
+  }
+
+  .bl_form {
+    display: flex;
+    flex-direction: column;
+    max-width: 480px;
+    margin: var(--size-space-lg) auto 0;
+    gap: var(--size-space-lg);
+
+    @include mix.mq(lg) {
+      max-width: 640px;
+    }
+  }
+
+  .bl_form_labelWrap {
+    position: relative;
+    z-index: 1;
+    top: 12px;
+  }
+
+  .bl_form_label {
+    padding: 0.286em 1.143em;
+    border: 2px solid color(--c-black);
+    border-radius: 10px;
+    background: color(--c-primary-accent);
+
+    @include mix.hover {
+      .bl_form_input {
+        background: color(--c-bg-inputFocus);
+      }
+    }
+  }
+
+  .bl_form_inputField {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding-left: 16px;
+  }
+
+  .bl_form_input {
+    width: calc(300 / 311 * 100%);
+    height: 64px;
+    margin-right: auto;
+    padding: 1.714em 1.714em 1.143em;
+    transition: background 0.3s cubic-bezier(0.15, 0.62, 0.43, 0.8);
+    border: 2px solid color(--c-black);
+    border-radius: 10px;
+    background: color(--c-white);
+
+    &__require {
+      position: relative;
+      z-index: 0;
+
+      &::before {
+        content: '必須';
+        position: absolute;
+        z-index: -1;
+        top: -32px;
+        right: 20px;
+        width: 64px;
+        height: 48px;
+        padding-top: 8px;
+        border: 2px solid color(--c-black);
+        border-radius: 50%;
+        background: color(--c-warning);
+        font-size: rem(12px);
+        font-weight: bold;
+        letter-spacing: 2px;
+        text-align: center;
+      }
+
+      @include mix.mq(lg) {
+        &::before {
+          right: 32px;
+        }
+      }
+    }
+
+    &.is_error {
+      border: 2px solid color(--c-error);
+    }
+
+    &__textarea {
+      height: 160px;
+    }
+
+    @include mix.hover {
+      background: color(--c-bg-inputFocus);
+    }
+
+    &:focus {
+      outline: 2px solid color(--c-primary);
+    }
+  }
+
+  .bl_form_exText,
+  .bl_form_errorText {
+    padding-left: 16px;
+  }
+
+  .bl_form_exText {
+    position: relative;
+    padding-left: 2.5em;
+    color: color(--c-input-exText);
+
+    &::before {
+      content: '例：';
+      position: absolute;
+      top: 50%;
+      left: 0;
+      width: fit-content;
+      height: fit-content;
+      transform: translateY(-50%);
+      color: inherit;
+    }
+
+    span {
+      display: inline-block;
+      width: 1em;
+    }
+  }
+
+  .bl_form_errorText {
+    visibility: hidden;
+    position: relative;
+    top: -100%;
+    height: 0;
+    padding-left: 40px;
+    overflow: hidden;
+    transition: visibility 0.3s 0.1s ease, opacity 0.1s 0.1s ease, top 0.1s ease;
+    opacity: 0;
+    line-height: 1.8;
+
+    &__emailExp {
+      @extend .bl_form_errorText;
+    }
+
+    &.is_display {
+      visibility: visible;
+      line-height: 28px;
+      top: 0;
+      height: auto;
+      opacity: 1;
+    }
+
+    &::before {
+      content: '';
+      display: inline-block;
+      position: absolute;
+      top: 50%;
+      left: 0;
+      width: 28px;
+      height: 28px;
+      transform: translateY(-50%);
+      border: 2px solid color(--c-black);
+      border-radius: 50%;
+      background: color(--c-error);
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 6px;
+      width: 16px;
+      height: 16px;
+      transform: translateY(-50%);
+      background: url(#{$icon-path}/caution.svg) no-repeat center center / contain;
+    }
+  }
+
+  .bl_form_privacy,
+  .bl_form_btn {
+    margin-top: var(--size-space-2xl);
+  }
+
+  .bl_form_privacy_contents {
+    width: 100%;
+    height: 320px;
+    padding: var(--size-space-md) var(--size-space-xsm) var(--size-space-md) var(--size-space-md);
+    overflow-y: scroll;
+    border: 2px solid color(--c-black);
+    border-radius: 10px;
+    background: color(--c-white);
+
+    h2 {
+      font-size: rem(16px);
+      font-weight: bold;
+      text-align: center;
+    }
+
+    h3 {
+      margin-top: 1.5em;
+      font-weight: bold;
+    }
+
+    p {
+      margin-top: 0.5em;
+    }
+
+    ul {
+      margin-top: 0.5em;
+
+      li {
+        list-style: disc inside;
+      }
+    }
+
+    &::-webkit-scrollbar {
+      width: 16px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      border: 4px solid transparent;
+      border-radius: 20px;
+      background-clip: content-box;
+      background-color: color(--c-secondary);
+    }
+
+    &::-webkit-scrollbar-track {
+      margin-top: 4px;
+      margin-bottom: 4px;
+    }
+  }
+
+  .bl_form_privacy_lead {
+    margin: 1em 0 2em;
+  }
+
+  .bl_form_privacy_checkBox {
+    position: relative;
+    width: fit-content;
+    margin: 0 auto;
+    margin-top: var(--size-space-md);
+
+    input {
+      position: absolute;
+      width: auto;
+      opacity: 0;
+
+      + span {
+        display: inline-block;
+        position: relative;
+        padding-left: 40px;
+        cursor: pointer;
+
+        &::before {
+          content: '';
+          position: absolute;
+          top: 50%;
+          left: 0;
+          width: 25px;
+          height: 25px;
+          transform: translateY(-50%);
+          transition: background 0.3s cubic-bezier(0.15, 0.62, 0.43, 0.8);
+          border: 2px solid color(--c-black);
+          border-radius: 5px;
+          background: color(--c-white);
+        }
+
+        &::after {
+          content: '';
+          display: block;
+          position: absolute;
+          top: 18px;
+          left: 4px;
+          width: 16px;
+          height: 9px;
+          transform: rotate(135deg) scale(0);
+          transition: opacity 0.3s ease, transform 0.3s ease;
+          border-top: 3px solid color(--c-primary);
+          border-right: 3px solid color(--c-primary);
+          opacity: 0;
+        }
+
+        @media print, screen and (min-width: 480px) {
+          &::after {
+            top: 6px;
+          }
+        }
+      }
+
+      @include mix.hover {
+        + span {
+          &::before {
+            background: color(--c-bg-inputFocus);
+          }
+        }
+      }
+
+      &:focus {
+        + span {
+          &::before {
+            outline: 2px solid color(--c-primary);
+          }
+        }
+      }
+
+      &:checked {
+        + span {
+          &::after {
+            transform: rotate(135deg) scale(1);
+            opacity: 1;
+          }
+        }
+      }
+    }
+  }
+
+  .bl_form_btn {
+    text-align: center;
+
+    button {
+      width: 100%;
+      max-width: 204px;
+      opacity: 1;
+
+      &:disabled {
+        transition: opacity 0.3s ease;
+        opacity: 0.5;
+      }
+
+      @include mix.mq(lg) {
+        max-width: 276px;
+      }
+    }
+  }
+</style>
 
 <script>
   import 'typed-query-selector';

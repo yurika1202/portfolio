@@ -1,3 +1,10 @@
+export type SiteMeta = {
+  author?: string;
+  title?: string;
+  description?: string;
+  ogImg?: string;
+};
+
 export interface PostType {
   draft: boolean;
   id: string;
@@ -13,11 +20,9 @@ export interface PostType {
   subSkills: {};
   period: string;
   feature: string[];
-  mockup: Mockup;
+  mockup: {
+    pc: string;
+    mobile: string;
+  };
   comment: string;
-}
-
-interface Mockup {
-  pc: string;
-  mobile: string;
 }

@@ -1,0 +1,84 @@
+---
+import PageNav from '@/components/PageNav';
+---
+
+<>
+  <div class="ly_startBtn js_anime js_anime__boundIn">
+    <a class="el_btn el_basicBtn" href="/about">
+      はじめからみる
+      <img src="/icon/arrow-lg.svg" alt="" width="56" height="8" loading="lazy" />
+    </a>
+  </div><!-- /.ly_startBtn -->
+
+  <nav class="bl_mainNav js_anime js_anime__boundIn">
+    <div class="bl_mainNav_title">
+      <svg class="el_title_border">
+        <text x="50%" y="50%" text-anchor="middle" dominant-baseline="central">もくじ</text>
+      </svg>
+    </div><!-- /.bl_mainNav_title -->
+    <div class="bl_mainNav_contents bl_common_box bl_common_shadow">
+      <PageNav />
+    </div><!-- /.bl_mainNav_contents -->
+  </nav><!-- /.ly_mainNav -->
+</>
+
+<style lang="scss">
+  @use '../styles/mixin/' as mix;
+  @use '../styles/functions/' as *;
+
+  .ly_startBtn {
+    margin-top: var(--size-space-2xl);
+    text-align: center;
+  }
+
+  .bl_mainNav {
+    position: relative;
+    max-width: 376px;
+    margin: var(--size-space-2xl) auto 0;
+    padding-top: 40px;
+
+    @include mix.mq(lg) {
+      padding-top: 48px;
+    }
+  }
+
+  .bl_mainNav_title {
+    position: absolute;
+    z-index: 0;
+    top: 0;
+    left: 50%;
+    width: 100px;
+    height: 70px;
+    padding-top: 12px;
+    transform: translateX(-50%);
+    border: 2px solid color(--c-black);
+    border-radius: 50%;
+    background: color(--c-primary);
+
+    svg {
+      height: 23px;
+      margin: 0 auto;
+    }
+
+    text {
+      font-size: rem(16px);
+      letter-spacing: 0.188em;
+
+      @include mix.mq(lg) {
+        font-size: rem(20px);
+      }
+    }
+
+    @include mix.mq(lg) {
+      width: 123px;
+      height: 84px;
+      padding-top: 16px;
+    }
+  }
+
+  .bl_mainNav_contents {
+    position: relative;
+    padding: var(--size-space-lg) var(--size-space-md);
+    background: color(--c-bg-toc);
+  }
+</style>
