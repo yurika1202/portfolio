@@ -7,21 +7,42 @@ const pracWorks = await Astro.glob<PostType>('../pages/posts/prac/**/*.md');
 const indieWorks = await Astro.glob<PostType>('../pages/posts/indie/**/*.md');
 const sortedPracPosts = sortedPosts(pracWorks);
 const sortedIndiePosts = sortedPosts(indieWorks);
+const currentPagePath = Astro.url.pathname;
 ---
 
 <>
   <div
     id="js_drawerNav"
-    class="ly_drawerNav bl_footer_drawerNav"
+    class:list={['ly_drawerNav', currentPagePath.includes('works') ? 'is_reverse' : '']}
     aria-label="drawer"
     id="drawerNav"
     aria-hidden="true"
   >
     <div class="ly_drawerNav__inner">
+      <nav class="bl_drawerNav__page" aria-label="pageList">
+        <svg class="el_title_border el_title_border__blue">
+          <text x="50%" y="50%" text-anchor="middle" dominant-baseline="central">Page</text>
+        </svg>
+        <div class="bl_drawerNav_pageNavWrap">
+          <PageNav />
+        </div><!-- /.bl_drawerNav_pageNavWrap -->
+      </nav><!-- /.bl_drawerNav__page -->
+
+      <div class="bl_drawerNav_dashLine">
+        <img
+          src="/image/empty.gif"
+          data-src="/icon/swipe.svg"
+          alt="横スクロール"
+          width="32"
+          height="32"
+          loading="lazy"
+        />
+      </div><!-- /.bl_drawerNav_dashLine -->
+
       <nav class="bl_drawerNav__section is_canScroll" aria-label="works">
-        <div class="bl_sectionNav">
+        <div class="bl_sectionNav bl_sectionNav__prac">
           <svg class="el_title_border el_title_border__blue">
-            <text x="50%" y="50%" text-anchor="start" dominant-baseline="central"> 実績</text>
+            <text x="50%" y="50%" text-anchor="middle" dominant-baseline="central">実績</text>
           </svg>
           <ul class="bl_sectionNav_list" role="menubar">
             {
@@ -35,9 +56,9 @@ const sortedIndiePosts = sortedPosts(indieWorks);
             }
           </ul><!-- /.bl_sectionNav_list -->
         </div><!-- /.bl_sectionNav -->
-        <div class="bl_sectionNav">
+        <div class="bl_sectionNav bl_sectionNav__indie">
           <svg class="el_title_border el_title_border__blue">
-            <text x="50%" y="50%" text-anchor="middle" dominant-baseline="central"> 自主制作</text>
+            <text x="50%" y="50%" text-anchor="middle" dominant-baseline="central">自主制作</text>
           </svg>
           <ul class="bl_sectionNav_list" role="menubar">
             {
@@ -52,26 +73,6 @@ const sortedIndiePosts = sortedPosts(indieWorks);
           </ul><!-- /.bl_sectionNav_list -->
         </div><!-- /.bl_sectionNav -->
       </nav><!-- /.bl_drawerNav__section -->
-
-      <div class="bl_drawerNav_dashLine">
-        <img
-          src="/image/empty.gif"
-          data-src="/icon/swipe.svg"
-          alt="横スクロール"
-          width="32"
-          height="32"
-          loading="lazy"
-        />
-      </div><!-- /.bl_drawerNav_dashLine -->
-
-      <nav class="bl_drawerNav__page" aria-label="pageList">
-        <svg class="el_title_border el_title_border__blue">
-          <text x="50%" y="50%" text-anchor="middle" dominant-baseline="central"> Page</text>
-        </svg>
-        <div class="bl_drawerNav_pageNavWrap">
-          <PageNav />
-        </div><!-- /.bl_drawerNav_pageNavWrap -->
-      </nav><!-- /.bl_drawerNav__page -->
     </div><!-- /.bl_drawerNav__inner -->
   </div><!-- /.bl_drawerNav -->
 </>
@@ -91,6 +92,22 @@ const sortedIndiePosts = sortedPosts(indieWorks);
     &.is_show {
       visibility: visible;
       height: 40vh;
+    }
+
+    &.is_reverse {
+      .ly_drawerNav__inner {
+        flex-direction: row-reverse;
+        justify-content: flex-end;
+      }
+
+      .bl_drawerNav__section {
+        align-items: flex-end;
+        direction: rtl;
+      }
+
+      .bl_sectionNav_list {
+        align-items: flex-end;
+      }
     }
   }
 
@@ -119,7 +136,6 @@ const sortedIndiePosts = sortedPosts(indieWorks);
     position: relative;
     flex-direction: column;
     flex-shrink: 0;
-    align-items: flex-end;
     width: 100%;
     max-width: 480px;
     height: inherit;
@@ -128,7 +144,6 @@ const sortedIndiePosts = sortedPosts(indieWorks);
     text-align: left;
     scroll-snap-align: center;
     gap: var(--size-space-lg);
-    direction: rtl;
 
     &::-webkit-scrollbar {
       width: 10px;
@@ -237,10 +252,17 @@ const sortedIndiePosts = sortedPosts(indieWorks);
 
   // sectionNav
   // -----------------------------------------
+  .bl_sectionNav {
+    &__prac {
+      svg {
+        width: 55px;
+      }
+    }
+  }
+
   .bl_sectionNav_list {
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
     justify-content: flex-start;
     margin-top: var(--size-space-sm);
     gap: 1em;
@@ -257,11 +279,10 @@ const sortedIndiePosts = sortedPosts(indieWorks);
     &::before {
       content: '';
       position: absolute;
-      top: 50%;
+      top: 0.55em;
       left: 0.3em;
       width: 1.25em;
       height: 1.25em;
-      transform: translateY(-50%);
       background: url(#{$icon-path}/hash.svg) no-repeat center center / contain;
     }
 
