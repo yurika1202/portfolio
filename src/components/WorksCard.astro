@@ -36,14 +36,16 @@ const { frontmatter, url } = Astro.props.works;
         </div><!-- /.bl_works_thumbnails -->
         <div class="bl_works_btnWrap">
           <div class="el_btn el_circleBtn el_circleBtn__lightPink bl_works_moreBtn">
-            <img
-              src="/image/empty.gif"
-              alt="詳しく見る"
-              data-src="/icon/arrow.svg"
-              width="20"
-              height="20"
-              loading="lazy"
-            />
+            <div class="bl_works_moreBtn_imgWrap">
+              <img
+                src="/image/empty.gif"
+                alt="詳しく見る"
+                data-src="/icon/arrow.svg"
+                width="20"
+                height="20"
+                loading="lazy"
+              />
+            </div><!-- /.bl_works_moreBtn_imgWrap -->
           </div>
         </div><!-- /.bl_works_btnWrap -->
       </div><!-- /.bl_works_meta -->
@@ -98,33 +100,27 @@ const { frontmatter, url } = Astro.props.works;
   }
 
   @keyframes arrowFrameInOut {
-    0% {
+    0%,
+    100% {
       transform: translateX(0);
-      opacity: 1;
     }
 
     40% {
-      transform: translateX(100%);
+      transform: translateX(200%);
       opacity: 1;
     }
 
     45% {
-      transform: translateX(100%);
+      transform: translateX(200%);
+      opacity: 0;
+    }
+
+    46% {
+      transform: translateX(-150%);
       opacity: 0;
     }
 
     50% {
-      transform: translateX(-100%);
-      opacity: 0;
-    }
-
-    60% {
-      transform: translateX(-100%);
-      opacity: 1;
-    }
-
-    100% {
-      transform: translateX(0);
       opacity: 1;
     }
   }
@@ -188,13 +184,6 @@ const { frontmatter, url } = Astro.props.works;
       animation: infiniteRotation linear 10s infinite;
       background: url(#{$img-path}more.svg) no-repeat center center / contain;
     }
-
-    img {
-      width: 20px;
-      height: 20px;
-      overflow: hidden;
-      border-radius: 50%;
-    }
   }
 
   @keyframes infiniteRotation {
@@ -204,6 +193,21 @@ const { frontmatter, url } = Astro.props.works;
 
     100% {
       rotate: 360deg;
+    }
+  }
+
+  .bl_works_moreBtn_imgWrap {
+    width: inherit;
+    height: inherit;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
     }
   }
 
