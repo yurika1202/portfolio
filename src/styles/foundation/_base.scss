@@ -159,7 +159,7 @@ section {
   border-radius: 999px 999px 0 0;
 
   @media print, screen and (min-width: 1160px) {
-    margin: 0 auto;
+    margin: var(--header-height) auto 0;
   }
 }
 
