@@ -11,13 +11,7 @@ const currentPagePath = Astro.url.pathname;
 ---
 
 <>
-  <div
-    id="js_drawerNav"
-    class:list={['ly_drawerNav', currentPagePath.includes('works') ? 'is_reverse' : '']}
-    aria-label="drawer"
-    id="drawerNav"
-    aria-hidden="true"
-  >
+  <div id="js_drawerNav" class:list={['ly_drawerNav', currentPagePath.includes('works') ? 'is_reverse' : '']} aria-label="drawer" id="drawerNav" aria-hidden="true">
     <div class="ly_drawerNav__inner">
       <nav class="bl_drawerNav__page" aria-label="pageList">
         <svg class="el_title_border el_title_border__blue">
@@ -29,14 +23,7 @@ const currentPagePath = Astro.url.pathname;
       </nav><!-- /.bl_drawerNav__page -->
 
       <div class="bl_drawerNav_dashLine">
-        <img
-          src="/image/empty.gif"
-          data-src="/icon/swipe.svg"
-          alt="横スクロール"
-          width="32"
-          height="32"
-          loading="lazy"
-        />
+        <img src="/image/empty.gif" data-src="/icon/swipe.svg" alt="横スクロール" width="32" height="32" loading="lazy" decoding="async" />
       </div><!-- /.bl_drawerNav_dashLine -->
 
       <nav class="bl_drawerNav__section is_canScroll" aria-label="works">
@@ -75,26 +62,225 @@ const currentPagePath = Astro.url.pathname;
       </nav><!-- /.bl_drawerNav__section -->
     </div><!-- /.bl_drawerNav__inner -->
   </div><!-- /.bl_drawerNav -->
-</>
 
-<style lang="scss">
-  @use '../styles/mixin/' as mix;
-  @use '../styles/functions/' as *;
-  @use '../styles/variables/other' as *;
+  <style lang="scss">
+    @use '../styles/mixin/' as mix;
+    @use '../styles/functions/' as *;
+    @use '../styles/variables/other' as *;
 
-  .ly_drawerNav {
-    visibility: hidden;
-    height: 0;
-    transition: height 0.4s ease-in-out, visibility 0.4s ease-in-out;
-    border-top: 2px solid color(--c-black);
-    background: color(--c-bg-toc);
+    .ly_drawerNav {
+      visibility: hidden;
+      height: 0;
+      transition: height 0.4s ease-in-out, visibility 0.4s ease-in-out;
+      border-top: 2px solid color(--c-black);
+      background: color(--c-bg-toc);
 
-    &.is_show {
-      visibility: visible;
-      height: 40vh;
+      &.is_show {
+        visibility: visible;
+        height: 40vh;
+      }
     }
 
-    &.is_reverse {
+    .ly_drawerNav__inner {
+      display: flex;
+      flex-wrap: nowrap;
+      align-items: flex-start;
+      height: 100%;
+      padding: 0 var(--size-space-sm);
+      overflow-x: scroll;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+
+      @include mix.mq(md) {
+        overflow-x: hidden;
+      }
+    }
+
+    .bl_drawerNav__section {
+      display: flex;
+      position: relative;
+      flex-direction: column;
+      flex-shrink: 0;
+      width: 100%;
+      max-width: 480px;
+      height: inherit;
+      padding: var(--size-space-lg) var(--size-space-xl) var(--size-space-lg) var(--size-space-lg);
+      overflow-y: scroll;
+      text-align: left;
+      scroll-snap-align: center;
+      gap: var(--size-space-lg);
+
+      &::-webkit-scrollbar {
+        width: 10px;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        border: 2px solid color(--c-black);
+        border-radius: 20px;
+        background: color(--c-secondary);
+      }
+
+      &::-webkit-scrollbar-track {
+        margin-top: 16px;
+        margin-bottom: 16px;
+      }
+
+      svg {
+        width: 105px;
+        margin-right: auto;
+      }
+
+      @include mix.mq(md) {
+        width: 70%;
+        max-width: none;
+      }
+    }
+
+    .bl_drawerNav_dashLine {
+      position: relative;
+      flex-shrink: 0;
+      width: 32px;
+      height: 100%;
+      margin-left: -32px;
+
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 50%;
+        width: 2px;
+        height: 100%;
+        transform: translateX(-50%);
+        background: linear-gradient(to bottom, color(--c-black) 8px, transparent 8px) repeat-y left bottom / 2px 16px;
+      }
+
+      img {
+        position: absolute;
+        top: 50%;
+        width: 32px;
+        height: 32px;
+        transform: translateY(-50%);
+        animation: swipeIconAnime 3s ease-in-out infinite;
+        background: color(--c-bg-toc);
+      }
+
+      @include mix.mq(md) {
+        img {
+          display: none;
+        }
+      }
+    }
+
+    @keyframes swipeIconAnime {
+      0% {
+        rotate: 0deg;
+      }
+
+      30% {
+        rotate: -20deg;
+      }
+
+      50% {
+        rotate: 20deg;
+      }
+
+      100% {
+        rotate: 0deg;
+      }
+    }
+
+    .bl_drawerNav_pageNavWrap {
+      margin-top: var(--size-space-md);
+    }
+
+    .bl_drawerNav__page {
+      flex-shrink: 0;
+      scroll-snap-align: center;
+      width: fit-content;
+      padding: var(--size-space-lg) var(--size-space-lg) 0;
+
+      svg {
+        width: 78px;
+      }
+
+      text {
+        font-size: rem(20px);
+        letter-spacing: 6px;
+      }
+
+      a {
+        font-size: rem(16px);
+        font-weight: bold;
+      }
+    }
+
+    // sectionNav
+    // -----------------------------------------
+    .bl_sectionNav {
+      &__prac {
+        svg {
+          width: 55px;
+        }
+      }
+    }
+
+    .bl_sectionNav_list {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      margin-top: var(--size-space-sm);
+      gap: 1em;
+    }
+
+    .bl_sectionNav_item {
+      position: relative;
+      z-index: 0;
+      padding: 0.3em 0.3em 0.3em calc(0.5em + 1.25em);
+      overflow: hidden;
+      font-size: rem(16px);
+      font-weight: bold;
+
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0.55em;
+        left: 0.3em;
+        width: 1.25em;
+        height: 1.25em;
+        background: url(#{$icon-path}/hash.svg) no-repeat center center / contain;
+      }
+
+      &::after {
+        content: '';
+        position: absolute;
+        z-index: -1;
+        bottom: -100%;
+        left: 50%;
+        width: 100%;
+        height: 100%;
+        transform: translateX(-50%);
+        transition: bottom 0.3s cubic-bezier(0.27, 0.66, 0.49, 0.82);
+        border-radius: 10px;
+        background: color(--c-primary-sober);
+      }
+
+      a {
+        color: color(--c-black);
+      }
+
+      @include mix.hover {
+        &::after {
+          bottom: 0;
+        }
+      }
+    }
+
+    .ly_drawerNav.is_reverse {
       .ly_drawerNav__inner {
         flex-direction: row-reverse;
         justify-content: flex-end;
@@ -109,326 +295,116 @@ const currentPagePath = Astro.url.pathname;
         align-items: flex-end;
       }
     }
-  }
+  </style>
 
-  .ly_drawerNav__inner {
-    display: flex;
-    flex-wrap: nowrap;
-    align-items: flex-start;
-    height: 100%;
-    padding: 0 var(--size-space-sm);
-    overflow-x: scroll;
-    scroll-snap-type: x mandatory;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
+  <script>
+    /** **********************
+     * ドロワーの開閉制御
+     ************************* */
+    const btn = document.getElementById('js_drawerNav_btn') as HTMLButtonElement | null;
+    const nav = document.getElementById('js_drawerNav') as HTMLDivElement | null;
+    const btnTitle = btn?.querySelector('text');
+    const footer = document.querySelector('footer');
 
-    &::-webkit-scrollbar {
-      display: none;
-    }
+    /** コンテンツ表示処理 */
+    const openContents = () => {
+      nav?.classList.add('is_show');
+      document.body.classList.add('is_scrollLock');
+      btn?.setAttribute('aria-expanded', 'true');
+      btn?.setAttribute('aria-label', 'メニューを閉じる');
+      nav?.setAttribute('aria-hidden', 'false');
+      btnTitle!.textContent = 'とじる';
+    };
 
-    @include mix.mq(md) {
-      overflow-x: hidden;
-    }
-  }
+    /** コンテンツ非表示処理 */
+    const closeContents = () => {
+      nav?.classList.remove('is_show');
+      document.body.classList.remove('is_scrollLock');
+      btn?.setAttribute('aria-expanded', 'false');
+      btn?.setAttribute('aria-label', 'メニューを開く');
+      nav?.setAttribute('aria-hidden', 'true');
+      btnTitle!.textContent = 'もくじ';
+    };
 
-  .bl_drawerNav__section {
-    display: flex;
-    position: relative;
-    flex-direction: column;
-    flex-shrink: 0;
-    width: 100%;
-    max-width: 480px;
-    height: inherit;
-    padding: var(--size-space-lg) var(--size-space-xl) var(--size-space-lg) var(--size-space-lg);
-    overflow-y: scroll;
-    text-align: left;
-    scroll-snap-align: center;
-    gap: var(--size-space-lg);
-
-    &::-webkit-scrollbar {
-      width: 10px;
-    }
-
-    &::-webkit-scrollbar-thumb {
-      border: 2px solid color(--c-black);
-      border-radius: 20px;
-      background: color(--c-secondary);
-    }
-
-    &::-webkit-scrollbar-track {
-      margin-top: 16px;
-      margin-bottom: 16px;
-    }
-
-    svg {
-      width: 105px;
-      margin-right: auto;
-    }
-
-    @include mix.mq(md) {
-      width: 70%;
-      max-width: none;
-    }
-  }
-
-  .bl_drawerNav_dashLine {
-    position: relative;
-    flex-shrink: 0;
-    width: 32px;
-    height: 100%;
-    margin-left: -32px;
-
-    &::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      right: 50%;
-      width: 2px;
-      height: 100%;
-      transform: translateX(-50%);
-      background: linear-gradient(to bottom, color(--c-black) 8px, transparent 8px) repeat-y left
-        bottom / 2px 16px;
-    }
-
-    img {
-      position: absolute;
-      top: 50%;
-      width: 32px;
-      height: 32px;
-      transform: translateY(-50%);
-      animation: swipeIconAnime 3s ease-in-out infinite;
-      background: color(--c-bg-toc);
-    }
-
-    @include mix.mq(md) {
-      img {
-        display: none;
-      }
-    }
-  }
-
-  @keyframes swipeIconAnime {
-    0% {
-      rotate: 0deg;
-    }
-
-    30% {
-      rotate: -20deg;
-    }
-
-    50% {
-      rotate: 20deg;
-    }
-
-    100% {
-      rotate: 0deg;
-    }
-  }
-
-  .bl_drawerNav_pageNavWrap {
-    margin-top: var(--size-space-md);
-  }
-
-  .bl_drawerNav__page {
-    flex-shrink: 0;
-    scroll-snap-align: center;
-    width: fit-content;
-    padding: var(--size-space-lg) var(--size-space-lg) 0;
-
-    svg {
-      width: 78px;
-    }
-
-    text {
-      font-size: rem(20px);
-      letter-spacing: 6px;
-    }
-
-    a {
-      font-size: rem(16px);
-      font-weight: bold;
-    }
-  }
-
-  // sectionNav
-  // -----------------------------------------
-  .bl_sectionNav {
-    &__prac {
-      svg {
-        width: 55px;
-      }
-    }
-  }
-
-  .bl_sectionNav_list {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    margin-top: var(--size-space-sm);
-    gap: 1em;
-  }
-
-  .bl_sectionNav_item {
-    position: relative;
-    z-index: 0;
-    padding: 0.3em 0.3em 0.3em calc(0.5em + 1.25em);
-    overflow: hidden;
-    font-size: rem(16px);
-    font-weight: bold;
-
-    &::before {
-      content: '';
-      position: absolute;
-      top: 0.55em;
-      left: 0.3em;
-      width: 1.25em;
-      height: 1.25em;
-      background: url(#{$icon-path}/hash.svg) no-repeat center center / contain;
-    }
-
-    &::after {
-      content: '';
-      position: absolute;
-      z-index: -1;
-      bottom: -100%;
-      left: 50%;
-      width: 100%;
-      height: 100%;
-      transform: translateX(-50%);
-      transition: bottom 0.3s cubic-bezier(0.27, 0.66, 0.49, 0.82);
-      border-radius: 10px;
-      background: color(--c-primary-sober);
-    }
-
-    a {
-      color: color(--c-black);
-    }
-
-    @include mix.hover {
-      &::after {
-        bottom: 0;
-      }
-    }
-  }
-</style>
-
-<script>
-  /** **********************
-   * ドロワーの開閉制御
-   ************************* */
-  const btn = document.getElementById('js_drawerNav_btn') as HTMLButtonElement | null;
-  const nav = document.getElementById('js_drawerNav') as HTMLDivElement | null;
-  const btnTitle = btn?.querySelector('text');
-  const footer = document.querySelector('footer');
-
-  /** コンテンツ表示処理 */
-  const openContents = () => {
-    nav?.classList.add('is_show');
-    document.body.classList.add('is_scrollLock');
-    btn?.setAttribute('aria-expanded', 'true');
-    btn?.setAttribute('aria-label', 'メニューを閉じる');
-    nav?.setAttribute('aria-hidden', 'false');
-    btnTitle!.textContent = 'とじる';
-  };
-
-  /** コンテンツ非表示処理 */
-  const closeContents = () => {
-    nav?.classList.remove('is_show');
-    document.body.classList.remove('is_scrollLock');
-    btn?.setAttribute('aria-expanded', 'false');
-    btn?.setAttribute('aria-label', 'メニューを開く');
-    nav?.setAttribute('aria-hidden', 'true');
-    btnTitle!.textContent = 'もくじ';
-  };
-
-  /** ドロワー開閉ボタンクリック時の挙動 */
-  btn?.addEventListener('click', event => {
-    event.stopPropagation();
-    const isShow = nav?.classList.contains('is_show');
-    if (!isShow) {
-      openContents();
-      document.addEventListener('touchmove', scrollLock, { passive: false });
-      focusFirstElement(nav!);
-    } else {
-      closeContents();
-      document.removeEventListener('touchmove', scrollLock);
-    }
-    focusBackContents();
-  });
-
-  /** ドロワーメニュー外クリック時の挙動 */
-  document.addEventListener('click', event => {
-    if (
-      event.target instanceof HTMLElement &&
-      !event.target.closest('#js_drawerNav') &&
-      nav?.classList.contains('is_show')
-    ) {
-      closeContents();
-      focusBackContents();
-    }
-  });
-
-  /** Escapeキー選択時の挙動 */
-  footer?.addEventListener('keydown', event => {
-    if (event.code === 'Escape') {
-      closeContents();
-      btn?.focus();
-    }
-  });
-
-  /**
-   * スクロール可不可チェック
-   * @param element スクロール可能対象要素
-   */
-  const isScrollable = (element: Element) => element.clientHeight < element.scrollHeight;
-
-  /** スクロールロック制御 */
-  const scrollLock = (event: TouchEvent) => {
-    const canScrollElement = (event.target as HTMLElement)?.closest('.is_canScroll');
-    if (canScrollElement === null) {
-      event.preventDefault();
-      return;
-    }
-
-    if (canScrollElement && isScrollable(canScrollElement)) {
+    /** ドロワー開閉ボタンクリック時の挙動 */
+    btn?.addEventListener('click', event => {
       event.stopPropagation();
-    } else {
-      event.preventDefault();
-    }
-  };
-
-  /**
-   * 最初の要素にフォーカス移動
-   * @param parentElement フォーカス要素の親
-   */
-  const focusFirstElement = (parentElement: HTMLElement) => {
-    const focusElements = parentElement.querySelectorAll('a, button') as NodeListOf<
-      HTMLAnchorElement | HTMLButtonElement
-    >;
-    focusElements[0].focus();
-  };
-
-  /** ドロワー外のフォーカス制御 */
-  const focusBackContents = () => {
-    const header = document.querySelectorAll('header a, header button') as NodeListOf<HTMLElement>;
-    const main = document.querySelectorAll(
-      'main a, main button, main input, main textarea'
-    ) as NodeListOf<HTMLElement>;
-    const notFocusElements = document.querySelectorAll('.js_notFocus') as NodeListOf<HTMLElement>;
-    const hiddenElements = [...header, ...main, ...notFocusElements];
-
-    hiddenElements.forEach(element => {
-      if (element.classList.contains('is_focusDisable')) {
-        element.removeAttribute('aria-hidden');
-        [...notFocusElements].includes(element)
-          ? element.setAttribute('tabindex', '0')
-          : element.removeAttribute('tabindex');
-        element.classList.remove('is_focusDisable');
+      const isShow = nav?.classList.contains('is_show');
+      if (!isShow) {
+        openContents();
+        document.addEventListener('touchmove', scrollLock, { passive: false });
+        focusFirstElement(nav!);
       } else {
-        element.setAttribute('aria-hidden', 'true');
-        element.setAttribute('tabindex', '-1');
-        element.classList.add('is_focusDisable');
+        closeContents();
+        document.removeEventListener('touchmove', scrollLock);
+      }
+      focusBackContents();
+    });
+
+    /** ドロワーメニュー外クリック時の挙動 */
+    document.addEventListener('click', event => {
+      if (event.target instanceof HTMLElement && !event.target.closest('#js_drawerNav') && nav?.classList.contains('is_show')) {
+        closeContents();
+        focusBackContents();
       }
     });
-  };
-</script>
+
+    /** Escapeキー選択時の挙動 */
+    footer?.addEventListener('keydown', event => {
+      if (event.code === 'Escape') {
+        closeContents();
+        btn?.focus();
+      }
+    });
+
+    /**
+     * スクロール可不可チェック
+     * @param element スクロール可能対象要素
+     */
+    const isScrollable = (element: Element) => element.clientHeight < element.scrollHeight;
+
+    /** スクロールロック制御 */
+    const scrollLock = (event: TouchEvent) => {
+      const canScrollElement = (event.target as HTMLElement)?.closest('.is_canScroll');
+      if (canScrollElement === null) {
+        event.preventDefault();
+        return;
+      }
+
+      if (canScrollElement && isScrollable(canScrollElement)) {
+        event.stopPropagation();
+      } else {
+        event.preventDefault();
+      }
+    };
+
+    /**
+     * 最初の要素にフォーカス移動
+     * @param parentElement フォーカス要素の親
+     */
+    const focusFirstElement = (parentElement: HTMLElement) => {
+      const focusElements = parentElement.querySelectorAll('a, button') as NodeListOf<HTMLAnchorElement | HTMLButtonElement>;
+      focusElements[0].focus();
+    };
+
+    /** ドロワー外のフォーカス制御 */
+    const focusBackContents = () => {
+      const header = document.querySelectorAll('header a, header button') as NodeListOf<HTMLElement>;
+      const main = document.querySelectorAll('main a, main button, main input, main textarea') as NodeListOf<HTMLElement>;
+      const notFocusElements = document.querySelectorAll('.js_notFocus') as NodeListOf<HTMLElement>;
+      const hiddenElements = [...header, ...main, ...notFocusElements];
+
+      hiddenElements.forEach(element => {
+        if (element.classList.contains('is_focusDisable')) {
+          element.removeAttribute('aria-hidden');
+          [...notFocusElements].includes(element) ? element.setAttribute('tabindex', '0') : element.removeAttribute('tabindex');
+          element.classList.remove('is_focusDisable');
+        } else {
+          element.setAttribute('aria-hidden', 'true');
+          element.setAttribute('tabindex', '-1');
+          element.classList.add('is_focusDisable');
+        }
+      });
+    };
+  </script>
+</>

@@ -10,7 +10,11 @@
   "css.validate": false,
   "less.validate": false,
   "scss.validate": false,
-  "stylelint.validate": ["css", "scss"],
+  "prettier.documentSelectors": ["**/*.astro"],
+  "stylelint.validate": ["css", "scss", "astro"],
+  "eslint.validate": ["javascript", "javascriptreact", "astro", "typescript"],
   "markuplint.enable": true,
-  "markuplint.debug": true
+  "markuplint.debug": true,
+  "cSpell.words": ["astro", "tabindex"],
+  "html.format.wrapAttributes": "preserve"
 }

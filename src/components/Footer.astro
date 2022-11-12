@@ -9,13 +9,7 @@ export interface Props {
   nextLabel?: string;
 }
 
-const {
-  prevPath = '/',
-  prevLabel = 'ホーム画面へもどる',
-  nextPath = '/',
-  nextLabel = 'ホーム画面へもどる',
-  paginationProps,
-} = Astro.props;
+const { prevPath = '/', prevLabel = 'ホーム画面へもどる', nextPath = '/', nextLabel = 'ホーム画面へもどる', paginationProps } = Astro.props;
 
 const currentPagePath = Astro.url.pathname;
 ---
@@ -28,72 +22,52 @@ const currentPagePath = Astro.url.pathname;
           currentPagePath.includes('posts') ? (
             <PostNav {...paginationProps} />
           ) : (
-            <ul>
-              <li>
-                <a
-                  href={prevPath}
-                  class:list={[
-                    'el_btn',
-                    'el_circleBtn',
-                    'el_circleBtn__blue',
-                    prevPath === '/' ? 'el_arrowBtn_home' : 'el_arrowBtn_prev',
-                  ]}
-                  aria-label={prevLabel}
-                >
-                  <img
-                    src={prevPath === '/' ? '/icon/home.svg' : '/icon/arrow.svg'}
-                    alt={prevLabel}
-                    width="12"
-                    height="12"
-                  />
-                </a>
-              </li>
-              <li>
-                <button
-                  type="button"
-                  id="js_drawerNav_btn"
-                  class="el_btn el_tocBtn"
-                  aria-label="メニューを開く"
-                  aria-haspopup="true"
-                  aria-controls="drawerNav"
-                  aria-expanded="false"
-                >
-                  <svg class="el_title_border el_title_border__pagination">
-                    <text x="50%" y="50%" text-anchor="middle" dominant-baseline="central">
-                      もくじ
-                    </text>
-                  </svg>
-                </button>
-              </li>
-              <li>
-                <a
-                  href={nextPath}
-                  class:list={[
-                    'el_btn',
-                    'el_circleBtn',
-                    'el_circleBtn__blue',
-                    nextPath === '/' ? 'el_arrowBtn_home' : 'el_arrowBtn_next',
-                  ]}
-                  aria-label={nextLabel}
-                >
-                  <img
-                    src={nextPath === '/' ? '/icon/home.svg' : '/icon/arrow.svg'}
-                    alt={nextLabel}
-                    width="12"
-                    height="12"
-                  />
-                </a>
-              </li>
-            </ul>
-            <DrawerNav />
+            <>
+              <ul>
+                <li>
+                  <a
+                    href={prevPath}
+                    class:list={['el_btn', 'el_circleBtn', 'el_circleBtn__blue', prevPath === '/' ? 'el_arrowBtn_home' : 'el_arrowBtn_prev']}
+                    aria-label={prevLabel}
+                  >
+                    <img src={prevPath === '/' ? '/icon/home.svg' : '/icon/arrow.svg'} alt={prevLabel} width="12" height="12" />
+                  </a>
+                </li>
+                <li>
+                  <button
+                    type="button"
+                    id="js_drawerNav_btn"
+                    class="el_btn el_tocBtn"
+                    aria-label="メニューを開く"
+                    aria-haspopup="true"
+                    aria-controls="drawerNav"
+                    aria-expanded="false"
+                  >
+                    <svg class="el_title_border el_title_border__pagination">
+                      <text x="50%" y="50%" text-anchor="middle" dominant-baseline="central">
+                        もくじ
+                      </text>
+                    </svg>
+                  </button>
+                </li>
+                <li>
+                  <a
+                    href={nextPath}
+                    class:list={['el_btn', 'el_circleBtn', 'el_circleBtn__blue', nextPath === '/' ? 'el_arrowBtn_home' : 'el_arrowBtn_next']}
+                    aria-label={nextLabel}
+                  >
+                    <img src={nextPath === '/' ? '/icon/home.svg' : '/icon/arrow.svg'} alt={nextLabel} width="12" height="12" />
+                  </a>
+                </li>
+              </ul>
+              <DrawerNav />
+            </>
           )
         }
       </nav>
 
       <div class="bl_toTop">
-        <button type="button" class="el_btn el_circleBtn el_circleBtn__deepPink" id="js_toTop_btn">
-          Top
-        </button>
+        <button type="button" class="el_btn el_circleBtn el_circleBtn__deepPink" id="js_toTop_btn"> Top</button>
       </div><!-- /.bl_toTop -->
 
       <div class="bl_footer_copyWrap" id="js_copy">
@@ -102,216 +76,215 @@ const currentPagePath = Astro.url.pathname;
       <!-- /.ly_footer_inner -->
     </div>
   </footer><!-- /.ly_footer -->
-</>
 
-<style lang="scss">
-  @use '../styles/mixin/' as mix;
-  @use '../styles/functions/' as *;
+  <style lang="scss">
+    @use '../styles/mixin/' as mix;
+    @use '../styles/functions/' as *;
 
-  .ly_footer {
-    position: fixed;
-    z-index: 100;
-    bottom: -4px;
-    width: 100vw;
-  }
-
-  .ly_footer_inner {
-    $width-max-footer: 1027px;
-
-    position: relative;
-    max-width: $width-max-footer;
-    margin: 0 calc(var(--size-width-inner) - 10px);
-
-    @media print, screen and (min-width: 1178px) {
-      margin: 0 auto;
+    .ly_footer {
+      position: fixed;
+      z-index: 100;
+      bottom: -4px;
+      width: 100vw;
     }
-  }
 
-  .bl_footerNav {
-    width: 100%;
-    border: 2px solid color(--c-black);
-    border-radius: 20px 20px 0 0;
-    background: color(--c-primary);
-  }
+    .ly_footer_inner {
+      $width-max-footer: 1027px;
 
-  ul {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: var(--footer-height);
-    gap: calc(var(--size-space-lg) * 2);
+      position: relative;
+      max-width: $width-max-footer;
+      margin: 0 calc(var(--size-width-inner) - 10px);
 
-    li {
-      &:not(:first-of-type) {
-        position: relative;
+      @media print, screen and (min-width: 1178px) {
+        margin: 0 auto;
+      }
+    }
 
-        &::before {
-          content: '';
-          position: absolute;
-          top: 50%;
-          left: calc(var(--size-space-lg) * -1);
-          width: 2px;
-          height: 24px;
-          transform: translateY(-50%);
-          border-radius: 5px;
-          background: color(--c-black);
+    .bl_footerNav {
+      width: 100%;
+      border: 2px solid color(--c-black);
+      border-radius: 20px 20px 0 0;
+      background: color(--c-primary);
+    }
+
+    ul {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: var(--footer-height);
+      gap: calc(var(--size-space-lg) * 2);
+
+      li {
+        &:not(:first-of-type) {
+          position: relative;
+
+          &::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: calc(var(--size-space-lg) * -1);
+            width: 2px;
+            height: 24px;
+            transform: translateY(-50%);
+            border-radius: 5px;
+            background: color(--c-black);
+          }
         }
       }
     }
-  }
 
-  .bl_footer_copyWrap {
-    visibility: hidden;
-    position: absolute;
-    z-index: -1;
-    bottom: calc(48px + var(--footer-height));
-    left: -50px;
-    transform: rotate(90deg);
-    transition: visibility 0.2s ease-in, opacity 0.2s ease-in;
-    opacity: 0;
-
-    &.is_display {
-      visibility: visible;
-      opacity: 1;
-    }
-  }
-
-  .bl_toTop {
-    position: absolute;
-    top: -24px;
-    right: -4px;
-
-    @include mix.mq(lg) {
-      top: -40px;
-      right: -20px;
-    }
-
-    > button {
+    .bl_footer_copyWrap {
       visibility: hidden;
-      transition: visibility 0.3s ease-in-out, opacity 0.3s ease-in-out, scale 0.3s ease-in-out;
+      position: absolute;
+      z-index: -1;
+      bottom: calc(48px + var(--footer-height));
+      left: -50px;
+      transform: rotate(90deg);
+      transition: visibility 0.2s ease-in, opacity 0.2s ease-in;
       opacity: 0;
-      font-family: var(--font-en);
-      font-size: rem(10px);
-      font-weight: bold;
-      text-transform: uppercase;
-      scale: 0;
 
       &.is_display {
         visibility: visible;
-        transition: visibility 0.3s ease-in-out, opacity 0.3s ease-in-out, scale 0.3s ease-in-out,
-          box-shadow 0.15s cubic-bezier(0.09, 0.56, 0.62, 0.73),
-          transform 0.2s cubic-bezier(0.15, 0.62, 0.43, 0.8);
         opacity: 1;
-        scale: 1;
+      }
+    }
+
+    .bl_toTop {
+      position: absolute;
+      top: -24px;
+      right: -4px;
+
+      @include mix.mq(lg) {
+        top: -40px;
+        right: -20px;
+      }
+
+      > button {
+        visibility: hidden;
+        transition: visibility 0.3s ease-in-out, opacity 0.3s ease-in-out, scale 0.3s ease-in-out;
+        opacity: 0;
+        font-family: var(--font-en);
+        font-size: rem(10px);
+        font-weight: bold;
+        text-transform: uppercase;
+        scale: 0;
+
+        &.is_display {
+          visibility: visible;
+          transition: visibility 0.3s ease-in-out, opacity 0.3s ease-in-out, scale 0.3s ease-in-out, box-shadow 0.15s cubic-bezier(0.09, 0.56, 0.62, 0.73),
+            transform 0.2s cubic-bezier(0.15, 0.62, 0.43, 0.8);
+          opacity: 1;
+          scale: 1;
+        }
+
+        @include mix.mq(lg) {
+          font-size: rem(18px);
+        }
+
+        @include mix.hover {
+          transform: translate(4px, 4px);
+          box-shadow: none;
+        }
+      }
+    }
+
+    .el_tocBtn {
+      width: 54px;
+      height: 24px;
+
+      @include mix.mq(lg) {
+        width: 72px;
+      }
+    }
+
+    .el_arrowBtn_prev,
+    .el_arrowBtn_next {
+      width: 32px;
+      height: 32px;
+
+      img {
+        width: 12px;
+        height: 12px;
       }
 
       @include mix.mq(lg) {
-        font-size: rem(18px);
+        width: 40px;
+        height: 40px;
+
+        img {
+          width: 16px;
+          height: 16px;
+        }
       }
+    }
 
-      @include mix.hover {
-        transform: translate(4px, 4px);
-        box-shadow: none;
+    .el_arrowBtn_prev {
+      img {
+        transform: rotate(-180deg);
       }
     }
-  }
 
-  .el_tocBtn {
-    width: 54px;
-    height: 24px;
-
-    @include mix.mq(lg) {
-      width: 72px;
-    }
-  }
-
-  .el_arrowBtn_prev,
-  .el_arrowBtn_next {
-    width: 32px;
-    height: 32px;
-
-    img {
-      width: 12px;
-      height: 12px;
-    }
-
-    @include mix.mq(lg) {
-      width: 40px;
-      height: 40px;
+    .el_arrowBtn_home {
+      @extend .el_arrowBtn_next;
 
       img {
-        width: 16px;
+        width: 18px;
         height: 16px;
       }
     }
-  }
 
-  .el_arrowBtn_prev {
-    img {
-      transform: rotate(-180deg);
+    small {
+      font-family: var(--font-en);
+      font-size: rem(10px);
+      font-weight: 500;
+      letter-spacing: 1px;
+      line-height: 1;
     }
-  }
+  </style>
 
-  .el_arrowBtn_home {
-    @extend .el_arrowBtn_next;
+  <script>
+    const toTopBtn = document.getElementById('js_toTop_btn') as HTMLButtonElement;
+    const toTopBtnPositionRate = 0.3;
+    const toTopBtnDisplayPosition = document.body.clientHeight * toTopBtnPositionRate;
+    const copy = document.getElementById('js_copy') as HTMLElement;
+    const windowHeight = window.innerHeight;
+    const docHeight = document.body.clientHeight;
+    const bottomPosition = docHeight - windowHeight;
 
-    img {
-      width: 18px;
-      height: 16px;
-    }
-  }
+    let scrollFlag = false;
 
-  small {
-    font-family: var(--font-en);
-    font-size: rem(10px);
-    font-weight: 500;
-    letter-spacing: 1px;
-    line-height: 1;
-  }
-</style>
+    /** スクロール量に応じたfooterパーツの表示制御 */
+    const footerPartsdisplay = () => {
+      if (!scrollFlag) {
+        requestAnimationFrame(() => {
+          scrollFlag = false;
+          let scrollY = window.scrollY;
+          // toTopの表示・非表示
+          if (scrollY > toTopBtnDisplayPosition) {
+            toTopBtn.classList.add('is_display');
+          } else {
+            toTopBtn.classList.remove('is_display');
+          }
+          // copyの表示・非表示
+          if (Math.ceil(scrollY) >= bottomPosition) {
+            copy.classList.add('is_display');
+          } else {
+            copy.classList.remove('is_display');
+          }
+        });
+        scrollFlag = true;
+      }
+    };
 
-<script>
-  const toTopBtn = document.getElementById('js_toTop_btn') as HTMLButtonElement;
-  const toTopBtnPositionRate = 0.3;
-  const toTopBtnDisplayPosition = document.body.clientHeight * toTopBtnPositionRate;
-  const copy = document.getElementById('js_copy') as HTMLElement;
-  const windowHeight = window.innerHeight;
-  const docHeight = document.body.clientHeight;
-  const bottomPosition = docHeight - windowHeight;
+    /** スクロールイベント登録 */
+    window.addEventListener('scroll', footerPartsdisplay, { passive: true });
 
-  let scrollFlag = false;
-
-  /** スクロール量に応じたfooterパーツの表示制御 */
-  const footerPartsdisplay = () => {
-    if (!scrollFlag) {
-      requestAnimationFrame(() => {
-        scrollFlag = false;
-        let scrollY = window.scrollY;
-        // toTopの表示・非表示
-        if (scrollY > toTopBtnDisplayPosition) {
-          toTopBtn.classList.add('is_display');
-        } else {
-          toTopBtn.classList.remove('is_display');
-        }
-        // copyの表示・非表示
-        if (Math.ceil(scrollY) >= bottomPosition) {
-          copy.classList.add('is_display');
-        } else {
-          copy.classList.remove('is_display');
-        }
+    /** ページトップ移動 */
+    toTopBtn.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth',
       });
-      scrollFlag = true;
-    }
-  };
-
-  /** スクロールイベント登録 */
-  window.addEventListener('scroll', footerPartsdisplay, { passive: true });
-
-  /** ページトップ移動 */
-  toTopBtn.addEventListener('click', () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth',
     });
-  });
-</script>
+  </script>
+</>

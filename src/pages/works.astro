@@ -26,39 +26,10 @@ const indieWorks = await Astro.glob<PostType>('./posts/indie/**/*.md');
 
   <PageTitle type={'icon'} />
 
-  <div class="bl_works_tabs" role="tablist" aria-labelledby="tablist-tag">
-    <button
-      class="el_btn el_rectBtn"
-      type="button"
-      id="tab-all"
-      role="tab"
-      aria-selected="true"
-      aria-controls="tabpanel-all"
-    >
-      すべて
-    </button>
-    <button
-      class="el_btn el_rectBtn"
-      type="button"
-      id="tab-prac"
-      role="tab"
-      aria-selected="false"
-      aria-controls="tabpanel-prac"
-      tabindex="-1"
-    >
-      実績
-    </button>
-    <button
-      class="el_btn el_rectBtn"
-      type="button"
-      id="tab-indie"
-      role="tab"
-      aria-selected="false"
-      aria-controls="tabpanel-indie"
-      tabindex="-1"
-    >
-      自主制作
-    </button>
+  <div class="bl_works_tabs" role="tablist">
+    <button class="el_btn el_rectBtn" type="button" id="tab-all" role="tab" aria-selected="true" aria-controls="tabpanel-all"> すべて</button>
+    <button class="el_btn el_rectBtn" type="button" id="tab-prac" role="tab" aria-selected="false" aria-controls="tabpanel-prac" tabindex="-1"> 実績</button>
+    <button class="el_btn el_rectBtn" type="button" id="tab-indie" role="tab" aria-selected="false" aria-controls="tabpanel-indie" tabindex="-1"> 自主制作</button>
   </div>
 
   <section class="bl_works_tabpanel" id="tabpanel-all" role="tabpanel" aria-labelledby="tab-all">
@@ -67,23 +38,13 @@ const indieWorks = await Astro.glob<PostType>('./posts/indie/**/*.md');
     </ul><!-- /.bl_works_list -->
   </section><!-- /.bl_works_list -->
 
-  <section
-    class="bl_works_tabpanel is_hidden"
-    id="tabpanel-prac"
-    role="tabpanel"
-    aria-labelledby="tab-prac"
-  >
+  <section class="bl_works_tabpanel is_hidden" id="tabpanel-prac" role="tabpanel" aria-labelledby="tab-prac">
     <ul class="bl_works_list">
       {pracWorks.map(prac => <WorksCard works={prac} />)}
     </ul><!-- /.bl_works_list -->
   </section><!-- /.bl_works_list -->
 
-  <section
-    class="bl_works_tabpanel is_hidden"
-    id="tabpanel-indie"
-    role="tabpanel"
-    aria-labelledby="tab-indie"
-  >
+  <section class="bl_works_tabpanel is_hidden" id="tabpanel-indie" role="tabpanel" aria-labelledby="tab-indie">
     <ul class="bl_works_list">
       {indieWorks.map(indie => <WorksCard works={indie} />)}
     </ul><!-- /.bl_works_list -->
@@ -146,29 +107,29 @@ const indieWorks = await Astro.glob<PostType>('./posts/indie/**/*.md');
   }
 
   .bl_cursor {
-    transform: translate(0, 0);
-    pointer-events: none;
     position: fixed;
+    z-index: 1;
     top: -30px;
     left: -100px;
     width: 8em;
-    z-index: 1;
+    transform: translate(0, 0);
+    pointer-events: none;
 
     &::before {
       content: '詳細をみる';
-      transition: scale 0.3s cubic-bezier(0.12, 0.44, 0.38, 0.73), visibility 0.1s ease;
+      display: block;
       visibility: hidden;
-      border: 2px solid color(--c-black);
-      border-radius: 20px;
-      background: color(--c-bg-cursor);
-      width: fit-content;
-      height: fit-content;
       position: absolute;
       top: 0;
       left: 0;
-      color: color(--c-white);
-      display: block;
+      width: fit-content;
+      height: fit-content;
       padding: 0.5em 1em;
+      transition: scale 0.3s cubic-bezier(0.12, 0.44, 0.38, 0.73), visibility 0.1s ease;
+      border: 2px solid color(--c-black);
+      border-radius: 20px;
+      background: color(--c-bg-cursor);
+      color: color(--c-white);
       scale: 0;
     }
 
@@ -188,7 +149,7 @@ const indieWorks = await Astro.glob<PostType>('./posts/indie/**/*.md');
    * タブ制御
    * *****************/
   const tabList = document.querySelector('div[role="tablist"]');
-  const tabs: HTMLButtonElement[] | null = [...tabList!.querySelectorAll('button[role="tab"]')];
+  const tabs = [...tabList?.querySelectorAll('button[role="tab"]')];
   let firstTab: null | HTMLButtonElement = null;
   let lastTab: null | HTMLButtonElement = null;
   let tabPanels: HTMLElement[] = [];
@@ -233,7 +194,7 @@ const indieWorks = await Astro.glob<PostType>('./posts/indie/**/*.md');
   };
 
   /** タブ選択時 */
-  const setSelectedTab = (currentTab: HTMLButtonElement, setFocus: boolean = true) => {
+  const setSelectedTab = (currentTab: HTMLButtonElement, setFocus = true) => {
     tabs.forEach((tab, index) => {
       if (currentTab === tab) {
         tab.setAttribute('aria-selected', 'true');

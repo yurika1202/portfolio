@@ -6,108 +6,97 @@
           <img src="/image/logo.png" alt="Yurika's Portfolio" width="111" height="40" />
         </a>
       </div><!-- /.bl_header_logo -->
-      <a
-        href="/contact"
-        class="el_btn el_circleBtn el_circleBtn__pink bl_header_link"
-        aria-label="お問い合わせ"
-      >
-        <img
-          src="/image/empty.gif"
-          alt="お問い合わせ"
-          width="20"
-          height="20"
-          data-src="/icon/mail.svg"
-          loading="lazy"
-        />
+      <a href="/contact" class="el_btn el_circleBtn el_circleBtn__pink bl_header_link" aria-label="お問い合わせ">
+        <img src="/image/empty.gif" alt="お問い合わせ" width="20" height="20" data-src="/icon/mail.svg" loading="lazy" decoding="async" />
       </a>
     </div><!-- /.ly_header_inner -->
   </header><!-- /.ly_header -->
-</>
 
-<style lang="scss">
-  @use '../styles/mixin/' as mix;
-  @use '../styles/functions/' as *;
+  <style lang="scss">
+    @use '../styles/mixin/' as mix;
+    @use '../styles/functions/' as *;
 
-  .ly_header {
-    position: fixed;
-    z-index: 100;
-    top: 0;
-    width: 100%;
-    min-width: 100vw;
-    height: var(--header-height);
-    transition: transform 0.3s ease;
-
-    &.is_hide {
-      transform: translateY(calc(var(--header-height) * -1));
-    }
-  }
-
-  .ly_header_inner {
-    $width-max-header: 1027px;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    max-width: $width-max-header;
-    height: 100%;
-    margin: 0 calc(var(--size-width-inner) - 8px);
-    padding: 16px 0;
-    gap: var(--size-space-md);
-
-    @media print, screen and (min-width: 1178px) {
-      margin: 0 auto;
-    }
-  }
-
-  .bl_header_logo {
-    width: 111px;
-
-    img {
+    .ly_header {
+      position: fixed;
+      z-index: 100;
+      top: 0;
       width: 100%;
+      min-width: 100vw;
+      height: var(--header-height);
+      transition: transform 0.3s ease;
+
+      &.is_hide {
+        transform: translateY(calc(var(--header-height) * -1));
+      }
     }
 
-    @include mix.mq(sm) {
-      width: 128px;
+    .ly_header_inner {
+      $width-max-header: 1027px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: $width-max-header;
+      height: 100%;
+      margin: 0 calc(var(--size-width-inner) - 8px);
+      padding: 16px 0;
+      gap: var(--size-space-md);
+
+      @media print, screen and (min-width: 1178px) {
+        margin: 0 auto;
+      }
     }
 
-    @include mix.mq(lg) {
-      width: 170px;
+    .bl_header_logo {
+      width: 111px;
+
+      img {
+        width: 100%;
+      }
+
+      @include mix.mq(sm) {
+        width: 128px;
+      }
+
+      @include mix.mq(lg) {
+        width: 170px;
+      }
     }
-  }
 
-  .bl_header_logo,
-  .bl_header_link {
-    flex-shrink: 0;
-  }
-</style>
-
-<script>
-  const header = document.getElementById('js_header') as HTMLElement;
-  let setPosition = 0;
-  let scrollFlag = false;
-
-  /** headerの表示制御 */
-  const headerDisplay = () => {
-    const scrollY = document.documentElement.scrollTop;
-    if (setPosition < scrollY) {
-      header.classList.add('is_hide');
-    } else {
-      header.classList.remove('is_hide');
+    .bl_header_logo,
+    .bl_header_link {
+      flex-shrink: 0;
     }
-    setPosition = scrollY;
-  };
+  </style>
 
-  const headerScrollEvent = () => {
-    if (!header) return;
-    if (!scrollFlag) {
-      requestAnimationFrame(() => {
-        scrollFlag = false;
-        headerDisplay();
-      });
-      scrollFlag = true;
-    }
-  };
+  <script>
+    const header = document.getElementById('js_header') as HTMLElement;
+    let setPosition = 0;
+    let scrollFlag = false;
 
-  /** イベント登録 */
-  window.addEventListener('scroll', headerScrollEvent, { passive: true });
-</script>
+    /** headerの表示制御 */
+    const headerDisplay = () => {
+      const scrollY = document.documentElement.scrollTop;
+      if (setPosition < scrollY) {
+        header.classList.add('is_hide');
+      } else {
+        header.classList.remove('is_hide');
+      }
+      setPosition = scrollY;
+    };
+
+    const headerScrollEvent = () => {
+      if (!header) return;
+      if (!scrollFlag) {
+        requestAnimationFrame(() => {
+          scrollFlag = false;
+          headerDisplay();
+        });
+        scrollFlag = true;
+      }
+    };
+
+    /** イベント登録 */
+    window.addEventListener('scroll', headerScrollEvent, { passive: true });
+  </script>
+</>
