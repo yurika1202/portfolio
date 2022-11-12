@@ -26,11 +26,7 @@ switch (currentSlug) {
 
 <>
   <div
-    class:list={[
-      'bl_pageTitle',
-      'bl_pageTitle_' + type,
-      type === 'icon' ? 'bl_pageTitle_icon__' + currentSlug : '',
-    ]}
+    class:list={['bl_pageTitle', 'bl_pageTitle_' + type, type === 'icon' ? 'bl_pageTitle_icon__' + currentSlug : '']}
   >
     <h1>
       <svg class="el_title_border el_title_border__pageTitle">
@@ -44,118 +40,118 @@ switch (currentSlug) {
       </svg>
     </h1>
   </div><!-- /.bl_pageTitle -->
-</>
 
-<style lang="scss">
-  @use '../styles//mixin/' as mix;
-  @use '../styles//functions/' as *;
-  @use '../styles//variables/other' as *;
+  <style lang="scss">
+    @use '../styles//mixin/' as mix;
+    @use '../styles//functions/' as *;
+    @use '../styles//variables/other' as *;
 
-  h1 {
-    display: inline;
-  }
-
-  .bl_pageTitle {
-    position: relative;
-    left: 50%;
-    width: clamp(286px, 60%, 400px);
-    height: 72px;
-    padding: 12px 0 20px;
-    transform: translateX(-50%);
-    border: 2px solid color(--c-black);
-    border-radius: 10px;
-    background: color(--c-primary);
-
-    @include mix.mq(md) {
-      height: 88px;
+    h1 {
+      display: inline;
     }
 
-    &_bubble {
-      top: -40px;
-      width: 192px;
-      height: 88px;
-      padding: 1em 0.875em;
-
-      &::after {
-        content: '';
-        position: absolute;
-        bottom: -18.9px;
-        left: 50%;
-        width: 20px;
-        height: 20px;
-        transform: rotate(42deg) skewY(5deg) translateX(-50%);
-        border-right: 2px solid color(--c-black);
-        border-bottom: 2px solid color(--c-black);
-        border-radius: 0 0 3px;
-        background: color(--c-primary);
-      }
-
-      text {
-        &:nth-of-type(1) {
-          transform: translateY(-14px);
-
-          @include mix.mq(md) {
-            transform: translateY(-20px);
-          }
-        }
-
-        &:nth-of-type(2) {
-          transform: translateY(14px);
-
-          @include mix.mq(md) {
-            transform: translateY(20px);
-          }
-        }
-      }
+    .bl_pageTitle {
+      position: relative;
+      left: 50%;
+      width: clamp(286px, 60%, 400px);
+      height: 72px;
+      padding: 12px 0 20px;
+      transform: translateX(-50%);
+      border: 2px solid color(--c-black);
+      border-radius: 10px;
+      background: color(--c-primary);
 
       @include mix.mq(md) {
-        width: 320px;
-        height: 128px;
+        height: 88px;
+      }
+
+      &_bubble {
+        top: -40px;
+        width: 192px;
+        height: 88px;
+        padding: 1em 0.875em;
+
+        &::after {
+          content: '';
+          position: absolute;
+          bottom: -18.9px;
+          left: 50%;
+          width: 20px;
+          height: 20px;
+          transform: rotate(42deg) skewY(5deg) translateX(-50%);
+          border-right: 2px solid color(--c-black);
+          border-bottom: 2px solid color(--c-black);
+          border-radius: 0 0 3px;
+          background: color(--c-primary);
+        }
+
+        text {
+          &:nth-of-type(1) {
+            transform: translateY(-14px);
+
+            @include mix.mq(md) {
+              transform: translateY(-20px);
+            }
+          }
+
+          &:nth-of-type(2) {
+            transform: translateY(14px);
+
+            @include mix.mq(md) {
+              transform: translateY(20px);
+            }
+          }
+        }
+
+        @include mix.mq(md) {
+          width: 320px;
+          height: 128px;
+        }
+      }
+
+      &_icon {
+        &::before {
+          content: '';
+          position: absolute;
+          z-index: 1;
+          bottom: -20px;
+          left: 50%;
+          width: 24px;
+          height: 24px;
+          transform: translateX(-50%);
+        }
+
+        &::after {
+          content: '';
+          position: absolute;
+          bottom: -28px;
+          left: 50%;
+          width: 40px;
+          height: 40px;
+          transform: translateX(-50%);
+          border: 2px solid color(--c-black);
+          border-radius: 50%;
+          background: color(--c-primary-sober);
+        }
+
+        &__works {
+          &::before {
+            background: url(#{$icon-path}web.svg) no-repeat center center / contain;
+          }
+        }
+
+        &__contact {
+          &::before {
+            background: url(#{$icon-path}mail.svg) no-repeat center center / contain;
+          }
+        }
+
+        &__end {
+          &::before {
+            background: url(#{$icon-path}smile.svg) no-repeat center center / contain;
+          }
+        }
       }
     }
-
-    &_icon {
-      &::before {
-        content: '';
-        position: absolute;
-        z-index: 1;
-        bottom: -20px;
-        left: 50%;
-        width: 24px;
-        height: 24px;
-        transform: translateX(-50%);
-      }
-
-      &::after {
-        content: '';
-        position: absolute;
-        bottom: -28px;
-        left: 50%;
-        width: 40px;
-        height: 40px;
-        transform: translateX(-50%);
-        border: 2px solid color(--c-black);
-        border-radius: 50%;
-        background: color(--c-primary-sober);
-      }
-
-      &__works {
-        &::before {
-          background: url(#{$icon-path}web.svg) no-repeat center center / contain;
-        }
-      }
-
-      &__contact {
-        &::before {
-          background: url(#{$icon-path}mail.svg) no-repeat center center / contain;
-        }
-      }
-
-      &__end {
-        &::before {
-          background: url(#{$icon-path}smile.svg) no-repeat center center / contain;
-        }
-      }
-    }
-  }
-</style>
+  </style>
+</>

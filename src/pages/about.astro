@@ -21,11 +21,12 @@ const pageLink = {
     <div class="bl_prof_img">
       <img
         src="/image/empty.gif"
-        alt="ゆりかの似顔絵"
+        alt="ほげほげ"
         data-src="/image/prof.png"
         width="165"
         height="165"
         loading="lazy"
+        decoding="async"
       />
     </div><!-- /.bl_prof_img -->
     <ul class="bl_prof_outline">
@@ -48,6 +49,7 @@ const pageLink = {
             height="20"
             data-src="/icon/pen.svg"
             loading="lazy"
+            decoding="async"
           />
         </a>
       </li>
@@ -66,6 +68,7 @@ const pageLink = {
             height="20"
             data-src="/icon/github.svg"
             loading="lazy"
+            decoding="async"
           />
         </a>
       </li>
@@ -84,6 +87,7 @@ const pageLink = {
             height="20"
             data-src="/icon/codepen.svg"
             loading="lazy"
+            decoding="async"
           />
         </a>
       </li>
@@ -91,8 +95,7 @@ const pageLink = {
     <p class="bl_prof_text">
       2021年のはじめにWeb制作と出会い、そこから一気にコーディングの楽しさに沼りました。
       主に書籍やUdemyなどを使い、独学で勉強をしています。<br />
-      セマンティックなマークアップ、 設計に基づく保守性を高めたCSS（DartSass）を考えることが好きです。<br
-      />
+      セマンティックなマークアップ、 設計に基づく保守性を高めたCSS（DartSass）を考えることが好きです。<br />
       Webアプリ開発にも興味があるので、少しづつ勉強中です。
     </p><!-- /.bl_prof_text -->
   </div><!-- /.bl_prof -->
@@ -117,8 +120,7 @@ const pageLink = {
     </div><!-- /.el_title_dash -->
     <div class="js_anime js_anime__softIn">
       <p>
-        サイトへ訪れたユーザーに優しく寄り添い、サイト寿命を長くすることを心がけてコーディングをしています。<br
-        />
+        サイトへ訪れたユーザーに優しく寄り添い、サイト寿命を長くすることを心がけてコーディングをしています。<br />
         アクセシビリティの知見を更に深めていくこと、CSS・JavaScript・SVG・Canvas（WebGL）を用いた心地よいアニメーション表現ができるようになることが目標です。<br
         />
         そしていずれは実装だけでなくデザイン側からもプロジェクトへ関わっていきたいと思っています。
@@ -164,8 +166,8 @@ const pageLink = {
   }
 
   .bl_prof_outline {
-    grid-area: item2;
     display: flex;
+    grid-area: item2;
     align-items: center;
     justify-content: center;
     margin-right: -0.5em;
@@ -189,12 +191,12 @@ const pageLink = {
   }
 
   .bl_prof_link {
-    grid-area: item3;
     display: flex;
+    grid-area: item3;
     align-items: center;
     justify-content: center;
-    gap: var(--size-space-md);
     margin-top: var(--size-space-sm);
+    gap: var(--size-space-md);
   }
 
   .bl_prof_text {

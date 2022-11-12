@@ -13,90 +13,90 @@
       <a href="/end" role="menuitem">さいごに</a>
     </li>
   </ul><!-- /.bl_pageNav_list -->
-</>
 
-<style lang="scss">
-  @use '../styles/mixin/' as mix;
-  @use '../styles/functions/' as *;
+  <style lang="scss">
+    @use '../styles/mixin/' as mix;
+    @use '../styles/functions/' as *;
 
-  ul {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    gap: var(--size-space-sm);
-    list-style-type: none;
-    counter-reset: num;
-  }
-
-  li {
-    position: relative;
-    padding-left: 32px;
-
-    &::before {
-      content: counter(num);
-      position: absolute;
-      top: 50%;
-      left: 0;
-      width: 24px;
-      height: 23px;
-      transform: translateY(-50%);
-      transition: box-shadow 0.15s cubic-bezier(0.09, 0.56, 0.62, 0.73),
-        transform 0.2s cubic-bezier(0.15, 0.62, 0.43, 0.8), top 0.1s ease;
-      border: 1.5px solid color(--c-black);
-      border-radius: 5px;
-      box-shadow: 0 1px 0 color(--c-black);
-      font-family: var(--font-en);
-      font-size: rem(12px);
-      font-weight: bold;
-      line-height: 20px;
-      text-align: center;
-      counter-increment: num;
+    ul {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      gap: var(--size-space-sm);
+      list-style-type: none;
+      counter-reset: num;
     }
 
-    &:nth-of-type(odd) {
-      &::before {
-        background: color(--c-tertiary);
-      }
-    }
-
-    &:nth-of-type(even) {
-      &::before {
-        background: color(--c-tertiary-accent);
-      }
-    }
-
-    a {
-      display: inline-block;
+    li {
       position: relative;
-      padding-right: 2em;
-      line-height: 24px;
+      padding-left: 32px;
 
-      &::after {
-        content: '';
+      &::before {
+        content: counter(num);
         position: absolute;
         top: 50%;
-        right: 0;
-        width: 20px;
-        height: 1.5px;
+        left: 0;
+        width: 24px;
+        height: 23px;
         transform: translateY(-50%);
-        scale: 0 1;
-        transform-origin: left top;
-        transition: scale 0.3s cubic-bezier(0.15, 0.62, 0.43, 0.8);
-        background: color(--c-black);
+        transition: box-shadow 0.15s cubic-bezier(0.09, 0.56, 0.62, 0.73),
+          transform 0.2s cubic-bezier(0.15, 0.62, 0.43, 0.8), top 0.1s ease;
+        border: 1.5px solid color(--c-black);
+        border-radius: 5px;
+        box-shadow: 0 1px 0 color(--c-black);
+        font-family: var(--font-en);
+        font-size: rem(12px);
+        font-weight: bold;
+        line-height: 20px;
+        text-align: center;
+        counter-increment: num;
       }
-    }
 
-    @include mix.hover {
-      &::before {
-        transform: translateY(-40%);
-        box-shadow: 0 0.2px 0 color(--c-black);
+      &:nth-of-type(odd) {
+        &::before {
+          background: color(--c-tertiary);
+        }
+      }
+
+      &:nth-of-type(even) {
+        &::before {
+          background: color(--c-tertiary-accent);
+        }
       }
 
       a {
+        display: inline-block;
+        position: relative;
+        padding-right: 2em;
+        line-height: 24px;
+
         &::after {
-          scale: 1 1;
+          content: '';
+          position: absolute;
+          top: 50%;
+          right: 0;
+          width: 20px;
+          height: 1.5px;
+          transform: translateY(-50%);
+          scale: 0 1;
+          transform-origin: left top;
+          transition: scale 0.3s cubic-bezier(0.15, 0.62, 0.43, 0.8);
+          background: color(--c-black);
+        }
+      }
+
+      @include mix.hover {
+        &::before {
+          transform: translateY(-40%);
+          box-shadow: 0 0.2px 0 color(--c-black);
+        }
+
+        a {
+          &::after {
+            scale: 1 1;
+          }
         }
       }
     }
-  }
-</style>
+  </style>
+</>

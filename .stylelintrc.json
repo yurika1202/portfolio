@@ -1,5 +1,6 @@
 {
   "extends": ["stylelint-config-standard-scss", "stylelint-config-property-sort-order-smacss", "stylelint-config-prettier-scss"],
+  "plugins": ["stylelint-order"],
   "rules": {
     "selector-id-pattern": null,
     "selector-class-pattern": null,
@@ -10,5 +11,7 @@
     "scss/at-extend-no-missing-placeholder": null,
     "value-keyword-case": null
   },
-  "ignoreFiles": ["**/_reset.scss", "/dist", "**/*.js"]
+  "ignoreFiles": ["node_modules/*"],
+  "defaultSeverity": "error",
+  "customSyntax": "postcss-html"
 }

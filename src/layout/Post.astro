@@ -10,11 +10,7 @@ export interface Props {
 }
 
 let tag;
-content.tag === 'practical'
-  ? (tag = '【実績】')
-  : content.tag === 'indie'
-  ? (tag = '【自主制作】')
-  : '';
+content.tag === 'practical' ? (tag = '【実績】') : content.tag === 'indie' ? (tag = '【自主制作】') : '';
 const meta = {
   title: tag + content.title,
   description: content.comment,
@@ -28,8 +24,7 @@ import { thumbnailsClassType } from '@/util';
 const currentPagePath = Astro.url.pathname;
 const allPosts = await Astro.glob<PostType>('../pages/posts/**/*.md');
 const sortedAllPosts = allPosts.sort(
-  (a, b) =>
-    new Date(b.frontmatter.publishDate).valueOf() - new Date(a.frontmatter.publishDate).valueOf()
+  (a, b) => new Date(b.frontmatter.publishDate).valueOf() - new Date(a.frontmatter.publishDate).valueOf()
 );
 const { prev, next } = getPrevAndNextPosts(currentPagePath, sortedAllPosts);
 function getPrevAndNextPosts(currentSlug: string, posts: MarkdownInstance<PostType>[]) {
@@ -50,7 +45,7 @@ const paginationProps = {
 };
 
 // contentのプロパティが未設定の場合はクラスを付与
-const displayCheck = (key: string | {}) => {
+const displayCheck = (key: string | object) => {
   if (key === null) {
     return 'is_empty';
   }
@@ -61,13 +56,7 @@ const displayCheck = (key: string | {}) => {
 <Base meta={meta} gridType="arch">
   <div class="ly_post">
     <div class="bl_post_meta">
-      <div
-        class:list={[
-          'bl_post_thumbnails',
-          'el_thumbnails',
-          thumbnailsClassType(content.thumbnailType),
-        ]}
-      >
+      <div class:list={['bl_post_thumbnails', 'el_thumbnails', thumbnailsClassType(content.thumbnailType)]}>
         <img
           src="/image/empty.gif"
           alt={content.title + 'のサムネイル画像'}
@@ -75,6 +64,7 @@ const displayCheck = (key: string | {}) => {
           width="255"
           height="240"
           loading="lazy"
+          decoding="async"
         />
       </div><!-- /.bl_post_thumbnails -->
 
@@ -98,6 +88,7 @@ const displayCheck = (key: string | {}) => {
               height="20"
               data-src="/icon/github.svg"
               loading="lazy"
+              decoding="async"
             />
           </a>
         </div><!-- /.bl_post_github -->
@@ -110,9 +101,7 @@ const displayCheck = (key: string | {}) => {
       </div><!-- /.bl_post_comment -->
 
       <div class:list={['bl_post_link', displayCheck(content.link)]}>
-        <a class="el_btn el_basicBtn" href={content.link} target="_blank" rel="noopener noreferrer">
-          サイトをみる
-        </a>
+        <a class="el_btn el_basicBtn" href={content.link} target="_blank" rel="noopener noreferrer">サイトをみる</a>
       </div><!-- /.bl_post_link -->
 
       <div class="bl_post_info">
@@ -169,6 +158,7 @@ const displayCheck = (key: string | {}) => {
             width="311"
             height="222"
             loading="lazy"
+            decoding="async"
           />
         </div><!-- /.bl_post_screenShot_pc -->
         <div class="bl_post_screenShot_mobile">
@@ -179,6 +169,7 @@ const displayCheck = (key: string | {}) => {
             width="96"
             height="190"
             loading="lazy"
+            decoding="async"
           />
         </div><!-- /.bl_post_screenShot_mobile -->
       </div><!-- /.bl_post_screenShot -->
