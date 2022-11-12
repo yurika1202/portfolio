@@ -25,7 +25,9 @@ switch (currentSlug) {
 ---
 
 <>
-  <div class:list={['bl_pageTitle', 'bl_pageTitle_' + type, type === 'icon' ? 'bl_pageTitle_icon__' + currentSlug : '']}>
+  <div
+    class:list={['bl_pageTitle', 'bl_pageTitle_' + type, type === 'icon' ? 'bl_pageTitle_icon__' + currentSlug : '']}
+  >
     <h1>
       <svg class="el_title_border el_title_border__pageTitle">
         {

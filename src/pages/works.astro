@@ -27,9 +27,38 @@ const indieWorks = await Astro.glob<PostType>('./posts/indie/**/*.md');
   <PageTitle type={'icon'} />
 
   <div class="bl_works_tabs" role="tablist">
-    <button class="el_btn el_rectBtn" type="button" id="tab-all" role="tab" aria-selected="true" aria-controls="tabpanel-all"> すべて</button>
-    <button class="el_btn el_rectBtn" type="button" id="tab-prac" role="tab" aria-selected="false" aria-controls="tabpanel-prac" tabindex="-1"> 実績</button>
-    <button class="el_btn el_rectBtn" type="button" id="tab-indie" role="tab" aria-selected="false" aria-controls="tabpanel-indie" tabindex="-1"> 自主制作</button>
+    <button
+      class="el_btn el_rectBtn"
+      type="button"
+      id="tab-all"
+      role="tab"
+      aria-selected="true"
+      aria-controls="tabpanel-all"
+    >
+      すべて
+    </button>
+    <button
+      class="el_btn el_rectBtn"
+      type="button"
+      id="tab-prac"
+      role="tab"
+      aria-selected="false"
+      aria-controls="tabpanel-prac"
+      tabindex="-1"
+    >
+      実績
+    </button>
+    <button
+      class="el_btn el_rectBtn"
+      type="button"
+      id="tab-indie"
+      role="tab"
+      aria-selected="false"
+      aria-controls="tabpanel-indie"
+      tabindex="-1"
+    >
+      自主制作
+    </button>
   </div>
 
   <section class="bl_works_tabpanel" id="tabpanel-all" role="tabpanel" aria-labelledby="tab-all">
@@ -149,7 +178,7 @@ const indieWorks = await Astro.glob<PostType>('./posts/indie/**/*.md');
    * タブ制御
    * *****************/
   const tabList = document.querySelector('div[role="tablist"]');
-  const tabs = [...tabList?.querySelectorAll('button[role="tab"]')];
+  const tabs = [...tabList!.querySelectorAll('button[role="tab"]')];
   let firstTab: null | HTMLButtonElement = null;
   let lastTab: null | HTMLButtonElement = null;
   let tabPanels: HTMLElement[] = [];

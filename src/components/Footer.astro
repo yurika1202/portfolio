@@ -9,7 +9,13 @@ export interface Props {
   nextLabel?: string;
 }
 
-const { prevPath = '/', prevLabel = 'ホーム画面へもどる', nextPath = '/', nextLabel = 'ホーム画面へもどる', paginationProps } = Astro.props;
+const {
+  prevPath = '/',
+  prevLabel = 'ホーム画面へもどる',
+  nextPath = '/',
+  nextLabel = 'ホーム画面へもどる',
+  paginationProps,
+} = Astro.props;
 
 const currentPagePath = Astro.url.pathname;
 ---
@@ -27,10 +33,20 @@ const currentPagePath = Astro.url.pathname;
                 <li>
                   <a
                     href={prevPath}
-                    class:list={['el_btn', 'el_circleBtn', 'el_circleBtn__blue', prevPath === '/' ? 'el_arrowBtn_home' : 'el_arrowBtn_prev']}
+                    class:list={[
+                      'el_btn',
+                      'el_circleBtn',
+                      'el_circleBtn__blue',
+                      prevPath === '/' ? 'el_arrowBtn_home' : 'el_arrowBtn_prev',
+                    ]}
                     aria-label={prevLabel}
                   >
-                    <img src={prevPath === '/' ? '/icon/home.svg' : '/icon/arrow.svg'} alt={prevLabel} width="12" height="12" />
+                    <img
+                      src={prevPath === '/' ? '/icon/home.svg' : '/icon/arrow.svg'}
+                      alt={prevLabel}
+                      width="12"
+                      height="12"
+                    />
                   </a>
                 </li>
                 <li>
@@ -53,10 +69,20 @@ const currentPagePath = Astro.url.pathname;
                 <li>
                   <a
                     href={nextPath}
-                    class:list={['el_btn', 'el_circleBtn', 'el_circleBtn__blue', nextPath === '/' ? 'el_arrowBtn_home' : 'el_arrowBtn_next']}
+                    class:list={[
+                      'el_btn',
+                      'el_circleBtn',
+                      'el_circleBtn__blue',
+                      nextPath === '/' ? 'el_arrowBtn_home' : 'el_arrowBtn_next',
+                    ]}
                     aria-label={nextLabel}
                   >
-                    <img src={nextPath === '/' ? '/icon/home.svg' : '/icon/arrow.svg'} alt={nextLabel} width="12" height="12" />
+                    <img
+                      src={nextPath === '/' ? '/icon/home.svg' : '/icon/arrow.svg'}
+                      alt={nextLabel}
+                      width="12"
+                      height="12"
+                    />
                   </a>
                 </li>
               </ul>
@@ -67,7 +93,7 @@ const currentPagePath = Astro.url.pathname;
       </nav>
 
       <div class="bl_toTop">
-        <button type="button" class="el_btn el_circleBtn el_circleBtn__deepPink" id="js_toTop_btn"> Top</button>
+        <button type="button" class="el_btn el_circleBtn el_circleBtn__deepPink" id="js_toTop_btn">Top</button>
       </div><!-- /.bl_toTop -->
 
       <div class="bl_footer_copyWrap" id="js_copy">
@@ -171,8 +197,8 @@ const currentPagePath = Astro.url.pathname;
 
         &.is_display {
           visibility: visible;
-          transition: visibility 0.3s ease-in-out, opacity 0.3s ease-in-out, scale 0.3s ease-in-out, box-shadow 0.15s cubic-bezier(0.09, 0.56, 0.62, 0.73),
-            transform 0.2s cubic-bezier(0.15, 0.62, 0.43, 0.8);
+          transition: visibility 0.3s ease-in-out, opacity 0.3s ease-in-out, scale 0.3s ease-in-out,
+            box-shadow 0.15s cubic-bezier(0.09, 0.56, 0.62, 0.73), transform 0.2s cubic-bezier(0.15, 0.62, 0.43, 0.8);
           opacity: 1;
           scale: 1;
         }

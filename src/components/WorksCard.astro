@@ -19,12 +19,28 @@ const { frontmatter, url } = Astro.props.works;
           <h2>{frontmatter.title}</h2>
         </div><!-- /.bl_works_title -->
         <div class:list={['bl_works_thumbnails', 'el_thumbnails', thumbnailsClassType(frontmatter.thumbnailType!)]}>
-          <img src="/image/empty.gif" alt={frontmatter.title + 'のサムネイル画像'} data-src={frontmatter.thumbnail} width="255" height="240" loading="lazy" decoding="async" />
+          <img
+            src="/image/empty.gif"
+            alt={frontmatter.title + 'のサムネイル画像'}
+            data-src={frontmatter.thumbnail}
+            width="255"
+            height="240"
+            loading="lazy"
+            decoding="async"
+          />
         </div><!-- /.bl_works_thumbnails -->
         <div class="bl_works_btnWrap">
           <div class="el_btn el_circleBtn el_circleBtn__lightPink bl_works_moreBtn">
             <div class="bl_works_moreBtn_imgWrap">
-              <img src="/image/empty.gif" alt="詳しく見る" data-src="/icon/arrow.svg" width="20" height="20" loading="lazy" decoding="async" />
+              <img
+                src="/image/empty.gif"
+                alt="詳しく見る"
+                data-src="/icon/arrow.svg"
+                width="20"
+                height="20"
+                loading="lazy"
+                decoding="async"
+              />
             </div><!-- /.bl_works_moreBtn_imgWrap -->
           </div>
         </div><!-- /.bl_works_btnWrap -->
@@ -148,7 +164,8 @@ const { frontmatter, url } = Astro.props.works;
       position: relative;
       width: 56px;
       height: 56px;
-      transition: box-shadow 0.15s cubic-bezier(0.09, 0.56, 0.62, 0.73), transform 0.2s cubic-bezier(0.15, 0.62, 0.43, 0.8);
+      transition: box-shadow 0.15s cubic-bezier(0.09, 0.56, 0.62, 0.73),
+        transform 0.2s cubic-bezier(0.15, 0.62, 0.43, 0.8);
 
       &::before {
         content: '';

@@ -11,7 +11,13 @@ const currentPagePath = Astro.url.pathname;
 ---
 
 <>
-  <div id="js_drawerNav" class:list={['ly_drawerNav', currentPagePath.includes('works') ? 'is_reverse' : '']} aria-label="drawer" id="drawerNav" aria-hidden="true">
+  <div
+    id="js_drawerNav"
+    class:list={['ly_drawerNav', currentPagePath.includes('works') ? 'is_reverse' : '']}
+    aria-label="drawer"
+    id="drawerNav"
+    aria-hidden="true"
+  >
     <div class="ly_drawerNav__inner">
       <nav class="bl_drawerNav__page" aria-label="pageList">
         <svg class="el_title_border el_title_border__blue">
@@ -23,7 +29,15 @@ const currentPagePath = Astro.url.pathname;
       </nav><!-- /.bl_drawerNav__page -->
 
       <div class="bl_drawerNav_dashLine">
-        <img src="/image/empty.gif" data-src="/icon/swipe.svg" alt="横スクロール" width="32" height="32" loading="lazy" decoding="async" />
+        <img
+          src="/image/empty.gif"
+          data-src="/icon/swipe.svg"
+          alt="横スクロール"
+          width="32"
+          height="32"
+          loading="lazy"
+          decoding="async"
+        />
       </div><!-- /.bl_drawerNav_dashLine -->
 
       <nav class="bl_drawerNav__section is_canScroll" aria-label="works">
@@ -343,7 +357,11 @@ const currentPagePath = Astro.url.pathname;
 
     /** ドロワーメニュー外クリック時の挙動 */
     document.addEventListener('click', event => {
-      if (event.target instanceof HTMLElement && !event.target.closest('#js_drawerNav') && nav?.classList.contains('is_show')) {
+      if (
+        event.target instanceof HTMLElement &&
+        !event.target.closest('#js_drawerNav') &&
+        nav?.classList.contains('is_show')
+      ) {
         closeContents();
         focusBackContents();
       }
@@ -383,21 +401,27 @@ const currentPagePath = Astro.url.pathname;
      * @param parentElement フォーカス要素の親
      */
     const focusFirstElement = (parentElement: HTMLElement) => {
-      const focusElements = parentElement.querySelectorAll('a, button') as NodeListOf<HTMLAnchorElement | HTMLButtonElement>;
+      const focusElements = parentElement.querySelectorAll('a, button') as NodeListOf<
+        HTMLAnchorElement | HTMLButtonElement
+      >;
       focusElements[0].focus();
     };
 
     /** ドロワー外のフォーカス制御 */
     const focusBackContents = () => {
       const header = document.querySelectorAll('header a, header button') as NodeListOf<HTMLElement>;
-      const main = document.querySelectorAll('main a, main button, main input, main textarea') as NodeListOf<HTMLElement>;
+      const main = document.querySelectorAll(
+        'main a, main button, main input, main textarea'
+      ) as NodeListOf<HTMLElement>;
       const notFocusElements = document.querySelectorAll('.js_notFocus') as NodeListOf<HTMLElement>;
       const hiddenElements = [...header, ...main, ...notFocusElements];
 
       hiddenElements.forEach(element => {
         if (element.classList.contains('is_focusDisable')) {
           element.removeAttribute('aria-hidden');
-          [...notFocusElements].includes(element) ? element.setAttribute('tabindex', '0') : element.removeAttribute('tabindex');
+          [...notFocusElements].includes(element)
+            ? element.setAttribute('tabindex', '0')
+            : element.removeAttribute('tabindex');
           element.classList.remove('is_focusDisable');
         } else {
           element.setAttribute('aria-hidden', 'true');

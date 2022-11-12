@@ -17,67 +17,6 @@ const {
 <html lang="ja">
   <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# website: http://ogp.me/ns/website#">
     <BaseHead title={title} description={description} author={author} ogImg={ogImg} />
-    <script>
-      /**
-       * 画像遅延読み込み
-       */
-      window.addEventListener('load', () => {
-        if ('loading' in HTMLImageElement.prototype) {
-          const images = document.querySelectorAll('img[loading="lazy"]') as NodeListOf<HTMLImageElement>;
-          images.forEach(img => {
-            if (img.dataset.src != null) {
-              img.src = img.dataset.src;
-            }
-          });
-          const imageSrcset = document.querySelectorAll('img[data-srcset]') as NodeListOf<HTMLImageElement>;
-          imageSrcset.forEach(img => {
-            if (img.dataset.srcset != null) {
-              img.srcset = img.dataset.srcset;
-            }
-          });
-          const sources = document.querySelectorAll('source[data-srcset]') as NodeListOf<HTMLSourceElement>;
-          sources.forEach(source => {
-            if (source.dataset.srcset != null) {
-              source.srcset = source.dataset.srcset;
-            }
-          });
-        } else {
-          const script = document.createElement('script');
-          script.src = 'https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.3.2/lazysizes.min.js';
-          document.body.appendChild(script);
-        }
-      });
-
-      /**
-       * アニメーション
-       */
-      import 'typed-query-selector';
-
-      const animationTargets = document.querySelectorAll('.js_anime');
-
-      const options = {
-        root: null,
-        rootMargin: '20px 0px -70px',
-        threshold: 0,
-      };
-      const observer = new IntersectionObserver(scrollInAnime, options);
-      animationTargets.forEach(animationTarget => {
-        observer.observe(animationTarget);
-      });
-
-      // rootと交差時にふわっと表示させる
-      function scrollInAnime(entries: IntersectionObserverEntry[]) {
-        entries.forEach((entry: IntersectionObserverEntry, index) => {
-          const delay = index * 300;
-          if (entry.isIntersecting) {
-            setTimeout(() => {
-              entry.target.classList.add('is_active');
-            }, delay);
-            observer.unobserve(entry.target);
-          }
-        });
-      }
-    </script>
   </head>
   <body class="ly_bg_gradation">
     {gridType === 'arch' ? <Header /> : ''}
@@ -91,11 +30,11 @@ const {
           gridType === 'box' ? (
             <footer>
               <small>&copy; 2022 Yurika's Portfolio</small>
-            </footer>
-          ) : (
-            ''
-          )
-        }
+              </footer>
+              ) : (
+                ''
+                )
+              }
       </div>
     </div>
     <style lang="scss">
@@ -103,7 +42,7 @@ const {
         margin-top: var(--size-space-3xl);
         text-align: right;
       }
-
+      
       small {
         font-family: var(--font-en);
         font-size: rem(12px);
@@ -112,5 +51,66 @@ const {
         line-height: 1;
       }
     </style>
+        <script>
+          /**
+           * 画像遅延読み込み
+           */
+          window.addEventListener('load', () => {
+            if ('loading' in HTMLImageElement.prototype) {
+              const images = document.querySelectorAll('img[loading="lazy"]') as NodeListOf<HTMLImageElement>;
+              images.forEach(img => {
+                if (img.dataset.src != null) {
+                  img.src = img.dataset.src;
+                }
+              });
+              const imageSrcset = document.querySelectorAll('img[data-srcset]') as NodeListOf<HTMLImageElement>;
+              imageSrcset.forEach(img => {
+                if (img.dataset.srcset != null) {
+                  img.srcset = img.dataset.srcset;
+                }
+              });
+              const sources = document.querySelectorAll('source[data-srcset]') as NodeListOf<HTMLSourceElement>;
+              sources.forEach(source => {
+                if (source.dataset.srcset != null) {
+                  source.srcset = source.dataset.srcset;
+                }
+              });
+            } else {
+              const script = document.createElement('script');
+              script.src = 'https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.3.2/lazysizes.min.js';
+              document.body.appendChild(script);
+            }
+          });
+    
+          /**
+           * アニメーション
+           */
+          import 'typed-query-selector';
+    
+          const animationTargets = document.querySelectorAll('.js_anime');
+    
+          const options = {
+            root: null,
+            rootMargin: '20px 0px -70px',
+            threshold: 0,
+          };
+          const observer = new IntersectionObserver(scrollInAnime, options);
+          animationTargets.forEach(animationTarget => {
+            observer.observe(animationTarget);
+          });
+    
+          // rootと交差時にふわっと表示させる
+          function scrollInAnime(entries: IntersectionObserverEntry[]) {
+            entries.forEach((entry: IntersectionObserverEntry, index) => {
+              const delay = index * 300;
+              if (entry.isIntersecting) {
+                setTimeout(() => {
+                  entry.target.classList.add('is_active');
+                }, delay);
+                observer.unobserve(entry.target);
+              }
+            });
+          }
+        </script>
   </body>
 </html>

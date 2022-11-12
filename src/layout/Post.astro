@@ -23,7 +23,9 @@ import { thumbnailsClassType } from '@/util';
 // paginationの作成
 const currentPagePath = Astro.url.pathname;
 const allPosts = await Astro.glob<PostType>('../pages/posts/**/*.md');
-const sortedAllPosts = allPosts.sort((a, b) => new Date(b.frontmatter.publishDate).valueOf() - new Date(a.frontmatter.publishDate).valueOf());
+const sortedAllPosts = allPosts.sort(
+  (a, b) => new Date(b.frontmatter.publishDate).valueOf() - new Date(a.frontmatter.publishDate).valueOf()
+);
 const { prev, next } = getPrevAndNextPosts(currentPagePath, sortedAllPosts);
 function getPrevAndNextPosts(currentSlug: string, posts: MarkdownInstance<PostType>[]) {
   const index = posts.findIndex(({ url }) => url === currentSlug);
@@ -43,7 +45,7 @@ const paginationProps = {
 };
 
 // contentのプロパティが未設定の場合はクラスを付与
-const displayCheck = (key: string | {}) => {
+const displayCheck = (key: string | object) => {
   if (key === null) {
     return 'is_empty';
   }
@@ -55,7 +57,15 @@ const displayCheck = (key: string | {}) => {
   <div class="ly_post">
     <div class="bl_post_meta">
       <div class:list={['bl_post_thumbnails', 'el_thumbnails', thumbnailsClassType(content.thumbnailType)]}>
-        <img src="/image/empty.gif" alt={content.title + 'のサムネイル画像'} data-src={content.thumbnail} width="255" height="240" loading="lazy" decoding="async" />
+        <img
+          src="/image/empty.gif"
+          alt={content.title + 'のサムネイル画像'}
+          data-src={content.thumbnail}
+          width="255"
+          height="240"
+          loading="lazy"
+          decoding="async"
+        />
       </div><!-- /.bl_post_thumbnails -->
 
       <div class="bl_post_meta_titleWrap">
@@ -64,8 +74,22 @@ const displayCheck = (key: string | {}) => {
         </div><!-- /.bl_post_title -->
 
         <div class:list={['bl_post_github', displayCheck(content.github)]}>
-          <a href={content.github} class="el_btn el_circleBtn el_circleBtn__blue" aria-label="GitHub" target="_blank" rel="nofollow noopener noreferrer">
-            <img src="/image/empty.gif" alt="GitHub" width="20" height="20" data-src="/icon/github.svg" loading="lazy" decoding="async" />
+          <a
+            href={content.github}
+            class="el_btn el_circleBtn el_circleBtn__blue"
+            aria-label="GitHub"
+            target="_blank"
+            rel="nofollow noopener noreferrer"
+          >
+            <img
+              src="/image/empty.gif"
+              alt="GitHub"
+              width="20"
+              height="20"
+              data-src="/icon/github.svg"
+              loading="lazy"
+              decoding="async"
+            />
           </a>
         </div><!-- /.bl_post_github -->
       </div><!-- /.bl_post_meta_titleWrap -->
