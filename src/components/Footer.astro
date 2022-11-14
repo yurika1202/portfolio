@@ -10,9 +10,9 @@ export interface Props {
 }
 
 const {
-  prevPath = '/',
+  prevPath = '/portfolio',
   prevLabel = 'ホーム画面へもどる',
-  nextPath = '/',
+  nextPath = '/portfolio',
   nextLabel = 'ホーム画面へもどる',
   paginationProps,
 } = Astro.props;
@@ -37,12 +37,12 @@ const currentPagePath = Astro.url.pathname;
                       'el_btn',
                       'el_circleBtn',
                       'el_circleBtn__blue',
-                      prevPath === '/' ? 'el_arrowBtn_home' : 'el_arrowBtn_prev',
+                      prevPath === '/portfolio' ? 'el_arrowBtn_home' : 'el_arrowBtn_prev',
                     ]}
                     aria-label={prevLabel}
                   >
                     <img
-                      src={prevPath === '/' ? '/icon/home.svg' : '/icon/arrow.svg'}
+                      src={prevPath === '/portfolio' ? 'icon/home.svg' : 'icon/arrow.svg'}
                       alt={prevLabel}
                       width="12"
                       height="12"
@@ -73,12 +73,12 @@ const currentPagePath = Astro.url.pathname;
                       'el_btn',
                       'el_circleBtn',
                       'el_circleBtn__blue',
-                      nextPath === '/' ? 'el_arrowBtn_home' : 'el_arrowBtn_next',
+                      nextPath === '/portfolio' ? 'el_arrowBtn_home' : 'el_arrowBtn_next',
                     ]}
                     aria-label={nextLabel}
                   >
                     <img
-                      src={nextPath === '/' ? '/icon/home.svg' : '/icon/arrow.svg'}
+                      src={nextPath === '/portfolio' ? 'icon/home.svg' : 'icon/arrow.svg'}
                       alt={nextLabel}
                       width="12"
                       height="12"
