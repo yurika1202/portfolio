@@ -3,15 +3,15 @@ const currentPagePath = Astro.url.pathname;
 let src, alt, style, deco;
 
 if (currentPagePath.includes('404')) {
-  src = '/image/error.png';
+  src = 'image/error.png';
   alt = 'ページが見つかりません';
   style = 'background-color: #af4256';
-  deco = '/icon/question.svg';
+  deco = 'icon/question.svg';
 } else {
-  src = '/image/logo-wh.png';
+  src = 'image/logo-wh.png';
   alt = "Yurika's Portfolio";
   style = 'background-color: #827dad';
-  deco = '/image/particle.svg';
+  deco = 'image/particle.svg';
 }
 ---
 

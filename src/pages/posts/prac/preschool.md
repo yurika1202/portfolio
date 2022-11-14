@@ -5,7 +5,7 @@ id: preschool
 title: こども園のサイトと採用サイトのコーディング
 publishDate: 2022-10-
 tag: practical
-thumbnail: /works/preschool/tmb.png
+thumbnail: works/preschool/tmb.png
 thumbnailType: icon
 link:
 github:
