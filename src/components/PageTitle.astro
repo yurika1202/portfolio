@@ -4,7 +4,8 @@ export interface Props {
 }
 const { type } = Astro.props;
 const currentPagePath = Astro.url.pathname;
-const currentSlug = currentPagePath.replace(/\/portfolio\//, '');
+const reg = /portfolio|\//g;
+const currentSlug = currentPagePath.replace(reg, '');
 let pageTitle: string[] = [];
 switch (currentSlug) {
   case 'about':

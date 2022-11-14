@@ -20,7 +20,7 @@ const { frontmatter, url } = Astro.props.works;
         </div><!-- /.bl_works_title -->
         <div class:list={['bl_works_thumbnails', 'el_thumbnails', thumbnailsClassType(frontmatter.thumbnailType!)]}>
           <img
-            src="image/empty.gif"
+            src="/portfolio/image/empty.gif"
             alt={frontmatter.title + 'のサムネイル画像'}
             data-src={frontmatter.thumbnail}
             width="255"
@@ -33,9 +33,9 @@ const { frontmatter, url } = Astro.props.works;
           <div class="el_btn el_circleBtn el_circleBtn__lightPink bl_works_moreBtn">
             <div class="bl_works_moreBtn_imgWrap">
               <img
-                src="image/empty.gif"
+                src="/portfolio/image/empty.gif"
                 alt="詳しく見る"
-                data-src="icon/arrow.svg"
+                data-src="/portfolio/icon/arrow.svg"
                 width="20"
                 height="20"
                 loading="lazy"

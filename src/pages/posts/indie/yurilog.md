@@ -5,7 +5,7 @@ id: yurilog
 title: yurilog.
 publishDate: 2022-10-19
 tag: indie
-thumbnail: works/yurilog/tmb.png
+thumbnail: /portfolio/works/yurilog/tmb.png
 thumbnailType:
 link: https://yurika122.com/
 github: https://github.com/yurika1202/yurilog
@@ -25,7 +25,7 @@ feature:
   - ショートコード作成
   - Prism.jsの導入
   - ブロックスタイルの追加
-screenShot: { pc: works/yurilog/ss-pc.png, mobile: works/yurilog/ss-mobile.png }
+screenShot: { pc: /portfolio/works/yurilog/ss-pc.png, mobile: /portfolio/works/yurilog/ss-mobile.png }
 ---
 
 ここに説明文

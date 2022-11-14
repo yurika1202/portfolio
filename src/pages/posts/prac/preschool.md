@@ -5,7 +5,7 @@ id: preschool
 title: こども園のサイトと採用サイトのコーディング
 publishDate: 2022-10-
 tag: practical
-thumbnail: works/preschool/tmb.png
+thumbnail: /portfolio/works/preschool/tmb.png
 thumbnailType: icon
 link:
 github:
@@ -27,8 +27,8 @@ screenShot:
 ---
 
 **【実績詳細公開不可】**  
-<a class="bl_entry_blankLink" href='https://crowdworks.jp/public/employees/2210160' target="_blank" rel="noopener noreferrer">
-CrowdWorks のページはこちら
+<a class="bl_entry_blankLink" href='https://crowd/portfolio/works.jp/public/employees/2210160' target="_blank" rel="noopener noreferrer">
+Crowd/portfolio/works のページはこちら
 </a>  
 <br />
 こども園のサイトと教員採用サイトのコーディングを担当させていただきました。

@@ -5,7 +5,7 @@ id: directLink
 title: ImageURL for direct link Generator
 publishDate: 2022-10-17
 tag: indie
-thumbnail: works/directLink/tmb.png
+thumbnail: /portfolio/works/directLink/tmb.png
 thumbnailType:
 link: https://yurika1202.github.io/imgurl-direct/
 github: https://github.com/yurika1202/imgurl-direct
@@ -24,7 +24,7 @@ feature:
   - バリデーションチェック
   - クリップボードへのコピー
   - モーダル表示時に中身のコンテンツ生成
-screenShot: { pc: works/directLink/ss-pc.png, mobile: works/directLink/ss-mobile.png }
+screenShot: { pc: /portfolio/works/directLink/ss-pc.png, mobile: /portfolio/works/directLink/ss-mobile.png }
 comment: GoogleDrive と DropBox から取得した共有リンクを、直リンク可能な URL に変換する Web アプリです。
 ---
 
