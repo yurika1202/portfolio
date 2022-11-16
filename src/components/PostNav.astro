@@ -1,17 +1,17 @@
 ---
 export interface Props {
-  prevPath?: string;
-  nextPath?: string;
+  prevPagePath?: string;
+  nextPagePath?: string;
 }
-const { prevPath, nextPath } = Astro.props;
+const { prevPagePath, nextPagePath } = Astro.props as Props;
 ---
 
 <>
   <ul>
     <li>
       {
-        prevPath && (
-          <a href={prevPath} class="el_btn el_postNavBtn el_postNavBtn__prev">
+        prevPagePath && (
+          <a href={prevPagePath} class="el_btn el_postNavBtn el_postNavBtn__prev">
             まえへ
           </a>
         )
@@ -22,8 +22,8 @@ const { prevPath, nextPath } = Astro.props;
     </li>
     <li>
       {
-        nextPath && (
-          <a href={nextPath} class="el_btn el_postNavBtn el_postNavBtn__next">
+        nextPagePath && (
+          <a href={nextPagePath} class="el_btn el_postNavBtn el_postNavBtn__next">
             つぎへ
           </a>
         )

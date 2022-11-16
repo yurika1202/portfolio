@@ -9,8 +9,6 @@ export interface Props {
   prevLabel?: string;
   nextPath?: string;
   nextLabel?: string;
-  prevPagePath?: string;
-  nextPagePath?: string;
 }
 
 const {
@@ -27,10 +25,10 @@ const sortedAllPosts = sortedPosts(allPosts);
 const { prev, next } = getPrevAndNextPosts(currentPagePath, sortedAllPosts);
 const paginationProps = {
   ...(prev && {
-    prevPath: prev.url,
+    prevPagePath: prev.url,
   }),
   ...(next && {
-    nextPath: next.url,
+    nextPagePath: next.url,
   }),
 };
 ---
