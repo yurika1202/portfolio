@@ -23,7 +23,7 @@ import { thumbnailsClassType } from '@/util';
 
 // paginationの作成
 const currentPagePath = new URL(Astro.request.url).pathname;
-const allPosts = await Astro.glob<PostType>('../pages/posts/**/*.md');
+const allPosts = await Astro.glob<PostType>('/portfolio/src/pages/posts/**/*.md');
 const sortedAllPosts = sortedPosts(allPosts);
 const { prev, next, index } = getPrevAndNextPosts(currentPagePath, sortedAllPosts);
 const paginationProps = {
