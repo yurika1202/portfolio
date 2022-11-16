@@ -40,5 +40,6 @@ export const getPrevAndNextPosts = (currentSlug: string, posts: MarkdownInstance
     // 指定indexのpostがなければnullを返す
     prev: posts[index + 1] ?? null,
     next: posts[index - 1] ?? null,
+    index: index,
   };
 };
