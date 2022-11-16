@@ -2,6 +2,9 @@
   "extends": [
     "markuplint:recommended"
   ],
+  "excludeFiles": [
+    "node_modules"
+  ],
   "parser": {
     ".astro$": "@markuplint/astro-parser"
   },
