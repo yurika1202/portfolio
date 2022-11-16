@@ -25,7 +25,7 @@ import { thumbnailsClassType } from '@/util';
 const currentPagePath = new URL(Astro.request.url).pathname;
 const allPosts = await Astro.glob<PostType>('../pages/posts/**/*.md');
 const sortedAllPosts = sortedPosts(allPosts);
-const { prev, next } = getPrevAndNextPosts(currentPagePath, sortedAllPosts);
+const { prev, next, index } = getPrevAndNextPosts(currentPagePath, sortedAllPosts);
 const paginationProps = {
   ...(prev && {
     prevPath: prev.url,
@@ -34,7 +34,6 @@ const paginationProps = {
     nextPath: next.url,
   }),
 };
-
 // contentのプロパティが未設定の場合はクラスを付与
 const displayCheck = (key: string | object) => {
   if (key === null) {
@@ -45,7 +44,7 @@ const displayCheck = (key: string | object) => {
 ---
 
 <Base meta={meta} gridType="arch">
-  <p>{sortedAllPosts}</p>
+  <p>{index}</p>
   <div class="ly_post">
     <div class="bl_post_meta">
       <div class:list={['bl_post_thumbnails', 'el_thumbnails', thumbnailsClassType(content.thumbnailType)]}>
