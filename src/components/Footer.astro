@@ -1,4 +1,6 @@
 ---
+import type { PostType } from '@/types';
+import { sortedPosts, getPrevAndNextPosts } from '@/util';
 import DrawerNav from '@/components/DrawerNav';
 import PostNav from '@/components/PostNav';
 
@@ -7,6 +9,8 @@ export interface Props {
   prevLabel?: string;
   nextPath?: string;
   nextLabel?: string;
+  prevPagePath?: string;
+  nextPagePath?: string;
 }
 
 const {
@@ -14,10 +18,21 @@ const {
   prevLabel = 'ホーム画面へもどる',
   nextPath = '/portfolio',
   nextLabel = 'ホーム画面へもどる',
-  paginationProps,
 } = Astro.props;
 
-const currentPagePath = Astro.url.pathname;
+// paginationの作成
+const currentPagePath = new URL(Astro.request.url).pathname;
+const allPosts = await Astro.glob<PostType>('../pages/posts/**/*.md');
+const sortedAllPosts = sortedPosts(allPosts);
+const { prev, next } = getPrevAndNextPosts(currentPagePath, sortedAllPosts);
+const paginationProps = {
+  ...(prev && {
+    prevPath: prev.url,
+  }),
+  ...(next && {
+    nextPath: next.url,
+  }),
+};
 ---
 
 <>
