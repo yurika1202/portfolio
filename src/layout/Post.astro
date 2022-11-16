@@ -1,6 +1,6 @@
 ---
-import type { MarkdownInstance } from 'astro';
 import type { PostType } from '@/types';
+import { sortedPosts, getPrevAndNextPosts } from '@/util';
 const { content } = Astro.props;
 import Base from '@/layouts/Base';
 import Footer from '@/components/Footer';
@@ -9,7 +9,8 @@ export interface Props {
   content: PostType;
 }
 
-let tag;
+// meta作成
+let tag = '';
 content.tag === 'practical' ? (tag = '【実績】') : content.tag === 'indie' ? (tag = '【自主制作】') : '';
 const meta = {
   title: tag + content.title,
@@ -23,18 +24,8 @@ import { thumbnailsClassType } from '@/util';
 // paginationの作成
 const currentPagePath = Astro.url.pathname;
 const allPosts = await Astro.glob<PostType>('../pages/posts/**/*.md');
-const sortedAllPosts = allPosts.sort(
-  (a, b) => new Date(b.frontmatter.publishDate).valueOf() - new Date(a.frontmatter.publishDate).valueOf()
-);
+const sortedAllPosts = sortedPosts(allPosts);
 const { prev, next } = getPrevAndNextPosts(currentPagePath, sortedAllPosts);
-function getPrevAndNextPosts(currentSlug: string, posts: MarkdownInstance<PostType>[]) {
-  const index = posts.findIndex(({ url }) => url === currentSlug);
-  return {
-    // 指定indexのpostがなければnullを返す
-    prev: posts[index + 1] ?? null,
-    next: posts[index - 1] ?? null,
-  };
-}
 const paginationProps = {
   ...(prev && {
     prevPath: prev.url,
@@ -43,6 +34,8 @@ const paginationProps = {
     nextPath: next.url,
   }),
 };
+
+import { Debug } from 'astro/components';
 
 // contentのプロパティが未設定の場合はクラスを付与
 const displayCheck = (key: string | object) => {
@@ -54,6 +47,7 @@ const displayCheck = (key: string | object) => {
 ---
 
 <Base meta={meta} gridType="arch">
+  <Debug {{ prev, next }} />
   <div class="ly_post">
     <div class="bl_post_meta">
       <div class:list={['bl_post_thumbnails', 'el_thumbnails', thumbnailsClassType(content.thumbnailType)]}>

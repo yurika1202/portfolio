@@ -24,7 +24,21 @@ export const thumbnailsClassType = (type: string) => {
  */
 export const sortedPosts = (posts: MarkdownInstance<PostType>[]) => {
   return posts.sort(
-    (a, b) =>
-      new Date(b.frontmatter.publishDate).valueOf() - new Date(a.frontmatter.publishDate).valueOf()
+    (a, b) => new Date(b.frontmatter.publishDate).valueOf() - new Date(a.frontmatter.publishDate).valueOf()
   );
+};
+
+/**
+ * 前ページと次ページの取得
+ * @param currentSlug 現在のページパス
+ * @param posts すべてのpostが格納された配列
+ * @returns prev:前ページ, next:次ページ
+ */
+export const getPrevAndNextPosts = (currentSlug: string, posts: MarkdownInstance<PostType>[]) => {
+  const index = posts.findIndex(({ url }) => url === currentSlug);
+  return {
+    // 指定indexのpostがなければnullを返す
+    prev: posts[index + 1] ?? null,
+    next: posts[index - 1] ?? null,
+  };
 };

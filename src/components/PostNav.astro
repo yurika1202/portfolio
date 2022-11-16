@@ -3,9 +3,11 @@ export interface Props {
   prevPath?: string;
   nextPath?: string;
 }
+import { Debug } from 'astro/components';
 const { prevPath, nextPath } = Astro.props;
 ---
 
+<Debug {{ prevPath, nextPath }} />
 <>
   <ul>
     <li>
