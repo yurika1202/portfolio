@@ -16,9 +16,9 @@ const pageLink = {
   nextLabel: 'お問い合わせページへ進む',
 };
 
-const posts = await Astro.glob<PostType>('./posts/**/*.md');
-const pracWorks = await Astro.glob<PostType>('./posts/prac/**/*.md');
-const indieWorks = await Astro.glob<PostType>('./posts/indie/**/*.md');
+const allPosts = await Astro.glob<PostType>('./posts/**/*.md');
+const pracWorksPosts = await Astro.glob<PostType>('./posts/prac/**/*.md');
+const indieWorksPosts = await Astro.glob<PostType>('./posts/indie/**/*.md');
 ---
 
 <Base meta={meta} gridType={'arch'}>
@@ -63,19 +63,19 @@ const indieWorks = await Astro.glob<PostType>('./posts/indie/**/*.md');
 
   <section class="bl_works_tabpanel" id="tabpanel-all" role="tabpanel" aria-labelledby="tab-all">
     <ul class="bl_works_list">
-      {posts.map(post => <WorksCard works={post} />)}
+      {allPosts.map(post => <WorksCard works={post} />)}
     </ul><!-- /.bl_works_list -->
   </section><!-- /.bl_works_list -->
 
   <section class="bl_works_tabpanel is_hidden" id="tabpanel-prac" role="tabpanel" aria-labelledby="tab-prac">
     <ul class="bl_works_list">
-      {pracWorks.map(prac => <WorksCard works={prac} />)}
+      {pracWorksPosts.map(prac => <WorksCard works={prac} />)}
     </ul><!-- /.bl_works_list -->
   </section><!-- /.bl_works_list -->
 
   <section class="bl_works_tabpanel is_hidden" id="tabpanel-indie" role="tabpanel" aria-labelledby="tab-indie">
     <ul class="bl_works_list">
-      {indieWorks.map(indie => <WorksCard works={indie} />)}
+      {indieWorksPosts.map(indie => <WorksCard works={indie} />)}
     </ul><!-- /.bl_works_list -->
   </section><!-- /.bl_works_list -->
 </Base>
