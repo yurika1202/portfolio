@@ -17,7 +17,7 @@ export interface PostType {
   github: string;
   role: string[];
   skill: string[];
-  subSkills: {};
+  subSkills: object;
   period: string;
   feature: string[];
   screenShot: {
