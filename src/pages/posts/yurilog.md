@@ -1,9 +1,9 @@
 ---
-layout: ../../../layout/Post.astro
+layout: ../../layout/Post.astro
 draft: false
 id: yurilog
 title: yurilog.
-publishDate: 2022-10-19
+publishDate: 2022-01-01
 tag: indie
 thumbnail: /portfolio/works/yurilog/tmb.png
 thumbnailType:

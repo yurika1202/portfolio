@@ -1,9 +1,9 @@
 ---
-layout: ../../../layout/Post.astro
+layout: ../../layout/Post.astro
 draft: false
 id: directLink
 title: ImageURL for direct link Generator
-publishDate: 2022-10-17
+publishDate: 2022-10-01
 tag: indie
 thumbnail: /portfolio/works/directLink/tmb.png
 thumbnailType:

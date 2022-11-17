@@ -19,8 +19,8 @@ const {
 } = Astro.props;
 
 // paginationの作成
-const currentPagePath = new URL(Astro.request.url).pathname;
-const allPosts = await Astro.glob<PostType>('../pages/posts/**/*.md');
+const currentPagePath = Astro.url.pathname;
+const allPosts = await Astro.glob<PostType>('../pages/posts/*.md');
 const sortedAllPosts = sortedPosts(allPosts);
 const { prev, next } = getPrevAndNextPosts(currentPagePath, sortedAllPosts);
 const paginationProps = {
