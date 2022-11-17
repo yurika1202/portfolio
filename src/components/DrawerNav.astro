@@ -3,10 +3,10 @@ import type { PostType } from '@/types';
 import { sortedPosts } from '@/util';
 import PageNav from '@/components/PageNav';
 
-const pracWorks = await Astro.glob<PostType>('../pages/posts/prac/**/*.md');
-const indieWorks = await Astro.glob<PostType>('../pages/posts/indie/**/*.md');
-const sortedPracPosts = sortedPosts(pracWorks);
-const sortedIndiePosts = sortedPosts(indieWorks);
+const allPosts = await Astro.glob<PostType>('../pages/posts/*.md');
+const sortedAllPosts = sortedPosts(allPosts);
+const pracWorksPosts = sortedAllPosts.filter(post => post.frontmatter.tag.includes('prac'));
+const indieWorksPosts = sortedAllPosts.filter(post => post.frontmatter.tag.includes('indie'));
 const currentPagePath = Astro.url.pathname;
 ---
 
@@ -47,7 +47,7 @@ const currentPagePath = Astro.url.pathname;
           </svg>
           <ul class="bl_sectionNav_list" role="menubar">
             {
-              sortedPracPosts.map(prac => (
+              pracWorksPosts.map(prac => (
                 <li class="bl_sectionNav_item">
                   <a href={prac.url} role="menuitem">
                     {prac.frontmatter.title}
@@ -63,7 +63,7 @@ const currentPagePath = Astro.url.pathname;
           </svg>
           <ul class="bl_sectionNav_list" role="menubar">
             {
-              sortedIndiePosts.map(indie => (
+              indieWorksPosts.map(indie => (
                 <li class="bl_sectionNav_item">
                   <a href={indie.url} role="menuitem">
                     {indie.frontmatter.title}

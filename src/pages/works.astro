@@ -1,5 +1,6 @@
 ---
 import type { PostType } from '@/types';
+import { sortedPosts } from '@/util';
 import Base from '@/layouts/Base';
 import PageTitle from '@/components/PageTitle';
 import WorksCard from '@/components/WorksCard';
@@ -16,9 +17,10 @@ const pageLink = {
   nextLabel: 'お問い合わせページへ進む',
 };
 
-const allPosts = await Astro.glob<PostType>('./posts/**/*.md');
-const pracWorksPosts = await Astro.glob<PostType>('./posts/prac/**/*.md');
-const indieWorksPosts = await Astro.glob<PostType>('./posts/indie/**/*.md');
+const allPosts = await Astro.glob<PostType>('./posts/*.md');
+const sortedAllPosts = sortedPosts(allPosts);
+const pracWorksPosts = sortedAllPosts.filter(post => post.frontmatter.tag.includes('prac'));
+const indieWorksPosts = sortedAllPosts.filter(post => post.frontmatter.tag.includes('indie'));
 ---
 
 <Base meta={meta} gridType={'arch'}>

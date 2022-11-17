@@ -1,9 +1,9 @@
 ---
-layout: ../../../layout/Post.astro
+layout: ../../layout/Post.astro
 draft: false
 id: portfolio
 title: Yurika's Portfolio
-publishDate: 2022-10-20
+publishDate: 2022-11-01
 tag: indie
 thumbnail: /portfolio/works/portfolio/tmb.png
 thumbnailType:
