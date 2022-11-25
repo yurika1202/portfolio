@@ -20,9 +20,11 @@ const {
 
 // paginationの作成
 const currentPagePath = Astro.url.pathname;
+const fixPathReg = /\/$/;
+const fixedCurrentPagePath = currentPagePath.endsWith('/') ? currentPagePath.replace(fixPathReg, '') : currentPagePath;
 const allPosts = await Astro.glob<PostType>('../pages/posts/*.md');
 const sortedAllPosts = sortedPosts(allPosts);
-const { prev, next } = getPrevAndNextPosts(currentPagePath, sortedAllPosts);
+const { prev, next } = getPrevAndNextPosts(fixedCurrentPagePath, sortedAllPosts);
 const paginationProps = {
   ...(prev && {
     prevPagePath: prev.url,
@@ -38,7 +40,7 @@ const paginationProps = {
     sortedAllPosts.map(post => (
       <li>
         {post.url}
-        {currentPagePath}
+        {fixedCurrentPagePath}
       </li>
     ))
   }
