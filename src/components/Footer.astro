@@ -34,7 +34,14 @@ const paginationProps = {
 ---
 
 <>
-  {paginationProps.prevPagePath}
+  {
+    sortedAllPosts.map(post => (
+      <li>
+        {post.url}
+        {currentPagePath}
+      </li>
+    ))
+  }
 
   <footer id="footer" class="ly_footer">
     <div class="ly_footer_inner">

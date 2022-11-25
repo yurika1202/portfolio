@@ -35,7 +35,9 @@ export const sortedPosts = (posts: MarkdownInstance<PostType>[]) => {
  * @returns prev:前ページ, next:次ページ
  */
 export const getPrevAndNextPosts = (currentSlug: string, posts: MarkdownInstance<PostType>[]) => {
+  const a = posts.map(post => post.url);
   const index = posts.findIndex(({ url }) => url === currentSlug);
+  console.log(`a: ${a}, index: ${currentSlug}`);
   return {
     // 指定indexのpostがなければnullを返す
     prev: posts[index + 1] ?? null,
