@@ -27,20 +27,26 @@ screenShot:
 ---
 
 **【実績詳細公開不可】**  
-<a class="bl_entry_blankLink" href='https://crowd/portfolio/works.jp/public/employees/2210160' target="_blank" rel="noopener noreferrer">
-Crowd/portfolio/works のページはこちら
-</a>  
-<br />
+[CrowdWorks のページはこちら](https://crowdworks.jp/public/employees/2210160)  
+<br>
 こども園のサイトと教員採用サイトのコーディングを担当させていただきました。
+<br>
 
-<p class="bl_entry_pointText">ポップな雰囲気づくり</p>
+### ポップな雰囲気づくり
 
-イラストのあしらいが多く使用されているデザインだったで、IntersectionObserverAPI を使用して各イラスト要素に動きをつけました。  
-ある箇所では「観覧車のようなアニメーションをつけてほしい」とのご要望があったため、以下のようなアニメーションを JavaScript で作成しました。  
-<br />
-【要件】
+イラストのあしらいが多く使用されているデザインだったので、IntersectionObserverAPI を使用して各イラスト要素に動きをつけました。  
+ある箇所では「観覧車のようなアニメーションをつけてほしい」とのご要望があったため、以下のようなアニメーションを JavaScript で作成しました。
+<br>
 
-- hover で回転を静止させ、テキストコンテンツを表示
-- 左下のみを画面内で表示させ、要素をふわっと出現させる
+---
+
 - 回転は画面がスクロールインしたら開始
-  _デモ準備中_
+- hover で回転を静止させ、テキストコンテンツを表示
+
+<br>
+<p class="codepen" data-height="300" data-default-tab="result" data-slug-hash="poKqbPd" data-user="yurika1202" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+  <span>See the Pen <a href="https://codepen.io/yurika1202/pen/poKqbPd">
+  animation - ferrisWheel</a> by Yurika (<a href="https://codepen.io/yurika1202">@yurika1202</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
