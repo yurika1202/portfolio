@@ -104,7 +104,7 @@ const pageLink = {
     <div class="el_title_dash">
       <h2 class="js_anime js_anime__boundIn">強い意志を持ってチャレンジし続けます</h2>
     </div><!-- /.el_title_dash -->
-    <div class="js_anime js_anime__softIn">
+    <div class="bl_prof_pr js_anime js_anime__softIn">
       <p>
         やると決めたことは、たとえ道のりが険しくても諦めずやりきる、粘り強さが私の代名詞です。<br />
         Webの勉強は今日まで約2年間独学で学び続けています。<br />
@@ -113,14 +113,14 @@ const pageLink = {
         そしてそこからベストな実装法はなにか、何度も試行錯誤することで自力での解決に至ってきました。<br />
         また新しい技術を積極的に日々の勉強へ取り入れ、自身の知識へと落とし込んでいます。
       </p>
-    </div>
+    </div><!-- /.bl_prof_pr -->
   </section>
 
   <section>
     <div class="el_title_dash">
       <h2 class="js_anime js_anime__boundIn">やさしいWebづくりを追求しています</h2>
     </div><!-- /.el_title_dash -->
-    <div class="js_anime js_anime__softIn">
+    <div class="bl_prof_pr js_anime js_anime__softIn">
       <p>ユーザーに優しく寄り添えるコーディングを目指し、以下3点を意識的に取り組んでいます。</p>
       <ul>
         <li>快適なアニメーションの追求</li>
@@ -132,7 +132,7 @@ const pageLink = {
         />
         そしていずれは実装だけでなくデザイン面からもプロジェクトへ関わっていくことが目標です。
       </p>
-    </div>
+    </div><!-- /.bl_prof_pr -->
   </section>
 
   <section>
@@ -190,6 +190,8 @@ const pageLink = {
 
 <style lang="scss">
   @use '../styles/mixin/' as mix;
+  @use '../styles/functions/' as *;
+  @use '../styles/variables/other' as *;
 
   .bl_prof {
     margin-top: -40px;
@@ -219,6 +221,17 @@ const pageLink = {
     @include mix.mq(md) {
       width: 265px;
       margin: 0 auto -24px;
+    }
+  }
+
+  .bl_prof_pr {
+    ul {
+      margin-left: 1.5em;
+      padding: 0.8em 0;
+    }
+
+    li {
+      list-style: disc outside;
     }
   }
 
@@ -262,6 +275,91 @@ const pageLink = {
 
     @include mix.mq(md) {
       margin-top: 25%;
+    }
+  }
+
+  .bl_prof_skillList {
+    display: flex;
+    gap: var(--size-space-md);
+    flex-direction: column;
+  }
+
+  .bl_prof_skillItem {
+    h3 {
+      position: relative;
+      padding-left: calc(30px + 0.5em);
+      font-size: rem(16px);
+      font-weight: bold;
+
+      &::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 0;
+        width: 30px;
+        height: 80%;
+        transform: translateY(-50%);
+      }
+    }
+
+    p {
+      margin-top: 0.8em;
+    }
+
+    &__html {
+      h3 {
+        &::before {
+          background: url(#{$icon-path}/html.svg) no-repeat center center / contain;
+        }
+      }
+    }
+
+    &__css {
+      h3 {
+        &::before {
+          background: url(#{$icon-path}/css.svg) no-repeat center center / contain;
+        }
+      }
+    }
+
+    &__sass {
+      h3 {
+        &::before {
+          background: url(#{$icon-path}/sass.svg) no-repeat center center / contain;
+        }
+      }
+    }
+
+    &__js {
+      h3 {
+        &::before {
+          background: url(#{$icon-path}/js.svg) no-repeat center center / contain;
+        }
+      }
+    }
+
+    &__wp {
+      h3 {
+        &::before {
+          background: url(#{$icon-path}/wp.svg) no-repeat center center / contain;
+        }
+      }
+    }
+
+    &__github {
+      h3 {
+        &::before {
+          background: url(#{$icon-path}/github-round.svg) no-repeat center center / contain;
+        }
+      }
+    }
+
+    &__a11y {
+      h3 {
+        &::before {
+          background: url(#{$icon-path}/a11y.svg) no-repeat center center / contain;
+        }
+      }
     }
   }
 </style>
