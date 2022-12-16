@@ -168,7 +168,7 @@ section {
   $width-max-layoutBox: 584px;
 
   max-width: $width-max-layoutBox;
-  height: 100vh;
+  height: 100%;
 
   @media print, screen and (min-width: $width-max-layoutBox) {
     height: 100%;
