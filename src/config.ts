@@ -4,5 +4,5 @@ export const SITE = {
   description: 'ゆりかのポートフォリオサイトです。',
   url: 'https://yurika1202.github.io/portfolio/',
   githubUrl: 'https://github.com/yurika1202/portfolio',
-  ogImg: '/ogp.jpg',
+  ogImg: '/portfolio/ogp.jpg',
 };
