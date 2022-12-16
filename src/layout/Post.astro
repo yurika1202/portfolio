@@ -45,7 +45,7 @@ const displayCheck = (key: string | object) => {
 
       <div class="bl_post_meta_titleWrap">
         <div class="bl_post_title bl_common_box">
-          <p>{content.title}</p>
+          <h1>{content.title}</h1>
         </div><!-- /.bl_post_title -->
 
         <div class:list={['bl_post_github', displayCheck(content.github)]}>
@@ -71,7 +71,7 @@ const displayCheck = (key: string | object) => {
     </div><!-- /.bl_post_meta -->
 
     <div class="bl_post_contents">
-      <div class="bl_post_comment bl_entry">
+      <div class="bl_post_comment bl_entry" id="js_entryBlock">
         <slot />
       </div><!-- /.bl_post_comment -->
 
@@ -80,22 +80,22 @@ const displayCheck = (key: string | object) => {
       </div><!-- /.bl_post_link -->
 
       <div class="bl_post_info">
-        <dl>
-          <dt>担当領域</dt>
-          <dd class="bl_post_info_role">
+        <div class="bl_post_infoItem">
+          <h2>担当領域</h2>
+          <div class="bl_post_info_role">
             <ul>
               {content.role && content.role.map(value => <li>{value}</li>)}
             </ul>
-          </dd><!-- /.bl_post_info_subSkill -->
-        </dl>
-        <dl>
-          <dt>使用技術</dt>
-          <dd class="bl_post_info_skill">
+          </div><!-- /.bl_post_info_role -->
+        </div><!-- /.bl_post_infoItem -->
+        <div class="bl_post_infoItem">
+          <h2>使用技術</h2>
+          <div class="bl_post_info_skill">
             <ul>
               {content.skill && content.skill.map(value => <li>{value}</li>)}
             </ul>
-          </dd>
-          <dd class:list={['bl_post_info_subSkill', displayCheck(content.subSkills)]}>
+          </div>
+          <div class:list={['bl_post_info_subSkill', displayCheck(content.subSkills)]}>
             <ul>
               {
                 content.subSkills &&
@@ -108,20 +108,20 @@ const displayCheck = (key: string | object) => {
                   ))
               }
             </ul>
-          </dd><!-- /.bl_post_info_subSkill -->
-        </dl>
-        <dl>
-          <dt>制作期間</dt>
-          <dd>{content.period}</dd>
-        </dl>
-        <dl class="bl_post_info_feature">
-          <dt>機能</dt>
-          <dd>
+          </div><!-- /.bl_post_info_subSkill -->
+        </div><!-- /.bl_post_infoItem -->
+        <div class="bl_post_infoItem">
+          <h2>制作期間</h2>
+          <div>{content.period}</div>
+        </div><!-- /.bl_post_infoItem -->
+        <div class="bl_post_infoItem">
+          <h2>機能</h2>
+          <div class="bl_post_info_feature">
             <ul>
               {content.feature.map((list: string) => <li>{list}</li>)}
             </ul>
-          </dd>
-        </dl>
+          </div>
+        </div><!-- /.bl_post_infoItem -->
       </div><!-- /.bl_post_info -->
 
       <div class:list={['bl_post_screenShot', displayCheck(content.screenShot)]}>
@@ -159,7 +159,11 @@ const displayCheck = (key: string | object) => {
   @use '../styles/variables/other' as *;
 
   .ly_post {
-    margin-top: calc(56px + var(--header-height));
+    margin-top: calc(-16px + var(--header-height));
+
+    @include mix.mq(lg) {
+      margin-top: calc(-32px + var(--header-height));
+    }
   }
 
   .bl_post_meta {
@@ -188,8 +192,8 @@ const displayCheck = (key: string | object) => {
     padding: 0.5em 1em;
     background: color(--c-primary-accent);
 
-    p {
-      font-size: rem(16px);
+    h1 {
+      font-size: rem(20px);
       font-weight: bold;
       letter-spacing: 1px;
       text-align: center;
@@ -267,7 +271,7 @@ const displayCheck = (key: string | object) => {
     @include mix.mq(lg) {
       grid-template-columns: repeat(2, 1fr);
       grid-template-rows: repeat(3, auto);
-      width: auto;
+      width: 100%;
       column-gap: var(--size-space-md);
       row-gap: var(--size-space-lg);
     }
@@ -285,7 +289,7 @@ const displayCheck = (key: string | object) => {
     gap: var(--size-space-sm);
     flex-direction: column;
 
-    dt {
+    h2 {
       position: relative;
       padding-left: 1.5em;
       font-size: rem(16px);
@@ -304,7 +308,7 @@ const displayCheck = (key: string | object) => {
       }
     }
 
-    dd {
+    div {
       margin-top: 8px;
       word-break: break-all;
     }
@@ -410,3 +414,19 @@ const displayCheck = (key: string | object) => {
     background: color(--c-bg-works);
   }
 </style>
+
+<script>
+  // linkにtarget属性を付与
+  const myHostname = location.hostname;
+  const entryBlock = document.getElementById('js_entryBlock');
+  const anchorTags = entryBlock?.querySelectorAll('a');
+  if (anchorTags) {
+    anchorTags.forEach(anchorTag => {
+      const reg = /^[httpsfile]+:\/{2,3}([0-9a-zA-Z\.\-:]+?):?[0-9]*?\//i;
+      const anchorTagHostname = anchorTag.href.match(reg);
+      if (myHostname !== anchorTagHostname![1]) {
+        anchorTag.setAttribute('target', '_blank');
+      }
+    });
+  }
+</script>

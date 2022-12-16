@@ -25,19 +25,20 @@ feature:
   - クリップボードへのコピー
   - モーダル表示時に中身のコンテンツ生成
 screenShot: { pc: /portfolio/works/directLink/ss-pc.png, mobile: /portfolio/works/directLink/ss-mobile.png }
-comment: GoogleDrive と DropBox から取得した共有リンクを、直リンク可能な URL に変換する Web アプリです。
 ---
 
 GoogleDrive と DropBox から取得した共有リンクを、直リンク可能な URL に変換する Web アプリです。  
 CodePen に画像をアップするときに手作業で書き直してましたが、自動で変換したいなあと思い、JavaScript の勉強も兼ねて作成しました。
-<br />
 
-<p class="bl_entry_pointText">バリデーションチェック</p>  
+### バリデーションチェック
+
 正規表現を使用し、入力値のバリデーションチェックを行っています。
-<br />
-<p class="bl_entry_pointText">コピー</p>  
-変換後の URL コピーには ClipboardAPI を使用し、クリップボードへの書き込みを行っています。  
-<br />
-<p class="bl_entry_pointText">モーダル内コンテンツの生成</p>  
-当アプリの使い方をモーダル内で記述していますが、内容をGoogleDriveとDropBoxで変えたかったので createElement()メソッドを使用して動的に生成するようにしました。  
-またDocumentFragmentを使用し、パフォーマンスにも考慮しています。
+
+### コピー
+
+変換後の URL コピーには ClipboardAPI を使用し、クリップボードへの書き込みを行っています。
+
+### モーダル内コンテンツの生成
+
+アプリの使い方をモーダル内で記述していますが、内容を GoogleDrive と DropBox で変えたかったので createElement()メソッドを使用して動的に生成するようにしました。  
+また DocumentFragment を使用し、パフォーマンスにも考慮しています。
