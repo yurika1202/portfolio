@@ -4,10 +4,7 @@ import PageNav from '@/components/PageNav';
 
 <>
   <div class="ly_startBtn js_anime js_anime__boundIn">
-    <a class="el_btn el_basicBtn" href="/portfolio/about">
-      はじめからみる
-      <img src="/portfolio/icon/arrow-lg.svg" alt="" width="56" height="8" loading="lazy" decoding="async" />
-    </a>
+    <a class="el_btn el_basicBtn" href="/portfolio/about">はじめからみる</a>
   </div><!-- /.ly_startBtn -->
 
   <nav class="bl_mainNav js_anime js_anime__boundIn">
@@ -28,6 +25,11 @@ import PageNav from '@/components/PageNav';
     .ly_startBtn {
       margin-top: var(--size-space-2xl);
       text-align: center;
+
+      a {
+        width: 90%;
+        max-width: 260px;
+      }
     }
 
     .bl_mainNav {
