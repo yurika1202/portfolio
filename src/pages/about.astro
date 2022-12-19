@@ -235,6 +235,27 @@ const pageLink = {
     }
   }
 
+  .bl_prof_link {
+    display: flex;
+    grid-area: item3;
+    align-items: center;
+    justify-content: center;
+    margin-top: var(--size-space-sm);
+    gap: var(--size-space-md);
+
+    li {
+      width: 40px;
+      height: 40px;
+    }
+
+    @include mix.mq(lg) {
+      li {
+        width: 56px;
+        height: 56px;
+      }
+    }
+  }
+
   .bl_prof_outline {
     display: flex;
     grid-area: item2;
@@ -258,15 +279,6 @@ const pageLink = {
         }
       }
     }
-  }
-
-  .bl_prof_link {
-    display: flex;
-    grid-area: item3;
-    align-items: center;
-    justify-content: center;
-    margin-top: var(--size-space-sm);
-    gap: var(--size-space-md);
   }
 
   .bl_prof_text {

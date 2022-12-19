@@ -171,11 +171,6 @@ const paginationProps = {
             background: color(--c-black);
           }
         }
-
-        &:not(:nth-of-type(2)) {
-          width: 32px;
-          height: 32px;
-        }
       }
     }
 
@@ -205,6 +200,8 @@ const paginationProps = {
       @include mix.mq(lg) {
         top: -40px;
         right: -20px;
+        width: 56px;
+        height: 56px;
       }
 
       > button {
