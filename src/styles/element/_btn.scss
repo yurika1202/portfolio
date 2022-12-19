@@ -85,17 +85,23 @@
     font-size: rem(20px);
   }
 
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    background: url(#{$icon-path}/arrow-lg.svg) no-repeat center center / cover;
+    width: 30%;
+    height: 8px;
+    transform: translateY(-50%);
+    right: 1.5em;
+  }
+
   &[target='_blank'] {
     padding-right: 3em;
 
     &::after {
-      content: '';
-      position: absolute;
-      top: 50%;
-      right: 1.5em;
       width: 1em;
       height: 1em;
-      transform: translateY(-50%);
       background: url(#{$icon-path}/link.svg) no-repeat center center / contain;
     }
   }
