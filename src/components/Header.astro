@@ -89,10 +89,10 @@
     /** headerの表示制御 */
     const headerDisplay = () => {
       const scrollY = document.documentElement.scrollTop;
-      if (setPosition < scrollY) {
-        header.classList.add('is_hide');
-      } else {
+      if (setPosition > scrollY || scrollY === 0) {
         header.classList.remove('is_hide');
+      } else {
+        header.classList.add('is_hide');
       }
       setPosition = scrollY;
     };
