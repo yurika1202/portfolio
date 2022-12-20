@@ -342,8 +342,8 @@ const currentPagePath = Astro.url.pathname;
 
     /** ドロワー開閉ボタンクリック時の挙動 */
     btn?.addEventListener('click', event => {
-      event.stopPropagation();
       const isShow = nav?.classList.contains('is_show');
+      event.stopPropagation();
       if (!isShow) {
         openContents();
         document.addEventListener('touchmove', scrollLock, { passive: false });
@@ -357,12 +357,10 @@ const currentPagePath = Astro.url.pathname;
 
     /** ドロワーメニュー外クリック時の挙動 */
     document.addEventListener('click', event => {
-      if (
-        event.target instanceof HTMLElement &&
-        !event.target.closest('#js_drawerNav') &&
-        nav?.classList.contains('is_show')
-      ) {
+      const isShow = nav?.classList.contains('is_show');
+      if (event.target instanceof HTMLElement && !event.target.closest('#js_drawerNav') && isShow) {
         closeContents();
+        document.removeEventListener('touchmove', scrollLock);
         focusBackContents();
       }
     });
@@ -371,13 +369,10 @@ const currentPagePath = Astro.url.pathname;
     document.addEventListener(
       'touchmove',
       event => {
-        console.log('touch');
-        if (
-          event.target instanceof HTMLElement &&
-          !event.target.closest('#js_drawerNav') &&
-          nav?.classList.contains('is_show')
-        ) {
+        const isShow = nav?.classList.contains('is_show');
+        if (event.target instanceof HTMLElement && !event.target.closest('#js_drawerNav') && isShow) {
           closeContents();
+          document.removeEventListener('touchmove', scrollLock);
           focusBackContents();
         }
       },
