@@ -368,16 +368,21 @@ const currentPagePath = Astro.url.pathname;
     });
 
     /** ドロワーメニュー外タッチ時の挙動 */
-    document.addEventListener('touchstart', event => {
-      if (
-        event.target instanceof HTMLElement &&
-        !event.target.closest('#js_drawerNav') &&
-        nav?.classList.contains('is_show')
-      ) {
-        closeContents();
-        focusBackContents();
-      }
-    });
+    document.addEventListener(
+      'touchmove',
+      event => {
+        console.log('touch');
+        if (
+          event.target instanceof HTMLElement &&
+          !event.target.closest('#js_drawerNav') &&
+          nav?.classList.contains('is_show')
+        ) {
+          closeContents();
+          focusBackContents();
+        }
+      },
+      { passive: false }
+    );
 
     /** Escapeキー選択時の挙動 */
     footer?.addEventListener('keydown', event => {
