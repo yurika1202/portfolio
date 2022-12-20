@@ -367,6 +367,18 @@ const currentPagePath = Astro.url.pathname;
       }
     });
 
+    /** ドロワーメニュー外タッチ時の挙動 */
+    document.addEventListener('touchstart', event => {
+      if (
+        event.target instanceof HTMLElement &&
+        !event.target.closest('#js_drawerNav') &&
+        nav?.classList.contains('is_show')
+      ) {
+        closeContents();
+        focusBackContents();
+      }
+    });
+
     /** Escapeキー選択時の挙動 */
     footer?.addEventListener('keydown', event => {
       if (event.code === 'Escape') {
