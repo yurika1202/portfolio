@@ -1,0 +1,119 @@
+---
+import type { PostType } from '@/types';
+import { sortedPosts } from '@/util';
+
+const allPosts = await Astro.glob<PostType>('../pages/posts/*.md');
+const sortedAllPosts = sortedPosts(allPosts);
+const pracWorksPosts = sortedAllPosts.filter(post => post.frontmatter.tag.includes('prac'));
+const indieWorksPosts = sortedAllPosts.filter(post => post.frontmatter.tag.includes('indie'));
+---
+
+<>
+  <div class="bl_sectionList bl_sectionList__prac">
+    <svg class="el_title_border el_title_border__blue">
+      <text x="50%" y="50%" text-anchor="middle" dominant-baseline="central">実績</text>
+    </svg>
+    <ul role="menubar">
+      {
+        pracWorksPosts.map(prac => (
+          <li>
+            <a href={prac.url} role="menuitem">
+              {prac.frontmatter.title}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div><!-- /.bl_sectionList -->
+  <div class="bl_sectionList bl_sectionList__indie">
+    <svg class="el_title_border el_title_border__blue">
+      <text x="50%" y="50%" text-anchor="middle" dominant-baseline="central">自主制作</text>
+    </svg>
+    <ul role="menubar">
+      {
+        indieWorksPosts.map(indie => (
+          <li>
+            <a href={indie.url} role="menuitem">
+              {indie.frontmatter.title}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div><!-- /.bl_sectionList -->
+
+  <style lang="scss">
+    @use '../styles/mixin/' as mix;
+    @use '../styles/functions/' as *;
+    @use '../styles/variables/other' as *;
+
+    .bl_sectionList {
+      svg {
+        margin-right: auto;
+      }
+
+      &__prac {
+        svg {
+          width: 55px;
+        }
+      }
+
+      &__indie {
+        svg {
+          width: 105px;
+        }
+      }
+
+      ul {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        margin-top: var(--size-space-sm);
+        gap: 1em;
+      }
+
+      li {
+        position: relative;
+        z-index: 0;
+        padding: 0.3em 0.3em 0.3em calc(0.5em + 1.25em);
+        overflow: hidden;
+        font-size: rem(16px);
+        font-weight: bold;
+
+        &::before {
+          content: '';
+          position: absolute;
+          top: 0.55em;
+          left: 0.3em;
+          width: 1.25em;
+          height: 1.25em;
+          background: url(#{$icon-path}/hash.svg) no-repeat center center / contain;
+        }
+
+        &::after {
+          content: '';
+          position: absolute;
+          z-index: -1;
+          bottom: -100%;
+          left: 50%;
+          width: 100%;
+          height: 100%;
+          transform: translateX(-50%);
+          transition: bottom 0.3s cubic-bezier(0.27, 0.66, 0.49, 0.82);
+          border-radius: 10px;
+          background: color(--c-primary-sober);
+        }
+
+        a {
+          color: color(--c-black);
+        }
+
+        @include mix.hover {
+          &::after {
+            bottom: 0;
+          }
+        }
+      }
+    }
+  </style>
+</>
