@@ -1,0 +1,77 @@
+---
+import Base from '@/layouts/Base';
+import PageTitle from '@/components/PageTitle';
+import Footer from '@/components/Footer';
+
+const meta = {
+  title: 'お問い合わせ',
+  description: '制作に関することだけでなく、ご質問やご指摘等々、お気軽にご連絡くださると嬉しいです。',
+};
+const pageLink = {
+  prevPath: '/portfolio/works',
+  prevLabel: '実績と自主制作ページへ戻る',
+  nextPath: '/portfolio/end',
+  nextLabel: '最後のメッセージページへ進む',
+};
+---
+
+<Base meta={meta} gridType={'arch'}>
+  <PageTitle type={'icon'} />
+
+  <div class="bl_thx">
+    <p>
+      お問い合わせありがとうございます。<br />
+      24時間以内に返信がない場合、正常に送信されていない可能性があります。<br />
+      お手数ですが、再度フォームよりお問い合わせいただけますと幸いです。<br />
+    </p>
+
+    <ul class="bl_thx_linkList">
+      <li class="js_anime js_anime__boundIn">
+        <a class="el_btn el_basicBtn" href="/portfolio/contact">お問い合わせフォームへ戻る</a>
+      </li>
+    </ul><!-- /.bl_thx_linkList -->
+  </div>
+</Base>
+
+<Footer {...pageLink} />
+
+<style lang="scss">
+  @use '../styles/mixin/' as mix;
+  @use '../styles/functions/' as *;
+  @use '../styles/variables/other' as *;
+
+  .bl_thx {
+    margin-top: var(--size-space-2xl);
+
+    p {
+      max-width: 400px;
+      margin: 0 auto;
+    }
+
+    @include mix.mq(sm) {
+      p {
+        width: 80%;
+      }
+    }
+
+    @include mix.mq(md) {
+      p {
+        max-width: 650px;
+      }
+    }
+  }
+
+  .bl_thx_linkList {
+    margin-top: var(--size-space-2xl);
+
+    li {
+      text-align: center;
+    }
+
+    a {
+      &::after {
+        display: none;
+      }
+    }
+  }
+</style>

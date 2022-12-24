@@ -17,6 +17,9 @@ switch (currentSlug) {
   case 'contact':
     pageTitle = ['お問い合わせ'];
     break;
+  case 'contact-thx':
+    pageTitle = ['お問い合わせ'];
+    break;
   case 'end':
     pageTitle = ['さいごに'];
     break;
@@ -141,7 +144,8 @@ switch (currentSlug) {
           }
         }
 
-        &__contact {
+        &__contact,
+        &__contact-thx {
           &::before {
             background: url(#{$icon-path}mail.svg) no-repeat center center / contain;
           }
