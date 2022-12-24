@@ -531,9 +531,7 @@ const pageLink = {
     const errorMessage = errorMessages[index];
 
     item.addEventListener('blur', () => {
-      const itemValue = item.value;
-
-      if (!itemValue) {
+      if (!item.value) {
         errorMessage?.classList.add('is_display');
         item.classList.add('is_error');
       } else {
@@ -543,10 +541,13 @@ const pageLink = {
 
       // type="email"の場合は形式チェック
       if (item.type === 'email') {
-        const itemValue = item.value;
-        !emailExp.test(itemValue)
-          ? emailExpErrorMessage?.classList.add('is_display')
-          : emailExpErrorMessage?.classList.remove('is_display');
+        if (!emailExp.test(item.value)) {
+          emailExpErrorMessage?.classList.add('is_display');
+          item.classList.add('is_error');
+        } else {
+          emailExpErrorMessage?.classList.remove('is_display');
+          item.classList.remove('is_error');
+        }
       }
 
       formCheck();
@@ -558,12 +559,12 @@ const pageLink = {
 
   /** 送信ボタンの非活性制御 */
   const formCheck = () => {
-    let flag = false;
-
-    for (const item of checkItems) {
-      item.value ? (flag = true) : (flag = false);
-    }
-    agreementCheckBox?.checked && flag
+    let flag: boolean[] = [];
+    checkItems.forEach(item => {
+      item.value ? flag.push(true) : flag.push(false);
+      item.classList.contains('is_error') ? flag.push(false) : flag.push(true);
+    });
+    !flag.includes(false) && agreementCheckBox?.checked
       ? submitBtn?.removeAttribute('disabled')
       : submitBtn?.setAttribute('disabled', '');
   };
