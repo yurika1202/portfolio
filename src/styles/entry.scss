@@ -25,7 +25,9 @@
     }
   }
 
-  h3 {
+  em {
+    display: inline-block;
+    font-style: normal;
     margin-top: var(--size-space-md);
     padding-bottom: 0.5em;
     font-size: 1.2em;

@@ -30,15 +30,15 @@ screenShot: { pc: /portfolio/works/directLink/ss-pc.png, mobile: /portfolio/work
 GoogleDrive と DropBox から取得した共有リンクを、直リンク可能な URL に変換する Web アプリです。  
 CodePen に画像をアップするときに手作業で書き直してましたが、自動で変換したいなあと思い、JavaScript の勉強も兼ねて作成しました。
 
-### バリデーションチェック
+_バリデーションチェック_
 
 正規表現を使用し、入力値のバリデーションチェックを行っています。
 
-### コピー
+_コピー_
 
 変換後の URL コピーには ClipboardAPI を使用し、クリップボードへの書き込みを行っています。
 
-### モーダル内コンテンツの生成
+_モーダル内コンテンツの生成_
 
 アプリの使い方をモーダル内で記述していますが、内容を GoogleDrive と DropBox で変えたかったので createElement()メソッドを使用して動的に生成するようにしました。  
 また DocumentFragment を使用し、パフォーマンスにも考慮しています。
