@@ -32,7 +32,7 @@ screenShot: { pc: /portfolio/works/yurilog/ss-pc.png, mobile: /portfolio/works/y
 オリジナルテーマとして、ゼロから作成しました。  
 WordPress と JavaScript の知識を深めたかったので、プラグインと jQuery を使用しないことを制作条件としました。
 
-### ブロックエディタ
+_ブロックエディタ_
 
 内部リンクと外部リンク、それぞれのブログカードをショートコードで作成しました。  
 外部リンクでは OpenGraphProtocol helper for PHP を使用し、OGP 情報を取得しています。  
