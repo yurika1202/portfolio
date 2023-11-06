@@ -7,7 +7,6 @@ publishDate: 2022-01-01
 tag: indie
 thumbnail: /portfolio/works/yurilog/tmb.png
 thumbnailType:
-link: https://yurika122.com/
 github: https://github.com/yurika1202/yurilog
 role:
   - デザイン
@@ -28,6 +27,7 @@ feature:
 screenShot: { pc: /portfolio/works/yurilog/ss-pc.png, mobile: /portfolio/works/yurilog/ss-mobile.png }
 ---
 
+**※現在閉鎖・移行済み※**
 アウトプットをする場として作成した自身のブログサイトです。  
 オリジナルテーマとして、ゼロから作成しました。  
 WordPress と JavaScript の知識を深めたかったので、プラグインと jQuery を使用しないことを制作条件としました。
@@ -40,4 +40,4 @@ _ブロックエディタ_
 
 ![段落スタイルのバリエーションサンプル](/portfolio/works/yurilog/blockStyle.png)
 
-その他、テーマ作成に関してゆるくまとめた[ブログ記事](https://yurika122.com/wp/60/)があります。
+その他、テーマ作成に関してゆるくまとめた~~**ブログ記事**があります。~~
